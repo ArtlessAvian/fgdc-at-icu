@@ -3,6 +3,8 @@ extends Sprite3D
 const x_bound = 10; # |x| can't go > x_bound
 const y_bound = 0; # y can't go < 0
 
+export var is_p2 = false
+
 var vel : Vector2 = Vector2()
 var grounded : bool = true
 
@@ -14,6 +16,9 @@ func _physics_process(delta):
 	move(delta)
 
 func get_input():
+	if is_p2:
+		return
+
 	if grounded:
 		vel.x = 0;
 		if Input.is_action_pressed("ui_left"):
@@ -36,3 +41,5 @@ func move(delta):
 
 	if self.translation.x > x_bound - $Collision.scale.x/2:
 		self.translation.x = x_bound - $Collision.scale.x/2
+	if -self.translation.x > x_bound - $Collision.scale.x/2:
+		self.translation.x = -(x_bound - $Collision.scale.x/2)

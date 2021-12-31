@@ -9,11 +9,14 @@
 [node name="Stage" type="Spatial"]
 
 [node name="Camera" type="Camera" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 10.0529 )
+process_priority = 1
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 5 )
 script = ExtResource( 3 )
+path_one = NodePath("../Fighter")
+path_two = NodePath("../Fighter2")
 
 [node name="Floor" type="MeshInstance" parent="."]
-transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
+transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 5, 0, -1, 0 )
 mesh = SubResource( 1 )
 skeleton = NodePath("../Camera")
 material/0 = null
@@ -37,6 +40,22 @@ script = ExtResource( 2 )
 
 [node name="Collision" type="Sprite3D" parent="Fighter"]
 offset = Vector2( 0, 32 )
+modulate = Color( 1, 1, 1, 0.156863 )
+pixel_size = 0.0157
+texture = ExtResource( 1 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Fighter2" type="Sprite3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 2, 0, 0, 0, 1, 0, 0, 0 )
+offset = Vector2( 0, 32 )
+script = ExtResource( 2 )
+is_p2 = true
+
+[node name="Collision" type="Sprite3D" parent="Fighter2"]
+offset = Vector2( 0, 32 )
+modulate = Color( 1, 1, 1, 0.156863 )
 pixel_size = 0.0157
 texture = ExtResource( 1 )
 __meta__ = {
