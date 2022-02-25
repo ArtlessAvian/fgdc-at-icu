@@ -1,16 +1,18 @@
 extends Camera
 
-export var path_one : NodePath = "";
-export var path_two : NodePath = "";
+export var path_one: NodePath = ""
+export var path_two: NodePath = ""
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	pass  # Replace with function body.
 
-func _physics_process(delta):
+
+func _physics_process(_delta):
 	var fighter_one = get_node(path_one)
 	var fighter_two = get_node(path_two)
-	
+
 	# average x
 	self.translation.x = fighter_one.translation.x
 	self.translation.x += fighter_two.translation.x

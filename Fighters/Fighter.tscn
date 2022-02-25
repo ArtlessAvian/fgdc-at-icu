@@ -1,0 +1,154 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Fighters/Fighter.gd" type="Script" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://spritesheet test.png" type="Texture" id=3]
+[ext_resource path="res://Fighters/Grounded.gd" type="Script" id=4]
+
+[sub_resource type="Animation" id=22]
+resource_name = "Idle"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=23]
+resource_name = "Jump"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 2 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "Light"
+length = 0.333333
+step = 0.0416667
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.0416667, 0.0833333, 0.125 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 4, 5, 6, 7 ]
+}
+
+[sub_resource type="Animation" id=24]
+resource_name = "Prejump"
+length = 0.1
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1 ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "RESET"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:animation_impulse")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 20 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "Walk"
+length = 0.333333
+loop = true
+step = 0.0416667
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.0833333, 0.166667, 0.25 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 9, 10, 11, 12 ]
+}
+
+[node name="Fighter" type="Spatial"]
+script = ExtResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Idle"
+playback_process_mode = 0
+anims/Idle = SubResource( 22 )
+anims/Jump = SubResource( 23 )
+anims/Light = SubResource( 6 )
+anims/Prejump = SubResource( 24 )
+anims/RESET = SubResource( 7 )
+anims/Walk = SubResource( 8 )
+
+[node name="Behaviors" type="Node" parent="."]
+
+[node name="Grounded" type="Node" parent="Behaviors"]
+script = ExtResource( 4 )
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+offset = Vector2( 0, 258 )
+pixel_size = 0.005
+alpha_cut = 2
+texture = ExtResource( 3 )
+hframes = 8
+vframes = 8
+
+[node name="Collision" type="Sprite3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 2, 0, 0, 0, 1, 0, 0, 0.01 )
+visible = false
+offset = Vector2( 0, 32 )
+modulate = Color( 1, 1, 1, 0.156863 )
+pixel_size = 0.0157
+texture = ExtResource( 2 )
+__meta__ = {
+"_editor_description_": ""
+}
