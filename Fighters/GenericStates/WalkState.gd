@@ -4,6 +4,10 @@ export(int) var speed
 
 
 func transition(f: Fighter, moveset: Moveset, input: Dictionary) -> State:
+	var attack = transition_into_attack(f, moveset, input)
+	if attack != null:
+		return attack
+
 	if input.stick_y > 0:
 		if input.stick_x < 0 and f.vel.x > -5 * 65536:
 			f.vel.x = -5 * 65536

@@ -93,6 +93,13 @@ func max_distance():
 
 
 func anim_process():
+	var ani = state.animation(self)
+	if $AnimationPlayer.current_animation != ani:
+		$AnimationPlayer.play("RESET")
+		$AnimationPlayer.seek(0, true)
+		$AnimationPlayer.play(ani)
+	$AnimationPlayer.seek(state_time, true)
+
 	$Hitboxes.sync_to_physics_engine()
 	$Hurtboxes.sync_to_physics_engine()
 
@@ -146,15 +153,17 @@ func _save_state() -> Dictionary:
 		vy = vel.y,
 		apply_gravity = apply_gravity,
 		air_actions = air_actions,
-		state = state
+		state = state,
+		state_time = state_time
 	}
 
 
-func _load_state(state: Dictionary) -> void:
-	fixed_position.x = state.x
-	fixed_position.y = state.y
-	vel.x = state.vx
-	vel.y = state.vy
-	apply_gravity = state.apply_gravity
-	air_actions = state.air_actions
-	self.state = state.state
+func _load_state(save: Dictionary) -> void:
+	fixed_position.x = save.x
+	fixed_position.y = save.y
+	vel.x = save.vx
+	vel.y = save.vy
+	apply_gravity = save.apply_gravity
+	air_actions = save.air_actions
+	state = save.state
+	state_time = save.state_time

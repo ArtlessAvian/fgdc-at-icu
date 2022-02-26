@@ -4,7 +4,7 @@
 [ext_resource path="res://Fighters/debug.gd" type="Script" id=2]
 [ext_resource path="res://spritesheet test.png" type="Texture" id=3]
 [ext_resource path="res://Fighters/HurtboxBuffer.gd" type="Script" id=4]
-[ext_resource path="res://Fighters/DefaultMoveset/DefaultMoveset.tres" type="Resource" id=5]
+[ext_resource path="res://Fighters/DefaultMoveset.tres" type="Resource" id=5]
 
 [sub_resource type="Animation" id=22]
 resource_name = "Idle"
@@ -12,12 +12,37 @@ loop = true
 
 [sub_resource type="Animation" id=23]
 resource_name = "Jump"
-loop = true
+length = 15.0
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 15 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 360.0 ]
+}
 
 [sub_resource type="Animation" id=6]
 resource_name = "Light"
-length = 0.333333
-step = 0.0416667
+length = 8.0
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 5, 6 ]
+}
 
 [sub_resource type="Animation" id=24]
 resource_name = "Prejump"
@@ -26,12 +51,48 @@ step = 0.0166667
 
 [sub_resource type="Animation" id=7]
 resource_name = "RESET"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
 
 [sub_resource type="Animation" id=8]
 resource_name = "Walk"
-length = 0.333333
+length = 20.0
 loop = true
-step = 0.0416667
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3, 6, 9, 12, 15, 20 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 8, 10, 9, 11, 10, 9, 12 ]
+}
 
 [sub_resource type="SGRectangleShape2D" id=25]
 extents_x = 1376256
@@ -45,7 +106,8 @@ moveset = ExtResource( 5 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Idle"
-playback_process_mode = 0
+playback_process_mode = 2
+playback_speed = 60.0
 anims/Idle = SubResource( 22 )
 anims/Jump = SubResource( 23 )
 anims/Light = SubResource( 6 )
@@ -65,9 +127,9 @@ __meta__ = {
 }
 
 [node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, -50 )
 scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 3 )
-offset = Vector2( 0, -256 )
 hframes = 8
 vframes = 8
 

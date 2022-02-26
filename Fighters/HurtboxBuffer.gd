@@ -5,5 +5,4 @@ class_name HurtboxBuffer
 # Information here is only useful within a frame, so no need to save.
 
 var hit_flag = false
-var damage = 0
-var knockback = SGFixedVector2.new()
+var hitstun = false
