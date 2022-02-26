@@ -57,7 +57,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Fighting Game Development Club"
-run/main_scene="res://Game/Game.tscn"
+run/main_scene="res://Lobby/local.tscn"
 config/icon="res://icon.png"
 
 [autoload]
