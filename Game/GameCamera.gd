@@ -33,3 +33,5 @@ func _physics_process(_delta):
 	# clamp
 	self.position.x = clamp(self.position.x, -250, 250)
 	self.position.y = min(-125, self.position.y)
+
+	self.force_update_scroll()

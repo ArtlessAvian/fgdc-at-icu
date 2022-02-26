@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Fighters/Fighter.gd" type="Script" id=1]
+[ext_resource path="res://Fighters/debug.gd" type="Script" id=2]
 [ext_resource path="res://spritesheet test.png" type="Texture" id=3]
 [ext_resource path="res://Fighters/Grounded.gd" type="Script" id=4]
 [ext_resource path="res://Fighters/DefaultMoveset/DefaultMoveset.tres" type="Resource" id=5]
@@ -50,6 +51,15 @@ anims/Walk = SubResource( 8 )
 
 [node name="Grounded" type="Node" parent="Behaviors"]
 script = ExtResource( 4 )
+
+[node name="Label" type="Label" parent="."]
+margin_right = 40.0
+margin_bottom = 14.0
+text = "hello"
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 0.2, 0.2 )
