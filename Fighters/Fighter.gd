@@ -6,6 +6,7 @@ const y_bound = 0  # y can't go > 0
 
 export(Resource) var moveset
 
+export var controlled_by = "ui"
 export var is_p2 = false
 export var opponent_path: NodePath = ""
 
@@ -18,13 +19,13 @@ var air_actions
 
 
 func _ready():
-	if get_tree().root.get_child(0) == self:
+	if self in get_tree().root.get_children():
 		var cam = Camera2D.new()
 		cam.current = true
 		var node = Node.new()
 		node.add_child(cam)
 		add_child(node)
-		
+
 	if is_p2:
 		# $Hitboxes.collision_mask ^= 0b11
 		# $Hurtboxes.collision_layer ^= 0b11
@@ -42,6 +43,7 @@ func _network_process(input: Dictionary) -> void:
 
 	anim_process()
 	collide_hitboxes()
+
 
 func _network_postprocess(input: Dictionary) -> void:
 	hit_response()
@@ -104,10 +106,12 @@ func collide_hitboxes():
 			hurtboxes.hit_flag = true
 			print("i hit!")
 
+
 func hit_response():
 	if $Hurtboxes.hit_flag:
 		$Hurtboxes.hit_flag = false
 		print("owch")
+
 
 # Network bs
 func _get_local_input():

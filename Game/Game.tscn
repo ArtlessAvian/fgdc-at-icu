@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Fighters/Fighter.tscn" type="PackedScene" id=1]
 [ext_resource path="res://100checker.png" type="Texture" id=2]
 [ext_resource path="res://Game/GameCamera.gd" type="Script" id=3]
+[ext_resource path="res://Game/Game.gd" type="Script" id=4]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 2
@@ -10,6 +11,7 @@ atlas = ExtResource( 2 )
 region = Rect2( 0, 0, 1000, 500 )
 
 [node name="SGFixedNode2D" type="SGFixedNode2D"]
+script = ExtResource( 4 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = SubResource( 1 )
@@ -30,11 +32,10 @@ path_two = NodePath("../Fighter2")
 [node name="Fighter1" parent="." instance=ExtResource( 1 )]
 position = Vector2( -100, 0 )
 fixed_position_x = -6553600
-is_p2 = null
-opponent_path = null
+opponent_path = NodePath("../Fighter2")
 
 [node name="Fighter2" parent="." instance=ExtResource( 1 )]
 position = Vector2( 100, 0 )
 fixed_position_x = 6553600
 is_p2 = true
-opponent_path = null
+opponent_path = NodePath("../Fighter1")

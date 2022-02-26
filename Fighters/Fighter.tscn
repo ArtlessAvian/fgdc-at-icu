@@ -53,7 +53,9 @@ anims/Prejump = SubResource( 24 )
 anims/RESET = SubResource( 7 )
 anims/Walk = SubResource( 8 )
 
-[node name="Label" type="Label" parent="."]
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Label" type="Label" parent="Node2D"]
 margin_right = 40.0
 margin_bottom = 14.0
 text = "hello"
