@@ -19,6 +19,7 @@ __meta__ = {
 }
 
 [node name="Camera2D" type="Camera2D" parent="."]
+process_priority = -1
 position = Vector2( -250, -125 )
 current = true
 zoom = Vector2( 0.5, 0.5 )

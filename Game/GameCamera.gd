@@ -9,7 +9,7 @@ func _ready():
 	pass  # Replace with function body.
 
 
-func _physics_process(_delta):
+func _process(_delta):
 	var fighter_one = get_node(path_one)
 	var fighter_two = get_node(path_two)
 
