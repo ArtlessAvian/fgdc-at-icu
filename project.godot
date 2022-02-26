@@ -8,11 +8,38 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "SGFixedNode2D",
+"class": "Fighter",
+"language": "GDScript",
+"path": "res://Fighters/Fighter.gd"
+}, {
+"base": "Resource",
+"class": "Moveset",
+"language": "GDScript",
+"path": "res://Fighters/Moveset.gd"
+}, {
+"base": "Resource",
+"class": "State",
+"language": "GDScript",
+"path": "res://Fighters/State.gd"
+} ]
+_global_script_class_icons={
+"Fighter": "",
+"Moveset": "",
+"State": ""
+}
+
 [application]
 
 config/name="Fighting Game Development Club"
-run/main_scene="res://Stages/Stage.tscn"
+run/main_scene="res://Game/Game.tscn"
 config/icon="res://icon.png"
+
+[display]
+
+window/size/width=1280
+window/size/height=720
 
 [physics]
 
