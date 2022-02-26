@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Fighters/Fighter.gd" type="Script" id=1]
 [ext_resource path="res://Fighters/debug.gd" type="Script" id=2]
 [ext_resource path="res://spritesheet test.png" type="Texture" id=3]
+[ext_resource path="res://Fighters/HurtboxBuffer.gd" type="Script" id=4]
 [ext_resource path="res://Fighters/DefaultMoveset/DefaultMoveset.tres" type="Resource" id=5]
 
 [sub_resource type="Animation" id=22]
@@ -77,6 +78,7 @@ fixed_position_y = -3276800
 shape = SubResource( 25 )
 
 [node name="Hurtboxes" type="SGArea2D" parent="."]
+script = ExtResource( 4 )
 
 [node name="SGCollisionShape2D" type="SGCollisionShape2D" parent="Hurtboxes"]
 position = Vector2( 39, -51 )

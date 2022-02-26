@@ -24,21 +24,7 @@ func _ready():
 		var node = Node.new()
 		node.add_child(cam)
 		add_child(node)
-
-		var peer = NetworkedMultiplayerENet.new()
-		peer.create_server(25565, 1)
-		get_tree().network_peer = peer
-		set_network_master(get_tree().get_network_unique_id())
-		SyncManager.start()
-	pass
-
-	if not is_p2:
-		var peer = NetworkedMultiplayerENet.new()
-		peer.create_server(25565, 1)
-		get_tree().network_peer = peer
-		set_network_master(get_tree().get_network_unique_id())
-		SyncManager.start()
-
+		
 	if is_p2:
 		# $Hitboxes.collision_mask ^= 0b11
 		# $Hurtboxes.collision_layer ^= 0b11
@@ -51,14 +37,17 @@ func _network_process(input: Dictionary) -> void:
 	state_process(input)
 	move()
 	max_distance()
+
+	$Hitboxes/SGCollisionShape2D.disabled = not input.just_light
+
 	anim_process()
 	collide_hitboxes()
 
+func _network_postprocess(input: Dictionary) -> void:
+	hit_response()
+
 
 func state_process(input: Dictionary):
-	if is_p2:
-		return
-
 	if state != null:
 		var new_state = state.transition(self, moveset, input)
 		if new_state != null:
@@ -108,25 +97,33 @@ func anim_process():
 
 func collide_hitboxes():
 	var hitboxes: SGArea2D = $Hitboxes
-	for enemy in hitboxes.get_overlapping_areas():
-		print(enemy.name)
+	for hurtboxes in hitboxes.get_overlapping_areas():
+		if hurtboxes == $Hurtboxes:
+			continue
+		if hurtboxes is HurtboxBuffer:
+			hurtboxes.hit_flag = true
+			print("i hit!")
 
+func hit_response():
+	if $Hurtboxes.hit_flag:
+		$Hurtboxes.hit_flag = false
+		print("owch")
 
 # Network bs
 func _get_local_input():
 	return {
 		stick_x = Input.get_axis("ui_left", "ui_right"),
-		stick_y = Input.get_axis("ui_down", "ui_up"),
 		just_stick_x = (
 			int(Input.is_action_just_pressed("ui_right"))
 			- int(Input.is_action_just_pressed("ui_left"))
 		),
+		stick_y = Input.get_axis("ui_down", "ui_up"),
 		just_stick_y = (
 			int(Input.is_action_just_pressed("ui_up"))
 			- int(Input.is_action_just_pressed("ui_down"))
 		),
-		light = false,
-		just_light = false,
+		light = Input.is_action_pressed("ui_select"),
+		just_light = Input.is_action_just_pressed("ui_select"),
 		heavy = false,
 		just_heavy = false
 	}
