@@ -16,7 +16,7 @@ var apply_gravity = false
 var state
 var state_time = 0
 var air_actions
-var state_dict : Dictionary = {}
+var state_dict: Dictionary = {}
 
 
 func _ready():
@@ -35,17 +35,23 @@ func _ready():
 	state = moveset.walk
 
 
-func _network_process(input: Dictionary) -> void:
+# Stuff happening independently of the other player.
+func _network_preprocess(input: Dictionary) -> void:
 	state_process(input)
 	move()
-	max_distance()
+
+
+# Stuff dependent on the other player
+func _network_process(input: Dictionary) -> void:
+	max_distance()  # avoid p1 bias
 
 	anim_process()
 	$Hurtboxes.collide_hitboxes()
 
 
+# Stuff dependent on the other player
 func _network_postprocess(input: Dictionary) -> void:
-	hit_response()
+	hit_response()  # avoid p1 bias.
 
 
 func state_process(input: Dictionary):
@@ -83,13 +89,16 @@ func move():
 
 
 func max_distance():
-	if is_p2:
+	if not is_p2:  # avoid p1 bias
 		return
-	# i must be player 1
 
-	# var other = get_node(opponent_path)
-	# var distance = abs(self.fixed_position.x, opponent_path.fixed_position.x):
-
+	# var opponent: SGFixedNode2D = get_node(opponent_path)
+	# # i must be player 2, which /probably/ updated after p1.
+	# if abs(self.fixed_position.x - opponent.fixed_position.x) < 50 * 65536:
+	# 	# fix the position
+	# 	# TODO: make not garbage
+	# 	var average = (self.fixed_position.x + opponent.fixed_position.x) / 2
+	# 	self.fixed_position.x = average + 25 * 65536 * scale.
 
 
 func anim_process():
@@ -106,13 +115,15 @@ func anim_process():
 func hit_response():
 	if $Hurtboxes.hit_flag:
 		$Hurtboxes.hit_flag = false
-		
+
 		state_dict.hitstun = $Hurtboxes.hitstun
-		
+
 		state_time = 0
 		state = moveset.hitstun
 
-export (bool) var is_dummy = false
+
+export(bool) var is_dummy = false
+
 
 # Network bs
 func _get_local_input():
@@ -125,7 +136,7 @@ func _get_local_input():
 			light = false,
 			just_light = false,
 			heavy = false,
-			just_heavy = false	
+			just_heavy = false
 		}
 
 	return {
