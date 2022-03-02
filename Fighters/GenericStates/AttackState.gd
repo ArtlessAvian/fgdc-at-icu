@@ -11,6 +11,7 @@ func transition(f: Fighter, moveset: Moveset, input: Dictionary) -> State:
 
 
 func run(f: Fighter, input: Dictionary) -> void:
+	# Controlled mostly by the animation player, but custom code here is fine too.
 	pass
 
 

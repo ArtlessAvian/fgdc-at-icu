@@ -15,9 +15,14 @@ _global_script_classes=[ {
 "path": "res://Fighters/Fighter.gd"
 }, {
 "base": "SGArea2D",
-"class": "HurtboxBuffer",
+"class": "Hitboxes",
 "language": "GDScript",
-"path": "res://Fighters/HurtboxBuffer.gd"
+"path": "res://Fighters/Hitboxes.gd"
+}, {
+"base": "SGArea2D",
+"class": "Hurtboxes",
+"language": "GDScript",
+"path": "res://Fighters/Hurtboxes.gd"
 }, {
 "base": "Resource",
 "class": "Moveset",
@@ -46,7 +51,8 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "Fighter": "",
-"HurtboxBuffer": "",
+"Hitboxes": "",
+"Hurtboxes": "",
 "Moveset": "",
 "NetworkAnimationPlayer": "",
 "NetworkRandomNumberGenerator": "",
@@ -63,6 +69,12 @@ config/icon="res://icon.png"
 [autoload]
 
 SyncManager="*res://addons/godot-rollback-netcode/SyncManager.gd"
+
+[debug]
+
+gdscript/warnings/unused_variable=false
+gdscript/warnings/unused_argument=false
+gdscript/warnings/return_value_discarded=false
 
 [display]
 

@@ -16,6 +16,7 @@ var apply_gravity = false
 var state
 var state_time = 0
 var air_actions
+var state_dict : Dictionary = {}
 
 
 func _ready():
@@ -39,10 +40,8 @@ func _network_process(input: Dictionary) -> void:
 	move()
 	max_distance()
 
-	$Hitboxes/SGCollisionShape2D.disabled = not input.just_light
-
 	anim_process()
-	collide_hitboxes()
+	$Hurtboxes.collide_hitboxes()
 
 
 func _network_postprocess(input: Dictionary) -> void:
@@ -86,10 +85,11 @@ func move():
 func max_distance():
 	if is_p2:
 		return
+	# i must be player 1
 
 	# var other = get_node(opponent_path)
 	# var distance = abs(self.fixed_position.x, opponent_path.fixed_position.x):
-	# i must be player 1
+
 
 
 func anim_process():
@@ -98,30 +98,36 @@ func anim_process():
 		$AnimationPlayer.play("RESET")
 		$AnimationPlayer.seek(0, true)
 		$AnimationPlayer.play(ani)
-	$AnimationPlayer.seek(state_time, true)
 
 	$Hitboxes.sync_to_physics_engine()
 	$Hurtboxes.sync_to_physics_engine()
 
 
-func collide_hitboxes():
-	var hitboxes: SGArea2D = $Hitboxes
-	for hurtboxes in hitboxes.get_overlapping_areas():
-		if hurtboxes == $Hurtboxes:
-			continue
-		if hurtboxes is HurtboxBuffer:
-			hurtboxes.hit_flag = true
-			print("i hit!")
-
-
 func hit_response():
 	if $Hurtboxes.hit_flag:
 		$Hurtboxes.hit_flag = false
-		print("owch")
+		
+		state_dict.hitstun = $Hurtboxes.hitstun
+		
+		state_time = 0
+		state = moveset.hitstun
 
+export (bool) var is_dummy = false
 
 # Network bs
 func _get_local_input():
+	if is_dummy:
+		return {
+			stick_x = 0,
+			just_stick_x = 0,
+			stick_y = 0,
+			just_stick_y = 0,
+			light = false,
+			just_light = false,
+			heavy = false,
+			just_heavy = false	
+		}
+
 	return {
 		stick_x = Input.get_axis("ui_left", "ui_right"),
 		just_stick_x = (
@@ -154,7 +160,8 @@ func _save_state() -> Dictionary:
 		apply_gravity = apply_gravity,
 		air_actions = air_actions,
 		state = state,
-		state_time = state_time
+		state_time = state_time,
+		state_dict = state_dict.duplicate(),
 	}
 
 
@@ -167,3 +174,4 @@ func _load_state(save: Dictionary) -> void:
 	air_actions = save.air_actions
 	state = save.state
 	state_time = save.state_time
+	state_dict = save.state_dict

@@ -13,4 +13,4 @@ export(Resource) var cr_heavy
 export(Resource) var j_light
 export(Resource) var j_heavy
 
-var knockback: Resource = load("res://Fighters/GenericStates/KnockbackState.gd").new()
+var hitstun: Resource = load("res://Fighters/GenericStates/HitstunState.gd").new()
