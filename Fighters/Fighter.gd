@@ -3,6 +3,8 @@ class_name Fighter
 
 const x_bound = 500 * 65565  # |x| can't go > x_bound
 const y_bound = 0  # y can't go > 0
+const fighter_spacing = 50 * 65565
+const fighter_height = 50 * 65565
 
 export(Resource) var moveset
 
@@ -92,13 +94,19 @@ func max_distance():
 	if not is_p2:  # avoid p1 bias
 		return
 
-	# var opponent: SGFixedNode2D = get_node(opponent_path)
-	# # i must be player 2, which /probably/ updated after p1.
-	# if abs(self.fixed_position.x - opponent.fixed_position.x) < 50 * 65536:
-	# 	# fix the position
-	# 	# TODO: make not garbage
-	# 	var average = (self.fixed_position.x + opponent.fixed_position.x) / 2
-	# 	self.fixed_position.x = average + 25 * 65536 * scale.
+	var opponent: SGFixedNode2D = get_node(opponent_path)
+	# i must be player 2, which /probably/ updated after p1.
+	if abs(self.fixed_position.y - opponent.fixed_position.y) < fighter_height:
+		var diff = self.fixed_position.x - opponent.fixed_position.x
+		var average = (self.fixed_position.x + opponent.fixed_position.x) >> 1
+
+		if abs(diff) < fighter_spacing:
+			average = clamp(
+				average, -x_bound + fighter_spacing / 2, x_bound - fighter_spacing / 2
+			)
+
+			self.fixed_position.x = average + fighter_spacing / 2 * sign(diff)
+			opponent.fixed_position.x = average + fighter_spacing / 2 * sign(-diff)
 
 
 func anim_process():
@@ -122,7 +130,7 @@ func hit_response():
 		state = moveset.hitstun
 
 
-export(bool) var is_dummy = false
+var is_dummy = false
 
 
 # Network bs
@@ -166,6 +174,7 @@ func _save_state() -> Dictionary:
 	return {
 		x = fixed_position.x,
 		y = fixed_position.y,
+		scalex = fixed_scale.x,
 		vx = vel.x,
 		vy = vel.y,
 		apply_gravity = apply_gravity,
@@ -179,6 +188,7 @@ func _save_state() -> Dictionary:
 func _load_state(save: Dictionary) -> void:
 	fixed_position.x = save.x
 	fixed_position.y = save.y
+	fixed_scale.x = save.scalex
 	vel.x = save.vx
 	vel.y = save.vy
 	apply_gravity = save.apply_gravity

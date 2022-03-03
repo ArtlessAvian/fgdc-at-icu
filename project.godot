@@ -69,6 +69,11 @@ config/icon="res://icon.png"
 [autoload]
 
 SyncManager="*res://addons/godot-rollback-netcode/SyncManager.gd"
+SyncReplay="*res://addons/godot-rollback-netcode/SyncReplay.gd"
+
+[debug]
+
+gdscript/warnings/integer_division=false
 
 [display]
 
@@ -86,6 +91,10 @@ sync_debug={
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777254,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
  ]
 }
+
+[network]
+
+rollback/log_inspector/replay_match_scene_path="res://Lobby/crude_connection.tscn"
 
 [physics]
 

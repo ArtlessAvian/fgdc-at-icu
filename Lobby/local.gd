@@ -12,6 +12,7 @@ func _ready():
 	game_instance.get_node("Fighter1").set_network_master(
 		get_tree().get_network_unique_id()
 	)
+	game_instance.get_node("Fighter2").is_dummy = true
 
 	self.visible = false
 	yield(get_tree().create_timer(0.1), "timeout")

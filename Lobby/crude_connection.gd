@@ -9,6 +9,19 @@ func _ready():
 	get_tree().connect("network_peer_connected", self, "_on_network_peer_connected")
 	get_tree().connect("network_peer_disconnected", self, "_on_network_peer_disconnected")
 	get_tree().connect("server_disconnected", self, "_on_server_disconnected")
+	SyncManager.connect("sync_start", self, "_on_SyncManager_sync_start")
+	SyncManager.connect("sync_stopped", self, "_on_SyncManager_sync_stopped")
+	SyncManager.connect("sync_error", self, "_on_SyncManager_sync_error")
+
+	# SyncManager.start_logging(
+	# 	(
+	# 		"user://detailed_logs/"
+	# 		+ str(OS.get_unix_time())
+	# 		+ "-"
+	# 		+ str(randi() % 100)
+	# 		+ ".log"
+	# 	)
+	# )
 
 
 func _on_Server_button_up():
@@ -16,19 +29,24 @@ func _on_Server_button_up():
 	peer.create_server(int(port_field.text), 1)
 	get_tree().network_peer = peer
 
+	if not SyncReplay.active:
+		SyncManager.start_logging("res://dumpy-host.log")
+
 
 func _on_Client_button_up():
 	var peer = NetworkedMultiplayerENet.new()
 	peer.create_client(host_field.text, int(port_field.text))
 	get_tree().network_peer = peer
 
+	SyncManager.start_logging("res://dumpy-client.log")
+
 
 func _on_network_peer_connected(peer_id: int):
 	print("success!")
 	SyncManager.add_peer(peer_id)
 
-	var game_scene: PackedScene = load("res://Game/Game.tscn")
-	var game_instance = game_scene.instance()
+	var game_instance = get_tree().root.find_node("Game", true, false)
+	print(game_instance)
 
 	game_instance.get_node("Fighter1").set_network_master(1)
 	if peer_id != 1:
@@ -41,7 +59,19 @@ func _on_network_peer_connected(peer_id: int):
 	# Tried reordering everything below here. it worked before, but it doesn't seem to work anymore.
 	self.visible = false
 	yield(get_tree().create_timer(1), "timeout")
-	get_tree().root.add_child(game_instance)
-
 	if get_tree().is_network_server():
 		SyncManager.start()
+
+
+func _on_SyncManager_sync_stopped() -> void:
+	if not SyncReplay.active:
+		SyncManager.stop_logging()
+	print("dumpy")
+
+
+func _on_SyncManager_sync_error(msg: String) -> void:
+	SyncManager.stop()
+	SyncManager.clear_peers()
+	var peer = get_tree().network_peer
+	if peer:
+		peer.close_connection()

@@ -4,6 +4,10 @@ export(int) var speed
 
 
 func transition(f: Fighter, moveset: Moveset, input: Dictionary) -> State:
+	var attack = transition_into_air_attack(f, moveset, input)
+	if attack != null:
+		return attack
+
 	if input.just_stick_y > 0:
 		if f.air_actions > 0:
 			if input.stick_x == 0:

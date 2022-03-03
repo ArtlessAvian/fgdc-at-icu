@@ -14,7 +14,7 @@ func transition(f: Fighter, moveset: Moveset, input: Dictionary) -> State:
 		if input.stick_x > 0 and f.vel.x < 5 * 65536:
 			f.vel.x = 5 * 65536
 
-		f.vel.y += 12 * 65536
+		f.vel.y = 12 * 65536
 		f.air_actions = moveset.air_actions
 		f.apply_gravity = true
 
