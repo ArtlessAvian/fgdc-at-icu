@@ -21,12 +21,20 @@ func tick():
 
 
 func _save_state() -> Dictionary:
+	var disabled_children = {}
+	for child in get_children():
+		disabled_children[child.name] = child.disabled
+
 	return {
 		attack_number = attack_number,
 		multihit = multihit,
+		disabled_children = disabled_children
 	}
 
 
 func _load_state(save: Dictionary) -> void:
 	attack_number = save.attack_number
 	multihit = save.multihit
+
+	for key in save.disabled_children:
+		get_node(key).disabled = save.disabled_children[key]

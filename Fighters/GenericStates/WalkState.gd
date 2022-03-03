@@ -16,9 +16,10 @@ func transition(f: Fighter, moveset: Moveset, input: Dictionary) -> State:
 
 		f.vel.y = 12 * 65536
 		f.air_actions = moveset.air_actions
-		f.apply_gravity = true
+		f.grounded = false
 
 		return moveset.jump
+		
 	return null
 
 
@@ -30,15 +31,11 @@ func run(f: Fighter, input: Dictionary) -> void:
 	if input.stick_x > 0:
 		f.vel.x = 5 * 65536
 
-	if (
-		f.fixed_position.x > f.get_node(f.opponent_path).fixed_position.x
-		&& f.fixed_scale.x > 0
-	):
+
+	var diff = f.fixed_position.x - f.get_node(f.opponent_path).fixed_position.x
+	if diff > 0 && f.fixed_scale.x > 0:
 		f.fixed_scale.x *= -1
-	if (
-		f.fixed_position.x < f.get_node(f.opponent_path).fixed_position.x
-		&& f.fixed_scale.x < 0
-	):
+	if diff < 0 && f.fixed_scale.x < 0:
 		f.fixed_scale.x *= -1
 
 

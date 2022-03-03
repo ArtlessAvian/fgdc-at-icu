@@ -1,8 +1,6 @@
 extends SGFixedNode2D
 class_name Fighter
 
-const x_bound = 500 * 65565  # |x| can't go > x_bound
-const y_bound = 0  # y can't go > 0
 const fighter_spacing = 50 * 65565
 const fighter_height = 50 * 65565
 
@@ -13,7 +11,7 @@ export var is_p2 = false
 export var opponent_path: NodePath = ""
 
 var vel: SGFixedVector2 = SGFixedVector2.new()
-var apply_gravity = false
+var grounded = false
 
 var state: Resource
 var state_time = 0
@@ -41,17 +39,10 @@ func _ready():
 func _network_preprocess(input: Dictionary) -> void:
 	state_process(input)
 	move()
-
-
-# Stuff dependent on the other player
-func _network_process(input: Dictionary) -> void:
-	max_distance()  # avoid p1 bias
-
 	anim_process()
-	$Hurtboxes.collide_hitboxes()
 
+# Process happens. The game handles stuff dependent on both players.
 
-# Stuff dependent on the other player
 func _network_postprocess(input: Dictionary) -> void:
 	hit_response()  # avoid p1 bias.
 
@@ -71,7 +62,7 @@ func state_process(input: Dictionary):
 
 
 func move():
-	if apply_gravity:
+	if not grounded:
 		vel.y -= 30 * 65536 / 60
 
 	self.fixed_position.x += vel.x
@@ -82,50 +73,20 @@ func move():
 		vel.y = 0
 		state = moveset.walk
 		state_time = 0
-		apply_gravity = false
-
-	if self.fixed_position.x > x_bound - 0 / 2:
-		self.fixed_position.x = x_bound - 0 / 2
-	if -self.fixed_position.x > x_bound - 0 / 2:
-		self.fixed_position.x = -(x_bound - 0 / 2)
-
-
-func max_distance():
-	if not is_p2:  # avoid p1 bias
-		return
-
-	var opponent: SGFixedNode2D = get_node(opponent_path)
-	# i must be player 2, which /probably/ updated after p1.
-	if abs(self.fixed_position.y - opponent.fixed_position.y) < fighter_height:
-		var diff = self.fixed_position.x - opponent.fixed_position.x
-		var average = (self.fixed_position.x + opponent.fixed_position.x) >> 1
-
-		if abs(diff) < fighter_spacing:
-			average = clamp(
-				average, -x_bound + fighter_spacing / 2, x_bound - fighter_spacing / 2
-			)
-
-			self.fixed_position.x = average + fighter_spacing / 2 * sign(diff)
-			opponent.fixed_position.x = average + fighter_spacing / 2 * sign(-diff)
-
+		grounded = true
 
 func anim_process():
-	# Do it myself, the network animation player leaves things to be desired?
 	var ani = state.animation(self)
-	if $AnimationPlayer.current_animation != ani:
+	if $AnimationPlayer.assigned_animation != ani:
 		$AnimationPlayer.play("RESET")
 		$AnimationPlayer.seek(0, true)
 		$AnimationPlayer.play(ani)
-	$AnimationPlayer.seek(state_time, 0)
-
-	$Hitboxes.sync_to_physics_engine()
-	$Hurtboxes.sync_to_physics_engine()
+	# $AnimationPlayer.seek(state_time, 0)
 
 
 func hit_response():
 	if $Hurtboxes.hit_flag:
 		# $Hurtboxes.hit_flag = false
-		print("response!")
 
 		state_dict.hitstun = $Hurtboxes.hitstun
 
@@ -180,7 +141,7 @@ func _save_state() -> Dictionary:
 		scalex = fixed_scale.x,
 		vx = vel.x,
 		vy = vel.y,
-		apply_gravity = apply_gravity,
+		grounded = grounded,
 		air_actions = air_actions,
 		state = state,
 		state_time = state_time,
@@ -194,7 +155,7 @@ func _load_state(save: Dictionary) -> void:
 	fixed_scale.x = save.scalex
 	vel.x = save.vx
 	vel.y = save.vy
-	apply_gravity = save.apply_gravity
+	grounded = save.grounded
 	air_actions = save.air_actions
 	state = save.state
 	state_time = save.state_time

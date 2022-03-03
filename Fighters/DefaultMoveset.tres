@@ -1,10 +1,11 @@
-[gd_resource type="Resource" load_steps=6 format=2]
+[gd_resource type="Resource" load_steps=7 format=2]
 
 [ext_resource path="res://Fighters/Moveset.gd" type="Script" id=1]
 [ext_resource path="res://Fighters/DefaultMoveset/DefaultWalk.tres" type="Resource" id=2]
 [ext_resource path="res://Fighters/DefaultMoveset/DefaultJump.tres" type="Resource" id=3]
 [ext_resource path="res://Fighters/DefaultMoveset/DefaultLight.tres" type="Resource" id=4]
 [ext_resource path="res://Fighters/DefaultMoveset/DefaultJumpingLight.tres" type="Resource" id=5]
+[ext_resource path="res://Fighters/DefaultMoveset/Hitstun.tres" type="Resource" id=6]
 
 [resource]
 script = ExtResource( 1 )
@@ -13,3 +14,4 @@ walk = ExtResource( 2 )
 jump = ExtResource( 3 )
 light = ExtResource( 4 )
 j_light = ExtResource( 5 )
+hitstun = ExtResource( 6 )

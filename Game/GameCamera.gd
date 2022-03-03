@@ -9,7 +9,7 @@ func _ready():
 	pass  # Replace with function body.
 
 
-func _process(_delta):
+func _network_postprocess(_delta):
 	var fighter_one = get_node(path_one)
 	var fighter_two = get_node(path_two)
 
@@ -36,4 +36,16 @@ func _process(_delta):
 
 	# self.zoom = Vector2.ONE * zoom_factor
 
+	self.force_update_scroll()
+
+
+func _save_state() -> Dictionary:
+	# saving state-machine-state in rollback-state should be fine, they're mostly constants.
+	return {
+		pos = position
+	}
+
+
+func _load_state(save: Dictionary) -> void:
+	position = save.pos
 	self.force_update_scroll()

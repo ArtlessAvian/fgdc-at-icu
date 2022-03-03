@@ -8,7 +8,11 @@ func transition(f: Fighter, moveset: Moveset, input: Dictionary) -> State:
 
 
 func run(f: Fighter, input: Dictionary) -> void:
-	f.fixed_position.x -= sign(f.fixed_scale.x) * (65536 * 5) >> (f.state_time >> 3)
+	# i am aware of the sign function but it seems to be a float.
+	var signn = 1
+	if f.fixed_scale.x < 0:
+		signn = -1
+	f.fixed_position.x -= signn * (65536 * 5) >> (f.state_time >> 3)
 
 func animation(f: Fighter) -> String:
 	return "Hitstun"

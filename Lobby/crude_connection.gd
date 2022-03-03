@@ -81,3 +81,16 @@ func setup_match_for_replay(my_peer_id: int, peer_ids: Array, match_info: Dictio
 	# Setup the match using 'match_info' and disable anything we don't
 	# want or need during replay.
 	pass
+
+
+func _on_Local_button_up():
+	$CanvasLayer/MarginContainer.visible = false
+	
+	var peer = NetworkedMultiplayerENet.new()
+	peer.create_server(31415, 1)
+	get_tree().network_peer = peer
+
+	$Game/Fighter2.is_dummy = true
+
+	SyncManager.start()
+
