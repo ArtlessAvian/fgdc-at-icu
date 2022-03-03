@@ -33,6 +33,9 @@ opponent_path = NodePath("../Fighter2")
 
 [node name="Fighter2" parent="." instance=ExtResource( 1 )]
 position = Vector2( 100, 0 )
-fixed_position_x = 6553600
+rotation = -3.14159
+scale = Vector2( 1, -1 )
+fixed_position_x = 6553615
+fixed_scale_x = -65536
 is_p2 = true
 opponent_path = NodePath("../Fighter1")

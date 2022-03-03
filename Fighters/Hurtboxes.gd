@@ -1,16 +1,17 @@
 extends SGArea2D
 class_name Hurtboxes
 
-# Has no logic, only holds onto a hit.
 # Information here is only useful within a frame, so no need to save.
-
 var hit_flag = false
 var hitstun = 20
 
+# Save this
 var hurty = {}  # please name this something better soon.
 
 
 func collide_hitboxes():
+	hit_flag = false
+
 	var my_hitboxes: SGArea2D = $"../Hitboxes"
 
 	for hitboxes in self.get_overlapping_areas():
@@ -18,20 +19,20 @@ func collide_hitboxes():
 			continue
 
 		if hitboxes is Hitboxes:
-			var pair = Vector2(hitboxes.attack_number, hitboxes.multihit)
-			if (not hitboxes.to_string() in hurty) or pair != hurty[hitboxes.to_string()]:
-				hurty[hitboxes.to_string()] = pair
+			var pair = hitboxes.attack_number * 100 + hitboxes.multihit
+			var key = hitboxes.get_parent().is_p2  # todo make not garbo
+			if (not key in hurty) or pair != hurty[key]:
+				hurty[key] = pair
 				self.hit_flag = true
-				print("oof! ", pair)
 
 
 func _save_state() -> Dictionary:
 	return {
-		# hit_flag = hit_flag,
-		hurty = hurty.duplicate(),
+		hit_flag = hit_flag,
+		hurty = hurty.duplicate(true),
 	}
 
 
 func _load_state(save: Dictionary) -> void:
-	hurty = save.hurty
-	# hit_flag = save.hit_flag
+	hit_flag = save.hit_flag
+	hurty = save.hurty.duplicate(true)

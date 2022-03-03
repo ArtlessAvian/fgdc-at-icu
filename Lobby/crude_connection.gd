@@ -1,8 +1,8 @@
-extends Control
+extends Node
 
 # Lifted from the netcode tutorial
-onready var host_field = $MarginContainer/GridContainer/HostField
-onready var port_field = $MarginContainer/GridContainer/PortField
+onready var host_field = $CanvasLayer/MarginContainer/GridContainer/HostField
+onready var port_field = $CanvasLayer/MarginContainer/GridContainer/PortField
 
 
 func _ready():
@@ -45,7 +45,7 @@ func _on_network_peer_connected(peer_id: int):
 	print("success!")
 	SyncManager.add_peer(peer_id)
 
-	var game_instance = get_tree().root.find_node("Game", true, false)
+	var game_instance = find_node("Game", true, false)
 	print(game_instance)
 
 	game_instance.get_node("Fighter1").set_network_master(1)
@@ -57,7 +57,7 @@ func _on_network_peer_connected(peer_id: int):
 		)
 
 	# Tried reordering everything below here. it worked before, but it doesn't seem to work anymore.
-	self.visible = false
+	$CanvasLayer/MarginContainer.visible = false
 	yield(get_tree().create_timer(1), "timeout")
 	if get_tree().is_network_server():
 		SyncManager.start()
@@ -75,3 +75,9 @@ func _on_SyncManager_sync_error(msg: String) -> void:
 	var peer = get_tree().network_peer
 	if peer:
 		peer.close_connection()
+
+
+func setup_match_for_replay(my_peer_id: int, peer_ids: Array, match_info: Dictionary) -> void:
+	# Setup the match using 'match_info' and disable anything we don't
+	# want or need during replay.
+	pass

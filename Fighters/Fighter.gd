@@ -15,7 +15,7 @@ export var opponent_path: NodePath = ""
 var vel: SGFixedVector2 = SGFixedVector2.new()
 var apply_gravity = false
 
-var state
+var state: Resource
 var state_time = 0
 var air_actions
 var state_dict: Dictionary = {}
@@ -110,11 +110,13 @@ func max_distance():
 
 
 func anim_process():
+	# Do it myself, the network animation player leaves things to be desired?
 	var ani = state.animation(self)
 	if $AnimationPlayer.current_animation != ani:
 		$AnimationPlayer.play("RESET")
 		$AnimationPlayer.seek(0, true)
 		$AnimationPlayer.play(ani)
+	$AnimationPlayer.seek(state_time, 0)
 
 	$Hitboxes.sync_to_physics_engine()
 	$Hurtboxes.sync_to_physics_engine()
@@ -122,7 +124,8 @@ func anim_process():
 
 func hit_response():
 	if $Hurtboxes.hit_flag:
-		$Hurtboxes.hit_flag = false
+		# $Hurtboxes.hit_flag = false
+		print("response!")
 
 		state_dict.hitstun = $Hurtboxes.hitstun
 
@@ -195,4 +198,4 @@ func _load_state(save: Dictionary) -> void:
 	air_actions = save.air_actions
 	state = save.state
 	state_time = save.state_time
-	state_dict = save.state_dict
+	state_dict = save.state_dict.duplicate(true)
