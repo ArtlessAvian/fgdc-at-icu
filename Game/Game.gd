@@ -1,9 +1,12 @@
 extends SGFixedNode2D
 
 const x_bound = 500 * 65565  # |x| can't go > x_bound
+const max_spacing = 500 * 65565
 
 func _network_process(input: Dictionary) -> void:
+	in_bounds()
 	min_distance()
+	max_distance()
 
 	for area in get_tree().get_nodes_in_group("hitboxes"):
 		area.sync_to_physics_engine()
@@ -47,7 +50,17 @@ func min_distance():
 			p1.fixed_position.x = average + fighter_spacing / 2 * sign(diff)
 			p2.fixed_position.x = average + fighter_spacing / 2 * sign(-diff)
 
+func max_distance():
+	var p1: SGFixedNode2D = get_node("Fighter1")
+	var p2: SGFixedNode2D = get_node("Fighter2")
 
+	var diff = p1.fixed_position.x - p2.fixed_position.x
+
+	if abs(diff) > max_spacing:
+		# unmove the players.
+		p1.fixed_position.x -= p1.vel.x
+		p2.fixed_position.x -= p2.vel.x
+		# TODO: do some wack algebra stuff. might need floating point though, so maybe not so worth it.
 
 # func _network_spawn(data: Dictionary):
 # 	get_node("Fighter1").set_network_master(data.p1_master)

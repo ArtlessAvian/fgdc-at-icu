@@ -24,9 +24,11 @@ func collide_hitboxes():
 			if (not key in hurty) or pair != hurty[key]:
 				hurty[key] = pair
 				self.hit_flag = true
-				print("accepted ", SyncManager.current_tick)
+			
+				# print("accepted ", SyncManager.current_tick)
 			else:
-				print("rejected ", SyncManager.current_tick)
+				# print("rejected ", SyncManager.current_tick)
+				pass
 
 
 func _save_state() -> Dictionary:
