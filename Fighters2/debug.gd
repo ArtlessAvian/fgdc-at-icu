@@ -6,7 +6,7 @@ func _process(delta):
 
 	var eee = ""
 	if f.state != null:
-		var file: String = f.state.script.resource_path
+		var file: String = f.state.resource_path
 		var substr = file.find_last("/") + 1
 		eee += file.substr(substr)
 

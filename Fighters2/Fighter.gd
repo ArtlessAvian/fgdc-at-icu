@@ -41,7 +41,9 @@ func _network_preprocess(input: Dictionary) -> void:
 	move()
 	anim_process()
 
+
 # Process happens. The game handles stuff dependent on both players.
+
 
 func _network_postprocess(input: Dictionary) -> void:
 	hit_response()  # avoid p1 bias.
@@ -75,6 +77,7 @@ func move():
 		state_time = 0
 		grounded = true
 
+
 func anim_process():
 	var ani = state.animation(self)
 	if $AnimationPlayer.assigned_animation != ani:
@@ -96,20 +99,22 @@ func hit_response():
 
 var is_dummy = false
 
-
 # Network bs
+const empty_input = {
+	stick_x = 0,
+	just_stick_x = 0,
+	stick_y = 0,
+	just_stick_y = 0,
+	light = false,
+	just_light = false,
+	heavy = false,
+	just_heavy = false
+}
+
+
 func _get_local_input():
 	if is_dummy:
-		return {
-			stick_x = 0,
-			just_stick_x = 0,
-			stick_y = 0,
-			just_stick_y = 0,
-			light = false,
-			just_light = false,
-			heavy = false,
-			just_heavy = false
-		}
+		return empty_input
 
 	return {
 		stick_x = Input.get_axis("ui_left", "ui_right"),
@@ -130,6 +135,8 @@ func _get_local_input():
 
 
 func _predict_remote_input(previous_input: Dictionary, ticks_since_real_input: int) -> Dictionary:
+	if previous_input.empty() or previous_input == null:
+		return empty_input
 	return previous_input
 
 

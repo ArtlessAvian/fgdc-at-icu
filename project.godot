@@ -12,22 +12,22 @@ _global_script_classes=[ {
 "base": "SGFixedNode2D",
 "class": "Fighter",
 "language": "GDScript",
-"path": "res://Fighters/Fighter.gd"
+"path": "res://Fighters2/Fighter.gd"
 }, {
 "base": "SGArea2D",
 "class": "Hitboxes",
 "language": "GDScript",
-"path": "res://Fighters/Hitboxes.gd"
+"path": "res://Fighters2/Hitboxes.gd"
 }, {
 "base": "SGArea2D",
 "class": "Hurtboxes",
 "language": "GDScript",
-"path": "res://Fighters/Hurtboxes.gd"
+"path": "res://Fighters2/Hurtboxes.gd"
 }, {
 "base": "Resource",
 "class": "Moveset",
 "language": "GDScript",
-"path": "res://Fighters/Moveset.gd"
+"path": "res://Fighters2/Moveset.gd"
 }, {
 "base": "AnimationPlayer",
 "class": "NetworkAnimationPlayer",
@@ -47,7 +47,7 @@ _global_script_classes=[ {
 "base": "Resource",
 "class": "State",
 "language": "GDScript",
-"path": "res://Fighters/State.gd"
+"path": "res://Fighters2/State.gd"
 } ]
 _global_script_class_icons={
 "Fighter": "",
@@ -98,7 +98,6 @@ sync_debug={
 
 [network]
 
-rollback/debug/rollback_ticks=20
 rollback/log_inspector/replay_match_scene_path="res://Lobby/crude_connection.tscn"
 
 [physics]
