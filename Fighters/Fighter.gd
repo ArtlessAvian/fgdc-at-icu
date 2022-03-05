@@ -37,6 +37,11 @@ var grounded = false
 
 # # Stuff happening independently of the other player.
 func _network_preprocess(input: Dictionary) -> void:
+	if input.empty():
+		# TODO: Better fix. Crashes on game start otherwise! :(
+		input = NULL_INPUT
+		printerr("received empty input on tick ", SyncManager.current_tick)
+
 	# state_process(input)
 	vel.x = input.stick_x * 65536
 	move()
@@ -95,7 +100,7 @@ func move():
 # 		state = moveset.hitstun
 
 # Network bs
-const EMPTY_INPUT = {
+const NULL_INPUT = {
 	stick_x = 0,
 	just_stick_x = 0,
 	stick_y = 0,
@@ -107,11 +112,11 @@ const EMPTY_INPUT = {
 }
 
 
-func _get_local_input():
+func _get_local_input() -> Dictionary:
 	if is_dummy:
-		return EMPTY_INPUT
+		return NULL_INPUT
 
-	return {
+	var input = {
 		stick_x = Input.get_axis("ui_left", "ui_right"),
 		just_stick_x = (
 			int(Input.is_action_just_pressed("ui_right"))
@@ -127,11 +132,14 @@ func _get_local_input():
 		heavy = false,
 		just_heavy = false
 	}
+	return input
 
 
 func _predict_remote_input(previous_input: Dictionary, ticks_since_real_input: int) -> Dictionary:
-	if previous_input == null:
-		return EMPTY_INPUT
+	if previous_input == null or previous_input.empty():
+		# print("returning ", EMPTY_INPUT)
+		return NULL_INPUT
+	# print("returning ", previous_input)
 	return previous_input
 
 

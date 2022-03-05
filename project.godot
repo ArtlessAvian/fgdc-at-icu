@@ -98,7 +98,6 @@ sync_debug={
 
 [network]
 
-rollback/debug/rollback_ticks=20
 rollback/log_inspector/replay_match_scene_path="res://Lobby/crude_connection.tscn"
 
 [physics]
