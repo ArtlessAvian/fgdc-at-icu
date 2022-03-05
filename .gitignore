@@ -16,3 +16,8 @@ data_*/
 .vscode/
 
 dump.*
+
+
+
+# Project stuff
+dump/
