@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Fighters2/Fighter.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Fighters/Fighter.tscn" type="PackedScene" id=1]
 [ext_resource path="res://100checker.png" type="Texture" id=2]
 [ext_resource path="res://Game/GameCamera.gd" type="Script" id=3]
 [ext_resource path="res://Game/Game.gd" type="Script" id=4]
