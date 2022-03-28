@@ -8,6 +8,7 @@ export(Resource) var moveset
 
 # export var controlled_by = "ui"
 var is_dummy = false
+var is_mash = false
 export var is_p2 = false
 export var opponent_path: NodePath = ""
 
@@ -45,13 +46,14 @@ func _network_preprocess(input: Dictionary) -> void:
 
 	state_process(input)
 	move()
-	# anim_process()
+	anim_process()
 
 
 # # Process happens. The game handles stuff dependent on both players.
 
-# func _network_postprocess(input: Dictionary) -> void:
-# 	hit_response()  # avoid p1 bias.
+
+func _network_postprocess(input: Dictionary) -> void:
+	hit_response()  # avoid p1 bias.
 
 
 func state_process(input: Dictionary):
@@ -83,22 +85,25 @@ func move():
 		grounded = true
 
 
-# func anim_process():
-# 	var ani = state.animation(self)
-# 	if $AnimationPlayer.assigned_animation != ani:
-# 		$AnimationPlayer.play("RESET")
-# 		$AnimationPlayer.seek(0, true)
-# 		$AnimationPlayer.play(ani)
-# 	# $AnimationPlayer.seek(state_time, 0)
+func anim_process():
+	var ani = state.animation(self)
+	if $AnimationPlayer.assigned_animation != ani:
+		$AnimationPlayer.play("RESET")
+		$AnimationPlayer.seek(0, true)
+		$AnimationPlayer.current_animation = ani
+	# $AnimationPlayer.seek(state_time, 0)
+	pass
 
-# func hit_response():
-# 	if $Hurtboxes.hit_flag:
-# 		# $Hurtboxes.hit_flag = false
 
-# 		state_dict.hitstun = $Hurtboxes.hitstun
+func hit_response():
+	if $Hurtboxes.hit_flag:
+		# $Hurtboxes.hit_flag = false
 
-# 		state_time = 0
-# 		state = moveset.hitstun
+		state_dict.hitstun = $Hurtboxes.hitstun
+
+		state_time = 0
+		state = moveset.hitstun
+
 
 # Network bs
 const NULL_INPUT = {
@@ -116,6 +121,19 @@ const NULL_INPUT = {
 func _get_local_input() -> Dictionary:
 	if is_dummy:
 		return NULL_INPUT
+
+	if is_mash:
+		var input = {
+			stick_x = int(randi() % 3 - 1),
+			just_stick_x = int(randi() % 3 - 1),
+			stick_y = int(randi() % 3 - 1),
+			just_stick_y = int(randi() % 3 - 1),
+			light = false,
+			just_light = false,
+			heavy = false,
+			just_heavy = false
+		}
+		return input
 
 	var input = {
 		stick_x = int(round(Input.get_axis("ui_left", "ui_right"))),

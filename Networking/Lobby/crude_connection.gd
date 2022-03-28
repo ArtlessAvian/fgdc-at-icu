@@ -52,6 +52,17 @@ func _on_Local_button_up():
 	SyncManager.start()
 
 
+func _on_Mash_button_up():
+	var peer = NetworkedMultiplayerENet.new()
+	peer.create_server(31415, 1)
+	get_tree().network_peer = peer
+
+	$CanvasLayer/MarginContainer.visible = false
+	$Game/Fighter2.is_mash = true
+
+	SyncManager.start()
+
+
 # NETWORKING====================================================
 
 

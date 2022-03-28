@@ -28,7 +28,7 @@ __meta__ = {
 margin_left = 10.0
 margin_top = 10.0
 margin_right = 372.0
-margin_bottom = 179.0
+margin_bottom = 206.0
 custom_constants/vseparation = 10
 custom_constants/hseparation = 10
 columns = 2
@@ -142,6 +142,24 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Dummy4" type="Control" parent="CanvasLayer/MarginContainer/GridContainer"]
+margin_top = 176.0
+margin_right = 52.0
+margin_bottom = 196.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Mash" type="Button" parent="CanvasLayer/MarginContainer/GridContainer"]
+margin_left = 62.0
+margin_top = 176.0
+margin_right = 362.0
+margin_bottom = 196.0
+text = "Mash"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="SyncLost" type="Label" parent="CanvasLayer"]
 visible = false
 margin_right = 40.0
@@ -155,3 +173,4 @@ __meta__ = {
 [connection signal="button_up" from="CanvasLayer/MarginContainer/GridContainer/Server" to="." method="_on_Server_button_up"]
 [connection signal="button_up" from="CanvasLayer/MarginContainer/GridContainer/Client" to="." method="_on_Client_button_up"]
 [connection signal="button_up" from="CanvasLayer/MarginContainer/GridContainer/Local" to="." method="_on_Local_button_up"]
+[connection signal="button_up" from="CanvasLayer/MarginContainer/GridContainer/Mash" to="." method="_on_Mash_button_up"]
