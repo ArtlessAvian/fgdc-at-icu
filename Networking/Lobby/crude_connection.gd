@@ -12,16 +12,9 @@ func _ready():
 	get_tree().connect("server_disconnected", self, "_on_server_disconnected")
 	SyncManager.connect("sync_started", self, "_on_SyncManager_sync_started")
 	SyncManager.connect("sync_stopped", self, "_on_SyncManager_sync_stopped")
+	SyncManager.connect("sync_lost", self, "_on_SyncManager_sync_lost")
+	SyncManager.connect("sync_regained", self, "_on_SyncManager_sync_regained")
 	SyncManager.connect("sync_error", self, "_on_SyncManager_sync_error")
-
-	# SyncManager.start_logging(
-	# 	(
-	# 		"user://detailed_logs/"
-	# 		+ str(OS.get_unix_time())
-	# 		+ "-"
-	# 		+ str(randi() % 100)
-	# 		+ ".log"
-	# 	)
 
 
 func setup_match_for_replay(my_peer_id: int, peer_ids: Array, match_info: Dictionary) -> void:
@@ -77,8 +70,8 @@ func _on_network_peer_connected(peer_id: int):
 
 	# Tried reordering everything below here. it worked before, but it doesn't seem to work anymore.
 	$CanvasLayer/MarginContainer.visible = false
-	yield(get_tree().create_timer(0.2), "timeout")
 	if get_tree().is_network_server():
+		yield(get_tree().create_timer(0.2), "timeout")
 		SyncManager.start()
 
 
@@ -95,6 +88,14 @@ func _on_server_disconnected() -> void:
 
 func _on_SyncManager_sync_started() -> void:
 	pass
+
+
+func _on_SyncManager_sync_lost() -> void:
+	$CanvasLayer/SyncLost.visible = true
+
+
+func _on_SyncManager_sync_regained() -> void:
+	$CanvasLayer/SyncLost.visible = false
 
 
 func _on_SyncManager_sync_stopped() -> void:

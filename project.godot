@@ -63,7 +63,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Fighting Game Development Club"
-run/main_scene="res://Lobby/crude_connection.tscn"
+run/main_scene="res://Networking/Lobby/crude_connection.tscn"
 config/icon="res://icon.png"
 
 [autoload]
@@ -98,7 +98,8 @@ sync_debug={
 
 [network]
 
-rollback/log_inspector/replay_match_scene_path="res://Lobby/crude_connection.tscn"
+rollback/classes/message_serializer="res://Networking/FGDCMessageSerializer.gd"
+rollback/log_inspector/replay_match_scene_path="res://Networking/Lobby/crude_connection.tscn"
 
 [physics]
 
