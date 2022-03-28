@@ -20,6 +20,7 @@ func collide_hitboxes():
 
 		if hitboxes is Hitboxes:
 			var pair = hitboxes.attack_number * 100 + hitboxes.multihit
+			print(pair)
 			var key = hitboxes.get_parent().is_p2  # todo make not garbo
 			if (not key in hurty) or pair != hurty[key]:
 				hurty[key] = pair

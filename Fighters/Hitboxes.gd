@@ -18,6 +18,7 @@ func new_attack():
 
 func tick():
 	multihit += 1
+	print("tick!!")
 
 
 func _save_state() -> Dictionary:

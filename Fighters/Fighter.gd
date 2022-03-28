@@ -6,7 +6,7 @@ const fighter_height = 50 * 65565
 
 export(Resource) var moveset
 
-# export var controlled_by = "ui"
+var controlled_by = "kb"
 var is_dummy = false
 var is_mash = false
 export var is_p2 = false
@@ -33,6 +33,8 @@ func _ready():
 		# $Hitboxes.collision_mask ^= 0b11
 		# $Hurtboxes.collision_layer ^= 0b11
 		pass
+
+	$AnimationPlayer.playback_process_mode = AnimationPlayer.ANIMATION_PROCESS_MANUAL
 
 	state = moveset.walk
 
@@ -93,7 +95,7 @@ func anim_process():
 		$AnimationPlayer.play("RESET")
 		$AnimationPlayer.advance(0)
 		$AnimationPlayer.play(ani)
-	$AnimationPlayer.seek(state_time, true)
+	$AnimationPlayer.advance(state_time - $AnimationPlayer.current_animation_position)
 	pass
 
 
@@ -137,21 +139,28 @@ func _get_local_input() -> Dictionary:
 		}
 		return input
 
+	var left = controlled_by + "_left"
+	var right = controlled_by + "_right"
+	var up = controlled_by + "_up"
+	var down = controlled_by + "_down"
+	var light = controlled_by + "_light"
+	var heavy = controlled_by + "_heavy"
+
 	var input = {
-		stick_x = int(round(Input.get_axis("ui_left", "ui_right"))),
+		stick_x = int(round(Input.get_axis(left, right))),
 		just_stick_x = (
-			int(Input.is_action_just_pressed("ui_right"))
-			- int(Input.is_action_just_pressed("ui_left"))
+			int(Input.is_action_just_pressed(right))
+			- int(Input.is_action_just_pressed(left))
 		),
-		stick_y = int(round(Input.get_axis("ui_down", "ui_up"))),
+		stick_y = int(round(Input.get_axis(down, up))),
 		just_stick_y = (
-			int(Input.is_action_just_pressed("ui_up"))
-			- int(Input.is_action_just_pressed("ui_down"))
+			int(Input.is_action_just_pressed(up))
+			- int(Input.is_action_just_pressed(down))
 		),
-		light = Input.is_action_pressed("ui_select"),
-		just_light = Input.is_action_just_pressed("ui_select"),
-		heavy = false,
-		just_heavy = false
+		light = Input.is_action_pressed(light),
+		just_light = Input.is_action_just_pressed(light),
+		heavy = Input.is_action_just_pressed(heavy),
+		just_heavy = Input.is_action_just_pressed(heavy)
 	}
 	return input
 
