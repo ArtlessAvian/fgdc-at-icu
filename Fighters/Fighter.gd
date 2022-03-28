@@ -88,11 +88,12 @@ func move():
 
 func anim_process():
 	var ani = state.animation(self)
-	if $AnimationPlayer.assigned_animation != ani:
+	var assigned = $AnimationPlayer.assigned_animation
+	if assigned != ani:
 		$AnimationPlayer.play("RESET")
-		$AnimationPlayer.seek(0, true)
-		$AnimationPlayer.current_animation = ani
-	# $AnimationPlayer.seek(state_time, 0)
+		$AnimationPlayer.advance(0)
+		$AnimationPlayer.play(ani)
+	$AnimationPlayer.seek(state_time, true)
 	pass
 
 
