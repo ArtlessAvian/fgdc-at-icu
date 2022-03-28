@@ -12,7 +12,7 @@ const max_spacing = 500 * 65565
 # 		area.sync_to_physics_engine()
 # 	for area in get_tree().get_nodes_in_group("hurtboxes"):
 # 		area.sync_to_physics_engine()
-	
+
 # 	for area in get_tree().get_nodes_in_group("hurtboxes"):
 # 		var hurtboxes : Hurtboxes = area
 # 		hurtboxes.collide_hitboxes()

@@ -63,7 +63,7 @@ func _on_network_peer_connected(peer_id: int):
 	print(game_instance)
 
 	game_instance.get_node("Fighter1").set_network_master(1)
-	if peer_id != 1:
+	if get_tree().is_network_server():
 		game_instance.get_node("Fighter2").set_network_master(peer_id)
 	else:
 		game_instance.get_node("Fighter2").set_network_master(get_tree().get_network_unique_id())
@@ -90,6 +90,12 @@ func _on_SyncManager_sync_started() -> void:
 	pass
 
 
+func _on_SyncManager_sync_stopped() -> void:
+	if not SyncReplay.active:
+		SyncManager.stop_logging()
+	print("dumpy")
+
+
 func _on_SyncManager_sync_lost() -> void:
 	$CanvasLayer/SyncLost.visible = true
 
@@ -98,15 +104,8 @@ func _on_SyncManager_sync_regained() -> void:
 	$CanvasLayer/SyncLost.visible = false
 
 
-func _on_SyncManager_sync_stopped() -> void:
-	if not SyncReplay.active:
-		SyncManager.stop_logging()
-	print("dumpy")
-
-
 func _on_SyncManager_sync_error(msg: String) -> void:
-	SyncManager.stop()
-	SyncManager.clear_peers()
 	var peer = get_tree().network_peer
 	if peer:
 		peer.close_connection()
+	SyncManager.clear_peers()
