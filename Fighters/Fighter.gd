@@ -1,8 +1,8 @@
 extends SGFixedNode2D
 class_name Fighter
 
-# const fighter_spacing = 50 * 65565
-# const fighter_height = 50 * 65565
+const fighter_spacing = 50 * 65565
+const fighter_height = 50 * 65565
 
 export(Resource) var moveset
 
@@ -80,9 +80,10 @@ func move():
 	if self.fixed_position.y > 0:
 		self.fixed_position.y = 0
 		vel.y = 0
-		state = moveset.walk
-		state_time = 0
 		grounded = true
+		if state.land_cancels:
+			state = moveset.walk
+			state_time = 0
 
 
 func anim_process():

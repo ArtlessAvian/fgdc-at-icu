@@ -1,6 +1,8 @@
 extends Resource
 class_name State
 
+var land_cancels = true
+
 
 func transition(f: Fighter, moveset: Moveset, input: Dictionary) -> State:
 	return null
