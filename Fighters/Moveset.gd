@@ -4,6 +4,7 @@ class_name Moveset
 export(int) var air_actions = 5
 
 export(Resource) var walk
+export(Resource) var crouch
 export(Resource) var jump
 
 export(Resource) var light

@@ -4,7 +4,7 @@ export(int) var speed
 
 
 func transition(f: Fighter, moveset: Moveset, input: Dictionary) -> State:
-	var attack = transition_into_attack(f, moveset, input)
+	var attack = transition_into_crouch_attack(f, moveset, input)
 	if attack != null:
 		return attack
 
@@ -12,19 +12,14 @@ func transition(f: Fighter, moveset: Moveset, input: Dictionary) -> State:
 	if jump != null:
 		return jump
 
-	if input.stick_y < 0:
-		return moveset.crouch
+	if input.stick_y >= 0:
+		return moveset.walk
 
 	return null
 
 
 func run(f: Fighter, input: Dictionary) -> void:
-	if input.stick_x == 0:
-		f.vel.x = 0
-	if input.stick_x < 0:
-		f.vel.x = -5 * 65536
-	if input.stick_x > 0:
-		f.vel.x = 5 * 65536
+	f.vel.x = 0
 
 	var diff = f.fixed_position.x - f.get_node(f.opponent_path).fixed_position.x
 	if diff > 0 && f.fixed_scale.x > 0:
@@ -34,4 +29,4 @@ func run(f: Fighter, input: Dictionary) -> void:
 
 
 func animation(f: Fighter) -> String:
-	return "Walk" if f.vel.x != 0 else "Idle"
+	return "Crouch"

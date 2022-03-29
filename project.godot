@@ -141,6 +141,7 @@ kb_heavy={
 
 [network]
 
+rollback/max_buffer_size=60
 rollback/classes/message_serializer="res://Networking/FGDCMessageSerializer.gd"
 rollback/log_inspector/replay_match_scene_path="res://Networking/Lobby/crude_connection.tscn"
 
