@@ -74,7 +74,7 @@ func state_process(input: Dictionary):
 
 func move():
 	if not grounded:
-		vel.y -= 30 * 65536 / 60
+		vel.y -= 32768
 
 	self.fixed_position.x += vel.x
 	self.fixed_position.y -= vel.y

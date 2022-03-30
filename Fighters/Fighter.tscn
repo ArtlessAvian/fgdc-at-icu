@@ -239,7 +239,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id=29]
 resource_name = "sHeavy"
-length = 35.0
+length = 40.0
 step = 1.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -306,7 +306,7 @@ tracks/4/keys = {
 
 [sub_resource type="Animation" id=6]
 resource_name = "sLight"
-length = 8.0
+length = 12.0
 step = 1.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")

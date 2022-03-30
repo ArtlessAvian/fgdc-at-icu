@@ -5,5 +5,4 @@
 [resource]
 script = ExtResource( 1 )
 damage = 1
-length = 8
 animation_name = "sLight"

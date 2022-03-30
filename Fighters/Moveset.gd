@@ -9,8 +9,8 @@ export(Resource) var jump
 
 export(Resource) var light
 export(Resource) var heavy
-export(Resource) var cr_light
-export(Resource) var cr_heavy
+export(Resource) var c_light
+export(Resource) var c_heavy
 export(Resource) var j_light
 export(Resource) var j_heavy
 
