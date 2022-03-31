@@ -1,5 +1,6 @@
 extends SGArea2D
 class_name Hitboxes
+tool
 
 signal on_hit(who)
 
@@ -8,6 +9,26 @@ signal on_hit(who)
 
 var attack_number = 0  # only access if you're hurtboxes
 var multihit = 0
+
+
+func _ready():
+	for uncast in get_children():
+		var child: SGCollisionShape2D = uncast
+		var shape: SGRectangleShape2D = child.shape
+		child.shape = child.shape.duplicate(true)
+
+
+func _process(delta):
+	for uncast in get_children():
+		var child: SGCollisionShape2D = uncast
+		if not Engine.editor_hint:
+			child.visible = not child.disabled
+			child.self_modulate = Color.red
+		else:
+			if child.disabled:
+				child.self_modulate = Color.gray
+			else:
+				child.self_modulate = Color.red
 
 
 # Called by animation players. Or by bored people.

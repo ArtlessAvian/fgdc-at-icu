@@ -78,6 +78,8 @@ gdscript/warnings/unused_variable=false
 gdscript/warnings/unused_argument=false
 gdscript/warnings/return_value_discarded=false
 gdscript/warnings/integer_division=false
+shapes/collision/shape_color=Color( 1, 1, 1, 0.588235 )
+shapes/collision/contact_color=Color( 1, 0.2, 0.101961, 0.8 )
 
 [display]
 

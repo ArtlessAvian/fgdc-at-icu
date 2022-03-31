@@ -21,3 +21,5 @@ c_light = ExtResource( 4 )
 c_heavy = ExtResource( 6 )
 j_light = ExtResource( 5 )
 j_heavy = ExtResource( 7 )
+blocking_state_names = [ "walk", "crouch", "jump", "blockstun" ]
+attacking_state_names = [ "light", "heavy", "c_light", "c_heavy", "j_light", "j_heavy" ]

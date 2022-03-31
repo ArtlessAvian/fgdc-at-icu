@@ -20,3 +20,27 @@ var hitstun: Resource = load("res://Fighters/GenericStates/HitstunState.gd").new
 var blockstun: Resource = load("res://Fighters/GenericStates/BlockstunState.gd").new()
 
 # export(Resource) var hitstun
+
+export(Array, String) var blocking_state_names = ["walk", "crouch", "jump", "blockstun"]
+export(Array, String) var attacking_state_names = [
+	"light", "heavy", "c_light", "c_heavy", "j_light", "j_heavy"
+]
+
+# Lazy loaded
+# var _blocking_states = []
+# var _attacking_states = []
+#
+
+
+func can_state_block(state):
+	# Lazy load
+	# if _blocking_states.empty():
+	# for key in blocking_state_names:
+	# _blocking_states.append(get(key))
+
+	# return state in _blocking_states
+
+	for name in blocking_state_names:
+		if get(name) == state:
+			return true
+	return false

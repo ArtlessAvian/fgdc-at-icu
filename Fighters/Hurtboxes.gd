@@ -1,5 +1,6 @@
 extends SGArea2D
 class_name Hurtboxes
+tool
 
 # Information here is only useful within a frame, so no need to save.
 var hit_flag = false
@@ -7,6 +8,26 @@ var hitstun = 20
 
 # Save this
 var hurty = {}  # please name this something better soon.
+
+
+func _ready():
+	for uncast in get_children():
+		var child: SGCollisionShape2D = uncast
+		var shape: SGRectangleShape2D = child.shape
+		child.shape = child.shape.duplicate(true)
+
+
+const color_disabled = Color8(127, 127, 127, 127)
+
+
+func _process(delta):
+	for uncast in get_children():
+		var child: SGCollisionShape2D = uncast
+		# child.visible = not child.disabled
+		if child.disabled:
+			child.self_modulate = color_disabled
+		else:
+			child.self_modulate = Color.white
 
 
 func collide_hitboxes():

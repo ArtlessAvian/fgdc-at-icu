@@ -86,6 +86,7 @@ func move():
 		if state.land_cancels:
 			state = moveset.walk
 			state_time = 0
+			face_opponent()
 
 
 func anim_process():
@@ -103,20 +104,42 @@ const grounded_blocking_states = ["walk", "crouch", "blockstun"]
 
 
 func hit_response(input: Dictionary):
+	var can_block = false
+	if sign(fixed_position.x - get_node(opponent_path).fixed_position.x) == input.stick_x:
+		if moveset.can_state_block(state):
+			can_block = true
+
+	$Hurtboxes.modulate = Color.white
+	if can_block:
+		if input.stick_y < 0:
+			$Hurtboxes.modulate = Color.blue
+		else:
+			$Hurtboxes.modulate = Color.cyan
+
 	if not $Hurtboxes.hit_flag:
 		return
+	# So, I was hit.
 
-	if sign(fixed_position.x - get_node(opponent_path).fixed_position.x) == input.stick_x:
+	if can_block:
 		state_dict.hitstun = $Hurtboxes.hitstun
 
 		state_time = 0
 		state = moveset.blockstun
+		return
 
-	else:
-		state_dict.hitstun = $Hurtboxes.hitstun
+	state_dict.hitstun = $Hurtboxes.hitstun
 
-		state_time = 0
-		state = moveset.hitstun
+	state_time = 0
+	state = moveset.hitstun
+
+
+# Helper
+func face_opponent():
+	var diff = fixed_position.x - get_node(opponent_path).fixed_position.x
+	if diff > 0 && fixed_scale.x > 0:
+		fixed_scale.x *= -1
+	if diff < 0 && fixed_scale.x < 0:
+		fixed_scale.x *= -1
 
 
 # Network bs
