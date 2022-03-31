@@ -55,7 +55,7 @@ func _network_preprocess(input: Dictionary) -> void:
 
 
 func _network_postprocess(input: Dictionary) -> void:
-	hit_response()  # avoid p1 bias.
+	hit_response(input)  # avoid p1 bias.
 
 
 func state_process(input: Dictionary):
@@ -99,10 +99,20 @@ func anim_process():
 	pass
 
 
-func hit_response():
-	if $Hurtboxes.hit_flag:
-		# $Hurtboxes.hit_flag = false
+const grounded_blocking_states = ["walk", "crouch", "blockstun"]
 
+
+func hit_response(input: Dictionary):
+	if not $Hurtboxes.hit_flag:
+		return
+
+	if sign(fixed_position.x - get_node(opponent_path).fixed_position.x) == input.stick_x:
+		state_dict.hitstun = $Hurtboxes.hitstun
+
+		state_time = 0
+		state = moveset.blockstun
+
+	else:
 		state_dict.hitstun = $Hurtboxes.hitstun
 
 		state_time = 0
@@ -132,10 +142,10 @@ func _get_local_input() -> Dictionary:
 			just_stick_x = int(randi() % 3 - 1),
 			stick_y = int(randi() % 3 - 1),
 			just_stick_y = int(randi() % 3 - 1),
-			light = false,
-			just_light = false,
-			heavy = false,
-			just_heavy = false
+			light = randf() < 0.5,
+			just_light = randf() < 0.5,
+			heavy = randf() < 0.5,
+			just_heavy = randf() < 0.5
 		}
 		return input
 

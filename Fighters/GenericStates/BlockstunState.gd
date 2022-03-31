@@ -23,4 +23,4 @@ func run(f: Fighter, input: Dictionary) -> void:
 
 
 func animation(f: Fighter) -> String:
-	return "Hitstun"
+	return "Blockstun"

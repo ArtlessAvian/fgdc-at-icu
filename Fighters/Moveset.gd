@@ -17,5 +17,6 @@ export(Resource) var j_heavy
 # Things that don't make sense to override, but why the heck not.
 
 var hitstun: Resource = load("res://Fighters/GenericStates/HitstunState.gd").new()
+var blockstun: Resource = load("res://Fighters/GenericStates/BlockstunState.gd").new()
 
 # export(Resource) var hitstun

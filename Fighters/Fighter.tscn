@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Fighters/Fighter.gd" type="Script" id=1]
 [ext_resource path="res://Fighters/debug.gd" type="Script" id=2]
@@ -7,6 +7,35 @@
 [ext_resource path="res://Fighters/DefaultMoveset.tres" type="Resource" id=5]
 [ext_resource path="res://Fighters/FighterSprite.gd" type="Script" id=6]
 [ext_resource path="res://Fighters/Hitboxes.gd" type="Script" id=7]
+
+[sub_resource type="Animation" id=31]
+resource_name = "Blockstun"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -50 ), Vector2( 0, -53 ), Vector2( 0, -50 ) ]
+}
 
 [sub_resource type="Animation" id=30]
 resource_name = "Crouch"
@@ -93,6 +122,7 @@ step = 0.0166667
 [sub_resource type="Animation" id=7]
 resource_name = "RESET"
 loop = true
+step = 1.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:rotation_degrees")
 tracks/0/interp = 1
@@ -176,6 +206,18 @@ tracks/6/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ false ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Sprite:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -50 ) ]
 }
 
 [sub_resource type="Animation" id=8]
@@ -358,6 +400,7 @@ moveset = ExtResource( 5 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Idle"
 method_call_mode = 1
+anims/Blockstun = SubResource( 31 )
 anims/Crouch = SubResource( 30 )
 anims/Hitstun = SubResource( 27 )
 anims/Idle = SubResource( 22 )
