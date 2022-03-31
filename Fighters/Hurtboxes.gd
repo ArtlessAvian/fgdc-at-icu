@@ -20,7 +20,6 @@ func collide_hitboxes():
 
 		if hitboxes is Hitboxes:
 			var pair = hitboxes.attack_number * 100 + hitboxes.multihit
-			print(pair)
 			var key = hitboxes.get_parent().is_p2  # todo make not garbo
 			if (not key in hurty) or pair != hurty[key]:
 				hurty[key] = pair
@@ -34,11 +33,13 @@ func collide_hitboxes():
 
 func _save_state() -> Dictionary:
 	return {
-		hit_flag = hit_flag,
-		hurty = hurty.duplicate(true),
+		# hit_flag = hit_flag,
+		hurtyy = hurty.duplicate(true),
 	}
 
 
 func _load_state(save: Dictionary) -> void:
-	hit_flag = save.hit_flag
-	hurty = save.hurty.duplicate(true)
+	hit_flag = false
+	hurty = save.hurtyy.duplicate(true)
+
+	sync_to_physics_engine()

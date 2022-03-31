@@ -63,6 +63,34 @@ func _on_Mash_button_up():
 	SyncManager.start()
 
 
+func _on_Test_button_up():
+	var peer = NetworkedMultiplayerENet.new()
+	peer.create_server(31415, 1)
+	get_tree().network_peer = peer
+
+	for i in range(50):
+		print("TEST")
+		$CanvasLayer/MarginContainer.visible = false
+		$Game/Fighter1.fixed_position.x = -1
+		$Game/Fighter2.fixed_position.x = 1
+		$Game/Fighter1/Hitboxes.new_attack()
+		$Game/Fighter1.state = $Game/Fighter1.moveset.light
+		$Game/Fighter2.state = $Game/Fighter2.moveset.walk
+		$Game/Fighter1.state_time = 0
+
+		if not SyncReplay.active:
+			SyncManager.start_logging("res://dump/test.log")
+
+		SyncManager.start()
+		yield(get_tree().create_timer(0.5), "timeout")
+		SyncManager.stop()
+		print($Game/Fighter2.fixed_position.x)
+		if $Game/Fighter2.fixed_position.x != 5735125:
+			print("Icecream machine broke")
+			break
+		yield(get_tree().create_timer(0.1), "timeout")
+
+
 # NETWORKING====================================================
 
 
@@ -77,7 +105,9 @@ func _on_network_peer_connected(peer_id: int):
 	if get_tree().is_network_server():
 		game_instance.get_node("Fighter2").set_network_master(peer_id)
 	else:
-		game_instance.get_node("Fighter2").set_network_master(get_tree().get_network_unique_id())
+		game_instance.get_node("Fighter2").set_network_master(
+			get_tree().get_network_unique_id()
+		)
 
 	# Tried reordering everything below here. it worked before, but it doesn't seem to work anymore.
 	$CanvasLayer/MarginContainer.visible = false

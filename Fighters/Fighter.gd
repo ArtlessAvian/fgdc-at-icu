@@ -13,7 +13,7 @@ export var is_p2 = false
 export var opponent_path: NodePath = ""
 
 var vel: SGFixedVector2 = SGFixedVector2.new()
-var grounded = false
+var grounded = true
 
 var state: Resource
 var state_time = 0
@@ -200,3 +200,7 @@ func _load_state(save: Dictionary) -> void:
 	state = save.state
 	state_time = save.state_time
 	state_dict = save.state_dict.duplicate(true)
+
+	$AnimationPlayer.seek(state_time)
+	$Hitboxes.sync_to_physics_engine()
+	$Hurtboxes.sync_to_physics_engine()
