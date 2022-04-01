@@ -14,6 +14,8 @@ export(Resource) var c_heavy
 export(Resource) var j_light
 export(Resource) var j_heavy
 
+export(Array, Resource) var motions = []
+
 # Things that don't make sense to override, but why the heck not.
 
 var hitstun: Resource = load("res://Fighters/GenericStates/HitstunState.gd").new()

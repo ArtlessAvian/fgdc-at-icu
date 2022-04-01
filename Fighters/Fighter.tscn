@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Fighters/Fighter.gd" type="Script" id=1]
 [ext_resource path="res://Fighters/debug.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Fighters/DefaultMoveset.tres" type="Resource" id=5]
 [ext_resource path="res://Fighters/FighterSprite.gd" type="Script" id=6]
 [ext_resource path="res://Fighters/Hitboxes.gd" type="Script" id=7]
+[ext_resource path="res://Fighters/InputHistory.gd" type="Script" id=8]
 
 [sub_resource type="Animation" id=31]
 resource_name = "Blockstun"
@@ -464,3 +465,6 @@ script = ExtResource( 4 )
 position = Vector2( 0, -50 )
 fixed_position_y = -3276800
 shape = SubResource( 33 )
+
+[node name="InputHistory" type="Node" parent="." groups=["network_sync"]]
+script = ExtResource( 8 )

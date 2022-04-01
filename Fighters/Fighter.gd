@@ -46,9 +46,16 @@ func _network_preprocess(input: Dictionary) -> void:
 		input = NULL_INPUT
 		printerr("received empty input on tick ", SyncManager.current_tick)
 
+	$InputHistory.new_input(input)
+
 	state_process(input)
 	move()
 	anim_process()
+
+	if $InputHistory.detect_motion([6, 5, 6], fixed_scale.x < 0) < 30:
+		modulate = Color8(128, 255, 255)
+	else:
+		modulate = Color.white
 
 
 # # Process happens. The game handles stuff dependent on both players.

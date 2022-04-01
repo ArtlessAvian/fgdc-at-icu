@@ -4,6 +4,10 @@ class_name State
 var land_cancels = true
 
 
+func detect_motion(f: Fighter, moveset: Moveset, input: Dictionary) -> bool:
+	return false
+
+
 func transition(f: Fighter, moveset: Moveset, input: Dictionary) -> State:
 	return null
 
