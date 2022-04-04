@@ -6,3 +6,4 @@
 script = ExtResource( 1 )
 damage = 1
 animation_name = "sHeavy"
+attack_level = 2

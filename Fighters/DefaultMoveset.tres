@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=9 format=2]
+[gd_resource type="Resource" load_steps=10 format=2]
 
 [ext_resource path="res://Fighters/Moveset.gd" type="Script" id=1]
 [ext_resource path="res://Fighters/DefaultMoveset/DefaultWalk.tres" type="Resource" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Fighters/DefaultMoveset/DefaultHeavy.tres" type="Resource" id=6]
 [ext_resource path="res://Fighters/DefaultMoveset/DefaultJumpingHeavy.tres" type="Resource" id=7]
 [ext_resource path="res://Fighters/DefaultMoveset/DefaultCrouch.tres" type="Resource" id=8]
+[ext_resource path="res://Fighters/DefaultMoveset/DefaultAirdash.tres" type="Resource" id=9]
 
 [resource]
 script = ExtResource( 1 )
@@ -15,11 +16,13 @@ air_actions = 5
 walk = ExtResource( 2 )
 crouch = ExtResource( 8 )
 jump = ExtResource( 3 )
+airdash = ExtResource( 9 )
 light = ExtResource( 4 )
 heavy = ExtResource( 6 )
 c_light = ExtResource( 4 )
 c_heavy = ExtResource( 6 )
 j_light = ExtResource( 5 )
 j_heavy = ExtResource( 7 )
+motions = [  ]
 blocking_state_names = [ "walk", "crouch", "jump", "blockstun" ]
 attacking_state_names = [ "light", "heavy", "c_light", "c_heavy", "j_light", "j_heavy" ]

@@ -3,6 +3,7 @@ class_name Fighter
 
 const fighter_spacing = 50 * 65565
 const fighter_height = 50 * 65565
+const fighter_gravity = 32768
 
 export(Resource) var moveset
 
@@ -81,7 +82,7 @@ func state_process(input: Dictionary):
 
 func move():
 	if not grounded:
-		vel.y -= 32768
+		vel.y -= fighter_gravity
 
 	self.fixed_position.x += vel.x
 	self.fixed_position.y -= vel.y

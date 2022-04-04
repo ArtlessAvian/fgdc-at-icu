@@ -1,15 +1,18 @@
 extends Node
 
 var history: Array = []
+var unconsumed: int
 
 
 func _ready():
 	for i in range(30):
 		history.append(5)
+	unconsumed = 0
 
 
 func new_input(input: Dictionary):
 	history.pop_back()
+	unconsumed += 1
 
 	# keypad notation
 	history.push_front(input.stick_x + input.stick_y * 3 + 5)
@@ -20,7 +23,7 @@ func new_input(input: Dictionary):
 # returns how fast the input was
 func detect_motion(motion, reversed: bool) -> int:
 	var index = 0
-	for i in range(len(history)):
+	for i in range(min(unconsumed, len(history))):
 		var input = history[i]
 		if reversed:
 			if input % 3 == 1:
@@ -38,9 +41,14 @@ func detect_motion(motion, reversed: bool) -> int:
 	return 1000000000
 
 
+func consume_motion():
+	unconsumed = 0
+
+
 func _save_state() -> Dictionary:
-	return {history = history.duplicate()}
+	return {history = history.duplicate(), unconsumed = unconsumed}
 
 
 func _load_state(save: Dictionary) -> void:
 	history = save.history
+	unconsumed = save.unconsumed

@@ -1,8 +1,8 @@
 extends "../State.gd"
 
 export(int) var damage = 1
-# export(int) var length = 8
 export(String) var animation_name
+export(int) var attack_level = 0
 
 
 func transition(f: Fighter, moveset: Moveset, input: Dictionary) -> State:
@@ -16,6 +16,9 @@ func transition(f: Fighter, moveset: Moveset, input: Dictionary) -> State:
 		return moveset.walk
 
 	# End Failsafes.
+	var attack = transition_into_attack(f, moveset, input)
+	if attack != null:
+		return attack
 
 	if f.state_time > f.get_node("AnimationPlayer").get_animation(animation_name).length:
 		if not f.grounded:
@@ -42,4 +45,4 @@ func animation(f: Fighter) -> String:
 
 
 func attack_level() -> int:
-	return 0
+	return attack_level

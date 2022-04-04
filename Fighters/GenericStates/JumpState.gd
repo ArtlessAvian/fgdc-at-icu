@@ -8,6 +8,9 @@ func transition(f: Fighter, moveset: Moveset, input: Dictionary) -> State:
 	if attack != null:
 		return attack
 
+	if f.get_node("InputHistory").detect_motion([6, 5, 6], f.fixed_scale.x < 0) < 30:
+		return moveset.airdash
+
 	if input.just_stick_y > 0:
 		if f.air_actions > 0:
 			if input.stick_x == 0:

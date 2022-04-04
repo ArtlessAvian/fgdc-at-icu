@@ -26,6 +26,8 @@ func transition_into_jump(f: Fighter, moveset: Moveset, input: Dictionary) -> St
 			f.vel.x = -5 * 65536
 		if input.stick_x > 0 and f.vel.x < 5 * 65536:
 			f.vel.x = 5 * 65536
+		if input.stick_x == 0:
+			f.vel.x = 0
 
 		f.vel.y = 12 * 65536
 		f.air_actions = moveset.air_actions
