@@ -8,11 +8,14 @@ func transition(f: Fighter, moveset: Moveset, input: Dictionary) -> State:
 	if attack != null:
 		return attack
 
-	if f.get_node("InputHistory").detect_motion([6, 5, 6], f.fixed_scale.x < 0) < 30:
-		return moveset.airdash
+	if f.air_actions > 0:
+		if f.get_node("InputHistory").detect_motion([6, 5, 6], f.fixed_scale.x < 0) < 30:
+			f.get_node("InputHistory").consume_motion()
+			f.air_actions -= 1
+			return moveset.airdash
 
-	if input.just_stick_y > 0:
-		if f.air_actions > 0:
+	if f.air_actions > 0:
+		if input.just_stick_y > 0:
 			if input.stick_x == 0:
 				f.vel.x = 0
 			if input.stick_x < 0 and f.vel.x > -5 * 65536:
