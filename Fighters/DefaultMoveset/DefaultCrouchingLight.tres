@@ -8,4 +8,4 @@ damage = 1
 animation_name = "sLight"
 crouching = false
 button = "light"
-attack_level = 0
+attack_level = 1

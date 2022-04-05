@@ -4,7 +4,7 @@ export(int) var speed
 
 
 func transition(f: Fighter, moveset: Moveset, input: Dictionary) -> State:
-	var attack = transition_into_crouch_attack(f, moveset, input)
+	var attack = transition_into_attack(f, moveset, input)
 	if attack != null:
 		return attack
 

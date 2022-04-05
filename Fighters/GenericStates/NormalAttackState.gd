@@ -2,7 +2,23 @@ extends "../State.gd"
 
 export(int) var damage = 1
 export(String) var animation_name
+export(bool) var crouching = false
+export(String, "light", "heavy") var button = "light"
+
 export(int) var attack_level = 0
+
+# func transition_into(f: Fighter, moveset: Moveset, input: Dictionary) -> bool:
+# if f.state in [moveset.walk, moveset.crouch]:
+# 	if input.get(button):
+# 		if input.stick_y < 0 == crouching:
+# 			return true
+
+# if f.state in [moveset.light, moveset.heavy, moveset.c_light, moveset.c_heavy]:
+# 	if input.get(button):
+# 		if input.stick_y < 0 == crouching:
+# 			return true
+
+# return false
 
 
 func transition(f: Fighter, moveset: Moveset, input: Dictionary) -> State:

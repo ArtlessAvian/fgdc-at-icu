@@ -6,13 +6,21 @@ func _process(delta):
 
 	var eee = ""
 	if f.state != null:
-		var file: String = f.state.script.resource_path
-		var substr = file.find_last("/") + 1
-		eee += file.substr(substr)
-		
-	eee += "\n" + str(f.get_node("InputHistory").history)
-	eee += "\n" + str(f.state_dict)
+		var state: String = f.state.resource_path
+		var slice = state.find_last("/") + 1
+		eee += state.substr(slice)
+
+		eee += " ("
+
+		var script: String = f.state.script.resource_path
+		var slice2 = script.find_last("/") + 1
+		eee += script.substr(slice2)
+		eee += ")"
+
+	# eee += "\n" + str(f.get_node("InputHistory").history)
+	eee += "\n" + f.get_node("AnimationPlayer").current_animation
 	eee += "\n" + str(f.state_time)
+	eee += "\n" + str(f.state_dict)
 
 	self.text = eee
 
