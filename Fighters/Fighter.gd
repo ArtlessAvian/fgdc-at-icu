@@ -53,7 +53,7 @@ func _network_preprocess(input: Dictionary) -> void:
 	move()
 	anim_process()
 
-	if $InputHistory.detect_motion([6, 5, 6], fixed_scale.x < 0) < 8:
+	if $InputHistory.detect_motion([6, 5, 6], fixed_scale.x < 0, 8):
 		modulate = Color8(128, 255, 255)
 	else:
 		modulate = Color.white
@@ -102,6 +102,7 @@ func anim_process():
 	var assigned = $AnimationPlayer.assigned_animation
 	if assigned != ani:
 		$AnimationPlayer.play("RESET")
+		# print("RESET")
 		$AnimationPlayer.advance(0)
 		$AnimationPlayer.play(ani)
 	$AnimationPlayer.advance(state_time - $AnimationPlayer.current_animation_position)
@@ -114,7 +115,7 @@ const grounded_blocking_states = ["walk", "crouch", "blockstun"]
 func hit_response(input: Dictionary):
 	var can_block = false
 	if sign(fixed_position.x - get_node(opponent_path).fixed_position.x) == input.stick_x:
-		if moveset.can_state_block(state):
+		if state.can_block():
 			can_block = true
 
 	$Hurtboxes.modulate = Color.white

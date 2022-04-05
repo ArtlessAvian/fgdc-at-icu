@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource( 1 )
 damage = 1
-animation_name = "sLight"
+animation_name = "cLight"
 crouching = false
 button = "light"
 attack_level = 1

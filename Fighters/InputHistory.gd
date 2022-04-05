@@ -1,9 +1,10 @@
 extends Node
+class_name InputHistory
 
-var stick_history: Array = [5]
-var button_history: Array = [0]
-var hold_duration: Array = [0]
-var hold_total = 0
+var _stick_history: Array = [5]
+var _button_history: Array = [0]
+var _hold_duration: Array = [0]
+var _hold_total = 0
 
 const BUTTON_LIST = ["light", "heavy"]
 
@@ -19,35 +20,35 @@ func new_input(input: Dictionary):
 		if input.get(BUTTON_LIST[i]):
 			buttons |= 1 << i
 
-	if stick_history[0] == stick:
-		if button_history[0] == buttons:
-			hold_duration[0] += 1
-			hold_total += 1
-			clear_old_inputs()
+	if _stick_history[0] == stick:
+		if _button_history[0] == buttons:
+			_hold_duration[0] += 1
+			_hold_total += 1
+			_clear_old_inputs()
 			return
 
-	stick_history.push_front(stick)
-	button_history.push_front(buttons)
-	hold_duration.push_front(1)
-	hold_total += 1
-	clear_old_inputs()
+	_stick_history.push_front(stick)
+	_button_history.push_front(buttons)
+	_hold_duration.push_front(1)
+	_hold_total += 1
+	_clear_old_inputs()
 
 
-func clear_old_inputs():
-	if hold_total - hold_duration[-1] > 60:
-		hold_total -= hold_duration[-1]
+func _clear_old_inputs():
+	if _hold_total - _hold_duration[-1] > 60:
+		_hold_total -= _hold_duration[-1]
 
-		stick_history.pop_back()
-		button_history.pop_back()
-		hold_duration.pop_back()
+		_stick_history.pop_back()
+		_button_history.pop_back()
+		_hold_duration.pop_back()
 
 
 # returns how fast the input was
-func detect_motion(motion, reversed: bool) -> int:
+func detect_motion(motion, reversed: bool, frames: int) -> bool:
 	var index = 0
 	var sum = 0
-	for i in range(len(stick_history)):
-		var input = stick_history[i]
+	for i in range(len(_stick_history)):
+		var input = _stick_history[i]
 		if reversed:
 			if input % 3 == 1:
 				input += 2
@@ -57,12 +58,14 @@ func detect_motion(motion, reversed: bool) -> int:
 		if input == motion[len(motion) - 1 - index]:
 			index += 1
 			if index == len(motion):
-				return sum
+				return true
 		elif index > 0 and input != motion[len(motion) - 1 - (index - 1)]:
 			index = 0
-		sum += hold_duration[i]
+		sum += _hold_duration[i]
+		if sum > frames:
+			return false
 
-	return 1000000000
+	return false
 
 
 func consume_motion():
@@ -71,16 +74,16 @@ func consume_motion():
 
 func _save_state() -> Dictionary:
 	return {
-		stick_history = stick_history.duplicate(),
-		button_history = button_history.duplicate(),
-		hold_duration = hold_duration.duplicate(),
-		hold_total = hold_total
+		stick_history = _stick_history.duplicate(),
+		button_history = _button_history.duplicate(),
+		hold_duration = _hold_duration.duplicate(),
+		hold_total = _hold_total
 	}
 	# return {history = history.duplicate(), unconsumed = unconsumed}
 
 
 func _load_state(save: Dictionary) -> void:
-	stick_history = save.stick_history
-	button_history = save.button_history
-	hold_duration = save.hold_duration
-	hold_total = save.hold_total
+	_stick_history = save.stick_history
+	_button_history = save.button_history
+	_hold_duration = save.hold_duration
+	_hold_total = save.hold_total

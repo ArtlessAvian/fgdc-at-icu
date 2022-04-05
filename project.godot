@@ -24,6 +24,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Fighters/Hurtboxes.gd"
 }, {
+"base": "Node",
+"class": "InputHistory",
+"language": "GDScript",
+"path": "res://Fighters/InputHistory.gd"
+}, {
 "base": "Resource",
 "class": "Moveset",
 "language": "GDScript",
@@ -53,6 +58,7 @@ _global_script_class_icons={
 "Fighter": "",
 "Hitboxes": "",
 "Hurtboxes": "",
+"InputHistory": "",
 "Moveset": "",
 "NetworkAnimationPlayer": "",
 "NetworkRandomNumberGenerator": "",
@@ -145,8 +151,8 @@ kb_heavy={
 
 rollback/max_buffer_size=60
 rollback/classes/message_serializer="res://Networking/FGDCMessageSerializer.gd"
-rollback/debug/rollback_ticks=2
-rollback/debug/random_rollback_ticks=2
+rollback/debug/rollback_ticks=3
+rollback/debug/random_rollback_ticks=3
 rollback/log_inspector/replay_match_scene_path="res://Networking/Lobby/crude_connection.tscn"
 
 [physics]

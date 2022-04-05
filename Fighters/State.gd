@@ -12,8 +12,16 @@ func transition_into(f: Fighter, moveset: Moveset, input: Dictionary) -> bool:
 
 # Define transitions from this state OUT.
 # Has less priority over transition_into
-func transition(f: Fighter, moveset: Moveset, input: Dictionary) -> State:
+func transition_out(f: Fighter, moveset: Moveset, input: Dictionary) -> State:
 	return null
+
+
+func transition(f: Fighter, moveset: Moveset, input: Dictionary) -> State:
+	for state in moveset.all_states():
+		if bool(state.transition_into(f, moveset, input)):
+			print(state.script.resource_path)
+			return state
+	return transition_out(f, moveset, input)
 
 
 func run(f: Fighter, input: Dictionary) -> void:
@@ -22,6 +30,20 @@ func run(f: Fighter, input: Dictionary) -> void:
 
 func animation(f: Fighter) -> String:
 	return "Idle"
+
+
+# Interface
+
+
+func attack_level() -> int:
+	return -1
+
+
+func can_block() -> bool:
+	return false
+
+
+# Helpers
 
 
 func transition_into_jump(f: Fighter, moveset: Moveset, input: Dictionary) -> State:
@@ -68,7 +90,3 @@ func transition_into_attack(f: Fighter, moveset: Moveset, input: Dictionary) -> 
 		return moveset.light
 
 	return null
-
-
-func attack_level() -> int:
-	return -1

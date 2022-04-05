@@ -5,15 +5,15 @@ export(int) var speed
 
 func transition_into(f: Fighter, moveset: Moveset, input: Dictionary) -> bool:
 	if f.state in [moveset.jump]:
-		if f.get_node("InputHistory").detect_motion([6, 5, 6], f.fixed_scale.x < 0) < 8:
+		if f.get_node("InputHistory").detect_motion([6, 5, 6], f.fixed_scale.x < 0, 8):
 			return true
-		if f.get_node("InputHistory").detect_motion([9, 5, 6], f.fixed_scale.x < 0) < 8:
+		if f.get_node("InputHistory").detect_motion([9, 5, 6], f.fixed_scale.x < 0, 8):
 			return true
 
-	return true
+	return false
 
 
-func transition(f: Fighter, moveset: Moveset, input: Dictionary) -> State:
+func transition_out(f: Fighter, moveset: Moveset, input: Dictionary) -> State:
 	var attack = transition_into_attack(f, moveset, input)
 	if attack != null:
 		return attack

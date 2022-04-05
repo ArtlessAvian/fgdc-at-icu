@@ -3,7 +3,7 @@ extends "../State.gd"
 export(int) var speed
 
 
-func transition(f: Fighter, moveset: Moveset, input: Dictionary) -> State:
+func transition_out(f: Fighter, moveset: Moveset, input: Dictionary) -> State:
 	var attack = transition_into_attack(f, moveset, input)
 	if attack != null:
 		return attack
@@ -30,3 +30,7 @@ func run(f: Fighter, input: Dictionary) -> void:
 
 func animation(f: Fighter) -> String:
 	return "Crouch"
+
+
+func can_block() -> bool:
+	return true

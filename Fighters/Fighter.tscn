@@ -232,6 +232,32 @@ tracks/8/keys = {
 "update": 1,
 "values": [ false ]
 }
+tracks/9/type = "value"
+tracks/9/path = NodePath("Hitboxes/SGCollisionShape2D:fixed_position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Object(SGFixedVector2,"x":2555904,"y":-3276800,"script":null)
+ ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Hitboxes/SGCollisionShape2D:shape:extents")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Object(SGFixedVector2,"x":655360,"y":655360,"script":null)
+ ]
+}
 
 [sub_resource type="Animation" id=8]
 resource_name = "Walk"
@@ -252,7 +278,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id=32]
-resource_name = "cLight (copy)"
+resource_name = "cLight"
 length = 12.0
 step = 1.0
 tracks/0/type = "value"
@@ -290,6 +316,32 @@ tracks/2/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ 0.0, 1.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Hitboxes/SGCollisionShape2D:fixed_position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Object(SGFixedVector2,"x":2555904,"y":-3276800,"script":null)
+ ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Hitboxes/SGCollisionShape2D:shape:extents")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Object(SGFixedVector2,"x":655360,"y":655360,"script":null)
+ ]
 }
 
 [sub_resource type="Animation" id=28]
@@ -462,7 +514,7 @@ anims/Jump = SubResource( 23 )
 anims/Prejump = SubResource( 24 )
 anims/RESET = SubResource( 7 )
 anims/Walk = SubResource( 8 )
-"anims/cLight (copy)" = SubResource( 32 )
+anims/cLight = SubResource( 32 )
 anims/jLight = SubResource( 28 )
 anims/sHeavy = SubResource( 29 )
 anims/sLight = SubResource( 6 )
@@ -495,9 +547,9 @@ script = ExtResource( 7 )
 
 [node name="SGCollisionShape2D" type="SGCollisionShape2D" parent="Hitboxes"]
 self_modulate = Color( 0.75, 0.75, 0.75, 1 )
-position = Vector2( 39, -51 )
+position = Vector2( 39, -50 )
 fixed_position_x = 2555904
-fixed_position_y = -3342336
+fixed_position_y = -3276800
 shape = SubResource( 33 )
 disabled = true
 

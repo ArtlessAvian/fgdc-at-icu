@@ -71,11 +71,12 @@ func _on_Test_button_up():
 	for i in range(50):
 		print("TEST")
 		$CanvasLayer/MarginContainer.visible = false
-		$Game/Fighter1.fixed_position.x = -1
-		$Game/Fighter2.fixed_position.x = 1
-		$Game/Fighter1/Hitboxes.new_attack()
-		$Game/Fighter1.state = $Game/Fighter1.moveset.light
-		$Game/Fighter2.state = $Game/Fighter2.moveset.walk
+		$Game/Fighter1.fixed_position.y = -65536 * 30
+		$Game/Fighter1.grounded = false
+		# $Game/Fighter2.fixed_position.x = 1
+		# $Game/Fighter1/Hitboxes.new_attack()
+		$Game/Fighter1.state = $Game/Fighter1.moveset.j_light
+		# $Game/Fighter2.state = $Game/Fighter2.moveset.walk
 		$Game/Fighter1.state_time = 0
 
 		if not SyncReplay.active:
@@ -84,11 +85,14 @@ func _on_Test_button_up():
 		SyncManager.start()
 		yield(get_tree().create_timer(0.5), "timeout")
 		SyncManager.stop()
-		print($Game/Fighter2.fixed_position.x)
-		if $Game/Fighter2.fixed_position.x != 5735125:
+		# print($Game/Fighter2.fixed_position.x)
+		# if $Game/Fighter2.fixed_position.x != 5735125:
+		if not $Game/Fighter1/Hitboxes/SGCollisionShape2D.disabled:
 			print("Icecream machine broke")
 			break
 		yield(get_tree().create_timer(0.1), "timeout")
+
+	print("success!")
 
 
 # NETWORKING====================================================

@@ -1,7 +1,7 @@
 extends "../State.gd"
 
 
-func transition(f: Fighter, moveset: Moveset, input: Dictionary) -> State:
+func transition_out(f: Fighter, moveset: Moveset, input: Dictionary) -> State:
 	if f.state_time > f.state_dict.hitstun:
 		return moveset.walk
 	return null
@@ -24,3 +24,7 @@ func run(f: Fighter, input: Dictionary) -> void:
 
 func animation(f: Fighter) -> String:
 	return "Blockstun"
+
+
+func can_block() -> bool:
+	return true
