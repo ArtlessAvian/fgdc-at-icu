@@ -83,7 +83,8 @@ func _save_state() -> Dictionary:
 
 
 func _load_state(save: Dictionary) -> void:
-	_stick_history = save.stick_history
-	_button_history = save.button_history
-	_hold_duration = save.hold_duration
+	_stick_history = save.stick_history.duplicate()
+	_button_history = save.button_history.duplicate()
+	_hold_duration = save.hold_duration.duplicate()
 	_hold_total = save.hold_total
+	# print(save)

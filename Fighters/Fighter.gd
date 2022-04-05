@@ -109,9 +109,6 @@ func anim_process():
 	pass
 
 
-const grounded_blocking_states = ["walk", "crouch", "blockstun"]
-
-
 func hit_response(input: Dictionary):
 	var can_block = false
 	if sign(fixed_position.x - get_node(opponent_path).fixed_position.x) == input.stick_x:
@@ -217,6 +214,7 @@ func _predict_remote_input(previous_input: Dictionary, ticks_since_real_input: i
 
 func _save_state() -> Dictionary:
 	# saving state-machine-state in rollback-state should be fine, they're mostly constants.
+	# var save =
 	return {
 		x = fixed_position.x,
 		y = fixed_position.y,
@@ -229,6 +227,7 @@ func _save_state() -> Dictionary:
 		state_time = state_time,
 		state_dict = state_dict.duplicate(),
 	}
+	# return save
 
 
 func _load_state(save: Dictionary) -> void:
@@ -243,6 +242,7 @@ func _load_state(save: Dictionary) -> void:
 	state_time = save.state_time
 	state_dict = save.state_dict.duplicate(true)
 
-	$AnimationPlayer.seek(state_time)
+	$AnimationPlayer.play(state.animation(self))
+	$AnimationPlayer.seek(state_time, true)
 	$Hitboxes.sync_to_physics_engine()
 	$Hurtboxes.sync_to_physics_engine()

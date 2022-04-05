@@ -47,11 +47,17 @@ func _save_state() -> Dictionary:
 	for child in get_children():
 		disabled_children[child.name] = child.disabled
 
+	# var save =
 	return {
 		attack_number = attack_number,
 		multihit = multihit,
 		disabled_children = disabled_children
 	}
+
+	# if not get_parent().is_p2:
+	# print(SyncManager.current_tick, " save ", save)
+
+	# return save
 
 
 func _load_state(save: Dictionary) -> void:
@@ -62,3 +68,6 @@ func _load_state(save: Dictionary) -> void:
 		get_node(name).disabled = save.disabled_children[name]
 
 	sync_to_physics_engine()
+
+	# if not get_parent().is_p2:
+	# print(SyncManager.current_tick, " load ", save)

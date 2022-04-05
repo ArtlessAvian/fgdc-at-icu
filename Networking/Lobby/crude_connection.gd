@@ -83,7 +83,7 @@ func _on_Test_button_up():
 			SyncManager.start_logging("res://dump/test.log")
 
 		SyncManager.start()
-		yield(get_tree().create_timer(0.5), "timeout")
+		yield(get_tree().create_timer(0.3), "timeout")
 		SyncManager.stop()
 		# print($Game/Fighter2.fixed_position.x)
 		# if $Game/Fighter2.fixed_position.x != 5735125:
