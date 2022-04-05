@@ -21,6 +21,8 @@ func _process(delta):
 	eee += "\n" + f.get_node("AnimationPlayer").current_animation
 	eee += "\n" + str(f.state_time)
 	eee += "\n" + str(f.state_dict)
+	eee += "\n" + str(f.get_node("InputHistory").stick_history)
+	eee += "\n" + str(f.get_node("InputHistory").hold_total)
 
 	self.text = eee
 

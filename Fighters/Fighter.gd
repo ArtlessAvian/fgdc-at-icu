@@ -53,7 +53,7 @@ func _network_preprocess(input: Dictionary) -> void:
 	move()
 	anim_process()
 
-	if $InputHistory.detect_motion([6, 5, 6], fixed_scale.x < 0) < 30:
+	if $InputHistory.detect_motion([6, 5, 6], fixed_scale.x < 0) < 8:
 		modulate = Color8(128, 255, 255)
 	else:
 		modulate = Color.white
