@@ -543,6 +543,7 @@ vframes = 8
 script = ExtResource( 6 )
 
 [node name="Hitboxes" type="SGArea2D" parent="." groups=["hitboxes", "network_sync"]]
+collision_mask = 0
 script = ExtResource( 7 )
 
 [node name="SGCollisionShape2D" type="SGCollisionShape2D" parent="Hitboxes"]
@@ -554,6 +555,8 @@ shape = SubResource( 33 )
 disabled = true
 
 [node name="Hurtboxes" type="SGArea2D" parent="." groups=["hurtboxes", "network_sync"]]
+collision_layer = 0
+collision_mask = 2
 script = ExtResource( 4 )
 
 [node name="SGCollisionShape2D" type="SGCollisionShape2D" parent="Hurtboxes"]
@@ -563,3 +566,5 @@ shape = SubResource( 34 )
 
 [node name="InputHistory" type="Node" parent="." groups=["network_sync"]]
 script = ExtResource( 8 )
+
+[connection signal="on_hit" from="Hitboxes" to="." method="_on_Hitboxes_on_hit"]

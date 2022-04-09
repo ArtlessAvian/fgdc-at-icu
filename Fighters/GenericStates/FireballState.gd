@@ -14,7 +14,7 @@ func transition_into(f: Fighter, moveset: Moveset, input: Dictionary) -> bool:
 	return false
 
 
-func transition(f: Fighter, moveset: Moveset, input: Dictionary) -> State:
+func transition_out(f: Fighter, moveset: Moveset, input: Dictionary) -> State:
 	if f.grounded:
 		f.vel.x = 0
 
@@ -26,7 +26,7 @@ func transition(f: Fighter, moveset: Moveset, input: Dictionary) -> State:
 	return null
 
 
-var fireball = load("res://Fighters/DefaultMoveset/DefaultFireball.tscn")
+var fireball = load("res://Fighters/DefaultMoveset/FireballScene.tscn")
 
 
 func run(f: Fighter, input: Dictionary) -> void:
@@ -35,7 +35,7 @@ func run(f: Fighter, input: Dictionary) -> void:
 			"Fireball",
 			f.get_parent().get_node("Spawned"),
 			fireball,
-			{"position": f.fixed_position, "flip": f.fixed_scale.x < 0}
+			{"position": f.fixed_position, "flip": f.fixed_scale.x < 0, "is_p2": f.is_p2}
 		)
 		print("yeet")
 

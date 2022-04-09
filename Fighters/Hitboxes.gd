@@ -2,7 +2,7 @@ extends SGArea2D
 class_name Hitboxes
 tool
 
-signal on_hit(who)
+signal on_hit
 
 # Has no logic, only holds onto information
 # Hurtboxes will do the logic.
@@ -16,6 +16,14 @@ func _ready():
 		var child: SGCollisionShape2D = uncast
 		var shape: SGRectangleShape2D = child.shape
 		child.shape = child.shape.duplicate(true)
+
+	add_to_group("hitboxes")
+	add_to_group("network_sync")
+
+
+# no reason to toggle, just once at the start!
+func toggle_player():
+	collision_layer ^= 0b11
 
 
 func _process(delta):
@@ -49,9 +57,7 @@ func _save_state() -> Dictionary:
 
 	# var save =
 	return {
-		attack_number = attack_number,
-		multihit = multihit,
-		disabled_children = disabled_children
+		attack_number = attack_number, multihit = multihit, disabled_children = disabled_children
 	}
 
 	# if not get_parent().is_p2:

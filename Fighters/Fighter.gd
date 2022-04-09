@@ -31,8 +31,8 @@ func _ready():
 		add_child(node)
 
 	if is_p2:
-		# $Hitboxes.collision_mask ^= 0b11
-		# $Hurtboxes.collision_layer ^= 0b11
+		$Hitboxes.toggle_player()
+		$Hurtboxes.toggle_player()
 		pass
 
 	$AnimationPlayer.playback_process_mode = AnimationPlayer.ANIMATION_PROCESS_MANUAL
@@ -246,3 +246,7 @@ func _load_state(save: Dictionary) -> void:
 	$AnimationPlayer.seek(state_time, true)
 	$Hitboxes.sync_to_physics_engine()
 	$Hurtboxes.sync_to_physics_engine()
+
+
+func _on_Hitboxes_on_hit():
+	print("hehe")

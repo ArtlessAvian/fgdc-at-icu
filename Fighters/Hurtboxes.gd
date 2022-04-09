@@ -16,6 +16,14 @@ func _ready():
 		var shape: SGRectangleShape2D = child.shape
 		child.shape = child.shape.duplicate(true)
 
+	add_to_group("hurtboxes")
+	add_to_group("network_sync")
+
+
+# no reason to toggle, just once at the start!
+func toggle_player():
+	collision_mask ^= 0b11
+
 
 const color_disabled = Color8(127, 127, 127, 127)
 
@@ -33,18 +41,16 @@ func _process(delta):
 func collide_hitboxes():
 	hit_flag = false
 
-	var my_hitboxes: SGArea2D = $"../Hitboxes"
-
 	for hitboxes in self.get_overlapping_areas():
-		if hitboxes == my_hitboxes:
-			continue
-
 		if hitboxes is Hitboxes:
 			var pair = hitboxes.attack_number * 100 + hitboxes.multihit
-			var key = hitboxes.get_parent().is_p2  # todo make not garbo
+			var key = hitboxes.get_parent().name  # todo make not garbo
 			if (not key in hurty) or pair != hurty[key]:
 				hurty[key] = pair
 				self.hit_flag = true
+				hitboxes.emit_signal("on_hit")
+				print("quizas me llames")
+				break  # only one thing can hit you at one time.
 
 				# print("accepted ", SyncManager.current_tick)
 			else:

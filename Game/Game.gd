@@ -46,10 +46,12 @@ func min_distance():
 		var average = (p1.fixed_position.x + p2.fixed_position.x) >> 1
 
 		if abs(diff) < fighter_spacing:
-			average = clamp(average, -x_bound + fighter_spacing / 2, x_bound - fighter_spacing / 2)
+			average = clamp(
+				average, -x_bound + (fighter_spacing >> 1), x_bound - (fighter_spacing >> 1)
+			)
 
-			p1.fixed_position.x = average + fighter_spacing / 2 * sign(diff)
-			p2.fixed_position.x = average + fighter_spacing / 2 * sign(-diff)
+			p1.fixed_position.x = average + (fighter_spacing >> 1) * sign(diff)
+			p2.fixed_position.x = average + (fighter_spacing >> 1) * sign(-diff)
 
 
 func max_distance():
@@ -59,10 +61,19 @@ func max_distance():
 	var diff = p1.fixed_position.x - p2.fixed_position.x
 
 	if abs(diff) > max_spacing:
-		# unmove the players.
-		p1.fixed_position.x -= p1.vel.x
-		p2.fixed_position.x -= p2.vel.x
 		# TODO: do some wack algebra stuff. might need floating point though, so maybe not so worth it.
+
+		# unmove the players
+		p1.fixed_position_x -= p1.vel.x
+		p2.fixed_position_x -= p2.vel.x
+
+		for power in range(1, 5):
+			# test if the movement is good
+			var test1 = p1.fixed_position.x + (p1.vel.x >> power)
+			var test2 = p2.fixed_position.x + (p2.vel.x >> power)
+			if abs(test1 - test2) <= max_spacing:
+				p1.fixed_position.x = test1
+				p2.fixed_position.x = test2
 
 # func _network_spawn(data: Dictionary):
 # 	get_node("Fighter1").set_network_master(data.p1_master)
