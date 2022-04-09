@@ -28,6 +28,8 @@ fixed_position_x = 6553600
 is_p2 = true
 opponent_path = NodePath("../Fighter1")
 
+[node name="Spawned" type="SGFixedNode2D" parent="."]
+
 [node name="Camera2D" type="Camera2D" parent="."]
 process_priority = -1
 position = Vector2( -250, -125 )

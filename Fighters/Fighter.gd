@@ -171,10 +171,10 @@ func _get_local_input() -> Dictionary:
 			just_stick_x = int(randi() % 3 - 1),
 			stick_y = int(randi() % 3 - 1),
 			just_stick_y = int(randi() % 3 - 1),
-			light = randf() < 0.5,
-			just_light = randf() < 0.5,
-			heavy = randf() < 0.5,
-			just_heavy = randf() < 0.5
+			light = randf() < 0.1,
+			just_light = randf() < 0.1,
+			heavy = randf() < 0.1,
+			just_heavy = randf() < 0.1
 		}
 		return input
 

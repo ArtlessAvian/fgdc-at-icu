@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=12 format=2]
+[gd_resource type="Resource" load_steps=13 format=2]
 
 [ext_resource path="res://Fighters/Moveset.gd" type="Script" id=1]
 [ext_resource path="res://Fighters/DefaultMoveset/DefaultWalk.tres" type="Resource" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://Fighters/DefaultMoveset/DefaultAirdash.tres" type="Resource" id=9]
 [ext_resource path="res://Fighters/DefaultMoveset/DefaultCrouchingHeavy.tres" type="Resource" id=10]
 [ext_resource path="res://Fighters/DefaultMoveset/DefaultCrouchingLight.tres" type="Resource" id=11]
+[ext_resource path="res://Fighters/DefaultMoveset/DefaultFireball.tres" type="Resource" id=12]
 
 [resource]
 script = ExtResource( 1 )
@@ -24,5 +25,5 @@ c_light = ExtResource( 11 )
 c_heavy = ExtResource( 10 )
 j_light = ExtResource( 5 )
 j_heavy = ExtResource( 7 )
-attacks = [  ]
+attacks = [ ExtResource( 12 ) ]
 movement = [ ExtResource( 9 ) ]
