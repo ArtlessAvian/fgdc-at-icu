@@ -19,7 +19,7 @@ func transition_out(f: Fighter, moveset: Moveset, input: Dictionary) -> State:
 func transition(f: Fighter, moveset: Moveset, input: Dictionary) -> State:
 	for state in moveset.all_states():
 		if bool(state.transition_into(f, moveset, input)):
-			print(state.script.resource_path)
+			# print(state.script.resource_path)
 			return state
 	return transition_out(f, moveset, input)
 

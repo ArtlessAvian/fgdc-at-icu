@@ -51,4 +51,3 @@ func _load_state(save: Dictionary) -> void:
 
 func _on_Hitboxes_on_hit():
 	SyncManager.despawn(self)
-	print("explosion!!!")

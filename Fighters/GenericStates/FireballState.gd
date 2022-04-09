@@ -37,7 +37,6 @@ func run(f: Fighter, input: Dictionary) -> void:
 			fireball,
 			{"position": f.fixed_position, "flip": f.fixed_scale.x < 0, "is_p2": f.is_p2}
 		)
-		print("yeet")
 
 
 func animation(f: Fighter) -> String:

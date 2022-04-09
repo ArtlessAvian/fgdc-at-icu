@@ -49,7 +49,6 @@ func collide_hitboxes():
 				hurty[key] = pair
 				self.hit_flag = true
 				hitboxes.emit_signal("on_hit")
-				print("quizas me llames")
 				break  # only one thing can hit you at one time.
 
 				# print("accepted ", SyncManager.current_tick)
