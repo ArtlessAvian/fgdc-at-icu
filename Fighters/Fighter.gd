@@ -21,6 +21,8 @@ var state_time = 0
 var air_actions
 var state_dict: Dictionary = {}
 
+var combo_count = 0
+
 
 func _ready():
 	if self in get_tree().root.get_children():
@@ -36,6 +38,7 @@ func _ready():
 		pass
 
 	$AnimationPlayer.playback_process_mode = AnimationPlayer.ANIMATION_PROCESS_MANUAL
+	$AnimationPlayer.playback_speed = 1
 
 	state = moveset.walk
 
@@ -91,7 +94,7 @@ func move():
 		self.fixed_position.y = 0
 		vel.y = 0
 		grounded = true
-		if state.land_cancels:
+		if state.can_land_cancel():
 			state = moveset.walk
 			state_time = 0
 			face_opponent()
@@ -125,6 +128,11 @@ func hit_response(input: Dictionary):
 	if not $Hurtboxes.hit_flag:
 		return
 	# So, I was hit.
+
+	if state in [moveset.hitstun]:
+		combo_count += 1
+	else:
+		combo_count = 1
 
 	if can_block:
 		state_dict.hitstun = $Hurtboxes.hitstun
@@ -226,6 +234,7 @@ func _save_state() -> Dictionary:
 		state = state,
 		state_time = state_time,
 		state_dict = state_dict.duplicate(),
+		combo_count = combo_count,
 	}
 	# return save
 
@@ -241,6 +250,7 @@ func _load_state(save: Dictionary) -> void:
 	state = save.state
 	state_time = save.state_time
 	state_dict = save.state_dict.duplicate(true)
+	combo_count = save.combo_count
 
 	$AnimationPlayer.play(state.animation(self))
 	$AnimationPlayer.seek(state_time, true)

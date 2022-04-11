@@ -14,7 +14,7 @@ resource_name = "Blockstun"
 length = 2.0
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
+tracks/0/path = NodePath("Visual/Character/Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -26,7 +26,7 @@ tracks/0/keys = {
 "values": [ 1 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:position")
+tracks/1/path = NodePath("Visual/Character/Sprite:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -41,7 +41,7 @@ tracks/1/keys = {
 [sub_resource type="Animation" id=30]
 resource_name = "Crouch"
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
+tracks/0/path = NodePath("Visual/Character/Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -58,7 +58,7 @@ resource_name = "Hitstun"
 length = 2.0
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
+tracks/0/path = NodePath("Visual/Character/Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -70,7 +70,7 @@ tracks/0/keys = {
 "values": [ 3 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:rotation_degrees")
+tracks/1/path = NodePath("Visual/Character/Sprite:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -86,7 +86,7 @@ tracks/1/keys = {
 resource_name = "Idle"
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
+tracks/0/path = NodePath("Visual/Character/Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -103,7 +103,7 @@ resource_name = "Jump"
 length = 15.0
 step = 1.0
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:rotation_degrees")
+tracks/0/path = NodePath("Visual/Character/Sprite:rotation_degrees")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -125,7 +125,7 @@ resource_name = "RESET"
 loop = true
 step = 1.0
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:rotation_degrees")
+tracks/0/path = NodePath("Visual/Character/Sprite:rotation_degrees")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -137,7 +137,7 @@ tracks/0/keys = {
 "values": [ 0.0 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:frame")
+tracks/1/path = NodePath("Visual/Character/Sprite:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -161,7 +161,7 @@ tracks/2/keys = {
 "values": [ true ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Sprite:self_modulate")
+tracks/3/path = NodePath("Visual/Character/Sprite:self_modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -173,7 +173,7 @@ tracks/3/keys = {
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("Sprite:modulate")
+tracks/4/path = NodePath("Visual/Character/Sprite:modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -185,7 +185,7 @@ tracks/4/keys = {
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("Sprite:flips")
+tracks/5/path = NodePath("Visual/Character:flips")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -197,7 +197,7 @@ tracks/5/keys = {
 "values": [ 0.0 ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("Sprite:flip_h")
+tracks/6/path = NodePath("Visual/Character/Sprite:flip_h")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -209,7 +209,7 @@ tracks/6/keys = {
 "values": [ false ]
 }
 tracks/7/type = "value"
-tracks/7/path = NodePath("Sprite:position")
+tracks/7/path = NodePath("Visual/Character/Sprite:position")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
@@ -265,7 +265,7 @@ length = 20.0
 loop = true
 step = 1.0
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
+tracks/0/path = NodePath("Visual/Character/Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -282,16 +282,16 @@ resource_name = "cLight"
 length = 12.0
 step = 1.0
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
+tracks/0/path = NodePath("Visual/Character/Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 4 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 5, 6 ]
+"values": [ 5 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Hitboxes/SGCollisionShape2D:disabled")
@@ -306,7 +306,7 @@ tracks/1/keys = {
 "values": [ true, false, true ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Sprite:flips")
+tracks/2/path = NodePath("Visual/Character:flips")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -349,7 +349,7 @@ resource_name = "jLight"
 length = 1000.0
 step = 1.0
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
+tracks/0/path = NodePath("Visual/Character/Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -373,7 +373,7 @@ tracks/1/keys = {
 "values": [ true, false ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Sprite:scale")
+tracks/2/path = NodePath("Visual/Character/Sprite:scale")
 tracks/2/interp = 0
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -390,7 +390,7 @@ resource_name = "sHeavy"
 length = 40.0
 step = 1.0
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
+tracks/0/path = NodePath("Visual/Character/Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -414,7 +414,7 @@ tracks/1/keys = {
 "values": [ true, false, true, false, true ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Sprite:flips")
+tracks/2/path = NodePath("Visual/Character:flips")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -425,25 +425,13 @@ tracks/2/keys = {
 "update": 0,
 "values": [ 0.0, 0.0, 1.0, 2.0, 3.0, 4.0 ]
 }
-tracks/3/type = "value"
-tracks/3/path = NodePath("Sprite:flip_h")
+tracks/3/type = "method"
+tracks/3/path = NodePath("Hitboxes")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 14, 20, 28 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ false, true, false, true ]
-}
-tracks/4/type = "method"
-tracks/4/path = NodePath("Hitboxes")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
 "times": PoolRealArray( 17 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
@@ -457,16 +445,16 @@ resource_name = "sLight"
 length = 12.0
 step = 1.0
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
+tracks/0/path = NodePath("Visual/Character/Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 4 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 5, 6 ]
+"values": [ 5 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Hitboxes/SGCollisionShape2D:disabled")
@@ -481,7 +469,7 @@ tracks/1/keys = {
 "values": [ true, false, true ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Sprite:flips")
+tracks/2/path = NodePath("Visual/Character:flips")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -505,6 +493,7 @@ moveset = ExtResource( 5 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Idle"
+playback_speed = 60.0
 method_call_mode = 1
 anims/Blockstun = SubResource( 31 )
 anims/Crouch = SubResource( 30 )
@@ -522,19 +511,21 @@ __meta__ = {
 "_editor_description_": "Do NOT make a NetworkAnimationPlayer. This is already controlled by the Fighter."
 }
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="Debug" type="Node2D" parent="."]
 
-[node name="Label" type="Label" parent="Node2D"]
+[node name="Label" type="Label" parent="Debug"]
 margin_right = 40.0
 margin_bottom = 14.0
 rect_scale = Vector2( 0.5, 0.5 )
 text = "hello"
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="Visual" type="Node2D" parent="."]
+
+[node name="Character" type="Node2D" parent="Visual"]
+script = ExtResource( 6 )
+
+[node name="Sprite" type="Sprite" parent="Visual/Character"]
 position = Vector2( 0, -50 )
 scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 3 )

@@ -1,8 +1,6 @@
 extends Resource
 class_name State
 
-var land_cancels = true
-
 
 # Define transitions from all states IN.
 # Has priority over transition
@@ -41,6 +39,10 @@ func attack_level() -> int:
 
 func can_block() -> bool:
 	return false
+
+
+func can_land_cancel() -> bool:
+	return true
 
 
 # Helpers

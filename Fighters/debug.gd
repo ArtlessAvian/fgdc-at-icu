@@ -23,6 +23,7 @@ func _process(delta):
 	eee += "\n" + str(f.state_dict)
 	eee += "\n" + str(f.get_node("InputHistory")._stick_history)
 	eee += "\n" + str(f.get_node("InputHistory")._hold_total)
+	eee += "\n" + str(f.combo_count)
 
 	self.text = eee
 
