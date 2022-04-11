@@ -66,10 +66,20 @@ func _network_preprocess(input: Dictionary) -> void:
 
 
 func _network_postprocess(input: Dictionary) -> void:
+	if input.empty():
+		# TODO: Better fix. Crashes on game start otherwise! :(
+		input = NULL_INPUT
+		printerr("received empty input on tick ", SyncManager.current_tick)
+
 	hit_response(input)  # avoid p1 bias.
 
 
 func state_process(input: Dictionary):
+	if input.empty():
+		# TODO: Better fix. Crashes on game start otherwise! :(
+		input = NULL_INPUT
+		printerr("received empty input on tick ", SyncManager.current_tick)
+
 	if state != null:
 		var new_state = state.transition(self, moveset, input)
 		if new_state != null:
