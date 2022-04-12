@@ -1,13 +1,10 @@
 extends "../State.gd"
 
-export(int) var damage = 1
-export(String) var animation_name
-export(bool) var crouching = false
-export(String, "light", "heavy") var button = "light"
+export(Resource) var attack_data = null
 
 export(int) var attack_level = 0
 
-# func transition_into(f: Fighter, moveset: Moveset, input: Dictionary) -> bool:
+# func transition_into(f: Fighter, moveset: Moveset, input: Dictionary) -> bool16:
 # 	if f.state in [moveset.walk, moveset.crouch]:
 # 		if input.get(button):
 # 			if input.stick_y < 0 == crouching:
@@ -21,13 +18,17 @@ export(int) var attack_level = 0
 # 	return false
 
 
+func ensure_not_null():
+	if attack_data == null:
+		attack_data = load("res://addons/FGDC-Datatypes/AttackData.gd").new()
+		printerr("oh no, the " + resource_path + ", its broken")
+
+
 func transition_out(f: Fighter, moveset: Moveset, input: Dictionary) -> State:
 	# FAILSAFES.
-	if animation_name == null:
-		printerr("Move has no animation!")
-		return moveset.walk
+	ensure_not_null()
 
-	if f.get_node("AnimationPlayer").get_animation(animation_name) == null:
+	if f.get_node("AnimationPlayer").get_animation(attack_data.animation_name) == null:
 		printerr("Animation does not exist!")
 		return moveset.walk
 
@@ -36,7 +37,7 @@ func transition_out(f: Fighter, moveset: Moveset, input: Dictionary) -> State:
 	if attack != null:
 		return attack
 
-	if f.state_time > f.get_node("AnimationPlayer").get_animation(animation_name).length:
+	if f.state_time > attack_data.startup + attack_data.active + attack_data.recovery:
 		if not f.grounded:
 			return moveset.jump
 		if input.stick_y < 0:
@@ -53,11 +54,16 @@ func run(f: Fighter, input: Dictionary) -> void:
 		f.vel.x = 0
 	# f.vel.x -= sign(f.vel.x) * (65536 >> 2)  # crude "friction"
 
+	ensure_not_null()
+	attack_data.do_hitboxy_stuff(f.state_time, f.get_node("Hitboxes"))
+	print(f.state_time)
+
 	pass
 
 
 func animation(f: Fighter) -> String:
-	return animation_name
+	ensure_not_null()
+	return attack_data.animation_name
 
 
 func attack_level() -> int:

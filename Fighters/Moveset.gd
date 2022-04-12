@@ -1,5 +1,6 @@
 extends Resource
 class_name Moveset
+tool
 
 export(int) var air_actions = 5
 

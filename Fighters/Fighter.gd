@@ -262,6 +262,8 @@ func _load_state(save: Dictionary) -> void:
 	state_dict = save.state_dict.duplicate(true)
 	combo_count = save.combo_count
 
+	$AnimationPlayer.play("RESET")
+	$AnimationPlayer.advance(1000)
 	$AnimationPlayer.play(state.animation(self))
 	$AnimationPlayer.seek(state_time, true)
 	$Hitboxes.sync_to_physics_engine()

@@ -51,15 +51,15 @@ func tick():
 
 
 func _save_state() -> Dictionary:
-	var disabled_children = {}
-	for child in get_children():
-		disabled_children[child.name] = child.disabled
+#	var disabled_children = {}
+#	for child in get_children():
+#		disabled_children[child.name] = child.disabled
 
 	# var save =
 	return {
 		attack_number = attack_number,
 		multihit = multihit,
-		disabled_children = disabled_children
+		#		disabled_children = disabled_children
 	}
 
 	# if not get_parent().is_p2:
@@ -72,8 +72,8 @@ func _load_state(save: Dictionary) -> void:
 	attack_number = save.attack_number
 	multihit = save.multihit
 
-	for name in save.disabled_children:
-		get_node(name).disabled = save.disabled_children[name]
+#	for name in save.disabled_children:
+#		get_node(name).disabled = save.disabled_children[name]
 
 	sync_to_physics_engine()
 

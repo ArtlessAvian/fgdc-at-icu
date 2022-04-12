@@ -33,13 +33,10 @@ func _network_postprocess(input: Dictionary) -> void:
 
 
 func _save_state() -> Dictionary:
-	# saving state-machine-state in rollback-state should be fine, they're mostly constants.
-	# var save =
 	return {
 		x = fixed_position.x,
 		y = fixed_position.y,
 	}
-	# return save
 
 
 func _load_state(save: Dictionary) -> void:

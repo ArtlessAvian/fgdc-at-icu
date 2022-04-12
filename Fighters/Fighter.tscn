@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Fighters/Fighter.gd" type="Script" id=1]
 [ext_resource path="res://Fighters/debug.gd" type="Script" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Fighters/FighterSprite.gd" type="Script" id=6]
 [ext_resource path="res://Fighters/Hitboxes.gd" type="Script" id=7]
 [ext_resource path="res://Fighters/InputHistory.gd" type="Script" id=8]
+[ext_resource path="res://Fighters/HitboxHelper.gd" type="Script" id=9]
 
 [sub_resource type="Animation" id=31]
 resource_name = "Blockstun"
@@ -298,7 +299,7 @@ tracks/1/path = NodePath("Hitboxes/SGCollisionShape2D:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
-tracks/1/enabled = true
+tracks/1/enabled = false
 tracks/1/keys = {
 "times": PoolRealArray( 0, 5, 6 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
@@ -322,7 +323,7 @@ tracks/3/path = NodePath("Hitboxes/SGCollisionShape2D:fixed_position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
-tracks/3/enabled = true
+tracks/3/enabled = false
 tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -335,7 +336,7 @@ tracks/4/path = NodePath("Hitboxes/SGCollisionShape2D:shape:extents")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
-tracks/4/enabled = true
+tracks/4/enabled = false
 tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -365,7 +366,7 @@ tracks/1/path = NodePath("Hitboxes/SGCollisionShape2D:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
-tracks/1/enabled = true
+tracks/1/enabled = false
 tracks/1/keys = {
 "times": PoolRealArray( 0, 5 ),
 "transitions": PoolRealArray( 1, 1 ),
@@ -406,7 +407,7 @@ tracks/1/path = NodePath("Hitboxes/SGCollisionShape2D:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
-tracks/1/enabled = true
+tracks/1/enabled = false
 tracks/1/keys = {
 "times": PoolRealArray( 0, 9, 13, 21, 24 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
@@ -461,7 +462,7 @@ tracks/1/path = NodePath("Hitboxes/SGCollisionShape2D:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
-tracks/1/enabled = true
+tracks/1/enabled = false
 tracks/1/keys = {
 "times": PoolRealArray( 0, 5, 6 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
@@ -526,12 +527,11 @@ script = ExtResource( 2 )
 script = ExtResource( 6 )
 
 [node name="Sprite" type="Sprite" parent="Visual/Character"]
-position = Vector2( 0, -50 )
+position = Vector2( -1, -51 )
 scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 3 )
 hframes = 8
 vframes = 8
-script = ExtResource( 6 )
 
 [node name="Hitboxes" type="SGArea2D" parent="." groups=["hitboxes", "network_sync"]]
 collision_mask = 0
@@ -554,6 +554,9 @@ script = ExtResource( 4 )
 position = Vector2( 0, -50 )
 fixed_position_y = -3276800
 shape = SubResource( 34 )
+
+[node name="[EDITOR]HitboxHelper" type="Node" parent="."]
+script = ExtResource( 9 )
 
 [node name="InputHistory" type="Node" parent="." groups=["network_sync"]]
 script = ExtResource( 8 )
