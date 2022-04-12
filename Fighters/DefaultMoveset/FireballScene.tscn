@@ -15,7 +15,7 @@ script = ExtResource( 2 )
 scale = Vector2( 0.1, 0.1 )
 texture = ExtResource( 1 )
 
-[node name="Hitboxes" type="SGArea2D" parent="."]
+[node name="Hitboxes" type="SGArea2D" parent="." groups=["hitboxes", "network_sync"]]
 script = ExtResource( 3 )
 
 [node name="SGCollisionShape2D" type="SGCollisionShape2D" parent="Hitboxes"]

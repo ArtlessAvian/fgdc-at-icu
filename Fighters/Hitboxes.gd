@@ -57,7 +57,9 @@ func _save_state() -> Dictionary:
 
 	# var save =
 	return {
-		attack_number = attack_number, multihit = multihit, disabled_children = disabled_children
+		attack_number = attack_number,
+		multihit = multihit,
+		disabled_children = disabled_children
 	}
 
 	# if not get_parent().is_p2:
