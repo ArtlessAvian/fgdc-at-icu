@@ -66,6 +66,22 @@ func transition_into_jump(f: Fighter, moveset: Moveset, input: Dictionary) -> St
 	return null
 
 
+func transition_into_double_jump(f: Fighter, moveset: Moveset, input: Dictionary) -> State:
+	if f.air_actions > 0:
+		if input.just_stick_y > 0:
+			if input.stick_x == 0:
+				f.vel.x = 0
+			if input.stick_x < 0 and f.vel.x > -5 * 65536:
+				f.vel.x = -5 * 65536
+			if input.stick_x > 0 and f.vel.x < 5 * 65536:
+				f.vel.x = 5 * 65536
+
+			f.vel.y = 6 * 65536
+			f.air_actions -= 1
+			return moveset.jump
+	return null
+
+
 func transition_into_attack(f: Fighter, moveset: Moveset, input: Dictionary) -> State:
 	if not f.grounded:
 		if input.heavy and self.attack_level() < moveset.j_heavy.attack_level():

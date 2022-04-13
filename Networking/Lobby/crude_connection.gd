@@ -47,7 +47,7 @@ func _on_Local_button_up():
 	get_tree().network_peer = peer
 
 	$CanvasLayer/MarginContainer.visible = false
-	$Game/Fighter2.is_dummy = true
+	$Game/Fighter2.controlled_by = "c0"
 
 	SyncManager.start()
 

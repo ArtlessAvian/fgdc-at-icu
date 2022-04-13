@@ -3,7 +3,7 @@ class_name AttackData
 
 export(String) var animation_name = "sLight"
 
-export(String, "LOW", "HIGH") var guard = 0
+export(String, "MID", "LOW", "HIGH") var guard = 0
 
 export(int) var startup = 4
 export(int) var active = 2

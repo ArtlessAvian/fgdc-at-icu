@@ -56,7 +56,7 @@ func run(f: Fighter, input: Dictionary) -> void:
 
 	ensure_not_null()
 	attack_data.do_hitboxy_stuff(f.state_time, f.get_node("Hitboxes"))
-	print(f.state_time)
+	# print(f.state_time)
 
 	pass
 

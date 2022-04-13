@@ -18,7 +18,7 @@ var grounded = true
 
 var state: Resource
 var state_time = 0
-var air_actions
+var air_actions = 0
 var state_dict: Dictionary = {}
 
 var combo_count = 0

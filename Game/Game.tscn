@@ -20,11 +20,13 @@ __meta__ = {
 [node name="Fighter1" parent="." instance=ExtResource( 1 )]
 position = Vector2( -100, 0 )
 fixed_position_x = -6553600
+fixed_position_y = 0
 opponent_path = NodePath("../Fighter2")
 
 [node name="Fighter2" parent="." instance=ExtResource( 1 )]
 position = Vector2( 100, 0 )
 fixed_position_x = 6553600
+fixed_position_y = 0
 is_p2 = true
 opponent_path = NodePath("../Fighter1")
 

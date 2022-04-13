@@ -259,6 +259,18 @@ tracks/10/keys = {
 "values": [ Object(SGFixedVector2,"x":655360,"y":655360,"script":null)
  ]
 }
+tracks/11/type = "value"
+tracks/11/path = NodePath("Visual/Character/Sprite:scale")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.2, 0.2 ) ]
+}
 
 [sub_resource type="Animation" id=8]
 resource_name = "Walk"
@@ -343,6 +355,30 @@ tracks/4/keys = {
 "update": 1,
 "values": [ Object(SGFixedVector2,"x":655360,"y":655360,"script":null)
  ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Visual/Character/Sprite:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( 0.4, 0.1 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Visual/Character/Sprite:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( 0, -25 ) ]
 }
 
 [sub_resource type="Animation" id=28]
@@ -489,6 +525,9 @@ extents_x = 1376256
 extents_y = 3276800
 
 [node name="Fighter" type="SGFixedNode2D" groups=["network_sync"]]
+position = Vector2( -1, -1 )
+fixed_position_x = -65536
+fixed_position_y = -65536
 script = ExtResource( 1 )
 moveset = ExtResource( 5 )
 
@@ -520,14 +559,18 @@ margin_bottom = 14.0
 rect_scale = Vector2( 0.5, 0.5 )
 text = "hello"
 script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Visual" type="Node2D" parent="."]
 
 [node name="Character" type="Node2D" parent="Visual"]
+scale = Vector2( -1, 1 )
 script = ExtResource( 6 )
 
 [node name="Sprite" type="Sprite" parent="Visual/Character"]
-position = Vector2( -1, -51 )
+position = Vector2( 0, -50 )
 scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 3 )
 hframes = 8
@@ -557,6 +600,16 @@ shape = SubResource( 34 )
 
 [node name="[EDITOR]HitboxHelper" type="Node" parent="."]
 script = ExtResource( 9 )
+
+[node name="Label2" type="Label" parent="[EDITOR]HitboxHelper"]
+margin_left = -134.0
+margin_top = 31.0
+margin_right = 184.0
+margin_bottom = 45.0
+text = "res://Fighters/DefaultMoveset/DefaultCrouchingLight.tres::1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="InputHistory" type="Node" parent="." groups=["network_sync"]]
 script = ExtResource( 8 )

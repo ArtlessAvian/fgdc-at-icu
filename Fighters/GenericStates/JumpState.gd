@@ -14,18 +14,9 @@ func transition_out(f: Fighter, moveset: Moveset, input: Dictionary) -> State:
 			f.air_actions -= 1
 			return moveset.airdash
 
-	if f.air_actions > 0:
-		if input.just_stick_y > 0:
-			if input.stick_x == 0:
-				f.vel.x = 0
-			if input.stick_x < 0 and f.vel.x > -5 * 65536:
-				f.vel.x = -5 * 65536
-			if input.stick_x > 0 and f.vel.x < 5 * 65536:
-				f.vel.x = 5 * 65536
-
-			f.vel.y = 6 * 65536
-			f.air_actions -= 1
-			return self
+	var double_jump = transition_into_double_jump(f, moveset, input)
+	if double_jump != null:
+		return double_jump
 
 	return null
 

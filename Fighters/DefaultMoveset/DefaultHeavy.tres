@@ -1,7 +1,21 @@
-[gd_resource type="Resource" load_steps=2 format=2]
+[gd_resource type="Resource" load_steps=4 format=2]
 
 [ext_resource path="res://Fighters/GenericStates/NormalAttackState.gd" type="Script" id=1]
+[ext_resource path="res://addons/FGDC-Datatypes/AttackData.gd" type="Script" id=2]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 2 )
+animation_name = "sHeavy"
+guard = "0"
+startup = 9
+active = 4
+recovery = 40
+hitstun = 12
+blockstun = 12
+hitstop = 5
+damage = 1
 
 [resource]
 script = ExtResource( 1 )
+attack_data = SubResource( 1 )
 attack_level = 2
