@@ -12,10 +12,11 @@ var multihit = 0
 
 
 func _ready():
-	for uncast in get_children():
-		var child: SGCollisionShape2D = uncast
-		var shape: SGRectangleShape2D = child.shape
-		child.shape = child.shape.duplicate(true)
+	if not Engine.editor_hint:
+		for uncast in get_children():
+			var child: SGCollisionShape2D = uncast
+			var shape: SGRectangleShape2D = child.shape
+			child.shape = child.shape.duplicate(true)
 
 	add_to_group("hitboxes")
 	add_to_group("network_sync")

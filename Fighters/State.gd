@@ -90,6 +90,7 @@ func transition_into_attack(f: Fighter, moveset: Moveset, input: Dictionary) -> 
 		if input.light and self.attack_level() < moveset.j_light.attack_level():
 			f.get_node("Hitboxes").new_attack()
 			return moveset.j_light
+		return null
 
 	if input.stick_y < 0:
 		if input.heavy and self.attack_level() < moveset.c_heavy.attack_level():

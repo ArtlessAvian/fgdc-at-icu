@@ -1,7 +1,7 @@
 extends Resource
 class_name AttackData
 
-export(String) var animation_name = "sLight"
+export(String) var animation_name = "Walk"
 
 export(String, "MID", "LOW", "HIGH") var guard = 0
 

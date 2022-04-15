@@ -299,7 +299,7 @@ tracks/0/path = NodePath("Visual/Character/Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
-tracks/0/enabled = true
+tracks/0/enabled = false
 tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -335,12 +335,12 @@ tracks/3/path = NodePath("Hitboxes/SGCollisionShape2D:fixed_position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
-tracks/3/enabled = false
+tracks/3/enabled = true
 tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ Object(SGFixedVector2,"x":2555904,"y":-3276800,"script":null)
+"values": [ Object(SGFixedVector2,"x":2555904,"y":0,"script":null)
  ]
 }
 tracks/4/type = "value"
@@ -348,12 +348,12 @@ tracks/4/path = NodePath("Hitboxes/SGCollisionShape2D:shape:extents")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
-tracks/4/enabled = false
+tracks/4/enabled = true
 tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ Object(SGFixedVector2,"x":655360,"y":655360,"script":null)
+"values": [ Object(SGFixedVector2,"x":3276800,"y":655360,"script":null)
  ]
 }
 tracks/5/type = "value"
@@ -517,6 +517,32 @@ tracks/2/keys = {
 "update": 0,
 "values": [ 0.0, 1.0 ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("Hitboxes/SGCollisionShape2D:shape:extents")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Object(SGFixedVector2,"x":655360,"y":655360,"script":null)
+ ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Hitboxes/SGCollisionShape2D:fixed_position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Object(SGFixedVector2,"x":2555904,"y":-3276800,"script":null)
+ ]
+}
 
 [sub_resource type="SGRectangleShape2D" id=33]
 
@@ -533,6 +559,7 @@ moveset = ExtResource( 5 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Idle"
+playback_process_mode = 0
 playback_speed = 60.0
 method_call_mode = 1
 anims/Blockstun = SubResource( 31 )
@@ -566,7 +593,6 @@ __meta__ = {
 [node name="Visual" type="Node2D" parent="."]
 
 [node name="Character" type="Node2D" parent="Visual"]
-scale = Vector2( -1, 1 )
 script = ExtResource( 6 )
 
 [node name="Sprite" type="Sprite" parent="Visual/Character"]
