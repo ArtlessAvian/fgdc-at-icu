@@ -1,0 +1,182 @@
+[gd_scene load_steps=26 format=2]
+
+[ext_resource path="res://Title/speen.gd" type="Script" id=1]
+[ext_resource path="res://Title/Assets/explosion/frame_07_delay-0.01s.png" type="Texture" id=2]
+[ext_resource path="res://Title/Assets/explosion/frame_08_delay-0.01s.png" type="Texture" id=3]
+[ext_resource path="res://Title/Assets/explosion/frame_15_delay-0.01s.png" type="Texture" id=4]
+[ext_resource path="res://Title/Assets/explosion/frame_10_delay-0.01s.png" type="Texture" id=5]
+[ext_resource path="res://Title/Assets/explosion/frame_14_delay-0.01s.png" type="Texture" id=6]
+[ext_resource path="res://Title/Assets/explosion/frame_09_delay-0.01s.png" type="Texture" id=7]
+[ext_resource path="res://Title/Assets/explosion/frame_02_delay-0.01s.png" type="Texture" id=8]
+[ext_resource path="res://Title/Assets/explosion/frame_04_delay-0.01s.png" type="Texture" id=9]
+[ext_resource path="res://Title/Assets/explosion/frame_05_delay-0.01s.png" type="Texture" id=10]
+[ext_resource path="res://Title/Assets/explosion/frame_06_delay-0.01s.png" type="Texture" id=11]
+[ext_resource path="res://Title/Assets/popsicle.png" type="Texture" id=12]
+[ext_resource path="res://Title/Assets/explosion/frame_12_delay-0.01s.png" type="Texture" id=13]
+[ext_resource path="res://Title/Assets/primary_3ADocuments_2FFart_2Ffgdc_2Fmaxsweep.png" type="Texture" id=14]
+[ext_resource path="res://Title/Assets/explosion/frame_11_delay-0.01s.png" type="Texture" id=15]
+[ext_resource path="res://Title/Assets/explosion/frame_13_delay-0.01s.png" type="Texture" id=16]
+[ext_resource path="res://Title/Assets/explosion/frame_00_delay-0.01s.png" type="Texture" id=17]
+[ext_resource path="res://Title/Assets/primary_3ADocuments_2FFart_2Ffgdc_2Flippohurt.png" type="Texture" id=18]
+[ext_resource path="res://Title/Assets/explosion/frame_03_delay-0.01s.png" type="Texture" id=19]
+[ext_resource path="res://Title/Assets/explosion/frame_01_delay-0.01s.png" type="Texture" id=20]
+[ext_resource path="res://Title/Assets/explosion/frame_16_delay-0.01s.png" type="Texture" id=21]
+
+[sub_resource type="AtlasTexture" id=1]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 1000, 1407 )
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ SubResource( 1 ), ExtResource( 7 ), ExtResource( 5 ), ExtResource( 15 ), ExtResource( 13 ), ExtResource( 16 ), ExtResource( 6 ), ExtResource( 4 ), ExtResource( 21 ), ExtResource( 17 ), ExtResource( 20 ), ExtResource( 8 ), ExtResource( 19 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 2 ) ],
+"loop": false,
+"name": "default",
+"speed": 30.0
+} ]
+
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:zrotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -0.5 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("AnimatedSprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "thething"
+length = 2.0
+loop = true
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:zrotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ -0.5, 0.5, 0.5 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("AnimatedSprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.166667 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[node name="Node2D" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 3000.0
+margin_bottom = 3000.0
+color = Color( 0.545098, 0.690196, 0.976471, 1 )
+
+[node name="Sprite2" type="Sprite" parent="."]
+position = Vector2( 577, 374 )
+texture = ExtResource( 18 )
+offset = Vector2( 25, 0 )
+
+[node name="Sprite3" type="Sprite" parent="Sprite2"]
+modulate = Color( 0, 0, 0, 0.509804 )
+show_behind_parent = true
+position = Vector2( 5, 5 )
+texture = ExtResource( 18 )
+offset = Vector2( 25, 0 )
+
+[node name="Sprite" type="Sprite" parent="Sprite2"]
+show_behind_parent = true
+position = Vector2( 0, 150 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 12 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 791, 387 )
+rotation = 0.376991
+scale = Vector2( -1, 1 )
+texture = ExtResource( 14 )
+offset = Vector2( 50, 0 )
+script = ExtResource( 1 )
+zrotation = -0.5
+
+[node name="Sprite3" type="Sprite" parent="Sprite"]
+modulate = Color( 0, 0, 0, 0.509804 )
+show_behind_parent = true
+position = Vector2( -5, 5 )
+texture = ExtResource( 14 )
+offset = Vector2( 50, 0 )
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="Sprite"]
+show_behind_parent = true
+position = Vector2( 0, 150 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 12 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 641, 411 )
+scale = Vector2( 0.15, 0.15 )
+frames = SubResource( 2 )
+playing = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "thething"
+anims/RESET = SubResource( 4 )
+anims/thething = SubResource( 3 )
