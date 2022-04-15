@@ -22,6 +22,7 @@ var air_actions = 0
 var state_dict: Dictionary = {}
 
 var combo_count = 0
+var hitstop = 0
 
 
 func _ready():
@@ -43,43 +44,37 @@ func _ready():
 	state = moveset.walk
 
 
-# # Stuff happening independently of the other player.
+# Stuff happening independently of the other player.
 func _network_preprocess(input: Dictionary) -> void:
 	if input.empty():
 		# TODO: Better fix. Crashes on game start otherwise! :(
-		input = NULL_INPUT
+		for key in NULL_INPUT.keys():
+			input[key] = NULL_INPUT[key]
 		printerr("received empty input on tick ", SyncManager.current_tick)
 
 	$InputHistory.new_input(input)
+
+	if hitstop > 0:
+		return
 
 	state_process(input)
 	move()
 	anim_process()
 
-	if $InputHistory.detect_motion([6, 5, 6], fixed_scale.x < 0, 8):
-		modulate = Color8(128, 255, 255)
-	else:
-		modulate = Color.white
 
-
-# # Process happens. The game handles stuff dependent on both players.
+# Process happens. The game handles stuff dependent on both players.
 
 
 func _network_postprocess(input: Dictionary) -> void:
-	if input.empty():
-		# TODO: Better fix. Crashes on game start otherwise! :(
-		input = NULL_INPUT
-		printerr("received empty input on tick ", SyncManager.current_tick)
+	# technically, the hitstop will have decremented by now, but, whatever?
+	if hitstop > 0:
+		hitstop -= 1
+		return
 
 	hit_response(input)  # avoid p1 bias.
 
 
 func state_process(input: Dictionary):
-	if input.empty():
-		# TODO: Better fix. Crashes on game start otherwise! :(
-		input = NULL_INPUT
-		printerr("received empty input on tick ", SyncManager.current_tick)
-
 	if state != null:
 		var new_state = state.transition(self, moveset, input)
 		if new_state != null:
@@ -138,6 +133,8 @@ func hit_response(input: Dictionary):
 	if not $Hurtboxes.hit_flag:
 		return
 	# So, I was hit.
+
+	hitstop = 2
 
 	if state in [moveset.hitstun]:
 		combo_count += 1
@@ -245,6 +242,7 @@ func _save_state() -> Dictionary:
 		state_time = state_time,
 		state_dict = state_dict.duplicate(),
 		combo_count = combo_count,
+		hitstop = hitstop
 	}
 	# return save
 
@@ -261,6 +259,7 @@ func _load_state(save: Dictionary) -> void:
 	state_time = save.state_time
 	state_dict = save.state_dict.duplicate(true)
 	combo_count = save.combo_count
+	hitstop = save.hitstop
 
 	$AnimationPlayer.play("RESET")
 	$AnimationPlayer.advance(1000)

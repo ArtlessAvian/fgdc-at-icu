@@ -174,7 +174,7 @@ tracks/3/keys = {
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("Visual/Character/Sprite:modulate")
+tracks/4/path = NodePath("Visual/Character:modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -433,10 +433,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 8, 28 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 27 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ 5, 6, 7 ]
+"values": [ 5, 7 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Hitboxes/SGCollisionShape2D:disabled")
@@ -457,24 +457,22 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 6, 10, 16, 24, 30 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 6, 24, 30 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ 0.0, 0.0, 1.0, 2.0, 3.0, 4.0 ]
+"values": [ 0.0, 0.0, 5.0, 6.0 ]
 }
-tracks/3/type = "method"
-tracks/3/path = NodePath("Hitboxes")
+tracks/3/type = "value"
+tracks/3/path = NodePath("Visual/Character/Sprite:flip_h")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 17 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "tick"
-} ]
+"times": PoolRealArray( 0, 27 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
 }
 
 [sub_resource type="Animation" id=6]
@@ -522,7 +520,7 @@ tracks/3/path = NodePath("Hitboxes/SGCollisionShape2D:shape:extents")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
-tracks/3/enabled = true
+tracks/3/enabled = false
 tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -632,7 +630,7 @@ margin_left = -134.0
 margin_top = 31.0
 margin_right = 184.0
 margin_bottom = 45.0
-text = "res://Fighters/DefaultMoveset/DefaultCrouchingLight.tres::1"
+text = "No attack loaded!"
 __meta__ = {
 "_edit_use_anchors_": false
 }

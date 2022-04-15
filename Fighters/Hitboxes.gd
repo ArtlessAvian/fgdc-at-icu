@@ -46,9 +46,11 @@ func new_attack():
 	multihit = 0
 
 
-func tick():
-	multihit += 1
-	print("tick!!")
+export(Resource) var hit_data
+
+
+func get_hit_data():
+	return hit_data
 
 
 func _save_state() -> Dictionary:

@@ -37,7 +37,7 @@ func transition_out(f: Fighter, moveset: Moveset, input: Dictionary) -> State:
 	if attack != null:
 		return attack
 
-	if f.state_time > attack_data.startup + attack_data.active + attack_data.recovery:
+	if f.state_time > attack_data.animation_length():
 		if not f.grounded:
 			return moveset.jump
 		if input.stick_y < 0:
@@ -55,7 +55,7 @@ func run(f: Fighter, input: Dictionary) -> void:
 	# f.vel.x -= sign(f.vel.x) * (65536 >> 2)  # crude "friction"
 
 	ensure_not_null()
-	attack_data.do_hitboxy_stuff(f.state_time, f.get_node("Hitboxes"))
+	attack_data.write_hitbox_positions(f.state_time, f.get_node("Hitboxes"))
 	# print(f.state_time)
 
 	pass

@@ -1,6 +1,8 @@
 extends Node
 tool
 
+var last_t = -120312
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -13,7 +15,7 @@ func _process(delta):
 	var ani_player = get_node("../AnimationPlayer")
 	var moveset = get_parent().moveset
 
-	var attack_data = get_attack_data(ani_player, moveset)
+	var attack_data: AttackData = get_attack_data(ani_player, moveset)
 	if attack_data == null:
 		$Label2.text = "No attack loaded!"
 		return
@@ -21,12 +23,11 @@ func _process(delta):
 	$Label2.text = attack_data.resource_path
 
 	var t = ani_player.current_animation_position
+	if t == last_t:
+		return
+	last_t = t
 
-	get_node("../Hitboxes/SGCollisionShape2D").disabled = (
-		t < attack_data.startup
-		or t >= attack_data.startup + attack_data.active
-	)
-	# print(ani_player.current_animation_position)
+	attack_data.write_hitbox_positions(t, get_node("../Hitboxes"))
 
 
 func get_attack_data(ani_player: AnimationPlayer, moveset: Moveset):
@@ -40,10 +41,7 @@ func get_attack_data(ani_player: AnimationPlayer, moveset: Moveset):
 
 	for state in moveset.all_states():
 		var some_data = state.get("attack_data")
-		if (
-			some_data != null
-			and some_data.animation_name == ani_player.assigned_animation
-		):
+		if some_data != null and some_data.animation_name == ani_player.assigned_animation:
 			attack_data = some_data
 			break
 
