@@ -8,6 +8,18 @@ We do that by making the physics fixed point, since floats are non deterministic
 
 TODO: Explain the state machine, and how a default fighter works/how to implement a new fighter
 
+To make a new fighter:
+We have a base scene for the default Fighter (Fighter.tscn), that we can duplicate to make another one
+There are a couple of important data attacted to it that we have to change.
+
+For the animation player, you will probably have to delete and recreate it to have the correct animations.
+
+### the fighter moveset
+This is a Godot resource (.tres file). (For more information, https://docs.godotengine.org/en/stable/tutorials/scripting/resources.html)We do this by creating by making a default Godot resource file, and then set the script variable as Moveset.gd
+The resulting moveset resource has all the moves as resources as well, which you have to set.
+To make a move resource, you create a new default Godot resource, and set the script variable to the move state you want.
+(later on, you wont need to do this, and you can just create a new MovesetResource/MoveResource)
+
 ## Frame Data
 
 TODO: Explain the custom data types and resources used to implement attacks.
