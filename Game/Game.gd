@@ -1,7 +1,7 @@
 extends SGFixedNode2D
 
-const x_bound = 500 * 65565  # |x| can't go > x_bound
-const max_spacing = 500 * 65565
+const x_bound = 1000 * 65565  # |x| can't go > x_bound
+const max_spacing = 1000 * 65565
 
 # We save these so we don't use the players' velocities.
 var last_average: int = 0

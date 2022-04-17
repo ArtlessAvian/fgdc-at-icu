@@ -1,6 +1,6 @@
 extends "../State.gd"
 
-export(int) var speed = 7 * 65536
+export(int) var speed = 14 * 65536
 export(int) var length = 15
 
 

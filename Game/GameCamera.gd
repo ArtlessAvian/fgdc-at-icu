@@ -18,12 +18,12 @@ func _process(_delta):
 	self.position.x += fighter_two.position.x
 	self.position.x /= 2
 
-	self.position.x = clamp(self.position.x, -250, 250)
-	
+	self.position.x = clamp(self.position.x, -500, 500)
+
 	# zoom on distance
 	# var diff_x = max(abs(fighter_one.position.x - position.x), abs(fighter_two.position.x - position.x))
 	# var diff_y = fighter_one.position.y - fighter_two.position.y
-	
+
 	# var zoom_factor = 0.5
 	# if abs(diff_x) < 150:
 	# 	zoom_factor = 0.5 * diff_x/150
@@ -32,7 +32,7 @@ func _process(_delta):
 	self.position.y = min(fighter_one.position.y, fighter_two.position.y)
 
 	# clamp
-	self.position.y = min(-125, self.position.y)
+	self.position.y = min(-250, self.position.y)
 
 	# self.zoom = Vector2.ONE * zoom_factor
 

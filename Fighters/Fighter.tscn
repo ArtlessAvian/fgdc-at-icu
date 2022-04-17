@@ -236,7 +236,7 @@ tracks/7/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0, -50 ) ]
+"values": [ Vector2( 0, -100 ) ]
 }
 tracks/8/type = "value"
 tracks/8/path = NodePath("Hurtboxes/SGCollisionShape2D:disabled")
@@ -286,7 +286,7 @@ tracks/11/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0.2, 0.2 ) ]
+"values": [ Vector2( 0.4, 0.4 ) ]
 }
 
 [sub_resource type="Animation" id=8]
@@ -324,78 +324,40 @@ tracks/0/keys = {
 "values": [ 5 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Hitboxes/SGCollisionShape2D:disabled")
+tracks/1/path = NodePath("Visual/Character:flips")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
-tracks/1/enabled = false
+tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 5, 6 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 1,
-"values": [ true, false, true ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Visual/Character:flips")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
 "times": PoolRealArray( 2, 6 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ 0.0, 1.0 ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("Visual/Character/Sprite:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( 0.8, 0.2 ) ]
+}
 tracks/3/type = "value"
-tracks/3/path = NodePath("Hitboxes/SGCollisionShape2D:fixed_position")
+tracks/3/path = NodePath("Visual/Character/Sprite:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
-tracks/3/enabled = false
+tracks/3/enabled = true
 tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ Object(SGFixedVector2,"x":2555904,"y":0,"script":null)
- ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("Hitboxes/SGCollisionShape2D:shape:extents")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = false
-tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ Object(SGFixedVector2,"x":3276800,"y":655360,"script":null)
- ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("Visual/Character/Sprite:scale")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ Vector2( 0.4, 0.1 ) ]
-}
-tracks/6/type = "value"
-tracks/6/path = NodePath("Visual/Character/Sprite:position")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ Vector2( 0, -25 ) ]
+"values": [ Vector2( 0, -50 ) ]
 }
 
 [sub_resource type="Animation" id=28]
@@ -509,61 +471,25 @@ tracks/0/keys = {
 "values": [ 5 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Hitboxes/SGCollisionShape2D:disabled")
+tracks/1/path = NodePath("Visual/Character:flips")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
-tracks/1/enabled = false
+tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 5, 6 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 1,
-"values": [ true, false, true ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Visual/Character:flips")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
 "times": PoolRealArray( 2, 6 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ 0.0, 1.0 ]
 }
-tracks/3/type = "value"
-tracks/3/path = NodePath("Hitboxes/SGCollisionShape2D:shape:extents")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = false
-tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ Object(SGFixedVector2,"x":655360,"y":655360,"script":null)
- ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("Hitboxes/SGCollisionShape2D:fixed_position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = false
-tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ Object(SGFixedVector2,"x":2555904,"y":-3276800,"script":null)
- ]
-}
 
 [sub_resource type="SGRectangleShape2D" id=33]
+extents_x = 4718592
+extents_y = 5505024
 
 [sub_resource type="SGRectangleShape2D" id=36]
-extents_x = 1376256
-extents_y = 3276800
+extents_x = 2752512
+extents_y = 6553600
 
 [node name="Fighter" type="SGFixedNode2D" groups=["network_sync"]]
 position = Vector2( -1, -1 )
@@ -573,6 +499,9 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_lock_": true
 }
+fighter_spacing = 100
+fighter_height = 100
+fighter_gravity = 65536
 moveset = ExtResource( 5 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -602,22 +531,18 @@ __meta__ = {
 [node name="Label" type="Label" parent="Debug"]
 margin_right = 40.0
 margin_bottom = 14.0
-rect_scale = Vector2( 0.5, 0.5 )
+rect_scale = Vector2( 2, 2 )
 text = "hello"
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Visual" type="Node2D" parent="."]
 
 [node name="Character" type="Node2D" parent="Visual"]
-scale = Vector2( -0.707107, 1 )
 script = ExtResource( 6 )
 
 [node name="Sprite" type="Sprite" parent="Visual/Character"]
-position = Vector2( 0, -50 )
-scale = Vector2( 0.2, 0.2 )
+position = Vector2( 0, -100 )
+scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 3 )
 hframes = 8
 vframes = 8
@@ -630,11 +555,12 @@ __meta__ = {
 }
 
 [node name="SGCollisionShape2D" type="SGCollisionShape2D" parent="Hitboxes"]
-self_modulate = Color( 1, 0, 0, 1 )
-position = Vector2( 40, -50 )
-fixed_position_x = 2621440
-fixed_position_y = -3276800
+self_modulate = Color( 0.75, 0.75, 0.75, 1 )
+position = Vector2( 80, -100 )
+fixed_position_x = 5242880
+fixed_position_y = -6553600
 shape = SubResource( 33 )
+disabled = true
 
 [node name="Hurtboxes" type="SGArea2D" parent="." groups=["hurtboxes", "network_sync"]]
 collision_layer = 0
@@ -645,19 +571,20 @@ __meta__ = {
 }
 
 [node name="SGCollisionShape2D" type="SGCollisionShape2D" parent="Hurtboxes"]
-position = Vector2( 0, -50 )
-fixed_position_y = -3276800
+position = Vector2( 0, -100 )
+fixed_position_y = -6553600
 shape = SubResource( 36 )
 
 [node name="[EDITOR]HitboxHelper" type="Node" parent="."]
 script = ExtResource( 9 )
 
 [node name="Label2" type="Label" parent="[EDITOR]HitboxHelper"]
-margin_left = -134.0
-margin_top = 31.0
-margin_right = 184.0
-margin_bottom = 45.0
-text = "No attack loaded!"
+margin_left = -314.0
+margin_top = 50.0
+margin_right = 4.0
+margin_bottom = 64.0
+rect_scale = Vector2( 2, 2 )
+text = "res://Fighters/DefaultMoveset/DefaultHeavy.tres::1"
 
 [node name="InputHistory" type="Node" parent="." groups=["network_sync"]]
 script = ExtResource( 8 )

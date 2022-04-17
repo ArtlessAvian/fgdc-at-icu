@@ -1,7 +1,7 @@
 extends SGFixedNode2D
 
-const OFFSET_X = 45 * 65536
-const OFFSET_Y = 45 * 65536
+const OFFSET_X = 90 * 65536
+const OFFSET_Y = 90 * 65536
 
 var flip = false
 var lifetime = 0
@@ -25,9 +25,9 @@ func _network_spawn(data: Dictionary):
 
 func _network_preprocess(input: Dictionary) -> void:
 	if is_heavy:
-		self.fixed_position.x += (lifetime << 14) * (-1 if flip else 1)
+		self.fixed_position.x += (lifetime << 15) * (-1 if flip else 1)
 	else:
-		self.fixed_position.x += 3 * 65536 * (-1 if flip else 1)
+		self.fixed_position.x += 6 * 65536 * (-1 if flip else 1)
 
 	lifetime += 1
 

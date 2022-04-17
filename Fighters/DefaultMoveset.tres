@@ -17,7 +17,7 @@
 
 [sub_resource type="Resource" id=1]
 script = ExtResource( 13 )
-speed = 458752
+speed = 917504
 length = 30
 
 [resource]

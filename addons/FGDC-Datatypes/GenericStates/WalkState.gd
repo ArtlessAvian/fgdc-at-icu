@@ -1,6 +1,6 @@
 extends "../State.gd"
 
-export(int) var speed
+export(int) var speed = 10
 
 
 func transition_out(f: Fighter, moveset: Moveset, input: Dictionary) -> State:
@@ -22,9 +22,9 @@ func run(f: Fighter, input: Dictionary) -> void:
 	if input.stick_x == 0:
 		f.vel.x = 0
 	if input.stick_x < 0:
-		f.vel.x = -5 * 65536
+		f.vel.x = -speed * 65536
 	if input.stick_x > 0:
-		f.vel.x = 5 * 65536
+		f.vel.x = speed * 65536
 
 	var diff = f.fixed_position.x - f.get_node(f.opponent_path).fixed_position.x
 	if diff > 0 && f.fixed_scale.x > 0:

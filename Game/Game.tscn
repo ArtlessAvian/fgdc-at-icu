@@ -9,6 +9,7 @@
 script = ExtResource( 4 )
 
 [node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 2, 2 )
 texture = ExtResource( 2 )
 offset = Vector2( 0, -250 )
 region_enabled = true
@@ -18,14 +19,14 @@ __meta__ = {
 }
 
 [node name="Fighter1" parent="." instance=ExtResource( 1 )]
-position = Vector2( -100, 0 )
-fixed_position_x = -6553600
+position = Vector2( -200, 0 )
+fixed_position_x = -13107200
 fixed_position_y = 0
 opponent_path = NodePath("../Fighter2")
 
 [node name="Fighter2" parent="." instance=ExtResource( 1 )]
-position = Vector2( 100, 0 )
-fixed_position_x = 6553600
+position = Vector2( 200, 0 )
+fixed_position_x = 13107200
 fixed_position_y = 0
 is_p2 = true
 opponent_path = NodePath("../Fighter1")
@@ -34,9 +35,8 @@ opponent_path = NodePath("../Fighter1")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 process_priority = -1
-position = Vector2( -250, -125 )
+position = Vector2( 0, -250 )
 current = true
-zoom = Vector2( 0.5, 0.5 )
 script = ExtResource( 3 )
 path_one = NodePath("../Fighter1")
 path_two = NodePath("../Fighter2")
