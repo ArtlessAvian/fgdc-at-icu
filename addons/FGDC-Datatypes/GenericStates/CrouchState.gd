@@ -1,7 +1,5 @@
 extends "../State.gd"
 
-export(int) var speed
-
 
 func transition_out(f: Fighter, moveset: Moveset, input: Dictionary) -> State:
 	var attack = transition_into_attack(f, moveset, input)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Fighters/Fighter.gd" type="Script" id=1]
 [ext_resource path="res://Fighters/debug.gd" type="Script" id=2]
@@ -9,6 +9,23 @@
 [ext_resource path="res://Fighters/Hitboxes.gd" type="Script" id=7]
 [ext_resource path="res://Fighters/InputHistory.gd" type="Script" id=8]
 [ext_resource path="res://Fighters/HitboxHelper.gd" type="Script" id=9]
+
+[sub_resource type="Animation" id=35]
+resource_name = "Airdash"
+length = 30.0
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Visual/Character:flips")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 30 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 4.0 ]
+}
 
 [sub_resource type="Animation" id=31]
 resource_name = "Blockstun"
@@ -154,7 +171,7 @@ tracks/2/path = NodePath("Hitboxes/SGCollisionShape2D:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
-tracks/2/enabled = true
+tracks/2/enabled = false
 tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -238,7 +255,7 @@ tracks/9/path = NodePath("Hitboxes/SGCollisionShape2D:fixed_position")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/imported = false
-tracks/9/enabled = true
+tracks/9/enabled = false
 tracks/9/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -251,7 +268,7 @@ tracks/10/path = NodePath("Hitboxes/SGCollisionShape2D:shape:extents")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/imported = false
-tracks/10/enabled = true
+tracks/10/enabled = false
 tracks/10/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -292,14 +309,14 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=32]
 resource_name = "cLight"
-length = 12.0
+length = 18.0
 step = 1.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Visual/Character/Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
-tracks/0/enabled = false
+tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -335,7 +352,7 @@ tracks/3/path = NodePath("Hitboxes/SGCollisionShape2D:fixed_position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
-tracks/3/enabled = true
+tracks/3/enabled = false
 tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -348,7 +365,7 @@ tracks/4/path = NodePath("Hitboxes/SGCollisionShape2D:shape:extents")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
-tracks/4/enabled = true
+tracks/4/enabled = false
 tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -477,7 +494,7 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id=6]
 resource_name = "sLight"
-length = 12.0
+length = 18.0
 step = 1.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Visual/Character/Sprite:frame")
@@ -533,7 +550,7 @@ tracks/4/path = NodePath("Hitboxes/SGCollisionShape2D:fixed_position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
-tracks/4/enabled = true
+tracks/4/enabled = false
 tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -544,7 +561,7 @@ tracks/4/keys = {
 
 [sub_resource type="SGRectangleShape2D" id=33]
 
-[sub_resource type="SGRectangleShape2D" id=34]
+[sub_resource type="SGRectangleShape2D" id=36]
 extents_x = 1376256
 extents_y = 3276800
 
@@ -553,6 +570,9 @@ position = Vector2( -1, -1 )
 fixed_position_x = -65536
 fixed_position_y = -65536
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
 moveset = ExtResource( 5 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -560,6 +580,7 @@ autoplay = "Idle"
 playback_process_mode = 0
 playback_speed = 60.0
 method_call_mode = 1
+anims/Airdash = SubResource( 35 )
 anims/Blockstun = SubResource( 31 )
 anims/Crouch = SubResource( 30 )
 anims/Hitstun = SubResource( 27 )
@@ -591,6 +612,7 @@ __meta__ = {
 [node name="Visual" type="Node2D" parent="."]
 
 [node name="Character" type="Node2D" parent="Visual"]
+scale = Vector2( -1, 1 )
 script = ExtResource( 6 )
 
 [node name="Sprite" type="Sprite" parent="Visual/Character"]
@@ -603,11 +625,14 @@ vframes = 8
 [node name="Hitboxes" type="SGArea2D" parent="." groups=["hitboxes", "network_sync"]]
 collision_mask = 0
 script = ExtResource( 7 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="SGCollisionShape2D" type="SGCollisionShape2D" parent="Hitboxes"]
 self_modulate = Color( 0.75, 0.75, 0.75, 1 )
-position = Vector2( 39, -50 )
-fixed_position_x = 2555904
+position = Vector2( 40, -50 )
+fixed_position_x = 2621440
 fixed_position_y = -3276800
 shape = SubResource( 33 )
 disabled = true
@@ -616,11 +641,14 @@ disabled = true
 collision_layer = 0
 collision_mask = 2
 script = ExtResource( 4 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="SGCollisionShape2D" type="SGCollisionShape2D" parent="Hurtboxes"]
 position = Vector2( 0, -50 )
 fixed_position_y = -3276800
-shape = SubResource( 34 )
+shape = SubResource( 36 )
 
 [node name="[EDITOR]HitboxHelper" type="Node" parent="."]
 script = ExtResource( 9 )
@@ -630,10 +658,7 @@ margin_left = -134.0
 margin_top = 31.0
 margin_right = 184.0
 margin_bottom = 45.0
-text = "No attack loaded!"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+text = "res://Fighters/DefaultMoveset/DefaultLight.tres::1"
 
 [node name="InputHistory" type="Node" parent="." groups=["network_sync"]]
 script = ExtResource( 8 )

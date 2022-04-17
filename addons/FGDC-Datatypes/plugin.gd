@@ -1,10 +1,9 @@
 tool
 extends EditorPlugin
 
-const prefix = "res://addons/FGDC-Datatypes/"
-
 const generic_states = [
 	"AirdashState",
+	"BackdashState",
 	"CrouchState",
 	"FireballState",
 	"JumpState",
@@ -12,17 +11,33 @@ const generic_states = [
 	"WalkState",
 ]
 
-const haha_yes_emote = preload("Assets/maxHahaYes16x16.png")
+# These are **intentionally** oversized.
+const max_emote = preload("res://addons/FGDC-Datatypes/Assets/maxHahaYes-32x32.png")
+const lippo_emote = preload("res://addons/FGDC-Datatypes/Assets/lippo-32x32.png")
 
 
 func _enter_tree():
-	add_custom_type("HitData", "Resource", preload(prefix + "HitData.gd"), haha_yes_emote)
-	add_custom_type("AttackData", "HitData", preload(prefix + "AttackData.gd"), haha_yes_emote)
+	add_custom_type(
+		"HitData", "Resource", preload("res://addons/FGDC-Datatypes/HitData.gd"), max_emote
+	)
+	add_custom_type(
+		"AttackData", "Resource", preload("res://addons/FGDC-Datatypes/AttackData.gd"), max_emote
+	)
 
-	add_custom_type("State", "Resource", preload(prefix + "State.gd"), haha_yes_emote)
-	add_custom_type("Moveset", "Resource", preload(prefix + "Moveset.gd"), haha_yes_emote)
+	add_custom_type(
+		"State", "Resource", preload("res://addons/FGDC-Datatypes/State.gd"), lippo_emote
+	)
+	add_custom_type(
+		"Moveset", "Resource", preload("res://addons/FGDC-Datatypes/Moveset.gd"), max_emote
+	)
+
 	for state in generic_states:
-		add_custom_type(state, "State", load(prefix + "GenericStates/" + state + "State.gd"), haha_yes_emote)
+		add_custom_type(
+			state,
+			"Resource",
+			load("res://addons/FGDC-Datatypes/GenericStates/" + state + ".gd"),
+			lippo_emote
+		)
 
 
 func _exit_tree():

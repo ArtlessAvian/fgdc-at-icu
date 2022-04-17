@@ -8,6 +8,6 @@ script = ExtResource( 1 )
 fireball = ExtResource( 2 )
 motions = [ [ 2, 3, 6 ], [ 2, 6 ] ]
 input_frames = 15
-is_heavy = false
+is_heavy = true
 animation_time = 30
 fireball_time = 10

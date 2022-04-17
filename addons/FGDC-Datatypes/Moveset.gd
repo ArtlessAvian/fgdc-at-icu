@@ -2,7 +2,7 @@ extends Resource
 class_name Moveset
 tool
 
-export(int) var air_actions = 5
+export(int) var air_actions = 3
 
 export(Resource) var walk
 export(Resource) var crouch

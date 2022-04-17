@@ -12,7 +12,7 @@ hitstun = 12
 blockstun = 12
 hitstop = 5
 damage = 1
-hitbox_placement = [  ]
+hitbox_placement = [ 40, -50, 10, 10 ]
 animation_name = "sLight"
 recovery = 10
 

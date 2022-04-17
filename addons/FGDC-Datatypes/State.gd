@@ -48,16 +48,17 @@ func can_land_cancel() -> bool:
 # Helpers
 
 
+# TODO: Consider moving into jump's transition_into
 func transition_into_jump(f: Fighter, moveset: Moveset, input: Dictionary) -> State:
 	if input.stick_y > 0:
-		if input.stick_x < 0 and f.vel.x > -5 * 65536:
-			f.vel.x = -5 * 65536
-		if input.stick_x > 0 and f.vel.x < 5 * 65536:
-			f.vel.x = 5 * 65536
 		if input.stick_x == 0:
 			f.vel.x = 0
+		elif input.stick_x < 0 and f.vel.x > -moveset.jump.horizontal_speed:
+			f.vel.x = -moveset.jump.horizontal_impulse
+		elif input.stick_x > 0 and f.vel.x < moveset.jump.horizontal_speed:
+			f.vel.x = moveset.jump.horizontal_impulse
 
-		f.vel.y = 12 * 65536
+		f.vel.y = moveset.jump.impulse
 		f.air_actions = moveset.air_actions
 		f.grounded = false
 
@@ -71,12 +72,12 @@ func transition_into_double_jump(f: Fighter, moveset: Moveset, input: Dictionary
 		if input.just_stick_y > 0:
 			if input.stick_x == 0:
 				f.vel.x = 0
-			if input.stick_x < 0 and f.vel.x > -5 * 65536:
-				f.vel.x = -5 * 65536
-			if input.stick_x > 0 and f.vel.x < 5 * 65536:
-				f.vel.x = 5 * 65536
+			elif input.stick_x < 0 and f.vel.x > -moveset.jump.horizontal_speed:
+				f.vel.x = -moveset.jump.horizontal_impulse
+			elif input.stick_x > 0 and f.vel.x < moveset.jump.horizontal_speed:
+				f.vel.x = moveset.jump.horizontal_impulse
 
-			f.vel.y = 6 * 65536
+			f.vel.y = moveset.jump.horizontal_impulse
 			f.air_actions -= 1
 			return moveset.jump
 	return null

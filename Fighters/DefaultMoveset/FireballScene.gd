@@ -1,14 +1,17 @@
 extends SGFixedNode2D
 
-# ignore that it isn't constant.
 const OFFSET_X = 45 * 65536
 const OFFSET_Y = 45 * 65536
 
 var flip = false
+var lifetime = 0
+var is_heavy = false
 
 
 func _network_spawn(data: Dictionary):
 	self.flip = data.flip
+	self.is_heavy = data.is_heavy
+	self.lifetime = 0
 
 	self.fixed_position = data.position
 	self.fixed_position.x += OFFSET_X * (-1 if flip else 1)
@@ -21,7 +24,12 @@ func _network_spawn(data: Dictionary):
 
 
 func _network_preprocess(input: Dictionary) -> void:
-	self.fixed_position.x += 3 * 65536 * (-1 if flip else 1)
+	if is_heavy:
+		self.fixed_position.x += (lifetime << 14) * (-1 if flip else 1)
+	else:
+		self.fixed_position.x += 3 * 65536 * (-1 if flip else 1)
+
+	lifetime += 1
 
 
 # The game collides all hitboxes and hurtboxes!
@@ -33,15 +41,13 @@ func _network_postprocess(input: Dictionary) -> void:
 
 
 func _save_state() -> Dictionary:
-	return {
-		x = fixed_position.x,
-		y = fixed_position.y,
-	}
+	return {x = fixed_position.x, y = fixed_position.y, lifetime = lifetime}
 
 
 func _load_state(save: Dictionary) -> void:
 	fixed_position.x = save.x
 	fixed_position.y = save.y
+	lifetime = save.lifetime
 
 	$Hitboxes.sync_to_physics_engine()
 

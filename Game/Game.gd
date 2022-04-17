@@ -57,20 +57,24 @@ func in_bounds(p: Fighter):
 
 func min_distance(p1: Fighter, p2: Fighter):
 	# temporary, each fighter has their own height and width
-	var fighter_height = p1.fighter_height
-	var fighter_spacing = p1.fighter_spacing
+	var fighter_spacing = (p1.fighter_spacing + p2.fighter_spacing) * 65536 >> 1
 
-	if abs(p1.fixed_position.y - p2.fixed_position.y) < fighter_height:
-		var diff = p1.fixed_position.x - p2.fixed_position.x
-		var average = (p1.fixed_position.x + p2.fixed_position.x) >> 1
+	if p1.fixed_position.y - p2.fixed_position.y > p2.fighter_height * 65536:
+		return
+	if p2.fixed_position.y - p1.fixed_position.y > p1.fighter_height * 65536:
+		return
+	# both fighters are within range to interact.
 
-		if abs(diff) < fighter_spacing:
-			average = clamp(
-				average, -x_bound + (fighter_spacing >> 1), x_bound - (fighter_spacing >> 1)
-			)
+	var diff = p1.fixed_position.x - p2.fixed_position.x
+	var average = (p1.fixed_position.x + p2.fixed_position.x) >> 1
 
-			p1.fixed_position.x = average + (fighter_spacing >> 1) * sign(diff)
-			p2.fixed_position.x = average + (fighter_spacing >> 1) * sign(-diff)
+	if abs(diff) < fighter_spacing:
+		average = clamp(
+			average, -x_bound + (fighter_spacing >> 1), x_bound - (fighter_spacing >> 1)
+		)
+
+		p1.fixed_position.x = average + (fighter_spacing >> 1) * sign(diff)
+		p2.fixed_position.x = average + (fighter_spacing >> 1) * sign(-diff)
 
 
 func max_distance(p1: Fighter, p2: Fighter):

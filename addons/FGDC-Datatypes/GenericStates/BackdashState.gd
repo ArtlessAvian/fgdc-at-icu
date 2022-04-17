@@ -1,7 +1,7 @@
 extends "../State.gd"
 
 export(int) var speed = 7 * 65536
-export(int) var length = 30
+export(int) var length = 15
 
 
 func transition_into(f: Fighter, moveset: Moveset, input: Dictionary) -> bool:
@@ -9,10 +9,10 @@ func transition_into(f: Fighter, moveset: Moveset, input: Dictionary) -> bool:
 		return false
 
 	if f.state in [moveset.jump, moveset.j_light, moveset.j_heavy]:
-		if f.get_node("InputHistory").detect_motion([6, 5, 6], f.fixed_scale.x < 0, 8):
+		if f.get_node("InputHistory").detect_motion([4, 5, 4], f.fixed_scale.x < 0, 8):
 			f.air_actions -= 1
 			return true
-		if f.get_node("InputHistory").detect_motion([9, 5, 6], f.fixed_scale.x < 0, 8):
+		if f.get_node("InputHistory").detect_motion([7, 5, 4], f.fixed_scale.x < 0, 8):
 			f.air_actions -= 1
 			return true
 
@@ -28,6 +28,7 @@ func transition_out(f: Fighter, moveset: Moveset, input: Dictionary) -> State:
 	if jump != null:
 		return jump
 
+	print(length)
 	if f.state_time > length:
 		return moveset.jump
 
@@ -36,7 +37,7 @@ func transition_out(f: Fighter, moveset: Moveset, input: Dictionary) -> State:
 
 func run(f: Fighter, input: Dictionary) -> void:
 	f.vel.y = f.fighter_gravity
-	f.vel.x = speed * sign(f.fixed_scale.x)
+	f.vel.x = -speed * sign(f.fixed_scale.x)
 
 
 func animation(f: Fighter) -> String:

@@ -1,18 +1,23 @@
 extends SGFixedNode2D
 class_name Fighter
 
-const fighter_spacing = 50 * 65565
-const fighter_height = 50 * 65565
-const fighter_gravity = 32768
+# Pixels. since this doesn't need to be so fine grained.
+export(int) var fighter_spacing = 50
+export(int) var fighter_height = 50
+
+# Subpixels per frame squared
+export(int) var fighter_gravity = 32768
 
 export(Resource) var moveset
 
+# constants over the length of the game.
 var controlled_by = "kb"
 var is_dummy = false
 var is_mash = false
 export var is_p2 = false
 export var opponent_path: NodePath = ""
 
+# Subpixels per frame
 var vel: SGFixedVector2 = SGFixedVector2.new()
 var grounded = true
 
