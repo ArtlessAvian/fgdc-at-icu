@@ -1,35 +1,15 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Title/speen.gd" type="Script" id=1]
-[ext_resource path="res://Title/Assets/explosion/frame_07_delay-0.01s.png" type="Texture" id=2]
-[ext_resource path="res://Title/Assets/explosion/frame_08_delay-0.01s.png" type="Texture" id=3]
-[ext_resource path="res://Title/Assets/explosion/frame_15_delay-0.01s.png" type="Texture" id=4]
-[ext_resource path="res://Title/Assets/explosion/frame_10_delay-0.01s.png" type="Texture" id=5]
-[ext_resource path="res://Title/Assets/explosion/frame_14_delay-0.01s.png" type="Texture" id=6]
-[ext_resource path="res://Title/Assets/explosion/frame_09_delay-0.01s.png" type="Texture" id=7]
-[ext_resource path="res://Title/Assets/explosion/frame_02_delay-0.01s.png" type="Texture" id=8]
-[ext_resource path="res://Title/Assets/explosion/frame_04_delay-0.01s.png" type="Texture" id=9]
-[ext_resource path="res://Title/Assets/explosion/frame_05_delay-0.01s.png" type="Texture" id=10]
-[ext_resource path="res://Title/Assets/explosion/frame_06_delay-0.01s.png" type="Texture" id=11]
-[ext_resource path="res://Title/Assets/popsicle.png" type="Texture" id=12]
-[ext_resource path="res://Title/Assets/explosion/frame_12_delay-0.01s.png" type="Texture" id=13]
 [ext_resource path="res://Title/Assets/primary_3ADocuments_2FFart_2Ffgdc_2Fmaxsweep.png" type="Texture" id=14]
-[ext_resource path="res://Title/Assets/explosion/frame_11_delay-0.01s.png" type="Texture" id=15]
-[ext_resource path="res://Title/Assets/explosion/frame_13_delay-0.01s.png" type="Texture" id=16]
-[ext_resource path="res://Title/Assets/explosion/frame_00_delay-0.01s.png" type="Texture" id=17]
 [ext_resource path="res://Title/Assets/primary_3ADocuments_2FFart_2Ffgdc_2Flippohurt.png" type="Texture" id=18]
-[ext_resource path="res://Title/Assets/explosion/frame_03_delay-0.01s.png" type="Texture" id=19]
-[ext_resource path="res://Title/Assets/explosion/frame_01_delay-0.01s.png" type="Texture" id=20]
-[ext_resource path="res://Title/Assets/explosion/frame_16_delay-0.01s.png" type="Texture" id=21]
 
 [sub_resource type="AtlasTexture" id=1]
-flags = 4
-atlas = ExtResource( 3 )
 region = Rect2( 0, 0, 1000, 1407 )
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ SubResource( 1 ), ExtResource( 7 ), ExtResource( 5 ), ExtResource( 15 ), ExtResource( 13 ), ExtResource( 16 ), ExtResource( 6 ), ExtResource( 4 ), ExtResource( 21 ), ExtResource( 17 ), ExtResource( 20 ), ExtResource( 8 ), ExtResource( 19 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 2 ) ],
+"frames": [ SubResource( 1 ), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null ],
 "loop": false,
 "name": "default",
 "speed": 30.0
@@ -139,7 +119,6 @@ offset = Vector2( 25, 0 )
 show_behind_parent = true
 position = Vector2( 0, 150 )
 scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 12 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -165,7 +144,6 @@ script = ExtResource( 1 )
 show_behind_parent = true
 position = Vector2( 0, 150 )
 scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 12 )
 __meta__ = {
 "_edit_lock_": true
 }

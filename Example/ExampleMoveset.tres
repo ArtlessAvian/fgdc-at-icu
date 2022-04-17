@@ -1,0 +1,22 @@
+[gd_resource type="Resource" load_steps=6 format=2]
+
+[ext_resource path="res://Fighters/Moveset.gd" type="Script" id=1]
+[ext_resource path="res://Example/ExampleWalk.tres" type="Resource" id=2]
+[ext_resource path="res://Example/ExampleJump.tres" type="Resource" id=3]
+[ext_resource path="res://Example/ExampleLight.tres" type="Resource" id=4]
+[ext_resource path="res://Example/MaxDPResourceAAAAAA.tres" type="Resource" id=5]
+
+[resource]
+script = ExtResource( 1 )
+air_actions = 5
+walk = ExtResource( 2 )
+crouch = ExtResource( 2 )
+jump = ExtResource( 3 )
+light = ExtResource( 4 )
+heavy = ExtResource( 2 )
+c_light = ExtResource( 2 )
+c_heavy = ExtResource( 2 )
+j_light = ExtResource( 2 )
+j_heavy = ExtResource( 2 )
+attacks = [ ExtResource( 5 ) ]
+movement = [  ]

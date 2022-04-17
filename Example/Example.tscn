@@ -1,0 +1,105 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://Fighters/Fighter.gd" type="Script" id=1]
+[ext_resource path="res://Fighters/debug.gd" type="Script" id=2]
+[ext_resource path="res://Title/Assets/primary_3ADocuments_2FFart_2Ffgdc_2Fmaxsweep.png" type="Texture" id=3]
+[ext_resource path="res://Fighters/Hurtboxes.gd" type="Script" id=4]
+[ext_resource path="res://Example/ExampleMoveset.tres" type="Resource" id=5]
+[ext_resource path="res://Fighters/FighterSprite.gd" type="Script" id=6]
+[ext_resource path="res://Fighters/Hitboxes.gd" type="Script" id=7]
+[ext_resource path="res://Fighters/InputHistory.gd" type="Script" id=8]
+[ext_resource path="res://Fighters/HitboxHelper.gd" type="Script" id=9]
+
+[sub_resource type="Animation" id=37]
+resource_name = "Idle"
+
+[sub_resource type="Animation" id=38]
+resource_name = "RESET"
+
+[sub_resource type="Animation" id=36]
+resource_name = "Walk"
+
+[sub_resource type="SpriteFrames" id=34]
+animations = [ {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SGRectangleShape2D" id=33]
+
+[sub_resource type="SGRectangleShape2D" id=35]
+extents_x = 1376256
+extents_y = 3276800
+
+[node name="Fighter" type="SGFixedNode2D" groups=["network_sync"]]
+position = Vector2( -1, -1 )
+fixed_position_x = -65536
+fixed_position_y = -65536
+script = ExtResource( 1 )
+moveset = ExtResource( 5 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Idle = SubResource( 37 )
+anims/RESET = SubResource( 38 )
+anims/Walk = SubResource( 36 )
+
+[node name="Debug" type="Node2D" parent="."]
+
+[node name="Label" type="Label" parent="Debug"]
+margin_right = 40.0
+margin_bottom = 14.0
+rect_scale = Vector2( 0.5, 0.5 )
+text = "hello"
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Visual" type="Node2D" parent="."]
+
+[node name="Character" type="Node2D" parent="Visual"]
+script = ExtResource( 6 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Visual/Character"]
+scale = Vector2( 0.5, 0.5 )
+frames = SubResource( 34 )
+offset = Vector2( 50, -100 )
+
+[node name="Hitboxes" type="SGArea2D" parent="." groups=["hitboxes", "network_sync"]]
+collision_mask = 0
+script = ExtResource( 7 )
+
+[node name="SGCollisionShape2D" type="SGCollisionShape2D" parent="Hitboxes"]
+self_modulate = Color( 0.75, 0.75, 0.75, 1 )
+position = Vector2( 39, -50 )
+fixed_position_x = 2555904
+fixed_position_y = -3276800
+shape = SubResource( 33 )
+disabled = true
+
+[node name="Hurtboxes" type="SGArea2D" parent="." groups=["hurtboxes", "network_sync"]]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource( 4 )
+
+[node name="SGCollisionShape2D" type="SGCollisionShape2D" parent="Hurtboxes"]
+position = Vector2( 0, -50 )
+fixed_position_y = -3276800
+shape = SubResource( 35 )
+
+[node name="[EDITOR]HitboxHelper" type="Node" parent="."]
+script = ExtResource( 9 )
+
+[node name="Label2" type="Label" parent="[EDITOR]HitboxHelper"]
+margin_left = -134.0
+margin_top = 31.0
+margin_right = 184.0
+margin_bottom = 45.0
+text = "No attack loaded!"
+
+[node name="InputHistory" type="Node" parent="." groups=["network_sync"]]
+script = ExtResource( 8 )
+
+[connection signal="on_hit" from="Hitboxes" to="." method="_on_Hitboxes_on_hit"]

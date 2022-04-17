@@ -1,0 +1,35 @@
+[gd_resource type="Resource" load_steps=6 format=2]
+
+[ext_resource path="res://Fighters/GenericStates/NormalAttackState.gd" type="Script" id=1]
+[ext_resource path="res://addons/FGDC-Datatypes/AttackData.gd" type="Script" id=2]
+[ext_resource path="res://addons/FGDC-Datatypes/HitData.gd" type="Script" id=3]
+
+[sub_resource type="Resource" id=2]
+script = ExtResource( 3 )
+guard = "0"
+startup = 4
+active = 2
+hitstun = 12
+blockstun = 12
+hitstop = 5
+damage = 1
+hitbox_placement = [  ]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 2 )
+guard = "0"
+startup = 4
+active = 2
+hitstun = 12
+blockstun = 12
+hitstop = 5
+damage = 1
+hitbox_placement = [  ]
+followup = SubResource( 2 )
+animation_name = "Walk"
+recovery = 10
+
+[resource]
+script = ExtResource( 1 )
+attack_data = SubResource( 1 )
+attack_level = 0

@@ -16,6 +16,7 @@ export var opponent_path: NodePath = ""
 var vel: SGFixedVector2 = SGFixedVector2.new()
 var grounded = true
 
+var health: int = 100
 var state: Resource
 var state_time = 0
 var air_actions = 0
@@ -109,10 +110,13 @@ func anim_process():
 	var ani = state.animation(self)
 	var assigned = $AnimationPlayer.assigned_animation
 	if assigned != ani:
-		$AnimationPlayer.play("RESET")
-		# print("RESET")
-		$AnimationPlayer.advance(0)
-		$AnimationPlayer.play(ani)
+		if not $AnimationPlayer.has_animation(ani):
+			printerr("No animation " + ani + "!")
+		else:
+			$AnimationPlayer.play("RESET")
+			# print("RESET")
+			$AnimationPlayer.advance(0)
+			$AnimationPlayer.play(ani)
 	$AnimationPlayer.advance(state_time - $AnimationPlayer.current_animation_position)
 	pass
 
@@ -242,7 +246,8 @@ func _save_state() -> Dictionary:
 		state_time = state_time,
 		state_dict = state_dict.duplicate(),
 		combo_count = combo_count,
-		hitstop = hitstop
+		hitstop = hitstop,
+		health = health
 	}
 	# return save
 
@@ -260,6 +265,7 @@ func _load_state(save: Dictionary) -> void:
 	state_dict = save.state_dict.duplicate(true)
 	combo_count = save.combo_count
 	hitstop = save.hitstop
+	health = save.health
 
 	$AnimationPlayer.play("RESET")
 	$AnimationPlayer.advance(1000)
