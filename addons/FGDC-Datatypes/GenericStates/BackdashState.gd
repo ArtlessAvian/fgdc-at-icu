@@ -28,7 +28,6 @@ func transition_out(f: Fighter, moveset: Moveset, input: Dictionary) -> State:
 	if jump != null:
 		return jump
 
-	print(length)
 	if f.state_time > length:
 		return moveset.jump
 

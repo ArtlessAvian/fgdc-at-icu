@@ -81,17 +81,23 @@ func _network_postprocess(input: Dictionary) -> void:
 
 
 func state_process(input: Dictionary):
-	if state != null:
-		var new_state = state.transition(self, moveset, input)
-		if new_state != null:
-			state = new_state
-			state_time = 0
-		else:
-			state_time += 1
-		if state != null:
-			state.run(self, input)
+	var new_state = state.transition(self, moveset, input)
+
+	if new_state != null:
+		change_to_state(new_state)
 	else:
-		print("remember to remove me!")
+		state_time += 1
+
+	# Hitbox enabledness is calculated every frame,
+	# rather have it be stateful, and saved in the state for rollbacks!
+	for hitbox in $Hitboxes.get_children():
+		hitbox.disabled = true
+	state.run(self, input)
+
+
+func change_to_state(new_state):
+	state = new_state
+	state_time = 0
 
 
 func move():
@@ -106,8 +112,7 @@ func move():
 		vel.y = 0
 		grounded = true
 		if state.can_land_cancel():
-			state = moveset.walk
-			state_time = 0
+			change_to_state(moveset.walk)
 			face_opponent()
 
 
@@ -152,15 +157,10 @@ func hit_response(input: Dictionary):
 
 	if can_block:
 		state_dict.hitstun = $Hurtboxes.hitstun
-
-		state_time = 0
-		state = moveset.blockstun
-		return
-
-	state_dict.hitstun = $Hurtboxes.hitstun
-
-	state_time = 0
-	state = moveset.hitstun
+		change_to_state(moveset.blockstun)
+	else:
+		state_dict.hitstun = $Hurtboxes.hitstun
+		change_to_state(moveset.hitstun)
 
 
 # Helper

@@ -54,9 +54,9 @@ func transition_into_jump(f: Fighter, moveset: Moveset, input: Dictionary) -> St
 		if input.stick_x == 0:
 			f.vel.x = 0
 		elif input.stick_x < 0 and f.vel.x > -moveset.jump.horizontal_speed:
-			f.vel.x = -moveset.jump.horizontal_impulse
+			f.vel.x = -moveset.jump.horizontal_speed
 		elif input.stick_x > 0 and f.vel.x < moveset.jump.horizontal_speed:
-			f.vel.x = moveset.jump.horizontal_impulse
+			f.vel.x = moveset.jump.horizontal_speed
 
 		f.vel.y = moveset.jump.impulse
 		f.air_actions = moveset.air_actions
@@ -73,11 +73,11 @@ func transition_into_double_jump(f: Fighter, moveset: Moveset, input: Dictionary
 			if input.stick_x == 0:
 				f.vel.x = 0
 			elif input.stick_x < 0 and f.vel.x > -moveset.jump.horizontal_speed:
-				f.vel.x = -moveset.jump.horizontal_impulse
+				f.vel.x = -moveset.jump.horizontal_speed
 			elif input.stick_x > 0 and f.vel.x < moveset.jump.horizontal_speed:
-				f.vel.x = moveset.jump.horizontal_impulse
+				f.vel.x = moveset.jump.horizontal_speed
 
-			f.vel.y = moveset.jump.horizontal_impulse
+			f.vel.y = moveset.jump.double_jump_impulse
 			f.air_actions -= 1
 			return moveset.jump
 	return null

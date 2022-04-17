@@ -22,7 +22,7 @@ length = 30
 
 [resource]
 script = ExtResource( 1 )
-air_actions = 5
+air_actions = 3
 walk = ExtResource( 2 )
 crouch = ExtResource( 8 )
 jump = ExtResource( 3 )

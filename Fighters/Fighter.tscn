@@ -441,7 +441,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id=29]
 resource_name = "sHeavy"
-length = 40.0
+length = 49.0
 step = 1.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Visual/Character/Sprite:frame")
@@ -612,7 +612,7 @@ __meta__ = {
 [node name="Visual" type="Node2D" parent="."]
 
 [node name="Character" type="Node2D" parent="Visual"]
-scale = Vector2( -1, 1 )
+scale = Vector2( -0.707107, 1 )
 script = ExtResource( 6 )
 
 [node name="Sprite" type="Sprite" parent="Visual/Character"]
@@ -630,12 +630,11 @@ __meta__ = {
 }
 
 [node name="SGCollisionShape2D" type="SGCollisionShape2D" parent="Hitboxes"]
-self_modulate = Color( 0.75, 0.75, 0.75, 1 )
+self_modulate = Color( 1, 0, 0, 1 )
 position = Vector2( 40, -50 )
 fixed_position_x = 2621440
 fixed_position_y = -3276800
 shape = SubResource( 33 )
-disabled = true
 
 [node name="Hurtboxes" type="SGArea2D" parent="." groups=["hurtboxes", "network_sync"]]
 collision_layer = 0
@@ -658,7 +657,7 @@ margin_left = -134.0
 margin_top = 31.0
 margin_right = 184.0
 margin_bottom = 45.0
-text = "res://Fighters/DefaultMoveset/DefaultLight.tres::1"
+text = "No attack loaded!"
 
 [node name="InputHistory" type="Node" parent="." groups=["network_sync"]]
 script = ExtResource( 8 )

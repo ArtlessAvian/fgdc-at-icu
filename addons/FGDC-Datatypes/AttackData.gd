@@ -5,6 +5,9 @@ tool
 export(String) var animation_name = "Walk"
 export(int) var recovery = 10
 
+# not gameplay thing so no need to save
+var warning: bool = false
+
 
 func write_hitbox_positions(time, hitboxes):
 	for child in hitboxes.get_children():
@@ -22,6 +25,10 @@ func write_hitbox_positions(time, hitboxes):
 			child.shape.extents.x = hitdata.hitbox_placement[i * 4 + 2] << 16
 			child.shape.extents.y = hitdata.hitbox_placement[i * 4 + 3] << 16
 			child.disabled = false
+
+		if not warning and len(hitdata.hitbox_placement) == 0:
+			warning = true
+			printerr("warning: " + hitdata.resource_path + "has no hitbox placement!")
 
 		# TEMPORARY
 		for child in hitboxes.get_children():

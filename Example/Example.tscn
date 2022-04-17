@@ -29,7 +29,7 @@ animations = [ {
 
 [sub_resource type="SGRectangleShape2D" id=33]
 
-[sub_resource type="SGRectangleShape2D" id=35]
+[sub_resource type="SGRectangleShape2D" id=39]
 extents_x = 1376256
 extents_y = 3276800
 
@@ -87,7 +87,7 @@ script = ExtResource( 4 )
 [node name="SGCollisionShape2D" type="SGCollisionShape2D" parent="Hurtboxes"]
 position = Vector2( 0, -50 )
 fixed_position_y = -3276800
-shape = SubResource( 35 )
+shape = SubResource( 39 )
 
 [node name="[EDITOR]HitboxHelper" type="Node" parent="."]
 script = ExtResource( 9 )
