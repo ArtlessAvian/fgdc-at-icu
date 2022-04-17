@@ -21,8 +21,9 @@ export(Array, Resource) var movement = []
 
 # Things that don't make sense to override, but why the heck not.
 
-var hitstun: Resource = load("res://Fighters/GenericStates/HitstunState.gd").new()
-var blockstun: Resource = load("res://Fighters/GenericStates/BlockstunState.gd").new()
+const prefix = "res://addons/FGDC-Datatypes/"
+var hitstun: Resource = load(prefix + "GenericStates/HitstunState.gd").new()
+var blockstun: Resource = load(prefix + "GenericStates/BlockstunState.gd").new()
 
 var lazy_all_states: Array = []
 

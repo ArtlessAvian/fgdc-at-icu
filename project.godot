@@ -42,7 +42,7 @@ _global_script_classes=[ {
 "base": "Resource",
 "class": "Moveset",
 "language": "GDScript",
-"path": "res://Fighters/Moveset.gd"
+"path": "res://addons/FGDC-Datatypes/Moveset.gd"
 }, {
 "base": "AnimationPlayer",
 "class": "NetworkAnimationPlayer",
@@ -62,7 +62,7 @@ _global_script_classes=[ {
 "base": "Resource",
 "class": "State",
 "language": "GDScript",
-"path": "res://Fighters/State.gd"
+"path": "res://addons/FGDC-Datatypes/State.gd"
 } ]
 _global_script_class_icons={
 "AttackData": "",
@@ -106,7 +106,7 @@ window/size/height=720
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/FGDC-Datatypes/plugin.cfg", "res://addons/godot-rollback-netcode/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/godot-rollback-netcode/plugin.cfg" )
 
 [input]
 

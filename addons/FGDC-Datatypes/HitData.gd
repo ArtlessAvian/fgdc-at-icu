@@ -1,5 +1,6 @@
 extends Resource
 class_name HitData
+tool
 
 # if you want to be tricky, if bit 0 is 1, you need to block low
 # if bit 1 is 1, you need to block high
