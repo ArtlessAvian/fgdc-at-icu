@@ -15,7 +15,8 @@ func write_hitbox_positions(time, hitboxes):
 
 	var hitdata: HitData = get_hitdata(time)
 
-	# activate hitboxes and such
+	# activate hitboxes and such. Store hitdata within the hitbox for use when a Fighter gets hit.
+	hitboxes.set_hit_data(hitdata)
 	if hitdata != null:
 		# print("got time for an interview?")
 		for i in range(len(hitdata.hitbox_placement) / 4):

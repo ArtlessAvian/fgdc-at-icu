@@ -137,6 +137,7 @@ func hit_response(input: Dictionary):
 		if state.can_block():
 			can_block = true
 
+	# Change hurtbox color if blocking or not blocking
 	$Hurtboxes.modulate = Color.white
 	if can_block:
 		if input.stick_y < 0:
@@ -146,8 +147,8 @@ func hit_response(input: Dictionary):
 
 	if not $Hurtboxes.hit_flag:
 		return
-	# So, I was hit.
 
+	# So, I was hit.
 	hitstop = 2
 
 	if state in [moveset.hitstun]:
@@ -159,6 +160,7 @@ func hit_response(input: Dictionary):
 		state_dict.hitstun = $Hurtboxes.hitstun
 		change_to_state(moveset.blockstun)
 	else:
+		health = max(health - $Hurtboxes.damage, 0)
 		state_dict.hitstun = $Hurtboxes.hitstun
 		change_to_state(moveset.hitstun)
 

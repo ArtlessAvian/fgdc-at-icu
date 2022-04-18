@@ -48,8 +48,12 @@ func new_attack():
 
 export(Resource) var hit_data
 
+# Allows other Fighters to see what attack they got hit with by calling get_hit_data()
+# TODO: Might not neet to save all hit_data. Only .damage is used so far.
+func set_hit_data(new_hit_data: HitData):
+	hit_data = new_hit_data
 
-func get_hit_data():
+func get_hit_data() -> HitData:
 	return hit_data
 
 

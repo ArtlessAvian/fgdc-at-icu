@@ -584,7 +584,7 @@ margin_top = 50.0
 margin_right = 4.0
 margin_bottom = 64.0
 rect_scale = Vector2( 2, 2 )
-text = "res://Fighters/DefaultMoveset/DefaultHeavy.tres::1"
+text = "No attack loaded!"
 
 [node name="InputHistory" type="Node" parent="." groups=["network_sync"]]
 script = ExtResource( 8 )
