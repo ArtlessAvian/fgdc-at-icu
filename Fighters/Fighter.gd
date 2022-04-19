@@ -160,7 +160,7 @@ func hit_response(input: Dictionary):
 		state_dict.hitstun = $Hurtboxes.hitstun
 		change_to_state(moveset.blockstun)
 	else:
-		health = max(health - $Hurtboxes.damage, 0)
+		health = max(health - $Hurtboxes.hit_hitdata.damage, 0)
 		print(self.name + " " + String(health))# TODO: Testing
 		state_dict.hitstun = $Hurtboxes.hitstun
 		change_to_state(moveset.hitstun)

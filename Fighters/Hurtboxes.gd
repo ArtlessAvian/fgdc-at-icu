@@ -5,7 +5,7 @@ tool
 # Information here is only useful within a frame, so no need to save.
 var hit_flag = false
 var hitstun = 20
-var damage 		# Allows Fighter to know how much damage it took when hit
+var hit_hitdata 		# HitData of attack Figher got hit by.
 
 # Save this
 var attacks_hit_by = {} # Stores which attacks this Hurtbox has gotten hit by. Prevents being hit multiple times by same attack.
@@ -47,7 +47,7 @@ func collide_hitboxes():
 			var pair = hitboxes.attack_number * 100 + hitboxes.multihit
 			var key = hitboxes.get_parent().name  # todo make not garbo
 			if (not key in attacks_hit_by) or pair != attacks_hit_by[key]:
-				damage = hitboxes.get_hit_data().damage
+				hit_hitdata = hitboxes.get_hit_data()
 
 				attacks_hit_by[key] = pair
 				self.hit_flag = true

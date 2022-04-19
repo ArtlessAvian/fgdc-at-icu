@@ -34,7 +34,6 @@ func _network_preprocess(input: Dictionary) -> void:
 
 # The game collides all hitboxes and hurtboxes!
 
-
 func _network_postprocess(input: Dictionary) -> void:
 	if abs(fixed_position.x) > 1000 * 65536:
 		SyncManager.despawn(self)
