@@ -252,33 +252,31 @@ tracks/8/keys = {
 "values": [ false ]
 }
 tracks/9/type = "value"
-tracks/9/path = NodePath("Hitboxes/SGCollisionShape2D:fixed_position")
+tracks/9/path = NodePath("Visual/Character/Sprite:scale")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/imported = false
-tracks/9/enabled = false
+tracks/9/enabled = true
 tracks/9/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Object(SGFixedVector2,"x":2555904,"y":-3276800,"script":null)
- ]
+"values": [ Vector2( 0.4, 0.4 ) ]
 }
 tracks/10/type = "value"
-tracks/10/path = NodePath("Hitboxes/SGCollisionShape2D:shape:extents")
+tracks/10/path = NodePath("Hitboxes/SGCollisionShape2D:fixed_position_x")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/imported = false
-tracks/10/enabled = false
+tracks/10/enabled = true
 tracks/10/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Object(SGFixedVector2,"x":655360,"y":655360,"script":null)
- ]
+"update": 1,
+"values": [ 5242880 ]
 }
 tracks/11/type = "value"
-tracks/11/path = NodePath("Visual/Character/Sprite:scale")
+tracks/11/path = NodePath("Hitboxes/SGCollisionShape2D:fixed_position_y")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/imported = false
@@ -286,8 +284,32 @@ tracks/11/enabled = true
 tracks/11/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 0.4, 0.4 ) ]
+"update": 1,
+"values": [ -6553600 ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("Hitboxes/SGCollisionShape2D:shape:extents_x")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 655360 ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("Hitboxes/SGCollisionShape2D:shape:extents_y")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 655360 ]
 }
 
 [sub_resource type="Animation" id=8]
@@ -454,6 +476,54 @@ tracks/3/keys = {
 "update": 1,
 "values": [ false, true ]
 }
+tracks/4/type = "value"
+tracks/4/path = NodePath("Hitboxes/SGCollisionShape2D:fixed_position_x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 5242880, 5242880 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Hitboxes/SGCollisionShape2D:fixed_position_y")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ -6553600, -6553600 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Hitboxes/SGCollisionShape2D:shape:extents_x")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 4718592, 4718592 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Hitboxes/SGCollisionShape2D:shape:extents_y")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 5505024, 5505024 ]
+}
 
 [sub_resource type="Animation" id=6]
 resource_name = "sLight"
@@ -483,12 +553,58 @@ tracks/1/keys = {
 "update": 0,
 "values": [ 0.0, 1.0 ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("Hitboxes/SGCollisionShape2D:shape:extents_x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 11 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 1310720, 1310720 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Hitboxes/SGCollisionShape2D:shape:extents_y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 11 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 1310720, 1310720 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Hitboxes/SGCollisionShape2D:fixed_position_x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 11 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 5439488, 5439488 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Hitboxes/SGCollisionShape2D:fixed_position_y")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 11 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ -5636096, -5636096 ]
+}
 
-[sub_resource type="SGRectangleShape2D" id=33]
-extents_x = 4718592
-extents_y = 5505024
+[sub_resource type="SGRectangleShape2D" id=38]
 
-[sub_resource type="SGRectangleShape2D" id=36]
+[sub_resource type="SGRectangleShape2D" id=39]
 extents_x = 2752512
 extents_y = 6553600
 
@@ -567,7 +683,7 @@ self_modulate = Color( 0.75, 0.75, 0.75, 1 )
 position = Vector2( 80, -100 )
 fixed_position_x = 5242880
 fixed_position_y = -6553600
-shape = SubResource( 33 )
+shape = SubResource( 38 )
 disabled = true
 
 [node name="Hurtboxes" type="SGArea2D" parent="." groups=["hurtboxes", "network_sync"]]
@@ -581,7 +697,7 @@ __meta__ = {
 [node name="SGCollisionShape2D" type="SGCollisionShape2D" parent="Hurtboxes"]
 position = Vector2( 0, -100 )
 fixed_position_y = -6553600
-shape = SubResource( 36 )
+shape = SubResource( 39 )
 
 [node name="[EDITOR]HitboxHelper" type="Node" parent="."]
 script = ExtResource( 9 )
@@ -592,7 +708,9 @@ margin_top = 50.0
 margin_right = 4.0
 margin_bottom = 64.0
 rect_scale = Vector2( 2, 2 )
-text = "No attack loaded!"
+text = "res://Fighters/DefaultMoveset/DefaultHeavy.tres::1
+9 (4) 3 (4) 3 (4) 10
+"
 
 [node name="InputHistory" type="Node" parent="." groups=["network_sync"]]
 script = ExtResource( 8 )

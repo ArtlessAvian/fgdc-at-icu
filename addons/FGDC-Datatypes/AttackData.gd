@@ -21,10 +21,10 @@ func write_hitbox_positions(time, hitboxes):
 		# print("got time for an interview?")
 		for i in range(len(hitdata.hitbox_placement) / 4):
 			var child = hitboxes.get_child(i)
-			child.fixed_position.x = hitdata.hitbox_placement[i * 4 + 0] << 16
-			child.fixed_position.y = hitdata.hitbox_placement[i * 4 + 1] << 16
-			child.shape.extents.x = hitdata.hitbox_placement[i * 4 + 2] << 16
-			child.shape.extents.y = hitdata.hitbox_placement[i * 4 + 3] << 16
+			# child.fixed_position.x = hitdata.hitbox_placement[i * 4 + 0] << 16
+			# child.fixed_position.y = hitdata.hitbox_placement[i * 4 + 1] << 16
+			# child.shape.extents.x = hitdata.hitbox_placement[i * 4 + 2] << 16
+			# child.shape.extents.y = hitdata.hitbox_placement[i * 4 + 3] << 16
 			child.disabled = false
 
 		if not warning and len(hitdata.hitbox_placement) == 0:

@@ -5,17 +5,18 @@ tool
 # Information here is only useful within a frame, so no need to save.
 var hit_flag = false
 var hitstun = 20
-var hit_hitdata 		# HitData of attack Figher got hit by.
+var hit_hitdata  # HitData of attack Figher got hit by.
 
 # Save this
-var attacks_hit_by = {} # Stores which attacks this Hurtbox has gotten hit by. Prevents being hit multiple times by same attack.
+var attacks_hit_by = {}  # Stores which attacks this Hurtbox has gotten hit by. Prevents being hit multiple times by same attack.
 
 
 func _ready():
-	for uncast in get_children():
-		var child: SGCollisionShape2D = uncast
-		var shape: SGRectangleShape2D = child.shape
-		child.shape = child.shape.duplicate(true)
+	if not Engine.editor_hint:
+		for uncast in get_children():
+			var child: SGCollisionShape2D = uncast
+			var shape: SGRectangleShape2D = child.shape
+			child.shape = child.shape.duplicate(true)
 
 	add_to_group("hurtboxes")
 	add_to_group("network_sync")
