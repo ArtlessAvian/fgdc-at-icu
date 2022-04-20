@@ -15,6 +15,7 @@ export(Resource) var c_light
 export(Resource) var c_heavy
 export(Resource) var j_light
 export(Resource) var j_heavy
+export(Resource) var dead
 
 export(Array, Resource) var attacks = []
 export(Array, Resource) var movement = []
@@ -38,4 +39,5 @@ func all_states():
 		lazy_all_states.append(c_light)
 		lazy_all_states.append(light)
 		lazy_all_states.append_array(movement)
+		lazy_all_states.append(dead)
 	return lazy_all_states
