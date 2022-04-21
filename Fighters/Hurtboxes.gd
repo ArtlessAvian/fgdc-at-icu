@@ -5,6 +5,7 @@ tool
 # Information here is only useful within a frame, so no need to save.
 var hit_flag = false
 var hitstun = 20
+var blockstun = 8
 var hit_hitdata 		# HitData of attack Figher got hit by.
 
 # Save this
