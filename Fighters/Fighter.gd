@@ -154,24 +154,8 @@ func hit_response(input: Dictionary):
 		return
 
 	
-	if not grounded and sign(fixed_position.x - get_node(opponent_path).fixed_position.x) == input.stick_x:
-		print("blocked in air")
-		state_dict.blockstun = $Hurtboxes.hit_hitdata.blockstun
-		change_to_state(moveset.blockstun)
-		health = max(health - $Hurtboxes.hit_hitdata.chipdamage, 0)
-		blocking_low = false
-		blocking_high = false
-	
-	elif (int($Hurtboxes.hit_hitdata.guard) == 0 or int($Hurtboxes.hit_hitdata.guard == 1) )and blocking_low == true: #block low sucessfull
-		print("blocked low")
-		state_dict.blockstun = $Hurtboxes.hit_hitdata.blockstun
-		change_to_state(moveset.blockstun)
-		health = max(health - $Hurtboxes.hit_hitdata.chipdamage, 0)
-		blocking_low = false
-		blocking_high = false
-	
-	elif (int($Hurtboxes.hit_hitdata.guard) == 0 or int($Hurtboxes.hit_hitdata.guard) == 2 )and blocking_high == true:
-		print("blocked high")
+	if (not grounded and sign(fixed_position.x - get_node(opponent_path).fixed_position.x) == input.stick_x) or ((int($Hurtboxes.hit_hitdata.guard) == 0 or int($Hurtboxes.hit_hitdata.guard == 1) )and blocking_low == true ) or ((int($Hurtboxes.hit_hitdata.guard) == 0 or int($Hurtboxes.hit_hitdata.guard) == 2 ) and blocking_high == true):
+		print("blocked")
 		state_dict.blockstun = $Hurtboxes.hit_hitdata.blockstun
 		change_to_state(moveset.blockstun)
 		health = max(health - $Hurtboxes.hit_hitdata.chipdamage, 0)
