@@ -41,7 +41,6 @@ func _process(delta):
 
 func collide_hitboxes():
 	hit_flag = false
-
 	for hitboxes in self.get_overlapping_areas():
 		if hitboxes is Hitboxes:
 			var pair = hitboxes.attack_number * 100 + hitboxes.multihit

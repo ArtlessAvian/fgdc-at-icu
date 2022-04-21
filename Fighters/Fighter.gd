@@ -30,6 +30,9 @@ var state_dict: Dictionary = {}
 var combo_count = 0
 var hitstop = 0
 
+export (bool) var blocking_high = false
+export (bool) var blocking_low = false
+
 
 func _ready():
 	if self in get_tree().root.get_children():
@@ -140,31 +143,50 @@ func hit_response(input: Dictionary):
 	# Change hurtbox color if blocking or not blocking
 	$Hurtboxes.modulate = Color.white
 	if can_block:
-		if input.stick_y < 0:
+		if input.stick_y < 0 and sign(fixed_position.x - get_node(opponent_path).fixed_position.x) == input.stick_x:
+			blocking_low = true
 			$Hurtboxes.modulate = Color.blue
 		else:
 			$Hurtboxes.modulate = Color.cyan
+			blocking_high = true
 
 	if not $Hurtboxes.hit_flag:
 		return
 
-	# So, I was hit.
-	hitstop = 2
+	
 
-	if state in [moveset.hitstun]:
-		combo_count += 1
-	else:
-		combo_count = 1
-
-	if can_block:
+	
+	
+	
+	if (int($Hurtboxes.hit_hitdata.guard) == 0 or int($Hurtboxes.hit_hitdata.guard == 1) )and blocking_low == true: #block low sucessfull
+		print("blocked low")
 		state_dict.hitstun = $Hurtboxes.hitstun
 		change_to_state(moveset.blockstun)
+		#health = max(health - $Hurtboxes.hit_hitdata.damage % 5, 0)
+		blocking_low = false
+		blocking_high = false
+	
+	elif (int($Hurtboxes.hit_hitdata.guard) == 0 or int($Hurtboxes.hit_hitdata.guard) == 2 )and blocking_high == true:
+		print("blocked high")
+		state_dict.hitstun = $Hurtboxes.hitstun
+		change_to_state(moveset.blockstun)
+		#health = max(health - $Hurtboxes.hit_hitdata.damage % 5, 0)
+		blocking_low = false
+		blocking_high = false
 	else:
+		# So, I was hit.
+		hitstop = 2
 		health = max(health - $Hurtboxes.hit_hitdata.damage, 0)
 		print(self.name + " " + String(health))  # TODO: Testing
 		state_dict.hitstun = $Hurtboxes.hit_hitdata.hitstun
 		change_to_state(moveset.hitstun)
-
+		blocking_low = false
+		blocking_high = false
+	if state in [moveset.hitstun]:
+		combo_count += 1
+	else:
+		combo_count = 1
+	
 
 # Will move things into these functions if no one is working on them.
 func on_hit():
