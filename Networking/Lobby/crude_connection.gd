@@ -47,9 +47,10 @@ func _on_Local_button_up():
 	get_tree().network_peer = peer
 
 	$CanvasLayer/MarginContainer.visible = false
-	$Game/Fighter2.controlled_by = "c0"
+	$Match/Game/Fighter2.controlled_by = "c0"
 
 	SyncManager.start()
+	print("TODO: Testing local button pushed")
 
 
 func _on_Mash_button_up():
@@ -58,7 +59,7 @@ func _on_Mash_button_up():
 	get_tree().network_peer = peer
 
 	$CanvasLayer/MarginContainer.visible = false
-	$Game/Fighter2.is_mash = true
+	$Match/Game/Fighter2.is_mash = true
 
 	SyncManager.start()
 
@@ -71,13 +72,13 @@ func _on_Test_button_up():
 	for i in range(50):
 		print("TEST")
 		$CanvasLayer/MarginContainer.visible = false
-		$Game/Fighter1.fixed_position.y = -65536 * 30
-		$Game/Fighter1.grounded = false
-		# $Game/Fighter2.fixed_position.x = 1
-		# $Game/Fighter1/Hitboxes.new_attack()
-		$Game/Fighter1.state = $Game/Fighter1.moveset.j_light
-		# $Game/Fighter2.state = $Game/Fighter2.moveset.walk
-		$Game/Fighter1.state_time = 0
+		$Match/Game/Fighter1.fixed_position.y = -65536 * 30
+		$Match/Game/Fighter1.grounded = false
+		# $Match/Game/Fighter2.fixed_position.x = 1
+		# $Match/Game/Fighter1/Hitboxes.new_attack()
+		$Match/Game/Fighter1.state = $Match/Game/Fighter1.moveset.j_light
+		# $Match/Game/Fighter2.state = $Match/Game/Fighter2.moveset.walk
+		$Match/Game/Fighter1.state_time = 0
 
 		if not SyncReplay.active:
 			SyncManager.start_logging("res://dump/test.log")
@@ -85,9 +86,9 @@ func _on_Test_button_up():
 		SyncManager.start()
 		yield(get_tree().create_timer(0.3), "timeout")
 		SyncManager.stop()
-		# print($Game/Fighter2.fixed_position.x)
-		# if $Game/Fighter2.fixed_position.x != 5735125:
-		if not $Game/Fighter1/Hitboxes/SGCollisionShape2D.disabled:
+		# print($Match/Game/Fighter2.fixed_position.x)
+		# if $Match/Game/Fighter2.fixed_position.x != 5735125:
+		if not $Match/Game/Fighter1/Hitboxes/SGCollisionShape2D.disabled:
 			print("Icecream machine broke")
 			break
 		yield(get_tree().create_timer(0.1), "timeout")
