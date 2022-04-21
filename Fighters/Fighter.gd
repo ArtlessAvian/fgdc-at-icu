@@ -26,6 +26,7 @@ var state: Resource
 var state_time = 0
 var air_actions = 0
 var state_dict: Dictionary = {}
+var invincible: bool = false
 
 var combo_count = 0
 var hitstop = 0
@@ -138,7 +139,9 @@ func hit_response(input: Dictionary):
 			can_block = true
 
 	$Hurtboxes.modulate = Color.white
-	if can_block:
+	if invincible:
+		$Hurtboxes.modulate = Color(0.75, 0.50, 0.95)  
+	elif can_block:
 		if input.stick_y < 0:
 			$Hurtboxes.modulate = Color.blue
 		else:
@@ -154,8 +157,13 @@ func hit_response(input: Dictionary):
 		combo_count += 1
 	else:
 		combo_count = 1
-
-	if can_block:
+	
+	#this seems kind of scuffed but on the other hand i think it's practical 
+	#minimal mutilation and whatnot
+	#-Joshua
+	if invincible:
+		pass
+	elif can_block:
 		state_dict.hitstun = $Hurtboxes.hitstun
 		change_to_state(moveset.blockstun)
 	else:
