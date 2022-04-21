@@ -5,9 +5,10 @@ tool
 # Information here is only useful within a frame, so no need to save.
 var hit_flag = false
 var hitstun = 20
+var hit_hitdata 		# HitData of attack Figher got hit by.
 
 # Save this
-var hurty = {}  # please name this something better soon.
+var attacks_hit_by = {} # Stores which attacks this Hurtbox has gotten hit by. Prevents being hit multiple times by same attack.
 
 
 func _ready():
@@ -45,8 +46,10 @@ func collide_hitboxes():
 		if hitboxes is Hitboxes:
 			var pair = hitboxes.attack_number * 100 + hitboxes.multihit
 			var key = hitboxes.get_parent().name  # todo make not garbo
-			if (not key in hurty) or pair != hurty[key]:
-				hurty[key] = pair
+			if (not key in attacks_hit_by) or pair != attacks_hit_by[key]:
+				hit_hitdata = hitboxes.get_hit_data()
+
+				attacks_hit_by[key] = pair
 				self.hit_flag = true
 				hitboxes.emit_signal("on_hit")
 
@@ -61,12 +64,12 @@ func collide_hitboxes():
 func _save_state() -> Dictionary:
 	return {
 		# hit_flag = hit_flag,
-		hurtyy = hurty.duplicate(true),
+		attacks_hit_by_save = attacks_hit_by.duplicate(true),
 	}
 
 
 func _load_state(save: Dictionary) -> void:
 	hit_flag = false
-	hurty = save.hurtyy.duplicate(true)
+	attacks_hit_by = save.attacks_hit_by_save.duplicate(true)
 
 	sync_to_physics_engine()
