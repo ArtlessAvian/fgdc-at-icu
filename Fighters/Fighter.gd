@@ -154,28 +154,47 @@ func hit_response(input: Dictionary):
 		return
 
 	
-	if (not grounded and sign(fixed_position.x - get_node(opponent_path).fixed_position.x) == input.stick_x) or ((int($Hurtboxes.hit_hitdata.guard) == 0 or int($Hurtboxes.hit_hitdata.guard == 1) )and blocking_low == true ) or ((int($Hurtboxes.hit_hitdata.guard) == 0 or int($Hurtboxes.hit_hitdata.guard) == 2 ) and blocking_high == true):
-		print("blocked")
-		state_dict.blockstun = $Hurtboxes.hit_hitdata.blockstun
-		change_to_state(moveset.blockstun)
-		health = max(health - $Hurtboxes.hit_hitdata.chipdamage, 0)
-		blocking_low = false
-		blocking_high = false
+	if (not grounded and sign(fixed_position.x - get_node(opponent_path).fixed_position.x) == input.stick_x):
+		sucessfulBlock()
+		# Airblock
+	elif ((int($Hurtboxes.hit_hitdata.guard) == 0 or int($Hurtboxes.hit_hitdata.guard == 1) )and blocking_low == true ): 
+		sucessfulBlock()
+		# low block
+	elif ((int($Hurtboxes.hit_hitdata.guard) == 0 or int($Hurtboxes.hit_hitdata.guard) == 2 ) and blocking_high == true):
+		sucessfulBlock()
+		# high block
 	else:
-		# So, I was hit.
-		hitstop = 2
-		health = max(health - $Hurtboxes.hit_hitdata.damage, 0)
-		print(self.name + " " + String(health))  # TODO: Testing
-		state_dict.hitstun = $Hurtboxes.hit_hitdata.hitstun
-		change_to_state(moveset.hitstun)
-		blocking_low = false
-		blocking_high = false
+		unSucessfulBlock()
+		# block not correct direction
+		# or no block at all
+	
+		
+
+func sucessfulBlock():
+	#executes when a player has sucessfully blocked attack
+	print("blocked")
+	state_dict.blockstun = $Hurtboxes.hit_hitdata.blockstun
+	change_to_state(moveset.blockstun)
+	health = max(health - $Hurtboxes.hit_hitdata.chipdamage, 0)
+	blocking_low = false
+	blocking_high = false
+func unSucessfulBlock():
+	#executes when a player tried to block but failed 
+	hitstop = 2
+	health = max(health - $Hurtboxes.hit_hitdata.damage, 0)
+	print(self.name + " " + String(health))  # TODO: Testing
+	state_dict.hitstun = $Hurtboxes.hit_hitdata.hitstun
+	change_to_state(moveset.hitstun)
+	blocking_low = false
+	blocking_high = false
 	if state in [moveset.hitstun]:
 		combo_count += 1
 	else:
 		combo_count = 1
 	
-
+	
+	
+	
 # Will move things into these functions if no one is working on them.
 func on_hit():
 	pass
