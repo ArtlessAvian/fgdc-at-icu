@@ -133,6 +133,12 @@ func anim_process():
 
 func hit_response(input: Dictionary):
 	var can_block = false
+	# # TODO: Testing hack to prevent empty input
+	# if input.empty():
+	# 	# TODO: Better fix. Crashes on game start otherwise! :(
+	# 	for key in NULL_INPUT.keys():
+	# 		input[key] = NULL_INPUT[key]
+	# 	printerr("received empty input on tick ", SyncManager.current_tick)
 	if sign(fixed_position.x - get_node(opponent_path).fixed_position.x) == input.stick_x:
 		if state.can_block():
 			can_block = true
@@ -163,6 +169,7 @@ func hit_response(input: Dictionary):
 		health = max(health - $Hurtboxes.hit_hitdata.damage, 0)
 		state_dict.hitstun = $Hurtboxes.hit_hitdata.hitstun
 		change_to_state(moveset.hitstun)
+		get_node("../../").round_reset()
 
 
 # Will move things into these functions if no one is working on them.

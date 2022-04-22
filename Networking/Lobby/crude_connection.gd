@@ -47,10 +47,18 @@ func _on_Local_button_up():
 	get_tree().network_peer = peer
 
 	$CanvasLayer/MarginContainer.visible = false
-	$Match/Game/Fighter2.controlled_by = "c0"
+	# TODO: Testing hack for spawning Game
+	# $Match/Game/Fighter2.controlled_by = "c0"
+	# SyncManager.start()
+	SyncManager.start() # TODO: Testing
+	yield(get_tree().create_timer(0.6), "timeout")
+	# yield(get_tree().create_timer(2.0), "buffertime") # TODO: Hack to "ensure" SyncManager starts before spawning game
+	$Match.spawn_game()
 
-	SyncManager.start()
-	print("TODO: Testing local button pushed")
+
+# func _process(delta):
+# 	if 
+
 
 
 func _on_Mash_button_up():
