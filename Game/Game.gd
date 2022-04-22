@@ -8,19 +8,11 @@ var last_average: int = 0
 var last_diff: int = 0
 
 
-# func _ready():
-# 	add_to_group("network_group")
-# 	print("My ready is called")
-
-
-func _network_spawn(data: Dictionary):
+func _ready():
 	add_to_group("network_group")
-	print("My ready is called")
-	print("Put me in coach") #TODO: Testing prints
 
 
 func _network_process(input: Dictionary) -> void:
-	print(input)
 	correct_positions()
 	collide_hitboxes()
 

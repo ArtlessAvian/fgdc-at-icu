@@ -14,13 +14,26 @@ func _ready():
 
 
 func spawn_game():
-	SyncManager.spawn(
-		"Game",
-		self,
-		game_scene
-	)
 	# TODO: Again, initialization variables
 	# $Game/Fighter2.controlled_by = "c0"
+
+	var new_game = game_scene.instance()
+	self.add_child(new_game)
+	# TODO: Make sure values set in crude_connection on fighters remain the same in new scene
+	$Game/Fighter2.controlled_by = "c0"
+	print("Score: " + String(player1_score) + " - " + String(player2_score))
+
+	SyncManager.start()
+
+func despawn_game():
+	SyncManager.stop()
+
+	# TODO: remove scene immediately or something idk what is happening but it almost works 
+	# Rollback frames are causing game to "remember" previous state when one player health is 0 and being hit by the other player.
+	# When loading new scene, need to "drop" or "forget" previous rollback stashed frames to not revert to state where other player died.
+	var old_game = $Game
+	old_game.queue_free()
+	self.remove_child(old_game)
 
 
 func round_reset():
@@ -44,52 +57,26 @@ func round_reset():
 		# print(String(game_figher2.get_instance_id()))
 
 		# game_figher2.health = -1
-		print("P2 ded ")# + String(game_figher2.get_instance_id()))
+		player1_score += 1
+		despawn_game()
+		spawn_game()
 		# game_figher1 = null
 		# game_figher2 = null
-		player1_score += 1
 		# reload_game()
 		# TODO: SyncManager.stop() To prevent syncmanager from getting mad that Game has been deleted. Besides, we don't need rollback between Games anyways.
-		print(self.get_path())
-		print($Game.get_path())
-		SyncManager.despawn($Game)
+
+		# print(self.get_path())
+		# print($Game.get_path())
+
+		# SyncManager.despawn($Game)
 		# TODO: copy over data for despawned fighters; data dict
-		SyncManager.spawn(
-			"Game",
-			self,
-			game_scene
-		)
+		# SyncManager.spawn(
+		# 	"Game",
+		# 	self,
+		# 	game_scene
+		# )
 		# game_figher1 = $Game/Fighter1
 		# game_figher2 = $Game/Fighter2
 		# game_figher2.controlled_by = "c0"
 		# TODO: spawning the right way
 		# SyncManager.despawn($Game)
-
-
-# # Restarts a match round.
-# func reload_game():
-# 	game_figher1 = null
-# 	game_figher2 = null
-# 	var old_game = $Game
-# 	self.remove_child(old_game)
-# 	# TODO: remove scene immediately or something idk what is happening but it almost works 
-# 	# Rollback frames are causing game to "remember" previous state when one player health is 0 and being hit by the other player.
-# 	# When loading new scene, need to "drop" or "forget" previous rollback stashed frames to not revert to state where other player died.
-# 	gonnadelete = old_game
-# 	old_game.queue_free()
-# 	print("queued free")
-
-
-# 	var new_game = load(game_path).instance()
-# 	self.add_child(new_game)
-# 	game_figher1 = $Game/Fighter1
-# 	game_figher2 = $Game/Fighter2
-# 	print("New figher2: " + String(game_figher2.get_instance_id()))
-# 	# TODO: Make sure values set in crude_connection on fighters remain the same in new scene
-# 	game_figher2.controlled_by = "c0"
-# 	print("Score: " + String(player1_score) + " - " + String(player2_score))
-
-
-	
-# TODO: Find fighters, set in _ready()
-#		Reload Game scene after one Fighter dies
