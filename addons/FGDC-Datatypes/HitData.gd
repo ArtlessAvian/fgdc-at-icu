@@ -16,9 +16,8 @@ export(int) var hitstop = 5
 
 export(int) var damage = 1
 
-# center x, centery y, width, height
-# in units of pixels!
-export(Array, int) var hitbox_placement
+export(int) var active_hitboxes = 1
+export(int) var active_hurtboxes = 0  # for counterhit!
 
 # desgustang linked list approach
 export(Resource) var followup = null

@@ -39,6 +39,10 @@ func _process(delta):
 			else:
 				child.self_modulate = Color.red
 
+		# HACK.
+		child.position.x = child.fixed_position.x / child.fixed_scale.x
+		child.position.y = child.fixed_position.y / child.fixed_scale.y
+
 
 # Called by animation players. Or by bored people.
 func new_attack():

@@ -13,7 +13,8 @@ hitstun = 40
 blockstun = 12
 hitstop = 5
 damage = 1
-hitbox_placement = [ 80, -100, 72, 84 ]
+active_hitboxes = 1
+active_hurtboxes = 0
 
 [sub_resource type="Resource" id=3]
 script = ExtResource( 2 )
@@ -24,7 +25,8 @@ hitstun = 12
 blockstun = 12
 hitstop = 5
 damage = 1
-hitbox_placement = [  ]
+active_hitboxes = 1
+active_hurtboxes = 0
 followup = SubResource( 2 )
 
 [sub_resource type="Resource" id=1]
@@ -36,7 +38,8 @@ hitstun = 12
 blockstun = 12
 hitstop = 5
 damage = 1
-hitbox_placement = [ 80, -100, 26, 30 ]
+active_hitboxes = 1
+active_hurtboxes = 0
 followup = SubResource( 3 )
 animation_name = "sHeavy"
 recovery = 10
