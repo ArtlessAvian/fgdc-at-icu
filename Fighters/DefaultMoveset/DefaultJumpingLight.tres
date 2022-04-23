@@ -5,7 +5,7 @@
 
 [sub_resource type="Resource" id=1]
 script = ExtResource( 2 )
-guard = "HIGH"
+guard = 2
 startup = 4
 active = 3000
 hitstun = 12

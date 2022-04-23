@@ -2,7 +2,7 @@ extends "../State.gd"
 
 
 func transition_out(f: Fighter, moveset: Moveset, input: Dictionary) -> State:
-	if f.state_time > f.state_dict.hitstun:
+	if f.state_time > f.state_dict.blockstun:
 		return moveset.walk
 	return null
 

@@ -5,7 +5,7 @@ tool
 # if you want to be tricky, if bit 0 is 1, you need to block low
 # if bit 1 is 1, you need to block high
 # and you can't block both at the same time >:)
-export(String, "MID", "LOW", "HIGH", "UNBLOCKABLE") var guard = 0
+export(int, "MID", "LOW", "HIGH", "UNBLOCKABLE") var guard = 0
 
 export(int) var startup = 4
 export(int) var active = 2

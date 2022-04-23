@@ -30,9 +30,6 @@ var state_dict: Dictionary = {}
 var combo_count = 0
 var hitstop = 0
 
-export (bool) var blocking_high = false
-export (bool) var blocking_low = false
-
 
 func _ready():
 	if self in get_tree().root.get_children():
@@ -135,73 +132,68 @@ func anim_process():
 
 
 func hit_response(input: Dictionary):
-	var can_block = false
+	var blocking = false
 	if sign(fixed_position.x - get_node(opponent_path).fixed_position.x) == input.stick_x:
 		if state.can_block():
-			can_block = true
+			blocking = true
 
 	# Change hurtbox color if blocking or not blocking
 	$Hurtboxes.modulate = Color.white
-	if can_block:
-		if input.stick_y < 0 and sign(fixed_position.x - get_node(opponent_path).fixed_position.x) == input.stick_x:
-			blocking_low = true
+	if blocking:
+		if input.stick_y < 0:
 			$Hurtboxes.modulate = Color.blue
 		else:
 			$Hurtboxes.modulate = Color.cyan
-			blocking_high = true
+	# End debuggy stuff.
 
 	if not $Hurtboxes.hit_flag:
+		# The fighter was not hit, so no need to do anything.
 		return
 
-	
-	if (not grounded and sign(fixed_position.x - get_node(opponent_path).fixed_position.x) == input.stick_x):
-		sucessfulBlock()
-		# Airblock
-	elif ((int($Hurtboxes.hit_hitdata.guard) == 0 or int($Hurtboxes.hit_hitdata.guard == 1) )and blocking_low == true ): 
-		sucessfulBlock()
-		# low block
-	elif ((int($Hurtboxes.hit_hitdata.guard) == 0 or int($Hurtboxes.hit_hitdata.guard) == 2 ) and blocking_high == true):
-		sucessfulBlock()
-		# high block
-	else:
-		unSucessfulBlock()
-		# block not correct direction
-		# or no block at all
-	
-		
+	# This fighter was hit.
+	# Check for block.
 
-func sucessfulBlock():
-	#executes when a player has sucessfully blocked attack
-	print("blocked")
+	# Airblock / Chickenblock
+	if not grounded and blocking:
+		on_block()
+
+	# int cast because godot is being uncooperative
+	# Blocking a mid
+	elif int($Hurtboxes.hit_hitdata.guard) == 0 and blocking:
+		on_block()
+
+	# Blocking a low
+	elif int($Hurtboxes.hit_hitdata.guard) == 1 and blocking and input.stick_y < 0:
+		on_block()
+
+	# Blocking a low
+	elif int($Hurtboxes.hit_hitdata.guard) == 2 and blocking and input.stick_y >= 0:
+		on_block()
+
+	# Block not correct direction or no block at all
+	else:
+		on_hit()
+
+
+func on_block():
+	hitstop = 2
+	health = max(health - $Hurtboxes.hit_hitdata.chipdamage, 0)
 	state_dict.blockstun = $Hurtboxes.hit_hitdata.blockstun
 	change_to_state(moveset.blockstun)
-	health = max(health - $Hurtboxes.hit_hitdata.chipdamage, 0)
-	blocking_low = false
-	blocking_high = false
-func unSucessfulBlock():
-	#executes when a player tried to block but failed 
+
+	combo_count = 0
+
+
+func on_hit():
 	hitstop = 2
 	health = max(health - $Hurtboxes.hit_hitdata.damage, 0)
 	print(self.name + " " + String(health))  # TODO: Testing
 	state_dict.hitstun = $Hurtboxes.hit_hitdata.hitstun
 	change_to_state(moveset.hitstun)
-	blocking_low = false
-	blocking_high = false
 	if state in [moveset.hitstun]:
 		combo_count += 1
 	else:
 		combo_count = 1
-	
-	
-	
-	
-# Will move things into these functions if no one is working on them.
-func on_hit():
-	pass
-
-
-func on_block():
-	pass
 
 
 # Helper
@@ -240,6 +232,14 @@ func _get_local_input() -> Dictionary:
 			just_light = randf() < 0.1,
 			heavy = randf() < 0.1,
 			just_heavy = randf() < 0.1
+			# stick_x = 1,
+			# just_stick_x = 0,
+			# stick_y = -1,
+			# just_stick_y = 0,
+			# light = 0,
+			# just_light = 0,
+			# heavy = 0,
+			# just_heavy = 0
 		}
 		return input
 
