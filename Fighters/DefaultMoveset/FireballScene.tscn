@@ -14,6 +14,7 @@ hitstun = 12
 blockstun = 12
 hitstop = 5
 damage = 1
+knockdown = true
 hitbox_placement = [  ]
 
 [sub_resource type="SGRectangleShape2D" id=1]

@@ -15,6 +15,7 @@ export(int) var blockstun = 12
 export(int) var hitstop = 5
 
 export(int) var damage = 1
+export(bool) var knockdown = true
 
 # center x, centery y, width, height
 # in units of pixels!

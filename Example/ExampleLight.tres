@@ -13,6 +13,7 @@ hitstun = 12
 blockstun = 12
 hitstop = 5
 damage = 1
+knockdown = true
 hitbox_placement = [  ]
 
 [sub_resource type="Resource" id=1]
@@ -24,6 +25,7 @@ hitstun = 12
 blockstun = 12
 hitstop = 5
 damage = 1
+knockdown = true
 hitbox_placement = [  ]
 followup = SubResource( 2 )
 animation_name = "Walk"

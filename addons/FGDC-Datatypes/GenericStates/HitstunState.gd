@@ -5,6 +5,12 @@ func transition_out(f: Fighter, moveset: Moveset, input: Dictionary) -> State:
 	if f.state_time > f.state_dict.hitstun:
 		f.combo_count = 0
 		return moveset.walk
+		
+	if f.grounded and f.get_node("Hurtboxes").hit_hitdata.knockdown:
+		f.invincible = true
+		f.get_node("Hurtboxes").hit_hitdata.knockdown = false
+		return moveset.knockdown
+	
 	return null
 
 

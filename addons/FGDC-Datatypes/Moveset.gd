@@ -7,6 +7,7 @@ export(int) var air_actions = 3
 export(Resource) var walk
 export(Resource) var crouch
 export(Resource) var jump
+export(Resource) var knockdown = load(prefix + "GenericStates/KnockdownState.gd").new()
 # export(Resource) var airdash
 
 export(Resource) var light
@@ -37,5 +38,6 @@ func all_states():
 		lazy_all_states.append(heavy)
 		lazy_all_states.append(c_light)
 		lazy_all_states.append(light)
+		#lazy_all_states.append(knockdown)
 		lazy_all_states.append_array(movement)
 	return lazy_all_states
