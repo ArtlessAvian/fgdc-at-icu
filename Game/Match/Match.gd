@@ -4,7 +4,7 @@ extends SGFixedNode2D
 onready var player1_score = 0
 onready var player2_score = 0
 
-var game_scene = load("res://Game/Game.tscn")
+const game_scene = preload("res://Game/Game.tscn")
 
 
 func _ready():
@@ -14,16 +14,19 @@ func _ready():
 
 
 func spawn_game():
+	# TODO: Spawn in of game is being rollbacked
 	SyncManager.spawn(
 		"Game",
 		self,
 		game_scene
 	)
+
 	# TODO: Again, initialization variables
 	# $Game/Fighter2.controlled_by = "c0"
 
 
-func round_reset():
+# Called when one player dies. Resets the round by respawning the Game scene.
+func round_reset(is_p2: bool):
 	# print("TODO: Testing: " + self.name + " " + String(self.is_in_group(("network_sync"))))
 	# print("Processing")
 
@@ -38,7 +41,7 @@ func round_reset():
 	# 		player2_score += 1
 	# 		print("P1 ded")
 	# 		# reload_game()
-	if $Game/Fighter2.health == 0:
+	if is_p2:
 		# New fighters being created, health is 0
 		# print(String(game_figher1.get_instance_id()))
 		# print(String(game_figher2.get_instance_id()))
@@ -50,9 +53,9 @@ func round_reset():
 		player1_score += 1
 		# reload_game()
 		# TODO: SyncManager.stop() To prevent syncmanager from getting mad that Game has been deleted. Besides, we don't need rollback between Games anyways.
+		print("Dancing in the moonlight") #TODO: Testing despawn point
 		print(self.get_path())
-		print($Game.get_path())
-		SyncManager.despawn($Game)
+		SyncManager.despawn($Game) # TODO: Generalize; Game name in hierarchy is not "Game"
 		# TODO: copy over data for despawned fighters; data dict
 		SyncManager.spawn(
 			"Game",

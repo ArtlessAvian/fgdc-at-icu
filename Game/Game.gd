@@ -15,12 +15,13 @@ var last_diff: int = 0
 
 func _network_spawn(data: Dictionary):
 	add_to_group("network_group")
-	print("My ready is called")
-	print("Put me in coach") #TODO: Testing prints
+	add_to_group("network_sync")
+	print("Adding Game to some groups")
 
+	# TODO: Testing hack: use values from data instead
+	$Fighter2.controlled_by = "c0"
 
 func _network_process(input: Dictionary) -> void:
-	print(input)
 	correct_positions()
 	collide_hitboxes()
 
