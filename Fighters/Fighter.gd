@@ -26,6 +26,7 @@ var state: Resource
 var state_time = 0
 var air_actions = 0
 var state_dict: Dictionary = {}
+var invincible: bool = false
 
 var combo_count = 0
 var hitstop = 0
@@ -139,7 +140,9 @@ func hit_response(input: Dictionary):
 
 	# Change hurtbox color if blocking or not blocking
 	$Hurtboxes.modulate = Color.white
-	if blocking:
+	if invincible:
+		$Hurtboxes.modulate = Color(0.75, 0.50, 0.95)
+	elif blocking:
 		if input.stick_y < 0:
 			$Hurtboxes.modulate = Color.blue
 		else:
@@ -151,10 +154,13 @@ func hit_response(input: Dictionary):
 		return
 
 	# This fighter was hit.
+	if invincible:
+		pass
+
 	# Check for block.
 
 	# Airblock / Chickenblock
-	if not grounded and blocking:
+	elif not grounded and blocking:
 		on_block()
 
 	# int cast because godot is being uncooperative
