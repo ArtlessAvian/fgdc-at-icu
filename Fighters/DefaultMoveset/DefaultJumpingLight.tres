@@ -5,16 +5,16 @@
 
 [sub_resource type="Resource" id=1]
 script = ExtResource( 2 )
-guard = 2
+guard = "HIGH"
 startup = 4
 active = 3000
 hitstun = 12
 blockstun = 12
 hitstop = 5
 damage = 1
-chipdamage = 0
-hitbox_placement = [  ]
-animation_name = "Walk"
+active_hitboxes = 1
+active_hurtboxes = 0
+animation_name = "jLight"
 recovery = 10
 
 [resource]

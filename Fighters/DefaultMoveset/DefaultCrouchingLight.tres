@@ -5,15 +5,15 @@
 
 [sub_resource type="Resource" id=1]
 script = ExtResource( 2 )
-guard = 1
+guard = "LOW"
 startup = 4
 active = 4
 hitstun = 12
 blockstun = 12
 hitstop = 5
 damage = 1
-chipdamage = 0
-hitbox_placement = [ 128, -40, 76, 22 ]
+active_hitboxes = 1
+active_hurtboxes = 0
 animation_name = "cLight"
 recovery = 10
 

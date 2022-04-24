@@ -84,6 +84,13 @@ func transition_into_double_jump(f: Fighter, moveset: Moveset, input: Dictionary
 
 
 func transition_into_attack(f: Fighter, moveset: Moveset, input: Dictionary) -> State:
+	if not f.state_dict.has("last_attack_hit"):
+		f.state_dict.last_attack_hit = -1
+
+	if f.state in moveset.all_normals():
+		if f.get_node("Hitboxes").attack_number != f.state_dict.last_attack_hit:
+			return null
+
 	if not f.grounded:
 		if input.heavy and self.attack_level() < moveset.j_heavy.attack_level():
 			f.get_node("Hitboxes").new_attack()

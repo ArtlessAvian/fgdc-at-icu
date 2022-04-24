@@ -12,8 +12,8 @@ hitstun = 12
 blockstun = 12
 hitstop = 5
 damage = 1
-chipdamage = 0
-hitbox_placement = [ 83, -86, 20, 20 ]
+active_hitboxes = 1
+active_hurtboxes = 0
 animation_name = "sLight"
 recovery = 10
 

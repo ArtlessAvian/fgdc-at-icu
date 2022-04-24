@@ -175,6 +175,7 @@ func hit_response(input: Dictionary):
 		on_hit()
 
 
+# Rename to "block_hit" when everyone's ready.
 func on_block():
 	hitstop = 2
 	health = max(health - $Hurtboxes.hit_hitdata.chipdamage, 0)
@@ -184,6 +185,8 @@ func on_block():
 	combo_count = 0
 
 
+# Rename to "get_hit" when everyone's ready. ;_;
+# Imagine being able to name things
 func on_hit():
 	hitstop = 2
 	health = max(health - $Hurtboxes.hit_hitdata.damage, 0)
@@ -322,5 +325,4 @@ func _load_state(save: Dictionary) -> void:
 
 
 func _on_Hitboxes_on_hit():
-	pass
-	# print("hehe")
+	state_dict.last_attack_hit = $Hitboxes.attack_number

@@ -4,19 +4,6 @@ export(Resource) var attack_data = null
 
 export(int) var attack_level = 0
 
-# func transition_into(f: Fighter, moveset: Moveset, input: Dictionary) -> bool16:
-# 	if f.state in [moveset.walk, moveset.crouch]:
-# 		if input.get(button):
-# 			if input.stick_y < 0 == crouching:
-# 				return true
-
-# 	if f.state in [moveset.light, moveset.heavy, moveset.c_light, moveset.c_heavy]:
-# 		if input.get(button):
-# 			if input.stick_y < 0 == crouching:
-# 				return true
-
-# 	return false
-
 
 func ensure_not_null():
 	if attack_data == null:
