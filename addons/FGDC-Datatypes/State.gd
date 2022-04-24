@@ -22,6 +22,11 @@ func transition(f: Fighter, moveset: Moveset, input: Dictionary) -> State:
 	return transition_out(f, moveset, input)
 
 
+# dunno what params i want for this
+func enter(f: Fighter) -> void:
+	return
+
+
 func run(f: Fighter, input: Dictionary) -> void:
 	return
 

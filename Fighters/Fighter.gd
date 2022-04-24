@@ -97,6 +97,7 @@ func state_process(input: Dictionary):
 
 
 func change_to_state(new_state):
+	new_state.enter(self)
 	state = new_state
 	state_time = 0
 
@@ -108,11 +109,13 @@ func move():
 	self.fixed_position.x += vel.x
 	self.fixed_position.y -= vel.y
 
-	if self.fixed_position.y > 0:
-		self.fixed_position.y = 0
-		vel.y = 0
-		grounded = true
+	# i have made poor decisions making positive vel.y go "up" but -y in coordinates
+	if self.fixed_position.y > 0 && self.vel.y <= 0:
 		if state.can_land_cancel():
+			print("landed")
+			self.fixed_position.y = 0
+			vel.y = 0
+			grounded = true
 			change_to_state(moveset.walk)
 			face_opponent()
 
@@ -194,8 +197,16 @@ func on_hit():
 	hitstop = 2
 	health = max(health - $Hurtboxes.hit_hitdata.damage, 0)
 	print(self.name + " " + String(health))  # TODO: Testing
-	state_dict.hitstun = $Hurtboxes.hit_hitdata.hitstun
-	change_to_state(moveset.hitstun)
+
+	print($Hurtboxes.hit_hitdata, SyncManager.current_tick)
+	if $Hurtboxes.hit_hitdata.knockdown:
+		print("hello?")
+		state_dict.hitstun = $Hurtboxes.hit_hitdata.hitstun
+		change_to_state(moveset.knockdown)
+	else:
+		state_dict.hitstun = $Hurtboxes.hit_hitdata.hitstun
+		change_to_state(moveset.hitstun)
+
 	if state in [moveset.hitstun]:
 		combo_count += 1
 	else:
@@ -299,7 +310,8 @@ func _save_state() -> Dictionary:
 		state_dict = state_dict.duplicate(),
 		combo_count = combo_count,
 		hitstop = hitstop,
-		health = health
+		health = health,
+		invincible = invincible
 	}
 	# return save
 
@@ -318,6 +330,7 @@ func _load_state(save: Dictionary) -> void:
 	combo_count = save.combo_count
 	hitstop = save.hitstop
 	health = save.health
+	invincible = save.invincible
 
 	$AnimationPlayer.play("RESET")
 	$AnimationPlayer.advance(1000)

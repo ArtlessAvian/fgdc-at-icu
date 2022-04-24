@@ -6,10 +6,10 @@ tool
 var hit_flag = false
 var hitstun = 20
 var blockstun = 8
-var hit_hitdata 		# HitData of attack Figher got hit by.
+var hit_hitdata  # HitData of attack Figher got hit by.
 
 # Save this
-var attacks_hit_by = {} # Stores which attacks this Hurtbox has gotten hit by. Prevents being hit multiple times by same attack.
+var attacks_hit_by = {}  # Stores which attacks this Hurtbox has gotten hit by. Prevents being hit multiple times by same attack.
 
 
 func _ready():
@@ -65,11 +65,13 @@ func _save_state() -> Dictionary:
 	return {
 		# hit_flag = hit_flag,
 		attacks_hit_by_save = attacks_hit_by.duplicate(true),
+		hit_hitdata = hit_hitdata
 	}
 
 
 func _load_state(save: Dictionary) -> void:
 	hit_flag = false
 	attacks_hit_by = save.attacks_hit_by_save.duplicate(true)
+	hit_hitdata = save.hit_hitdata
 
 	sync_to_physics_engine()

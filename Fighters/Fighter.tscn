@@ -527,7 +527,7 @@ tracks/1/keys = {
 extents_x = 4718592
 extents_y = 5505024
 
-[sub_resource type="SGRectangleShape2D" id=36]
+[sub_resource type="SGRectangleShape2D" id=38]
 extents_x = 2752512
 extents_y = 6553600
 
@@ -621,7 +621,7 @@ __meta__ = {
 [node name="SGCollisionShape2D" type="SGCollisionShape2D" parent="Hurtboxes"]
 position = Vector2( 0, -100 )
 fixed_position_y = -6553600
-shape = SubResource( 36 )
+shape = SubResource( 38 )
 
 [node name="[EDITOR]HitboxHelper" type="Node" parent="."]
 script = ExtResource( 9 )
