@@ -19,11 +19,10 @@ func transition_out(f: Fighter, moveset: Moveset, input: Dictionary) -> State:
 	return null
 
 func run(f: Fighter, input: Dictionary) -> void:
-	print("IM IN KNOCKDOWN")
 	pass
 	
 func animation(f: Fighter) -> String:
-	return "Hitstun"
+	return "Knockdown"
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass

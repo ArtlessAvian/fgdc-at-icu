@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://Fighters/Fighter.gd" type="Script" id=1]
 [ext_resource path="res://Fighters/debug.gd" type="Script" id=2]
@@ -132,6 +132,45 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ 0.0, 360.0 ]
+}
+
+[sub_resource type="Animation" id=37]
+resource_name = "Knockdown"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Visual/Character/Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -50 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Visual/Character/Sprite:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Visual/Character/Sprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 25 ]
 }
 
 [sub_resource type="Animation" id=24]
@@ -516,6 +555,7 @@ anims/Crouch = SubResource( 30 )
 anims/Hitstun = SubResource( 27 )
 anims/Idle = SubResource( 22 )
 anims/Jump = SubResource( 23 )
+anims/Knockdown = SubResource( 37 )
 anims/Prejump = SubResource( 24 )
 anims/RESET = SubResource( 7 )
 anims/Walk = SubResource( 8 )
