@@ -68,6 +68,8 @@ func spawn_game():
 
 func despawn_game():
 	if $Game != null:
+		for child in $Game/Spawned.get_children():
+			SyncManager.despawn(child)
 		SyncManager.despawn($Game)
 
 

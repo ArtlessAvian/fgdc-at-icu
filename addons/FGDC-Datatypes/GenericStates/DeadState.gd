@@ -1,7 +1,7 @@
 extends "../State.gd"
 
 
-# Dead if no health.
+# Dead if no health. This is more of a failsafe.
 func transition_into(f: Fighter, moveset: Moveset, input: Dictionary) -> bool:
 	if f.health == 0 and f.state != self:
 		return true
@@ -25,6 +25,7 @@ func run(f: Fighter, input: Dictionary) -> void:
 	# super omega hack.
 	# just pretend to be the knockdown state.
 	f.moveset.knockdown.run(f, input)
+	f.invincible = false
 
 
 # TODO: Dead animation
@@ -34,3 +35,7 @@ func animation(f: Fighter) -> String:
 
 func can_land_cancel() -> bool:
 	return false
+
+
+func attack_level():
+	return 8765309

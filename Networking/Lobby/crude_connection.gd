@@ -71,9 +71,12 @@ func _on_Mash_button_up():
 	get_tree().network_peer = peer
 
 	$CanvasLayer/MarginContainer.visible = false
-	$Match/Game/Fighter2.is_mash = true
 
 	SyncManager.start()
+
+	# HACK
+	yield(get_tree().create_timer(1), "timeout")
+	$Match/Game/Fighter2.is_mash = true
 
 
 func _on_Test_button_up():

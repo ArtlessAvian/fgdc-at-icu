@@ -202,19 +202,21 @@ func on_hit():
 	health = max(health - $Hurtboxes.hit_hitdata.damage, 0)
 	# print(self.name + " " + String(health))  # TODO: Testing
 
+	if state in [moveset.hitstun]:
+		combo_count += 1
+	else:
+		combo_count = 1
+
 	# print($Hurtboxes.hit_hitdata, SyncManager.current_tick)
-	if $Hurtboxes.hit_hitdata.knockdown:
+	if self.health <= 0:
+		change_to_state(moveset.dead)
+	elif $Hurtboxes.hit_hitdata.knockdown:
 		# print("hello?")
 		state_dict.hitstun = $Hurtboxes.hit_hitdata.hitstun
 		change_to_state(moveset.knockdown)
 	else:
 		state_dict.hitstun = $Hurtboxes.hit_hitdata.hitstun
 		change_to_state(moveset.hitstun)
-
-	if state in [moveset.hitstun]:
-		combo_count += 1
-	else:
-		combo_count = 1
 
 
 # Helper

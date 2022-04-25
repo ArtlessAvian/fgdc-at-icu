@@ -44,3 +44,7 @@ func animation(f: Fighter) -> String:
 
 func can_land_cancel() -> bool:
 	return false
+
+
+func attack_level():
+	return 8765309
