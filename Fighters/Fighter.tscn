@@ -931,7 +931,6 @@ script = ExtResource( 10 )
 [node name="Visual" type="Node2D" parent="."]
 
 [node name="Character" type="Node2D" parent="Visual"]
-scale = Vector2( -1, 1 )
 script = ExtResource( 6 )
 
 [node name="Sprite" type="Sprite" parent="Visual/Character"]
@@ -950,7 +949,7 @@ __meta__ = {
 
 [node name="SGCollisionShape2D" type="SGCollisionShape2D" parent="Hitboxes"]
 self_modulate = Color( 0.75, 0.75, 0.75, 1 )
-position = Vector2( 130, -33 )
+position = Vector2( 80, -100 )
 fixed_position_x = 5242880
 fixed_position_y = -6553600
 shape = SubResource( 33 )
@@ -978,8 +977,7 @@ margin_top = 50.0
 margin_right = 4.0
 margin_bottom = 64.0
 rect_scale = Vector2( 2, 2 )
-text = "res://Fighters/DefaultMoveset/DefaultCrouchingHeavy.tres::1
-Animation too short! Need 2 more frames!"
+text = "No attack loaded!"
 
 [node name="InputHistory" type="Node" parent="." groups=["network_sync"]]
 script = ExtResource( 8 )

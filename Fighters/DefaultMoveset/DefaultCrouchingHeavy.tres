@@ -15,7 +15,8 @@ damage = 1
 chipdamage = 0
 knockdown = true
 y_vel = 0
-hitbox_placement = [ 128, -40, 76, 22 ]
+active_hitboxes = 1
+active_hurtboxes = 0
 animation_name = "cHeavy"
 recovery = 15
 
@@ -23,3 +24,4 @@ recovery = 15
 script = ExtResource( 1 )
 attack_data = SubResource( 1 )
 attack_level = 3
+jump_cancellable = false

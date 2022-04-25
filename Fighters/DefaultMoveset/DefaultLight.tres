@@ -15,7 +15,8 @@ damage = 1
 chipdamage = 0
 knockdown = null
 y_vel = 0
-hitbox_placement = [  ]
+active_hitboxes = 1
+active_hurtboxes = 0
 animation_name = "sLight"
 recovery = 10
 
@@ -23,3 +24,4 @@ recovery = 10
 script = ExtResource( 1 )
 attack_data = SubResource( 1 )
 attack_level = 0
+jump_cancellable = false

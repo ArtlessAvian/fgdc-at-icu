@@ -16,7 +16,8 @@ damage = 1
 chipdamage = 0
 knockdown = false
 y_vel = 15
-hitbox_placement = [  ]
+active_hitboxes = 1
+active_hurtboxes = 0
 
 [sub_resource type="Resource" id=3]
 script = ExtResource( 2 )
@@ -30,7 +31,8 @@ damage = 1
 chipdamage = 0
 knockdown = false
 y_vel = 0
-hitbox_placement = [  ]
+active_hitboxes = 1
+active_hurtboxes = 0
 followup = SubResource( 2 )
 
 [sub_resource type="Resource" id=1]
@@ -45,7 +47,8 @@ damage = 1
 chipdamage = 0
 knockdown = null
 y_vel = 0
-hitbox_placement = [  ]
+active_hitboxes = 1
+active_hurtboxes = 0
 followup = SubResource( 3 )
 animation_name = "sHeavy"
 recovery = 10
@@ -54,3 +57,4 @@ recovery = 10
 script = ExtResource( 1 )
 attack_data = SubResource( 1 )
 attack_level = 2
+jump_cancellable = true
