@@ -14,6 +14,7 @@ hitstop = 5
 damage = 1
 chipdamage = 0
 knockdown = true
+y_vel = 0
 hitbox_placement = [ 128, -40, 76, 22 ]
 animation_name = "Walk"
 recovery = 10

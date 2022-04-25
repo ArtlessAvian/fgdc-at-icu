@@ -17,6 +17,7 @@ export(int) var hitstop = 5
 export(int) var damage = 1
 export(int) var chipdamage = 0
 export(bool) var knockdown = true
+export(int) var y_vel = 0
 
 # center x, centery y, width, height
 # in units of pixels!
