@@ -118,6 +118,11 @@ func move():
 			grounded = true
 			change_to_state(moveset.walk)
 			face_opponent()
+		else:
+			print("landed, no land cancel")
+			self.fixed_position.y = 0
+			vel.y = 0
+			grounded = true
 
 
 func anim_process():
@@ -205,6 +210,10 @@ func on_hit():
 		change_to_state(moveset.knockdown)
 	else:
 		state_dict.hitstun = $Hurtboxes.hit_hitdata.hitstun
+		#print("y_vel: ", $Hurtboxes.hit_hitdata.y_vel)
+		vel.y = $Hurtboxes.hit_hitdata.y_vel << 16
+		if vel.y > 0:
+			grounded = false
 		change_to_state(moveset.hitstun)
 
 	if state in [moveset.hitstun]:

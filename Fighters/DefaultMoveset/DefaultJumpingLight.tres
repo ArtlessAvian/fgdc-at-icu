@@ -5,14 +5,16 @@
 
 [sub_resource type="Resource" id=1]
 script = ExtResource( 2 )
-guard = 2
+guard = "HIGH"
 startup = 4
 active = 3000
 hitstun = 12
 blockstun = 12
 hitstop = 5
 damage = 1
+chipdamage = 0
 knockdown = null
+y_vel = 0
 hitbox_placement = [  ]
 animation_name = "Walk"
 recovery = 10

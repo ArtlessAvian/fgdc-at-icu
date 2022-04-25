@@ -13,6 +13,7 @@ hitstun = 12
 blockstun = 12
 hitstop = 5
 damage = 1
+chipdamage = 0
 knockdown = true
 hitbox_placement = [  ]
 
@@ -25,6 +26,7 @@ hitstun = 12
 blockstun = 12
 hitstop = 5
 damage = 1
+chipdamage = 0
 knockdown = true
 hitbox_placement = [  ]
 followup = SubResource( 2 )

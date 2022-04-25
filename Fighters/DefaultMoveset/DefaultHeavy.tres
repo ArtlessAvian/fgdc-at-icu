@@ -13,7 +13,9 @@ hitstun = 40
 blockstun = 12
 hitstop = 5
 damage = 1
+chipdamage = 0
 knockdown = false
+y_vel = 15
 hitbox_placement = [ 80, -100, 72, 84 ]
 
 [sub_resource type="Resource" id=3]
@@ -25,7 +27,9 @@ hitstun = 12
 blockstun = 12
 hitstop = 5
 damage = 1
+chipdamage = 0
 knockdown = false
+y_vel = 0
 hitbox_placement = [  ]
 followup = SubResource( 2 )
 
@@ -38,7 +42,9 @@ hitstun = 12
 blockstun = 12
 hitstop = 5
 damage = 1
+chipdamage = 0
 knockdown = null
+y_vel = 0
 hitbox_placement = [ 80, -100, 26, 30 ]
 followup = SubResource( 3 )
 animation_name = "sHeavy"
