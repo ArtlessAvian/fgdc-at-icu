@@ -16,7 +16,7 @@ chipdamage = 0
 knockdown = null
 y_vel = 0
 hitbox_placement = [  ]
-animation_name = "Walk"
+animation_name = "jLight"
 recovery = 10
 
 [resource]

@@ -15,7 +15,7 @@ damage = 1
 chipdamage = 0
 knockdown = null
 y_vel = 0
-hitbox_placement = [ 83, -86, 20, 20 ]
+hitbox_placement = [  ]
 animation_name = "sLight"
 recovery = 10
 
