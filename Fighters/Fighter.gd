@@ -21,7 +21,7 @@ export var opponent_path: NodePath = ""
 var vel: SGFixedVector2 = SGFixedVector2.new()
 var grounded = true
 
-var health: int = 100
+var health: int = 20
 var state: Resource
 var state_time = 0
 var air_actions = 0
@@ -182,6 +182,7 @@ func hit_response(input: Dictionary):
 	# Block not correct direction or no block at all
 	else:
 		on_hit()
+		get_node("../../").round_reset()
 
 
 func on_block():

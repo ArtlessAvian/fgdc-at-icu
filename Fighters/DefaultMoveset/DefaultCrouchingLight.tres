@@ -12,6 +12,7 @@ hitstun = 18
 blockstun = 12
 hitstop = 5
 damage = 1
+chipdamage = 0
 knockdown = null
 hitbox_placement = [ 128, -40, 76, 22 ]
 animation_name = "cLight"

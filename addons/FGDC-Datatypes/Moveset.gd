@@ -25,6 +25,7 @@ export(Array, Resource) var movement = []
 const prefix = "res://addons/FGDC-Datatypes/"
 var hitstun: Resource = load(prefix + "GenericStates/HitstunState.gd").new()
 var blockstun: Resource = load(prefix + "GenericStates/BlockstunState.gd").new()
+var dead: Resource = load(prefix + "GenericStates/DeadState.gd").new()
 
 var lazy_all_states: Array = []
 
@@ -40,4 +41,5 @@ func all_states():
 		lazy_all_states.append(light)
 		#lazy_all_states.append(knockdown)
 		lazy_all_states.append_array(movement)
+		lazy_all_states.append(dead)
 	return lazy_all_states
