@@ -19,9 +19,8 @@ export(int) var chipdamage = 0
 export(bool) var knockdown = true
 export(int) var y_vel = 0
 
-# center x, centery y, width, height
-# in units of pixels!
-export(Array, int) var hitbox_placement
+export(int) var active_hitboxes = 1
+export(int) var active_hurtboxes = 0  # for counterhit!
 
 # desgustang linked list approach
 export(Resource) var followup = null

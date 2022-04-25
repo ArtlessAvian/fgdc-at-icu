@@ -29,7 +29,7 @@ func toggle_player():
 
 func _process(delta):
 	for uncast in get_children():
-		var child: SGCollisionShape2D = uncast
+		var child = uncast
 		if not Engine.editor_hint:
 			child.visible = not child.disabled
 			child.self_modulate = Color.red
