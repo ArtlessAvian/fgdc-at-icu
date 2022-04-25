@@ -169,7 +169,7 @@ func hit_response(input: Dictionary):
 		health = max(health - $Hurtboxes.hit_hitdata.damage, 0)
 		state_dict.hitstun = $Hurtboxes.hit_hitdata.hitstun
 		change_to_state(moveset.hitstun)
-		get_node("../../").round_reset(is_p2)
+		get_node("../../").round_reset(self)
 
 
 # Will move things into these functions if no one is working on them.

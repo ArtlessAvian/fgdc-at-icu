@@ -111,6 +111,7 @@ func spawn(name: String, parent: Node, scene: PackedScene, data: Dictionary, ren
 	var node_path = str(spawned_node.get_path())
 	spawn_records[node_path] = spawn_record
 	spawned_nodes[node_path] = spawned_node
+	print("Added spawned node path to dictionary: " + String(spawned_nodes.keys())) #TODO: More print testing
 	node_scenes[node_path] = scene.resource_path
 	
 	#print ("[%s] spawned: %s" % [SyncManager.current_tick, spawned_node.name])
@@ -123,6 +124,7 @@ func despawn(node: Node) -> void:
 	_do_despawn(node, str(node.get_path()))
 
 func _do_despawn(node: Node, node_path: String) -> void:
+	print("Being despawned on tick ", SyncManager.current_tick)
 	if node.has_method('_network_despawn'):
 		node._network_despawn()
 	if node.get_parent():

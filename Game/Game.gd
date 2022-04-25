@@ -9,14 +9,13 @@ var last_diff: int = 0
 
 
 # func _ready():
-# 	add_to_group("network_group")
-# 	print("My ready is called")
+# 	print("Game ready is called")
+# 	# add_to_group("network_group")
+# 	# print("My ready is called")
 
 
 func _network_spawn(data: Dictionary):
-	add_to_group("network_group")
 	add_to_group("network_sync")
-	print("Adding Game to some groups")
 
 	# TODO: Testing hack: use values from data instead
 	$Fighter2.controlled_by = "c0"

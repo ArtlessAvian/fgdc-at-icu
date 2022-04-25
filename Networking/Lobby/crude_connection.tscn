@@ -1,12 +1,15 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Game/Match/Match.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Networking/Lobby/crude_connection.gd" type="Script" id=2]
+[ext_resource path="res://Game/Game.tscn" type="PackedScene" id=3]
+[ext_resource path="res://addons/godot-rollback-netcode/NetworkTimer.gd" type="Script" id=4]
 
 [node name="Crude" type="Node"]
 script = ExtResource( 2 )
 
 [node name="Match" parent="." instance=ExtResource( 1 )]
+game_scene = ExtResource( 3 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -186,8 +189,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="SpawnTimer" type="Node" parent="."]
+script = ExtResource( 4 )
+one_shot = true
+wait_ticks = 1
+
 [connection signal="button_up" from="CanvasLayer/MarginContainer/GridContainer/Server" to="." method="_on_Server_button_up"]
 [connection signal="button_up" from="CanvasLayer/MarginContainer/GridContainer/Client" to="." method="_on_Client_button_up"]
 [connection signal="button_up" from="CanvasLayer/MarginContainer/GridContainer/Local" to="." method="_on_Local_button_up"]
 [connection signal="button_up" from="CanvasLayer/MarginContainer/GridContainer/Mash" to="." method="_on_Mash_button_up"]
 [connection signal="button_up" from="CanvasLayer/MarginContainer/GridContainer/Test" to="." method="_on_Test_button_up"]
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]

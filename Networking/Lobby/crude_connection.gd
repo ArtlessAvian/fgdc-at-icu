@@ -5,6 +5,8 @@ extends Node
 onready var host_field = $CanvasLayer/MarginContainer/GridContainer/HostField
 onready var port_field = $CanvasLayer/MarginContainer/GridContainer/PortField
 
+onready var spawn_timer = $SpawnTimer
+
 
 func _ready():
 	get_tree().connect("network_peer_connected", self, "_on_network_peer_connected")
@@ -49,15 +51,23 @@ func _on_Local_button_up():
 	$CanvasLayer/MarginContainer.visible = false
 	# TODO: Testing hack for spawning Game
 	# $Match/Game/Fighter2.controlled_by = "c0"
-	# SyncManager.start()
+
 	SyncManager.start() # TODO: Testing
-	yield(get_tree().create_timer(0.6), "timeout") # TODO: Hack to "ensure" SyncManager starts before spawning game
-	# yield(get_tree().create_timer(2.0), "buffertime") 
+	# TODO: Holy mother of hack. Using a timer to wait for the SyncManager to start, run a little bit, then spawn the game.
+	spawn_timer.start()
+
+
+	# yield(get_tree().create_timer(0.5), "timeout") # TODO: Hack to "ensure" SyncManager starts before spawning game
+	# print("crude_connection calling spawn function") # TODO: Testing
+	# $Match.spawn_game()
+	# print("Despawning myself on purpose")
+	# $Match.despawn_game()
+	# $Match.spawn_game()
+
+
+func _on_SpawnTimer_timeout() -> void:
+	print("Timer finished")
 	$Match.spawn_game()
-
-
-# func _process(delta):
-# 	if 
 
 
 
@@ -163,3 +173,4 @@ func _on_SyncManager_sync_error(msg: String) -> void:
 	if peer:
 		peer.close_connection()
 	SyncManager.clear_peers()
+	
