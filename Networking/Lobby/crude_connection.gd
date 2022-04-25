@@ -53,16 +53,7 @@ func _on_Local_button_up():
 	# TODO: Reimplement with Match.spawn_game()
 	# $Match/Game/Fighter2.controlled_by = "c0"
 
-	SyncManager.start()  # TODO: Testing
-	# TODO: Holy mother of hack. Using a timer to wait for the SyncManager to start, run a little bit, then spawn the game.
-	# spawn_timer.start()
-
-	# yield(get_tree().create_timer(0.5), "timeout") # TODO: Hack to "ensure" SyncManager starts before spawning game
-	# print("crude_connection calling spawn function") # TODO: Testing
-	# $Match.spawn_game()
-	# print("Despawning myself on purpose")
-	# $Match.despawn_game()
-	# $Match.spawn_game()
+	SyncManager.start()
 
 
 func _on_Mash_button_up():
