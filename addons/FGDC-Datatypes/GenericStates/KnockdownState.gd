@@ -31,15 +31,11 @@ func run(f: Fighter, input: Dictionary) -> void:
 		if f.vel.y > -10 << 16:
 			f.state_dict.knockdown_timer -= 1
 			f.vel.y = 0
+			f.vel.x = 0
 			f.grounded = true
 		else:
 			f.vel.y = (-f.vel.y * 3) >> 2
-
-	# handle the x component independently,
-	if f.grounded:
-		pass
-	else:
-		pass
+			f.vel.x = f.vel.x >> 1
 
 
 func animation(f: Fighter) -> String:

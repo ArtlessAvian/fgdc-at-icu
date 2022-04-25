@@ -61,11 +61,9 @@ func _network_preprocess(input: Dictionary) -> void:
 
 	$InputHistory.new_input(input)
 
-	if hitstop > 0:
-		return
-
-	state_process(input)
-	move()
+	if hitstop <= 0:
+		state_process(input)
+		move()
 	anim_process()
 
 
@@ -112,7 +110,7 @@ func move():
 	# i have made poor decisions making positive vel.y go "up" but -y in coordinates
 	if self.fixed_position.y > 0 && self.vel.y <= 0:
 		if state.can_land_cancel():
-			print("landed")
+			# print("landed")
 			self.fixed_position.y = 0
 			vel.y = 0
 			grounded = true
@@ -202,11 +200,11 @@ func on_block():
 func on_hit():
 	hitstop = 2
 	health = max(health - $Hurtboxes.hit_hitdata.damage, 0)
-	print(self.name + " " + String(health))  # TODO: Testing
+	# print(self.name + " " + String(health))  # TODO: Testing
 
-	print($Hurtboxes.hit_hitdata, SyncManager.current_tick)
+	# print($Hurtboxes.hit_hitdata, SyncManager.current_tick)
 	if $Hurtboxes.hit_hitdata.knockdown:
-		print("hello?")
+		# print("hello?")
 		state_dict.hitstun = $Hurtboxes.hit_hitdata.hitstun
 		change_to_state(moveset.knockdown)
 	else:
