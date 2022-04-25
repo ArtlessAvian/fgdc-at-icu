@@ -4,39 +4,42 @@ extends SGFixedNode2D
 onready var player1_score = 0
 onready var player2_score = 0
 
-var game_scene = load("res://Game/Game.tscn")
+#const game_scene = preload("res://Game/Game.tscn") # TODO: Trying new loading
+export(PackedScene) var game_scene = load("res://Game/Game.tscn")
 
+var last_tick_died = 0
 
-func _ready():
-	pass
-	# # TODO: Testing hack. Improve by actually spawning the game scene
-	# $Game.set_meta('spawn_signal_name', 'Game')
+# func _ready():
+# 	add_to_group("network_sync")
+# 	pass
+# # TODO: Testing hack. Improve by actually spawning the game scene
+# $Game.set_meta('spawn_signal_name', 'Game')
 
 
 func spawn_game():
+	# TODO: Spawn in of game is being rollbacked
+	#		Rollback of initial Game spawn is more likely to occur the more rollback frames there are.
+	#		SyncManager remembers when Game didn't exist, then rollbacks to that point.
+	#		There are a few frames in the beginning of the game when Game doesn't exist.
+	#  		Rollback doesn't happen on subsequent spawnings.
+	#	 	Wait some more time after starting SyncManager?
+	# TODO: SpawnManager._load_state() being called, causing Game to be despawned
+	#		Being passed a dictionary called "state", which it is reading spawned objects from
+	# 		Being called in series passing through SyncManager._physics_process, Step 1 (???)
+
+	SyncManager.spawn("Game", self, game_scene, {}, false)
+
 	# TODO: Again, initialization variables
 	# $Game/Fighter2.controlled_by = "c0"
 
-	var new_game = game_scene.instance()
-	self.add_child(new_game)
-	# TODO: Make sure values set in crude_connection on fighters remain the same in new scene
-	$Game/Fighter2.controlled_by = "c0"
-	print("Score: " + String(player1_score) + " - " + String(player2_score))
-
-	SyncManager.start()
 
 func despawn_game():
-	SyncManager.stop()
-
-	# TODO: remove scene immediately or something idk what is happening but it almost works 
-	# Rollback frames are causing game to "remember" previous state when one player health is 0 and being hit by the other player.
-	# When loading new scene, need to "drop" or "forget" previous rollback stashed frames to not revert to state where other player died.
-	var old_game = $Game
-	old_game.queue_free()
-	self.remove_child(old_game)
+	if $Game != null:
+		SyncManager.despawn($Game)
 
 
-func round_reset():
+# Called when one player dies. Resets the round by respawning the Game scene.
+func round_reset(f: Fighter):
 	# print("TODO: Testing: " + self.name + " " + String(self.is_in_group(("network_sync"))))
 	# print("Processing")
 
@@ -51,32 +54,18 @@ func round_reset():
 	# 		player2_score += 1
 	# 		print("P1 ded")
 	# 		# reload_game()
-	if $Game/Fighter2.health == 0:
-		# New fighters being created, health is 0
-		# print(String(game_figher1.get_instance_id()))
-		# print(String(game_figher2.get_instance_id()))
 
-		# game_figher2.health = -1
-		player1_score += 1
-		despawn_game()
-		spawn_game()
-		# game_figher1 = null
-		# game_figher2 = null
-		# reload_game()
+	# Prevent multiple callings in same tick
+
+	if f.is_p2:
+		print("P2 ded on tick ", SyncManager.current_tick)
+
+		if SyncManager.current_tick != last_tick_died:
+			last_tick_died = SyncManager.current_tick
+			player1_score += 1
 		# TODO: SyncManager.stop() To prevent syncmanager from getting mad that Game has been deleted. Besides, we don't need rollback between Games anyways.
-
-		# print(self.get_path())
-		# print($Game.get_path())
-
-		# SyncManager.despawn($Game)
+		despawn_game()  # TODO: Generalize; Game name in hierarchy is not "Game"
 		# TODO: copy over data for despawned fighters; data dict
-		# SyncManager.spawn(
-		# 	"Game",
-		# 	self,
-		# 	game_scene
-		# )
-		# game_figher1 = $Game/Fighter1
-		# game_figher2 = $Game/Fighter2
-		# game_figher2.controlled_by = "c0"
-		# TODO: spawning the right way
-		# SyncManager.despawn($Game)
+		spawn_game()
+
+		print("Score: " + String(player1_score) + " - " + String(player2_score))

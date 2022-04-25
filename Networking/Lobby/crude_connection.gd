@@ -5,6 +5,8 @@ extends Node
 onready var host_field = $CanvasLayer/MarginContainer/GridContainer/HostField
 onready var port_field = $CanvasLayer/MarginContainer/GridContainer/PortField
 
+onready var spawn_timer = $SpawnTimer
+
 
 func _ready():
 	get_tree().connect("network_peer_connected", self, "_on_network_peer_connected")
@@ -50,8 +52,22 @@ func _on_Local_button_up():
 
 	# TODO: Reimplement with Match.spawn_game()
 	# $Match/Game/Fighter2.controlled_by = "c0"
-	$Match.spawn_game()
 
+	SyncManager.start()  # TODO: Testing
+	# TODO: Holy mother of hack. Using a timer to wait for the SyncManager to start, run a little bit, then spawn the game.
+	spawn_timer.start()
+
+	# yield(get_tree().create_timer(0.5), "timeout") # TODO: Hack to "ensure" SyncManager starts before spawning game
+	# print("crude_connection calling spawn function") # TODO: Testing
+	# $Match.spawn_game()
+	# print("Despawning myself on purpose")
+	# $Match.despawn_game()
+	# $Match.spawn_game()
+
+
+func _on_SpawnTimer_timeout() -> void:
+	print("Timer finished")
+	$Match.spawn_game()
 
 
 func _on_Mash_button_up():
@@ -111,9 +127,7 @@ func _on_network_peer_connected(peer_id: int):
 	if get_tree().is_network_server():
 		game_instance.get_node("Fighter2").set_network_master(peer_id)
 	else:
-		game_instance.get_node("Fighter2").set_network_master(
-			get_tree().get_network_unique_id()
-		)
+		game_instance.get_node("Fighter2").set_network_master(get_tree().get_network_unique_id())
 
 	# Tried reordering everything below here. it worked before, but it doesn't seem to work anymore.
 	$CanvasLayer/MarginContainer.visible = false

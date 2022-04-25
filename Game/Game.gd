@@ -7,9 +7,17 @@ const max_spacing = 1000 * 65565
 var last_average: int = 0
 var last_diff: int = 0
 
+# func _ready():
+# 	print("Game ready is called")
+# 	# add_to_group("network_group")
+# 	# print("My ready is called")
 
-func _ready():
-	add_to_group("network_group")
+
+func _network_spawn(data: Dictionary):
+	add_to_group("network_sync")
+
+	# TODO: Testing hack: use values from data instead
+	$Fighter2.controlled_by = "c0"
 
 
 func _network_process(input: Dictionary) -> void:

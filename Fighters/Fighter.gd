@@ -136,6 +136,12 @@ func anim_process():
 
 
 func hit_response(input: Dictionary):
+	# HACK: Prevent empty input
+	if input.empty():
+		for key in NULL_INPUT.keys():
+			input[key] = NULL_INPUT[key]
+		printerr("received empty input on tick ", SyncManager.current_tick)
+
 	var blocking = false
 	if sign(fixed_position.x - get_node(opponent_path).fixed_position.x) == input.stick_x:
 		if state.can_block():
@@ -182,7 +188,6 @@ func hit_response(input: Dictionary):
 	# Block not correct direction or no block at all
 	else:
 		on_hit()
-		get_node("../../").round_reset()
 
 
 func on_block():
