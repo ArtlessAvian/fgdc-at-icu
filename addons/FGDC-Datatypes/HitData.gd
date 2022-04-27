@@ -17,6 +17,7 @@ export(int) var hitstop = 5
 export(int) var damage = 1
 export(int) var chipdamage = 0
 export(bool) var knockdown = true
+export(int) var x_vel = 5
 export(int) var y_vel = 0
 
 export(int) var active_hitboxes = 1

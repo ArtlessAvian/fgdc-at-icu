@@ -21,7 +21,8 @@ func enter(f: Fighter) -> void:
 	f.invincible = true
 	f.grounded = false
 
-	f.vel.y = 15 << 16  # hardcoded for now. this should go elsewhere!!
+	if f.vel.y <= 0:
+		f.vel.y = 30 << 16
 
 	f.state_dict.knockdown_timer = 30  # same here? unless we make it consistent
 

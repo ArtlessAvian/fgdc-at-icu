@@ -211,6 +211,8 @@ func on_block():
 	health = max(health - $Hurtboxes.hit_hitdata.chipdamage, 0)
 
 	state_dict.blockstun = $Hurtboxes.hit_hitdata.blockstun
+	vel.x = $Hurtboxes.hit_hitdata.x_vel << 16
+	# no y component.
 
 	# TODO: think about dying on hit
 	if self.health <= 0:
@@ -234,19 +236,19 @@ func on_hit():
 	else:
 		combo_count = 1
 
+	state_dict.hitstun = $Hurtboxes.hit_hitdata.hitstun
+	vel.x = ($Hurtboxes.hit_hitdata.x_vel << 16) * (-1 if fixed_scale.x > 0 else 1)
+	vel.y = $Hurtboxes.hit_hitdata.y_vel << 16
+	if vel.y > 0:
+		grounded = false
+		# gravity takes care of the rest!
+
 	# print($Hurtboxes.hit_hitdata, SyncManager.current_tick)
 	if self.health <= 0:
 		change_to_state(moveset.dead)
 	elif $Hurtboxes.hit_hitdata.knockdown:
-		# print("hello?")
-		state_dict.hitstun = $Hurtboxes.hit_hitdata.hitstun
 		change_to_state(moveset.knockdown)
 	else:
-		state_dict.hitstun = $Hurtboxes.hit_hitdata.hitstun
-		#print("y_vel: ", $Hurtboxes.hit_hitdata.y_vel)
-		vel.y = $Hurtboxes.hit_hitdata.y_vel << 16
-		if vel.y > 0:
-			grounded = false
 		change_to_state(moveset.hitstun)
 
 

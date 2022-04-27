@@ -16,6 +16,7 @@ hitstop = 5
 damage = 1
 chipdamage = 0
 knockdown = true
+x_vel = 5
 y_vel = 0
 active_hitboxes = 1
 active_hurtboxes = 0
