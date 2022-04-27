@@ -11,8 +11,17 @@ var last_diff: int = 0
 func _network_spawn(data: Dictionary):
 	add_to_group("network_sync")
 
-	# TODO: Testing hack: use values from data instead
-	$Fighter2.controlled_by = "c0"
+	# Set parameters established before connection/match start.
+	if data.has("f2_controlled_by"):
+		$Fighter2.controlled_by = data.f2_controlled_by
+	if data.has("f2_is_mash"):
+		$Fighter2.is_mash = data.f2_is_mash
+	if data.has("f1_character"):
+		# Set Fighter1's character
+		pass
+	if data.has("f2_character"):
+		# Set Fighter2's character
+		pass
 
 
 func _network_process(input: Dictionary) -> void:

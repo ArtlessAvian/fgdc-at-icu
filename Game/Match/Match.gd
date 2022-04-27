@@ -7,7 +7,12 @@ var dead_timer = -1  # -1 if in game, non-negative if someone is dead
 
 export(PackedScene) var game_scene = load("res://Game/Game.tscn")
 
+# Set in crude_connection for each connection type. Each possible key should have corresponding property to set in Game._network_spawn().
 var game_params = {}
+
+
+func set_game_params(params: Dictionary) -> void:
+	game_params = params
 
 
 func _network_postprocess(input: Dictionary) -> void:
@@ -28,7 +33,7 @@ func _network_postprocess(input: Dictionary) -> void:
 			round_reset()
 
 
-func round_reset():
+func round_reset() -> void:
 	# no else if in case of double ko which is funny.
 	if is_dead($Game/Fighter1):
 		p2_score += 1
@@ -40,12 +45,12 @@ func round_reset():
 	spawn_game()
 
 
-func spawn_game():
+func spawn_game() -> void:
 	SyncManager.spawn("Game", self, game_scene, game_params, false)
 	dead_timer = -1
 
 
-func despawn_game():
+func despawn_game() -> void:
 	if $Game != null:
 		for child in $Game/Spawned.get_children():
 			SyncManager.despawn(child)
