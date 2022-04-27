@@ -3,6 +3,11 @@ extends Camera2D
 export var path_one: NodePath = ""
 export var path_two: NodePath = ""
 
+var temp_min = 0
+var temp_max = 0
+var temp_min_y = 0
+var temp_max_y = 0
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -35,5 +40,10 @@ func _process(_delta):
 	self.position.y = min(-250, self.position.y)
 
 	# self.zoom = Vector2.ONE * zoom_factor
+
+	temp_min = min(temp_min, self.position.x)
+	temp_max = max(temp_max, self.position.x)
+	temp_min_y = min(temp_min_y, self.position.y)
+	temp_max_y = min(temp_max_y, self.position.y)
 
 	self.force_update_scroll()
