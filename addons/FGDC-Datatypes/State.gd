@@ -46,8 +46,17 @@ func can_block() -> bool:
 	return false
 
 
-func can_land_cancel() -> bool:
-	return true
+# Returns a state to transition to, or null to not transition
+# By default, just puts you on the ground and transitions to walk
+func do_landing(f: Fighter, moveset: Moveset) -> void:
+	f.fixed_position.y = 0
+	f.vel.y = 0
+	f.grounded = true
+	f.face_opponent()
+
+
+func get_landing_transition(f: Fighter, moveset: Moveset) -> State:
+	return moveset.walk
 
 
 # Helpers

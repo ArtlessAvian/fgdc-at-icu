@@ -33,8 +33,12 @@ func animation(f: Fighter) -> String:
 	return "Knockdown"
 
 
-func can_land_cancel() -> bool:
-	return false
+func do_landing(f: Fighter, moveset: Moveset) -> void:
+	moveset.knockdown.do_landing(f, moveset)
+
+
+func get_landing_transition(f: Fighter, moveset: Moveset) -> State:
+	return null
 
 
 func attack_level():

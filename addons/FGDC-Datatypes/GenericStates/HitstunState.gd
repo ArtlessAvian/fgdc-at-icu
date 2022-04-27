@@ -27,5 +27,8 @@ func animation(f: Fighter) -> String:
 	return "Hitstun"
 
 
-func can_land_cancel() -> bool:
-	return false
+# func do_landing(f: Fighter, moveset: Moveset) -> void:
+
+
+func get_landing_transition(f: Fighter, moveset: Moveset) -> State:
+	return null

@@ -109,18 +109,21 @@ func move():
 
 	# i have made poor decisions making positive vel.y go "up" but -y in coordinates
 	if self.fixed_position.y > 0 && self.vel.y <= 0:
-		if state.can_land_cancel():
-			# print("landed")
-			self.fixed_position.y = 0
-			vel.y = 0
-			grounded = true
-			change_to_state(moveset.walk)
-			face_opponent()
-		else:
-			print("landed, no land cancel")
-			self.fixed_position.y = 0
-			vel.y = 0
-			grounded = true
+		state.do_landing(self, moveset)
+		var new_state = state.get_landing_transition(self, moveset)
+		if new_state != null:
+			change_to_state(new_state)
+		# 	# print("landed")
+		# 	self.fixed_position.y = 0
+		# 	vel.y = 0
+		# 	grounded = true
+		# 	change_to_state(moveset.walk)
+		# 	face_opponent()
+		# else:
+		# 	print("landed, no land cancel")
+		# 	self.fixed_position.y = 0
+		# 	vel.y = 0
+		# 	grounded = true
 
 
 func anim_process():
