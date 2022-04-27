@@ -1,6 +1,7 @@
 extends State
 
-export (int) var impulse = 15
+export(int) var impulse = 15
+export(Resource) var attack_data = null
 
 
 func transition_into(f: Fighter, moveset: Moveset, input: Dictionary) -> bool:
@@ -29,4 +30,8 @@ func transition_out(f: Fighter, moveset: Moveset, input: Dictionary) -> State:
 
 
 func run(f: Fighter, input: Dictionary) -> void:
-	pass
+	attack_data.write_hitbox_positions(f.state_time, f.get_node("Hitboxes"))
+
+
+func animation(f: Fighter) -> String:
+	return "DP"

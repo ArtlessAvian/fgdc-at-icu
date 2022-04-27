@@ -98,27 +98,21 @@ func transition_into_attack(f: Fighter, moveset: Moveset, input: Dictionary) -> 
 
 	if not f.grounded:
 		if input.heavy and self.attack_level() < moveset.j_heavy.attack_level():
-			f.get_node("Hitboxes").new_attack()
 			return moveset.j_heavy
 		if input.light and self.attack_level() < moveset.j_light.attack_level():
-			f.get_node("Hitboxes").new_attack()
 			return moveset.j_light
 		return null
 
 	if input.stick_y < 0:
 		if input.heavy and self.attack_level() < moveset.c_heavy.attack_level():
-			f.get_node("Hitboxes").new_attack()
 			return moveset.c_heavy
 		if input.light and self.attack_level() < moveset.c_light.attack_level():
-			f.get_node("Hitboxes").new_attack()
 			return moveset.c_light
 
 	# not grounded, not crouching
 	if input.heavy and self.attack_level() < moveset.heavy.attack_level():
-		f.get_node("Hitboxes").new_attack()
 		return moveset.heavy
 	if input.light and self.attack_level() < moveset.light.attack_level():
-		f.get_node("Hitboxes").new_attack()
 		return moveset.light
 
 	return null

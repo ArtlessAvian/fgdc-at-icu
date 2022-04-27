@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=8 format=2]
+[gd_resource type="Resource" load_steps=10 format=2]
 
 [ext_resource path="res://addons/FGDC-Datatypes/Moveset.gd" type="Script" id=1]
 [ext_resource path="res://Example/ExampleWalk.tres" type="Resource" id=2]
@@ -6,10 +6,16 @@
 [ext_resource path="res://Example/ExampleLight.tres" type="Resource" id=4]
 [ext_resource path="res://Example/MaxDPResourceAAAAAA.tres" type="Resource" id=5]
 [ext_resource path="res://addons/FGDC-Datatypes/GenericStates/KnockdownState.gd" type="Script" id=6]
+[ext_resource path="res://addons/FGDC-Datatypes/GenericStates/AirdashState.gd" type="Script" id=7]
 
 [sub_resource type="Resource" id=1]
 script = ExtResource( 6 )
 knockdown_timer = 30
+
+[sub_resource type="Resource" id=2]
+script = ExtResource( 7 )
+speed = 917504
+length = 30
 
 [resource]
 script = ExtResource( 1 )
@@ -25,4 +31,4 @@ c_heavy = ExtResource( 2 )
 j_light = ExtResource( 2 )
 j_heavy = ExtResource( 2 )
 attacks = [ ExtResource( 5 ) ]
-movement = [  ]
+movement = [ SubResource( 2 ) ]

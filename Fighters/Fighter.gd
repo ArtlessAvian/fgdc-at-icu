@@ -76,7 +76,7 @@ func _network_postprocess(input: Dictionary) -> void:
 		hitstop -= 1
 		return
 
-	hit_response(input)  # avoid p1 bias.
+	check_for_hit(input)  # avoid p1 bias.
 
 
 func state_process(input: Dictionary):
@@ -138,41 +138,51 @@ func anim_process():
 	pass
 
 
-func hit_response(input: Dictionary):
+func check_for_hit(input: Dictionary):
 	# HACK: Prevent empty input
 	if input.empty():
 		for key in NULL_INPUT.keys():
 			input[key] = NULL_INPUT[key]
 		printerr("received empty input on tick ", SyncManager.current_tick)
 
-	var blocking = false
-	if sign(fixed_position.x - get_node(opponent_path).fixed_position.x) == input.stick_x:
-		if state.can_block():
-			blocking = true
-
 	# Change hurtbox color if blocking or not blocking
 	$Hurtboxes.modulate = Color.white
 	if invincible:
 		$Hurtboxes.modulate = Color(0.75, 0.50, 0.95)
-	elif blocking:
+	elif is_blocking(input):
 		if input.stick_y < 0:
 			$Hurtboxes.modulate = Color.blue
 		else:
 			$Hurtboxes.modulate = Color.cyan
 	# End debuggy stuff.
 
-	if not $Hurtboxes.hit_flag:
+	if $Hurtboxes.hit_hitdata == null or invincible:
 		# The fighter was not hit, so no need to do anything.
 		return
 
 	# This fighter was hit.
-	if invincible:
-		pass
+	hit_response(input)
+
+
+func is_blocking(input: Dictionary):
+	if sign(fixed_position.x - get_node(opponent_path).fixed_position.x) == input.stick_x:
+		if state.can_block():
+			return true
+	return false
+
+
+func hit_response(input: Dictionary):
+	# Look at the hit.
+	var diff = fixed_position.x - $Hurtboxes.hit_hitboxes.get_global_fixed_position().x
+	if diff > 0 && fixed_scale.x > 0:
+		fixed_scale.x *= -1
+	if diff < 0 && fixed_scale.x < 0:
+		fixed_scale.x *= -1
 
 	# Check for block.
-
+	var blocking = is_blocking(input)
 	# Airblock / Chickenblock
-	elif not grounded and blocking:
+	if not grounded and blocking:
 		on_block()
 
 	# int cast because godot is being uncooperative
@@ -195,10 +205,18 @@ func hit_response(input: Dictionary):
 
 # Rename to "block_hit" when everyone's ready.
 func on_block():
+	$Hurtboxes.register_contact(true)
+
 	hitstop = 2
 	health = max(health - $Hurtboxes.hit_hitdata.chipdamage, 0)
+
 	state_dict.blockstun = $Hurtboxes.hit_hitdata.blockstun
-	change_to_state(moveset.blockstun)
+
+	# TODO: think about dying on hit
+	if self.health <= 0:
+		change_to_state(moveset.dead)
+	else:
+		change_to_state(moveset.blockstun)
 
 	combo_count = 0
 
@@ -206,9 +224,10 @@ func on_block():
 # Rename to "get_hit" when everyone's ready. ;_;
 # Imagine being able to name things
 func on_hit():
+	$Hurtboxes.register_contact(false)
+
 	hitstop = 2
 	health = max(health - $Hurtboxes.hit_hitdata.damage, 0)
-	# print(self.name + " " + String(health))  # TODO: Testing
 
 	if state in [moveset.hitstun]:
 		combo_count += 1
@@ -358,5 +377,7 @@ func _load_state(save: Dictionary) -> void:
 	$Hurtboxes.sync_to_physics_engine()
 
 
-func _on_Hitboxes_on_hit():
-	state_dict.last_attack_hit = $Hitboxes.attack_number
+func _on_Hitboxes_on_contact(blocked: bool):
+	state_dict.last_attack_contact = $Hitboxes.attack_number
+	if not blocked:
+		state_dict.last_attack_hit = $Hitboxes.attack_number

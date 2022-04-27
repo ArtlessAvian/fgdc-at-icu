@@ -34,6 +34,7 @@ func _network_preprocess(input: Dictionary) -> void:
 
 # The game collides all hitboxes and hurtboxes!
 
+
 func _network_postprocess(input: Dictionary) -> void:
 	if abs(fixed_position.x) > 1000 * 65536:
 		SyncManager.despawn(self)
@@ -51,5 +52,5 @@ func _load_state(save: Dictionary) -> void:
 	$Hitboxes.sync_to_physics_engine()
 
 
-func _on_Hitboxes_on_hit():
+func _on_Hitboxes_on_contact(blocked: bool):
 	SyncManager.despawn(self)

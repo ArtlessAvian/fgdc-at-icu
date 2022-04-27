@@ -15,7 +15,9 @@ hitstop = 5
 damage = 1
 chipdamage = 0
 knockdown = true
-hitbox_placement = [  ]
+y_vel = 0
+active_hitboxes = 1
+active_hurtboxes = 0
 
 [sub_resource type="Resource" id=1]
 script = ExtResource( 2 )
@@ -28,7 +30,9 @@ hitstop = 5
 damage = 1
 chipdamage = 0
 knockdown = true
-hitbox_placement = [  ]
+y_vel = 0
+active_hitboxes = 1
+active_hurtboxes = 0
 followup = SubResource( 2 )
 animation_name = "Walk"
 recovery = 10
@@ -37,3 +41,4 @@ recovery = 10
 script = ExtResource( 1 )
 attack_data = SubResource( 1 )
 attack_level = 0
+jump_cancellable = false

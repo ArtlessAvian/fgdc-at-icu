@@ -2,7 +2,7 @@ extends SGArea2D
 class_name Hitboxes
 tool
 
-signal on_hit
+signal on_contact(blocked)  # blocked: bool
 
 # Has no logic, only holds onto information
 # Hurtboxes will do the logic.

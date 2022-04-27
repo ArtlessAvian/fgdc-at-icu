@@ -14,8 +14,11 @@ hitstun = 12
 blockstun = 12
 hitstop = 5
 damage = 1
+chipdamage = 0
 knockdown = true
-hitbox_placement = [  ]
+y_vel = 0
+active_hitboxes = 1
+active_hurtboxes = 0
 
 [sub_resource type="SGRectangleShape2D" id=1]
 extents_x = 3014656
@@ -36,4 +39,4 @@ hit_data = SubResource( 2 )
 self_modulate = Color( 1, 0, 0, 1 )
 shape = SubResource( 1 )
 
-[connection signal="on_hit" from="Hitboxes" to="." method="_on_Hitboxes_on_hit"]
+[connection signal="on_contact" from="Hitboxes" to="." method="_on_Hitboxes_on_contact"]
