@@ -246,6 +246,8 @@ func on_hit():
 		grounded = false
 		# gravity takes care of the rest!
 
+	# TODO: Counterhits: Check if Fighter was in AttackData startup phase. If so, counterhit
+
 	# print($Hurtboxes.hit_hitdata, SyncManager.current_tick)
 	if self.health <= 0:
 		change_to_state(moveset.dead)

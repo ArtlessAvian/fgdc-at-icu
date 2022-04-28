@@ -1,7 +1,7 @@
 extends Camera2D
 
-export var path_one: NodePath = ""
-export var path_two: NodePath = ""
+export var path_one: NodePath = "../Fighter1"
+export var path_two: NodePath = "../Fighter2"
 
 
 # Called when the node enters the scene tree for the first time.
@@ -12,6 +12,9 @@ func _ready():
 func _process(_delta):
 	var fighter_one = get_node(path_one)
 	var fighter_two = get_node(path_two)
+
+	if fighter_one == null:
+		return
 
 	# average x
 	self.position.x = fighter_one.position.x

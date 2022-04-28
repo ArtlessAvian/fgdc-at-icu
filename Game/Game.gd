@@ -9,19 +9,57 @@ var last_diff: int = 0
 
 
 func _network_spawn(data: Dictionary):
+	var f1
+	var f2
+
 	add_to_group("network_sync")
 
 	# Set parameters established before connection/match start.
+	if data.has("f1_character"):
+		# Set Fighter1's character
+		f1 = char_select(data.f1_character)
+		f1.name = "Fighter1"
+		$Fighter1.fixed_position.x = -13107200
+	if data.has("f2_character"):
+		# Set Fighter2's character
+		f2 = char_select(data.f2_character)
+		f2.name = "Fighter2"
+		$Fighter2.fixed_position.x = 13107200
 	if data.has("f2_controlled_by"):
 		$Fighter2.controlled_by = data.f2_controlled_by
 	if data.has("f2_is_mash"):
 		$Fighter2.is_mash = data.f2_is_mash
-	if data.has("f1_character"):
-		# Set Fighter1's character
-		pass
-	if data.has("f2_character"):
-		# Set Fighter2's character
-		pass
+
+	f1.opponent_path = f2.get_path()
+	f2.opponent_path = f1.get_path()
+
+
+# Spawns selected character. Called when Game is spawned.
+func char_select(c: String) -> Node:
+	var char_node
+
+	match(c):
+		"Test":
+			char_node = SyncManager.spawn(
+				"Fighter",
+				self,
+				load("res://Fighters/Fighter.tscn"),
+				{}
+			)
+		"Example":
+			char_node = SyncManager.spawn(
+				"Fighter",
+				self,
+				load("res://Example/Example.tscn"),
+				{}
+			)
+		_:
+			printerr("Character " + c + " has no spawn option.")
+			return null
+
+	char_node.z_index = 1
+
+	return char_node
 
 
 func _network_process(input: Dictionary) -> void:

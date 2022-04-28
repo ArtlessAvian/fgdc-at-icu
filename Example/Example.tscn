@@ -211,5 +211,3 @@ text = "No attack loaded!"
 
 [node name="InputHistory" type="Node" parent="." groups=["network_sync"]]
 script = ExtResource( 8 )
-
-[connection signal="on_hit" from="Hitboxes" to="." method="_on_Hitboxes_on_hit"]

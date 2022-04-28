@@ -49,7 +49,11 @@ func _on_Local_button_up():
 	get_tree().network_peer = peer
 
 	$CanvasLayer/MarginContainer.visible = false
-	$Match.set_game_params({f2_controlled_by = "c0"})
+	$Match.set_game_params({
+		f1_character = "Test", 
+		f2_character = "Example", 
+		f2_controlled_by = "c0"
+	})
 
 	SyncManager.start()
 
@@ -60,7 +64,11 @@ func _on_Mash_button_up():
 	get_tree().network_peer = peer
 
 	$CanvasLayer/MarginContainer.visible = false
-	$Match.set_game_params({f2_is_mash = true})
+	$Match.set_game_params({
+		f1_character = "Test", 
+		f2_character = "Example", 
+		f2_is_mash = true
+	})
 
 	SyncManager.start()
 
