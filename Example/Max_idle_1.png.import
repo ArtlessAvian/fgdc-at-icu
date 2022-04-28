@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/100checker.png-154fb92ea9831c4a4f1a4844c64d9972.stex"
+path="res://.import/Max_idle_1.png-9da7bb441a6af7dcadeeb27fa9882eb4.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://100checker.png"
-dest_files=[ "res://.import/100checker.png-154fb92ea9831c4a4f1a4844c64d9972.stex" ]
+source_file="res://Example/Max_idle_1.png"
+dest_files=[ "res://.import/Max_idle_1.png-9da7bb441a6af7dcadeeb27fa9882eb4.stex" ]
 
 [params]
 
@@ -19,11 +19,11 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
-flags/repeat=1
-flags/filter=false
+flags/repeat=0
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
-flags/srgb=1
+flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
@@ -31,5 +31,5 @@ process/invert_color=false
 process/normal_map_invert_y=false
 stream=false
 size_limit=0
-detect_3d=false
+detect_3d=true
 svg/scale=1.0

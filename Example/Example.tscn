@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Fighters/Fighter.gd" type="Script" id=1]
 [ext_resource path="res://Fighters/debug.gd" type="Script" id=2]
@@ -9,6 +9,8 @@
 [ext_resource path="res://Fighters/Hitboxes.gd" type="Script" id=7]
 [ext_resource path="res://Fighters/InputHistory.gd" type="Script" id=8]
 [ext_resource path="res://Fighters/HitboxHelper.gd" type="Script" id=9]
+[ext_resource path="res://Example/Max_idle_1.png" type="Texture" id=10]
+[ext_resource path="res://Example/Lippo.png" type="Texture" id=11]
 
 [sub_resource type="Animation" id=41]
 resource_name = "DP"
@@ -124,27 +126,24 @@ resource_name = "Walk"
 
 [sub_resource type="SpriteFrames" id=34]
 animations = [ {
-"frames": [ ExtResource( 3 ) ],
+"frames": [ ExtResource( 10 ), ExtResource( 3 ) ],
 "loop": true,
 "name": "default",
-"speed": 5.0
+"speed": 0.0
 } ]
 
-[sub_resource type="SGRectangleShape2D" id=33]
+[sub_resource type="SGRectangleShape2D" id=42]
 extents_x = 3239403
 extents_y = 4128808
 
-[sub_resource type="SGRectangleShape2D" id=39]
-extents_x = 1376256
-extents_y = 3276800
+[sub_resource type="SGRectangleShape2D" id=43]
+extents_x = 2752512
+extents_y = 6553600
 
 [node name="Fighter" type="SGFixedNode2D" groups=["network_sync"]]
 position = Vector2( -2, -2 )
-scale = Vector2( 0.699997, 0.699997 )
 fixed_position_x = -131072
 fixed_position_y = -131072
-fixed_scale_x = 45875
-fixed_scale_y = 45875
 script = ExtResource( 1 )
 fighter_gravity = 65536
 moveset = ExtResource( 5 )
@@ -173,9 +172,16 @@ __meta__ = {
 [node name="Character" type="Node2D" parent="Visual"]
 script = ExtResource( 6 )
 
+[node name="Sprite" type="Sprite" parent="Visual/Character"]
+visible = false
+position = Vector2( -4, -101 )
+scale = Vector2( 0.085, 0.085 )
+texture = ExtResource( 10 )
+
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Visual/Character"]
+position = Vector2( 0, -100 )
+scale = Vector2( 0.085, 0.085 )
 frames = SubResource( 34 )
-offset = Vector2( 50, -100 )
 
 [node name="Hitboxes" type="SGArea2D" parent="." groups=["hitboxes", "network_sync"]]
 collision_mask = 0
@@ -186,7 +192,7 @@ self_modulate = Color( 0.75, 0.75, 0.75, 1 )
 position = Vector2( 132, -77 )
 fixed_position_x = 8650752
 fixed_position_y = -5046272
-shape = SubResource( 33 )
+shape = SubResource( 42 )
 disabled = true
 
 [node name="Hurtboxes" type="SGArea2D" parent="." groups=["hurtboxes", "network_sync"]]
@@ -195,9 +201,9 @@ collision_mask = 2
 script = ExtResource( 4 )
 
 [node name="SGCollisionShape2D" type="SGCollisionShape2D" parent="Hurtboxes"]
-position = Vector2( 0, -50 )
-fixed_position_y = -3276800
-shape = SubResource( 39 )
+position = Vector2( 0, -100 )
+fixed_position_y = -6553600
+shape = SubResource( 43 )
 
 [node name="[EDITOR]HitboxHelper" type="Node" parent="."]
 script = ExtResource( 9 )
@@ -212,4 +218,7 @@ text = "No attack loaded!"
 [node name="InputHistory" type="Node" parent="." groups=["network_sync"]]
 script = ExtResource( 8 )
 
-[connection signal="on_hit" from="Hitboxes" to="." method="_on_Hitboxes_on_hit"]
+[node name="Lippo" type="Sprite" parent="."]
+position = Vector2( 336, -269 )
+scale = Vector2( -1, 1 )
+texture = ExtResource( 11 )

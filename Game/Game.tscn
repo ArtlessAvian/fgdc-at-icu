@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Fighters/Fighter.tscn" type="PackedScene" id=1]
 [ext_resource path="res://100checker.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Game/Game.gd" type="Script" id=4]
 [ext_resource path="res://Stages/Stage.tscn" type="PackedScene" id=5]
 [ext_resource path="res://icon.png" type="Texture" id=6]
+[ext_resource path="res://Example/Example.tscn" type="PackedScene" id=7]
 
 [node name="Game" type="SGFixedNode2D" groups=["network_sync"]]
 script = ExtResource( 4 )
@@ -14,7 +15,6 @@ script = ExtResource( 4 )
 
 [node name="Stage" parent="CanvasLayer" instance=ExtResource( 5 )]
 game_camera_path = NodePath("../../Camera2D")
-base_fov = 50.0
 
 [node name="Sprite" type="Sprite" parent="."]
 visible = false
@@ -37,12 +37,17 @@ region_enabled = true
 region_rect = Rect2( 32, 0, 10, 300 )
 
 [node name="Fighter1" parent="." instance=ExtResource( 1 )]
+visible = false
 position = Vector2( -200, 0 )
 fixed_position_x = -13107200
 fixed_position_y = 0
 opponent_path = NodePath("../Fighter2")
 
+[node name="Fighter" parent="." instance=ExtResource( 7 )]
+opponent_path = NodePath("../Fighter2")
+
 [node name="Fighter2" parent="." instance=ExtResource( 1 )]
+visible = false
 position = Vector2( 200, 0 )
 fixed_position_x = 13107200
 fixed_position_y = 0

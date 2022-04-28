@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Stages/Stage.gd" type="Script" id=1]
 [ext_resource path="res://100checker.png" type="Texture" id=2]
@@ -9,6 +9,8 @@
 flags = 18
 atlas = ExtResource( 2 )
 region = Rect2( 0, 0, 1000, 500 )
+
+[sub_resource type="Environment" id=3]
 
 [node name="Stage" type="Spatial"]
 script = ExtResource( 1 )
@@ -60,10 +62,6 @@ mesh = SubResource( 1 )
 skeleton = NodePath("")
 material/0 = null
 
-[node name="DirectionalLight" type="DirectionalLight" parent="."]
-transform = Transform( -0.750434, 0.246461, -0.613275, 0, 0.927875, 0.372891, 0.660945, 0.27983, -0.696309, 0, 5.69432, -12.7314 )
-light_color = Color( 0.529412, 0.529412, 0.529412, 1 )
-
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
 pixel_size = 0.02
@@ -84,3 +82,10 @@ texture = SubResource( 2 )
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 10, 5, 5 )
 pixel_size = 0.02
 texture = SubResource( 2 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( -0.750434, 0.246461, -0.613275, 0, 0.927875, 0.372891, 0.660945, 0.27983, -0.696309, 0, 5.69432, -12.7314 )
+light_color = Color( 0.529412, 0.529412, 0.529412, 1 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 3 )
