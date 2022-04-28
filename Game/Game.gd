@@ -7,6 +7,9 @@ const max_spacing = 1000 * 65565
 var last_average: int = 0
 var last_diff: int = 0
 
+const game_length = 40 * 60  # in frames. remember to add a countdown
+var time_in_frames = game_length
+
 
 func _network_spawn(data: Dictionary):
 	add_to_group("network_sync")
@@ -16,8 +19,34 @@ func _network_spawn(data: Dictionary):
 
 
 func _network_process(input: Dictionary) -> void:
+	time_in_frames -= 1
+	if time_in_frames == 0:
+		do_timeout()
+
 	correct_positions()
 	collide_hitboxes()
+
+
+func do_timeout():
+	# Explode
+	$Camera2D/HugeExplosion.play("explode")
+
+	# put both players in a big ass knockdown
+	var p1: SGFixedNode2D = get_node("Fighter1")
+	var p2: SGFixedNode2D = get_node("Fighter2")
+	p1.vel.y = 30 << 16
+	p2.vel.y = 30 << 16
+	p1.change_to_state(p1.moveset.knockdown)
+	p2.change_to_state(p2.moveset.knockdown)
+
+	# kill the loser(s)
+	var p1_winning = compare_winningness(p1, p2)
+	if p1_winning >= 0:
+		p2.health = 0
+		p2.change_to_state(p2.moveset.dead)
+	if p1_winning <= 0:
+		p1.health = 0
+		p1.change_to_state(p1.moveset.dead)
 
 
 func correct_positions():
@@ -117,10 +146,21 @@ func max_distance(p1: Fighter, p2: Fighter):
 		p2.fixed_position.x = target_average + (max_spacing >> 1) * sign(-diff)
 
 
+# think Comparator<Fighter>. We are comparing the "winningness".
+# So, returns [negative / zero / positive] if [p1 losing / tie / p1 winning]
+func compare_winningness(p1, p2) -> int:
+	return p1.health - p2.health
+
+
 func _save_state() -> Dictionary:
-	return {last_average = last_average, last_diff = last_diff}
+	return {
+		last_average = last_average,
+		last_diff = last_diff,
+		time_in_frames = time_in_frames
+	}
 
 
 func _load_state(save: Dictionary) -> void:
 	last_average = save.last_average
 	last_diff = save.last_diff
+	time_in_frames = save.time_in_frames

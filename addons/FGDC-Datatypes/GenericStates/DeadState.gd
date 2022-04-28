@@ -15,7 +15,8 @@ func transition_out(f: Fighter, moveset: Moveset, input: Dictionary) -> State:
 
 
 func enter(f: Fighter):
-	f.vel.y = 15 << 16
+	if f.vel.y < (15 << 16):
+		f.vel.y = 15 << 16
 	f.vel.x = -int(sign(f.fixed_scale.x)) * 10 << 16
 	f.grounded = false
 	f.state_dict.knockdown_timer = -8765309
