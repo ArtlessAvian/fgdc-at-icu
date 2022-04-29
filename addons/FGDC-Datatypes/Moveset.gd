@@ -26,6 +26,7 @@ const prefix = "res://addons/FGDC-Datatypes/"
 var hitstun: Resource = load(prefix + "GenericStates/HitstunState.gd").new()
 var blockstun: Resource = load(prefix + "GenericStates/BlockstunState.gd").new()
 var dead: Resource = load(prefix + "GenericStates/DeadState.gd").new()
+var throw: Resource = load(prefix + "GenericStates/ThrowState.gd").new()
 
 # Get moveset as array
 var lazy_all_normals: Array = []
@@ -47,6 +48,7 @@ func all_normals():
 func all_attacks():
 	if lazy_all_attacks.empty():
 		lazy_all_attacks.append_array(attacks)
+		lazy_all_attacks.append(throw)
 		lazy_all_attacks.append_array(all_normals())
 	return lazy_all_attacks
 

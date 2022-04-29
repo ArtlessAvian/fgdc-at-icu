@@ -7,7 +7,7 @@ const max_spacing = 1000 * 65565
 var last_average: int = 0
 var last_diff: int = 0
 
-const game_length = 40 * 60  # in frames. remember to add a countdown
+const game_length = 90 * 60  # in frames. remember to add a countdown
 var time_in_frames = game_length
 
 

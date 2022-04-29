@@ -3,7 +3,7 @@ extends "../State.gd"
 
 func transition_out(f: Fighter, moveset: Moveset, input: Dictionary) -> State:
 	if f.state_time > f.state_dict.blockstun:
-		return moveset.walk
+		return moveset.walk if input.stick_y >= 0 else moveset.crouch
 	return null
 
 
