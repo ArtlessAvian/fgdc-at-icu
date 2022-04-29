@@ -1,7 +1,7 @@
 extends SGFixedNode2D
 
-const x_bound = 1000 * 65565  # |x| can't go > x_bound
-const max_spacing = 1000 * 65565
+const x_bound = 1000 << 16  # |x| can't go > x_bound
+const max_spacing = 1000 << 16
 
 # We save these so we don't use the players' velocities.
 var last_average: int = 0
@@ -150,6 +150,24 @@ func max_distance(p1: Fighter, p2: Fighter):
 # So, returns [negative / zero / positive] if [p1 losing / tie / p1 winning]
 func compare_winningness(p1, p2) -> int:
 	return p1.health - p2.health
+
+
+func _process(_delta):
+	var p1: SGFixedNode2D = get_node("Fighter1")
+	var p2: SGFixedNode2D = get_node("Fighter2")
+	var min_x = min(p1.fixed_position.x, p2.fixed_position.x) / (1 << 16)
+	var max_x = max(p1.fixed_position.x, p2.fixed_position.x) / (1 << 16)
+	var average_x = clamp((min_x + max_x) / 2, -500, 500)
+
+	$LeftWall.position.x = average_x - max_spacing / (1 << 17)
+	$LeftWall.position.x = max($LeftWall.position.x, -x_bound / (1 << 16))
+	$RightWall.position.x = average_x + max_spacing / (1 << 17)
+	$RightWall.position.x = min($RightWall.position.x, x_bound / (1 << 16))
+
+	var l_dist = min_x - $LeftWall.position.x
+	var r_dist = $RightWall.position.x - max_x
+	$LeftWall.modulate.a = smoothstep(1, 0, l_dist / 100)
+	$RightWall.modulate.a = smoothstep(1, 0, r_dist / 100)
 
 
 func _save_state() -> Dictionary:

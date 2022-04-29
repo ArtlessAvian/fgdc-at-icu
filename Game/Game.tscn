@@ -1,11 +1,11 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://Fighters/Fighter.tscn" type="PackedScene" id=1]
 [ext_resource path="res://100checker.png" type="Texture" id=2]
 [ext_resource path="res://Game/GameCamera.gd" type="Script" id=3]
 [ext_resource path="res://Game/Game.gd" type="Script" id=4]
-[ext_resource path="res://Game/GameUI.gd" type="Script" id=5]
-[ext_resource path="res://spr_realisticexplosion/spr_realisticexplosion_5.png" type="Texture" id=6]
+[ext_resource path="res://Stages/Stage.tscn" type="PackedScene" id=5]
+[ext_resource path="res://icon.png" type="Texture" id=6]
 [ext_resource path="res://spr_realisticexplosion/spr_realisticexplosion_8.png" type="Texture" id=7]
 [ext_resource path="res://spr_realisticexplosion/spr_realisticexplosion_4.png" type="Texture" id=8]
 [ext_resource path="res://spr_realisticexplosion/spr_realisticexplosion_0.png" type="Texture" id=9]
@@ -22,6 +22,10 @@
 [ext_resource path="res://spr_realisticexplosion/spr_realisticexplosion_14.png" type="Texture" id=20]
 [ext_resource path="res://spr_realisticexplosion/spr_realisticexplosion_16.png" type="Texture" id=21]
 [ext_resource path="res://spr_realisticexplosion/spr_realisticexplosion_15.png" type="Texture" id=22]
+[ext_resource path="res://Stages/Stage.gd" type="Script" id=23]
+[ext_resource path="res://Game/GameUI.gd" type="Script" id=24]
+[ext_resource path="res://spr_realisticexplosion/spr_realisticexplosion_5.png" type="Texture" id=25]
+[ext_resource path="res://100white.png" type="Texture" id=26]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -30,26 +34,23 @@ animations = [ {
 "name": "default",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 9 ), ExtResource( 17 ), ExtResource( 16 ), ExtResource( 10 ), ExtResource( 8 ), ExtResource( 6 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 7 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 22 ), ExtResource( 21 ) ],
+"frames": [ ExtResource( 9 ), ExtResource( 17 ), ExtResource( 16 ), ExtResource( 10 ), ExtResource( 8 ), ExtResource( 25 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 7 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 22 ), ExtResource( 21 ) ],
 "loop": false,
 "name": "explode",
 "speed": 20.0
 } ]
 
-[sub_resource type="AtlasTexture" id=3]
-flags = 2
-atlas = ExtResource( 2 )
-region = Rect2( 50, 0, 50, 50 )
-
-[sub_resource type="AtlasTexture" id=2]
-flags = 2
-atlas = ExtResource( 2 )
-region = Rect2( 0, 0, 50, 50 )
-
 [node name="Game" type="SGFixedNode2D" groups=["network_sync"]]
 script = ExtResource( 4 )
 
+[node name="BackgroundLayer" type="CanvasLayer" parent="."]
+
+[node name="Stage" type="Spatial" parent="BackgroundLayer" instance=ExtResource( 5 )]
+script = ExtResource( 23 )
+game_camera_path = NodePath("../../Camera2D")
+
 [node name="Sprite" type="Sprite" parent="."]
+visible = false
 scale = Vector2( 2, 2 )
 texture = ExtResource( 2 )
 offset = Vector2( 0, -250 )
@@ -59,6 +60,18 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="LeftWall" type="Sprite" parent="."]
+position = Vector2( -500, -150 )
+texture = ExtResource( 6 )
+region_enabled = true
+region_rect = Rect2( 32, 0, 10, 300 )
+
+[node name="RightWall" type="Sprite" parent="."]
+position = Vector2( 500, -150 )
+texture = ExtResource( 6 )
+region_enabled = true
+region_rect = Rect2( 32, 0, 10, 300 )
+
 [node name="Fighter1" parent="." instance=ExtResource( 1 )]
 position = Vector2( -200, 0 )
 fixed_position_x = -13107200
@@ -66,6 +79,7 @@ fixed_position_y = 0
 opponent_path = NodePath("../Fighter2")
 
 [node name="Fighter2" parent="." instance=ExtResource( 1 )]
+modulate = Color( 1, 1, 0.501961, 1 )
 position = Vector2( 200, 0 )
 fixed_position_x = 13107200
 fixed_position_y = 0
@@ -88,24 +102,22 @@ position = Vector2( 4, 238 )
 scale = Vector2( 30, 30 )
 frames = SubResource( 1 )
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="UILayer" type="CanvasLayer" parent="."]
 
-[node name="UI" type="Control" parent="CanvasLayer"]
+[node name="UI" type="Control" parent="UILayer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( 5 )
+script = ExtResource( 24 )
 
-[node name="TimerTEMPORARY" type="Label" parent="CanvasLayer/UI"]
-margin_left = 488.0
+[node name="TimerTEMPORARY" type="Label" parent="UILayer/UI"]
+anchor_right = 0.333
 margin_top = 91.0
-margin_right = 580.0
 margin_bottom = 105.0
 rect_scale = Vector2( 3, 3 )
 text = "Time Left: 100"
 align = 1
 
-[node name="TextureProgress" type="TextureProgress" parent="CanvasLayer/UI"]
-modulate = Color( 1, 0, 0, 1 )
+[node name="TextureProgress" type="TextureProgress" parent="UILayer/UI"]
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -600.0
@@ -114,13 +126,14 @@ margin_right = -100.0
 margin_bottom = 70.0
 max_value = 20.0
 value = 10.0
-texture_under = SubResource( 3 )
-texture_progress = SubResource( 2 )
+texture_under = ExtResource( 26 )
+texture_progress = ExtResource( 26 )
 fill_mode = 1
+tint_under = Color( 0, 0, 0, 1 )
+tint_progress = Color( 1, 0, 0, 1 )
 nine_patch_stretch = true
 
-[node name="TextureProgress2" type="TextureProgress" parent="CanvasLayer/UI"]
-modulate = Color( 1, 0, 0, 1 )
+[node name="TextureProgress2" type="TextureProgress" parent="UILayer/UI"]
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = 100.0
@@ -129,6 +142,8 @@ margin_right = 600.0
 margin_bottom = 70.0
 max_value = 20.0
 value = 10.0
-texture_under = SubResource( 3 )
-texture_progress = SubResource( 2 )
+texture_under = ExtResource( 26 )
+texture_progress = ExtResource( 26 )
+tint_under = Color( 0, 0, 0, 1 )
+tint_progress = Color( 1, 0, 0, 1 )
 nine_patch_stretch = true

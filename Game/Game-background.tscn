@@ -1,0 +1,65 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Fighters/Fighter.tscn" type="PackedScene" id=1]
+[ext_resource path="res://100checker.png" type="Texture" id=2]
+[ext_resource path="res://Game/GameCamera.gd" type="Script" id=3]
+[ext_resource path="res://Game/Game.gd" type="Script" id=4]
+[ext_resource path="res://Stages/Stage.tscn" type="PackedScene" id=5]
+[ext_resource path="res://icon.png" type="Texture" id=6]
+[ext_resource path="res://Example/Example.tscn" type="PackedScene" id=7]
+
+[node name="Game" type="SGFixedNode2D" groups=["network_sync"]]
+script = ExtResource( 4 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Stage" parent="CanvasLayer" instance=ExtResource( 5 )]
+game_camera_path = NodePath("../../Camera2D")
+
+[node name="Sprite" type="Sprite" parent="."]
+visible = false
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+offset = Vector2( 0, -250 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 1000, 500 )
+
+[node name="LeftWall" type="Sprite" parent="."]
+position = Vector2( -500, -150 )
+texture = ExtResource( 6 )
+region_enabled = true
+region_rect = Rect2( 32, 0, 10, 300 )
+
+[node name="RightWall" type="Sprite" parent="."]
+position = Vector2( 500, -150 )
+texture = ExtResource( 6 )
+region_enabled = true
+region_rect = Rect2( 32, 0, 10, 300 )
+
+[node name="Fighter1" parent="." instance=ExtResource( 1 )]
+visible = false
+position = Vector2( -200, 0 )
+fixed_position_x = -13107200
+fixed_position_y = 0
+opponent_path = NodePath("../Fighter2")
+
+[node name="Fighter" parent="." instance=ExtResource( 7 )]
+opponent_path = NodePath("../Fighter2")
+
+[node name="Fighter2" parent="." instance=ExtResource( 1 )]
+visible = false
+position = Vector2( 200, 0 )
+fixed_position_x = 13107200
+fixed_position_y = 0
+is_p2 = true
+opponent_path = NodePath("../Fighter1")
+
+[node name="Spawned" type="SGFixedNode2D" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+process_priority = -1
+position = Vector2( 0, -250 )
+current = true
+script = ExtResource( 3 )
+path_one = NodePath("../Fighter1")
+path_two = NodePath("../Fighter2")

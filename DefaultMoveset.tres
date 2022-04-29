@@ -1,0 +1,42 @@
+[gd_resource type="Resource" load_steps=18 format=2]
+
+[ext_resource path="res://addons/FGDC-Datatypes/Moveset.gd" type="Script" id=1]
+[ext_resource path="res://Fighters/DefaultMoveset/DefaultWalk.tres" type="Resource" id=2]
+[ext_resource path="res://Fighters/DefaultMoveset/DefaultJump.tres" type="Resource" id=3]
+[ext_resource path="res://Fighters/DefaultMoveset/DefaultLight.tres" type="Resource" id=4]
+[ext_resource path="res://Fighters/DefaultMoveset/DefaultJumpingLight.tres" type="Resource" id=5]
+[ext_resource path="res://Fighters/DefaultMoveset/DefaultHeavy.tres" type="Resource" id=6]
+[ext_resource path="res://Fighters/DefaultMoveset/DefaultJumpingHeavy.tres" type="Resource" id=7]
+[ext_resource path="res://Fighters/DefaultMoveset/DefaultCrouch.tres" type="Resource" id=8]
+[ext_resource path="res://Fighters/DefaultMoveset/DefaultAirdash.tres" type="Resource" id=9]
+[ext_resource path="res://Fighters/DefaultMoveset/DefaultCrouchingHeavy.tres" type="Resource" id=10]
+[ext_resource path="res://Fighters/DefaultMoveset/DefaultCrouchingLight.tres" type="Resource" id=11]
+[ext_resource path="res://Fighters/DefaultMoveset/DefaultFireball.tres" type="Resource" id=12]
+[ext_resource path="res://addons/FGDC-Datatypes/GenericStates/BackdashState.gd" type="Script" id=13]
+[ext_resource path="res://Fighters/DefaultMoveset/DefaultFireballHeavy.tres" type="Resource" id=14]
+[ext_resource path="res://addons/FGDC-Datatypes/GenericStates/KnockdownState.gd" type="Script" id=15]
+
+[sub_resource type="Resource" id=2]
+script = ExtResource( 15 )
+knockdown_timer = 30
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 13 )
+speed = 917504
+length = 30
+
+[resource]
+script = ExtResource( 1 )
+air_actions = 3
+walk = ExtResource( 2 )
+crouch = ExtResource( 8 )
+jump = ExtResource( 3 )
+knockdown = SubResource( 2 )
+light = ExtResource( 4 )
+heavy = ExtResource( 6 )
+c_light = ExtResource( 11 )
+c_heavy = ExtResource( 10 )
+j_light = ExtResource( 5 )
+j_heavy = ExtResource( 7 )
+attacks = [ ExtResource( 12 ), ExtResource( 14 ) ]
+movement = [ ExtResource( 9 ), SubResource( 1 ) ]
