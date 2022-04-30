@@ -49,9 +49,11 @@ func _on_Local_button_up():
 	get_tree().network_peer = peer
 
 	$CanvasLayer/MarginContainer.visible = false
-
-	# TODO: Reimplement with Match.spawn_game()
-	# $Match/Game/Fighter2.controlled_by = "c0"
+	$Match.set_game_params({
+		f1_character = "Test", 
+		f2_character = "Test", 
+		f2_controlled_by = "c0"
+	})
 
 	SyncManager.start()
 
@@ -62,12 +64,13 @@ func _on_Mash_button_up():
 	get_tree().network_peer = peer
 
 	$CanvasLayer/MarginContainer.visible = false
+	$Match.set_game_params({
+		f1_character = "Test", 
+		f2_character = "Test", 
+		f2_is_mash = true
+	})
 
 	SyncManager.start()
-
-	# HACK
-	yield(get_tree().create_timer(1), "timeout")
-	$Match/Game/Fighter2.is_mash = true
 
 
 func _on_Test_button_up():
@@ -77,6 +80,7 @@ func _on_Test_button_up():
 
 	for i in range(50):
 		print("TEST")
+		# Does not work currently. Properties need to be set up using Match.set_game_params()
 		$CanvasLayer/MarginContainer.visible = false
 		$Match/Game/Fighter1.fixed_position.y = -65536 * 30
 		$Match/Game/Fighter1.grounded = false

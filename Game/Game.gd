@@ -12,10 +12,61 @@ var time_in_frames = game_length
 
 
 func _network_spawn(data: Dictionary):
+	var f1
+	var f2
+
 	add_to_group("network_sync")
 
-	# TODO: Testing hack: use values from data instead
-	$Fighter2.controlled_by = "c0"
+	# Set parameters established before connection/match start.
+	if data.has("f1_character"):
+		# Set Fighter1's character
+		f1 = char_select(data.f1_character, false)
+		f1.name = "Fighter1"
+		$Fighter1.fixed_position.x = -13107200
+	if data.has("f2_character"):
+		# Set Fighter2's character
+		f2 = char_select(data.f2_character, true)
+		f2.name = "Fighter2"
+		$Fighter2.fixed_position.x = 13107200
+	if data.has("f2_controlled_by"):
+		$Fighter2.controlled_by = data.f2_controlled_by
+	if data.has("f2_is_mash"):
+		$Fighter2.is_mash = data.f2_is_mash
+
+	f1.opponent_path = f2.get_path()
+	f2.opponent_path = f1.get_path()
+
+	$Camera2D.path_one = f1.get_path()
+	$Camera2D.path_two = f2.get_path()
+
+
+func before_despawn():
+	for spawned in $Spawned.get_children():
+		SyncManager.despawn(spawned)
+	SyncManager.despawn($Fighter1)
+	SyncManager.despawn($Fighter2)
+
+
+# Spawns selected character. Called when Game is spawned.
+func char_select(c: String, is_p2: bool) -> Node:
+	var char_node
+
+	match c:
+		"Test":
+			char_node = SyncManager.spawn(
+				"Fighter", self, load("res://Fighters/Fighter.tscn"), {is_p2 = is_p2}
+			)
+		"Example":
+			char_node = SyncManager.spawn(
+				"Fighter", self, load("res://Example/Example.tscn"), {is_p2 = is_p2}
+			)
+		_:
+			printerr("Character " + c + " has no spawn option.")
+			return null
+
+	char_node.z_index = 1
+
+	return char_node
 
 
 func _network_process(input: Dictionary) -> void:
@@ -171,11 +222,7 @@ func _process(_delta):
 
 
 func _save_state() -> Dictionary:
-	return {
-		last_average = last_average,
-		last_diff = last_diff,
-		time_in_frames = time_in_frames
-	}
+	return {last_average = last_average, last_diff = last_diff, time_in_frames = time_in_frames}
 
 
 func _load_state(save: Dictionary) -> void:

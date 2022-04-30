@@ -32,7 +32,9 @@ var combo_count = 0
 var hitstop = 0
 
 
-func _ready():
+func _network_spawn(data: Dictionary):
+	is_p2 = data.is_p2
+
 	if self in get_tree().root.get_children():
 		var cam = Camera2D.new()
 		cam.current = true
@@ -246,6 +248,8 @@ func on_hit():
 		grounded = false
 		# gravity takes care of the rest!
 
+	# TODO: Counterhits: Check if Fighter was in AttackData startup phase. If so, counterhit
+
 	# print($Hurtboxes.hit_hitdata, SyncManager.current_tick)
 	if self.health <= 0:
 		change_to_state(moveset.dead)
@@ -353,7 +357,8 @@ func _save_state() -> Dictionary:
 		combo_count = combo_count,
 		hitstop = hitstop,
 		health = health,
-		invincible = invincible
+		invincible = invincible,
+		opponent_path = opponent_path
 	}
 	# return save
 
@@ -373,6 +378,7 @@ func _load_state(save: Dictionary) -> void:
 	hitstop = save.hitstop
 	health = save.health
 	invincible = save.invincible
+	opponent_path = save.opponent_path
 
 	$AnimationPlayer.play("RESET")
 	$AnimationPlayer.advance(1000)

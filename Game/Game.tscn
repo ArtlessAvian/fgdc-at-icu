@@ -1,6 +1,5 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=26 format=2]
 
-[ext_resource path="res://Fighters/Fighter.tscn" type="PackedScene" id=1]
 [ext_resource path="res://100checker.png" type="Texture" id=2]
 [ext_resource path="res://Game/GameCamera.gd" type="Script" id=3]
 [ext_resource path="res://Game/Game.gd" type="Script" id=4]
@@ -22,7 +21,6 @@
 [ext_resource path="res://spr_realisticexplosion/spr_realisticexplosion_14.png" type="Texture" id=20]
 [ext_resource path="res://spr_realisticexplosion/spr_realisticexplosion_16.png" type="Texture" id=21]
 [ext_resource path="res://spr_realisticexplosion/spr_realisticexplosion_15.png" type="Texture" id=22]
-[ext_resource path="res://Stages/Stage.gd" type="Script" id=23]
 [ext_resource path="res://Game/GameUI.gd" type="Script" id=24]
 [ext_resource path="res://spr_realisticexplosion/spr_realisticexplosion_5.png" type="Texture" id=25]
 [ext_resource path="res://100white.png" type="Texture" id=26]
@@ -45,8 +43,7 @@ script = ExtResource( 4 )
 
 [node name="BackgroundLayer" type="CanvasLayer" parent="."]
 
-[node name="Stage" type="Spatial" parent="BackgroundLayer" instance=ExtResource( 5 )]
-script = ExtResource( 23 )
+[node name="Stage" parent="BackgroundLayer" instance=ExtResource( 5 )]
 game_camera_path = NodePath("../../Camera2D")
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -72,20 +69,6 @@ texture = ExtResource( 6 )
 region_enabled = true
 region_rect = Rect2( 32, 0, 10, 300 )
 
-[node name="Fighter1" parent="." instance=ExtResource( 1 )]
-position = Vector2( -200, 0 )
-fixed_position_x = -13107200
-fixed_position_y = 0
-opponent_path = NodePath("../Fighter2")
-
-[node name="Fighter2" parent="." instance=ExtResource( 1 )]
-modulate = Color( 1, 1, 0.501961, 1 )
-position = Vector2( 200, 0 )
-fixed_position_x = 13107200
-fixed_position_y = 0
-is_p2 = true
-opponent_path = NodePath("../Fighter1")
-
 [node name="Spawned" type="SGFixedNode2D" parent="."]
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -93,8 +76,8 @@ process_priority = -1
 position = Vector2( 0, -250 )
 current = true
 script = ExtResource( 3 )
-path_one = NodePath("../Fighter1")
-path_two = NodePath("../Fighter2")
+path_one = NodePath("")
+path_two = NodePath("")
 
 [node name="HugeExplosion" type="AnimatedSprite" parent="Camera2D"]
 self_modulate = Color( 1, 1, 1, 0.937255 )
@@ -107,6 +90,8 @@ frames = SubResource( 1 )
 [node name="UI" type="Control" parent="UILayer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 2.0
+margin_right = 2.0
 script = ExtResource( 24 )
 
 [node name="TimerTEMPORARY" type="Label" parent="UILayer/UI"]
