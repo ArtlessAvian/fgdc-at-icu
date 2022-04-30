@@ -57,8 +57,6 @@ func char_select(c: String, is_p2: bool) -> Node:
 			printerr("Character " + c + " has no spawn option.")
 			return null
 
-	char_node.z_index = 1
-
 	return char_node
 
 

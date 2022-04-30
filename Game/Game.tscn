@@ -12,6 +12,7 @@ script = ExtResource( 4 )
 
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 2, 2 )
+z_index = -1
 texture = SubResource( 1 )
 offset = Vector2( 0, -250 )
 region_enabled = true
