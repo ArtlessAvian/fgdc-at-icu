@@ -17,12 +17,12 @@ func _network_spawn(data: Dictionary):
 	# Set parameters established before connection/match start.
 	if data.has("f1_character"):
 		# Set Fighter1's character
-		f1 = char_select(data.f1_character)
+		f1 = char_select(data.f1_character, false)
 		f1.name = "Fighter1"
 		$Fighter1.fixed_position.x = -13107200
 	if data.has("f2_character"):
 		# Set Fighter2's character
-		f2 = char_select(data.f2_character)
+		f2 = char_select(data.f2_character, true)
 		f2.name = "Fighter2"
 		$Fighter2.fixed_position.x = 13107200
 	if data.has("f2_controlled_by"):
@@ -35,7 +35,7 @@ func _network_spawn(data: Dictionary):
 
 
 # Spawns selected character. Called when Game is spawned.
-func char_select(c: String) -> Node:
+func char_select(c: String, is_p2: bool) -> Node:
 	var char_node
 
 	match(c):
@@ -44,14 +44,14 @@ func char_select(c: String) -> Node:
 				"Fighter",
 				self,
 				load("res://Fighters/Fighter.tscn"),
-				{}
+				{is_p2 = is_p2}
 			)
 		"Example":
 			char_node = SyncManager.spawn(
 				"Fighter",
 				self,
 				load("res://Example/Example.tscn"),
-				{}
+				{is_p2 = is_p2}
 			)
 		_:
 			printerr("Character " + c + " has no spawn option.")

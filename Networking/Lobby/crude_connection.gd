@@ -51,7 +51,7 @@ func _on_Local_button_up():
 	$CanvasLayer/MarginContainer.visible = false
 	$Match.set_game_params({
 		f1_character = "Test", 
-		f2_character = "Example", 
+		f2_character = "Test", 
 		f2_controlled_by = "c0"
 	})
 
@@ -66,7 +66,7 @@ func _on_Mash_button_up():
 	$CanvasLayer/MarginContainer.visible = false
 	$Match.set_game_params({
 		f1_character = "Test", 
-		f2_character = "Example", 
+		f2_character = "Test", 
 		f2_is_mash = true
 	})
 

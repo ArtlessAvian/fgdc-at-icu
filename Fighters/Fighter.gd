@@ -32,7 +32,9 @@ var combo_count = 0
 var hitstop = 0
 
 
-func _ready():
+func _network_spawn(data: Dictionary):
+	is_p2 = data.is_p2
+
 	if self in get_tree().root.get_children():
 		var cam = Camera2D.new()
 		cam.current = true
