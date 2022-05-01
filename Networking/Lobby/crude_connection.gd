@@ -5,6 +5,11 @@ extends Node
 onready var host_field = $CanvasLayer/MarginContainer/GridContainer/HostField
 onready var port_field = $CanvasLayer/MarginContainer/GridContainer/PortField
 
+var hardcoded_characters = [
+	load("res://Fighters/Fighter.tscn"),
+	load("res://Example/Example.tscn"),
+]
+
 
 func _ready():
 	get_tree().connect("network_peer_connected", self, "_on_network_peer_connected")
@@ -47,9 +52,9 @@ func _on_Local_button_up():
 	get_tree().network_peer = peer
 
 	$CanvasLayer/MarginContainer.visible = false
+	$CanvasLayer/ColorRect.visible = false
 
-	# TODO: Reimplement with Match.spawn_game()
-	# $Match/Game/Fighter2.controlled_by = "c0"
+	$Match.set_character(load("res://Example/Example.tscn"), true)
 
 	SyncManager.start()
 
@@ -86,6 +91,7 @@ func _on_network_peer_connected(peer_id: int):
 
 	# Tried reordering everything below here. it worked before, but it doesn't seem to work anymore.
 	$CanvasLayer/MarginContainer.visible = false
+	$CanvasLayer/ColorRect.visible = false
 	if get_tree().is_network_server():
 		yield(get_tree().create_timer(0.2), "timeout")
 		SyncManager.start()
@@ -125,3 +131,7 @@ func _on_SyncManager_sync_error(msg: String) -> void:
 	if peer:
 		peer.close_connection()
 	SyncManager.clear_peers()
+
+
+func _on_LocalCharacter_item_selected(index: int, is_p2: bool):
+	$Match.set_character(hardcoded_characters[index], is_p2)

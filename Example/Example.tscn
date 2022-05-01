@@ -160,12 +160,8 @@ anims/Walk = SubResource( 36 )
 [node name="Label" type="Label" parent="Debug"]
 margin_right = 40.0
 margin_bottom = 14.0
-rect_scale = Vector2( 0.5, 0.5 )
 text = "hello"
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Visual" type="Node2D" parent="."]
 
