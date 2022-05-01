@@ -1,6 +1,6 @@
 extends "res://addons/godot-rollback-netcode/MessageSerializer.gd"
 
-var game_path = "/root/Crude/Game/"
+var game_path = "/root/Crude/Match/Game/"
 const fighter_1 = "Fighter1"
 const fighter_2 = "Fighter2"
 
