@@ -5,8 +5,6 @@ extends Node
 onready var host_field = $CanvasLayer/MarginContainer/GridContainer/HostField
 onready var port_field = $CanvasLayer/MarginContainer/GridContainer/PortField
 
-onready var spawn_timer = $SpawnTimer
-
 
 func _ready():
 	get_tree().connect("network_peer_connected", self, "_on_network_peer_connected")
@@ -68,38 +66,6 @@ func _on_Mash_button_up():
 	# HACK
 	yield(get_tree().create_timer(1), "timeout")
 	$Match/Game/Fighter2.is_mash = true
-
-
-func _on_Test_button_up():
-	var peer = NetworkedMultiplayerENet.new()
-	peer.create_server(31415, 1)
-	get_tree().network_peer = peer
-
-	for i in range(50):
-		print("TEST")
-		$CanvasLayer/MarginContainer.visible = false
-		$Match/Game/Fighter1.fixed_position.y = -65536 * 30
-		$Match/Game/Fighter1.grounded = false
-		# $Match/Game/Fighter2.fixed_position.x = 1
-		# $Match/Game/Fighter1/Hitboxes.new_attack()
-		$Match/Game/Fighter1.state = $Match/Game/Fighter1.moveset.j_light
-		# $Match/Game/Fighter2.state = $Match/Game/Fighter2.moveset.walk
-		$Match/Game/Fighter1.state_time = 0
-
-		if not SyncReplay.active:
-			SyncManager.start_logging("res://dump/test.log")
-
-		SyncManager.start()
-		yield(get_tree().create_timer(0.3), "timeout")
-		SyncManager.stop()
-		# print($Match/Game/Fighter2.fixed_position.x)
-		# if $Match/Game/Fighter2.fixed_position.x != 5735125:
-		if not $Match/Game/Fighter1/Hitboxes/SGCollisionShape2D.disabled:
-			print("Icecream machine broke")
-			break
-		yield(get_tree().create_timer(0.1), "timeout")
-
-	print("success!")
 
 
 # NETWORKING====================================================

@@ -15,8 +15,11 @@ func _ready():
 
 
 func _process(_delta):
-	var fighter_one = get_node(path_one)
-	var fighter_two = get_node(path_two)
+	var fighter_one = get_node_or_null(path_one)
+	var fighter_two = get_node_or_null(path_two)
+
+	if fighter_one == null or fighter_two == null:
+		return
 
 	# average x
 	self.position.x = fighter_one.position.x

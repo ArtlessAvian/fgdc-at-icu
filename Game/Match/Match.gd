@@ -1,5 +1,7 @@
 extends SGFixedNode2D
 
+# Match is responsible for resetting the Game, and keeping track of score.
+
 onready var p1_score = 0
 onready var p2_score = 0
 
@@ -11,9 +13,6 @@ var game_params = {}
 
 
 func _network_postprocess(input: Dictionary) -> void:
-	if not self.has_node("Game"):
-		spawn_game()
-
 	if is_dead($Game/Fighter1) or is_dead($Game/Fighter2):
 		dead_timer += 1
 
@@ -36,20 +35,14 @@ func round_reset():
 		p1_score += 1
 
 	print("Score: " + String(p1_score) + " - " + String(p2_score))
-	despawn_game()
-	spawn_game()
 
-
-func spawn_game():
-	SyncManager.spawn("Game", self, game_scene, game_params, false)
+	# Reready everything.
 	dead_timer = -1
-
-
-func despawn_game():
-	if $Game != null:
-		for child in $Game/Spawned.get_children():
-			SyncManager.despawn(child)
-		SyncManager.despawn($Game)
+	for child in $Game/Spawned.get_children():
+		SyncManager.despawn(child)
+	$Game._ready()
+	$Game/Fighter1._ready()
+	$Game/Fighter2._ready()
 
 
 func is_dead(f: Fighter) -> bool:

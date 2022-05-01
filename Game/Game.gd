@@ -1,5 +1,8 @@
 extends SGFixedNode2D
 
+# Game is responsible for managing inter-fighter interactions.
+# It does not know how to reset itself. (See Match).
+
 const x_bound = 1000 << 16  # |x| can't go > x_bound
 const max_spacing = 1000 << 16
 
@@ -11,14 +14,14 @@ const game_length = 90 * 60  # in frames. remember to add a countdown
 var time_in_frames = game_length
 
 
-func _network_spawn(data: Dictionary):
+func _ready():
 	add_to_group("network_sync")
-
-	# TODO: Testing hack: use values from data instead
-	$Fighter2.controlled_by = "c0"
+	time_in_frames = game_length
 
 
 func _network_process(input: Dictionary) -> void:
+	assert(has_node("Fighter1"), "Game not setup! (Fighter1 does not exist)")
+
 	time_in_frames -= 1
 	if time_in_frames == 0:
 		do_timeout()
@@ -153,8 +156,12 @@ func compare_winningness(p1, p2) -> int:
 
 
 func _process(_delta):
-	var p1: SGFixedNode2D = get_node("Fighter1")
-	var p2: SGFixedNode2D = get_node("Fighter2")
+	var p1: SGFixedNode2D = get_node_or_null("Fighter1")
+	var p2: SGFixedNode2D = get_node_or_null("Fighter2")
+
+	if p1 == null or p2 == null:
+		return
+
 	var min_x = min(p1.fixed_position.x, p2.fixed_position.x) / (1 << 16)
 	var max_x = max(p1.fixed_position.x, p2.fixed_position.x) / (1 << 16)
 	var average_x = clamp((min_x + max_x) / 2, -500, 500)
@@ -171,11 +178,7 @@ func _process(_delta):
 
 
 func _save_state() -> Dictionary:
-	return {
-		last_average = last_average,
-		last_diff = last_diff,
-		time_in_frames = time_in_frames
-	}
+	return {last_average = last_average, last_diff = last_diff, time_in_frames = time_in_frames}
 
 
 func _load_state(save: Dictionary) -> void:

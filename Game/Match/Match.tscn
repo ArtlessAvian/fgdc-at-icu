@@ -1,8 +1,29 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Game/Match/Match.gd" type="Script" id=1]
 [ext_resource path="res://Game/Game.tscn" type="PackedScene" id=2]
+[ext_resource path="res://100checker.png" type="Texture" id=3]
+[ext_resource path="res://Stages/Stage.tscn" type="PackedScene" id=5]
 
 [node name="Match" type="SGFixedNode2D"]
 script = ExtResource( 1 )
 game_scene = ExtResource( 2 )
+
+[node name="BackgroundLayer" type="CanvasLayer" parent="."]
+layer = -64
+
+[node name="Temporary" type="Sprite" parent="BackgroundLayer"]
+visible = false
+scale = Vector2( 2, 2 )
+texture = ExtResource( 3 )
+offset = Vector2( 0, -250 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 1000, 500 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Stage" parent="BackgroundLayer" instance=ExtResource( 5 )]
+game_camera_path = NodePath("../../Game/Camera2D")
+
+[node name="Game" parent="." instance=ExtResource( 2 )]

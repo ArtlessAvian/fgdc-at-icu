@@ -22,9 +22,10 @@ func _ready():
 	add_to_group("network_sync")
 
 
-# no reason to toggle, just once at the start!
-func toggle_player():
-	collision_layer ^= 0b11
+func set_player(is_p2):
+	collision_layer = 0b01
+	if is_p2:
+		collision_layer ^= 0b11
 
 
 func _process(delta):

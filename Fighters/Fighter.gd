@@ -33,16 +33,19 @@ var hitstop = 0
 
 
 func _ready():
-	if self in get_tree().root.get_children():
-		var cam = Camera2D.new()
-		cam.current = true
-		var node = Node.new()
-		node.add_child(cam)
-		add_child(node)
+	self.fixed_position.x = (-200 << 16) * (-1 if is_p2 else 1)
+	self.fixed_position.y = 0
+	self.vel = SGFixedVector2.new()
+	self.grounded = true
+	self.health = 20
+	self.state_time = 0
+	self.air_actions = 0
+	self.invincible = false
 
+	$Hitboxes.set_player(is_p2)
+	$Hurtboxes.set_player(is_p2)
 	if is_p2:
-		$Hitboxes.toggle_player()
-		$Hurtboxes.toggle_player()
+		controlled_by = "c0"
 		pass
 
 	$AnimationPlayer.playback_process_mode = AnimationPlayer.ANIMATION_PROCESS_MANUAL

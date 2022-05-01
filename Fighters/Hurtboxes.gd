@@ -21,9 +21,10 @@ func _ready():
 	add_to_group("network_sync")
 
 
-# no reason to toggle, just once at the start!
-func toggle_player():
-	collision_mask ^= 0b11
+func set_player(is_p2):
+	collision_mask = 0b10
+	if is_p2:
+		collision_mask ^= 0b11
 
 
 const color_disabled = Color8(127, 127, 127, 127)

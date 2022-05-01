@@ -17,8 +17,7 @@ func _network_spawn(data: Dictionary):
 	self.fixed_position.x += OFFSET_X * (-1 if flip else 1)
 	self.fixed_position.y -= OFFSET_Y
 
-	if data.is_p2:
-		$Hitboxes.toggle_player()
+	$Hitboxes.set_player(data.is_p2)
 
 	add_to_group("network_sync")
 
