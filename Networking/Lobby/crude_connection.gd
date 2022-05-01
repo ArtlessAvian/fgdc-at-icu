@@ -6,8 +6,8 @@ onready var host_field = $CanvasLayer/MarginContainer/GridContainer/HostField
 onready var port_field = $CanvasLayer/MarginContainer/GridContainer/PortField
 
 var hardcoded_characters = [
-	load("res://Fighters/Fighter.tscn"),
-	load("res://Example/Example.tscn"),
+	"res://Fighters/Fighter.tscn",
+	"res://Example/Example.tscn",
 ]
 
 
@@ -83,11 +83,16 @@ func _on_network_peer_connected(peer_id: int):
 	var game_instance = find_node("Game", true, false)
 	print(game_instance)
 
-	game_instance.get_node("Fighter1").set_network_master(1)
-	if get_tree().is_network_server():
-		game_instance.get_node("Fighter2").set_network_master(peer_id)
-	else:
-		game_instance.get_node("Fighter2").set_network_master(get_tree().get_network_unique_id())
+	self.rpc(
+		"set_character_network",
+		hardcoded_characters[$CanvasLayer/MarginContainer/GridContainer/OnlineCharacter.selected]
+	)
+
+	# game_instance.get_node("Fighter1").set_network_master(1)
+	# if get_tree().is_network_server():
+	# 	game_instance.get_node("Fighter2").set_network_master(peer_id)
+	# else:
+	# 	game_instance.get_node("Fighter2").set_network_master(get_tree().get_network_unique_id())
 
 	# Tried reordering everything below here. it worked before, but it doesn't seem to work anymore.
 	$CanvasLayer/MarginContainer.visible = false
@@ -95,6 +100,12 @@ func _on_network_peer_connected(peer_id: int):
 	if get_tree().is_network_server():
 		yield(get_tree().create_timer(0.2), "timeout")
 		SyncManager.start()
+
+
+remotesync func set_character_network(scene_path: String):
+	var peer_id = get_tree().get_rpc_sender_id()
+	$Match.set_character(load(scene_path), peer_id != 1, peer_id)
+	print(scene_path, peer_id)
 
 
 func _on_network_peer_disconnected(peer_id: int):

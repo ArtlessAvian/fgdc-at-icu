@@ -12,17 +12,17 @@ export(PackedScene) var game_scene = load("res://Game/Game.tscn")
 var game_params = {}
 
 
-func set_character(scene: PackedScene, is_p2: bool = false) -> void:
+func set_character(scene: PackedScene, is_p2: bool = false, peer_id = 1) -> void:
 	var old = $Game/Fighter1 if not is_p2 else $Game/Fighter2
 	var opponent = $Game/Fighter2 if not is_p2 else $Game/Fighter1
 	var new = scene.instance()
+	new.is_p2 = is_p2
 
 	old.name = "delet me"
 	new.name = "Fighter1" if not is_p2 else "Fighter2"
-	old.queue_free()
 
-	new.is_p2 = is_p2
-	$Game.add_child(new)
+	$Game.add_child_below_node(old, new)
+	old.queue_free()
 
 	new.opponent_path = opponent.get_path()
 	opponent.opponent_path = new.get_path()
@@ -30,6 +30,8 @@ func set_character(scene: PackedScene, is_p2: bool = false) -> void:
 		$Game/Camera2D.path_one = new.get_path()
 	else:
 		$Game/Camera2D.path_two = new.get_path()
+
+	new.set_network_master(peer_id)
 
 
 func _network_postprocess(input: Dictionary) -> void:
