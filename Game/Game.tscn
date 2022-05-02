@@ -97,6 +97,25 @@ rect_scale = Vector2( 3, 3 )
 text = "Time Left: 100"
 align = 1
 
+[node name="ComboTEMP" type="Label" parent="UILayer/UI"]
+anchor_right = 0.333
+margin_left = 10.0
+margin_top = 91.0
+margin_right = -10.0
+margin_bottom = 105.0
+rect_scale = Vector2( 3, 3 )
+text = "999 combo!"
+
+[node name="ComboTEMP2" type="Label" parent="UILayer/UI"]
+anchor_right = 0.333
+margin_left = 10.0
+margin_top = 91.0
+margin_right = -10.0
+margin_bottom = 105.0
+rect_scale = Vector2( 3, 3 )
+text = "999 combo!"
+align = 2
+
 [node name="TextureProgress" type="TextureProgress" parent="UILayer/UI"]
 anchor_left = 0.5
 anchor_right = 0.5

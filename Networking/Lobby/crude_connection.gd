@@ -9,6 +9,7 @@ var hardcoded_characters = [
 	"res://Fighters/Fighter.tscn",
 	"res://Example/Example.tscn",
 ]
+var controllers_by_index = ["kb", "c0", "c1", "mash"]
 
 
 func _ready():
@@ -54,6 +55,9 @@ func _on_Local_button_up():
 	$CanvasLayer/MarginContainer.visible = false
 	$CanvasLayer/ColorRect.visible = false
 
+	$Match/Game/Fighter1.controlled_by = controllers_by_index[$CanvasLayer/MarginContainer/GridContainer/LocalInput1.selected]
+	$Match/Game/Fighter2.controlled_by = controllers_by_index[$CanvasLayer/MarginContainer/GridContainer/LocalInput2.selected]
+
 	# $Match.set_character(load("res://Example/Example.tscn"), true)
 
 	SyncManager.start()
@@ -65,12 +69,12 @@ func _on_Mash_button_up():
 	get_tree().network_peer = peer
 
 	$CanvasLayer/MarginContainer.visible = false
+	$CanvasLayer/ColorRect.visible = false
 
+	$Match/Game/Fighter2.is_mash = true
 	SyncManager.start()
 
 	# HACK
-	yield(get_tree().create_timer(1), "timeout")
-	$Match/Game/Fighter2.is_mash = true
 
 
 # NETWORKING====================================================

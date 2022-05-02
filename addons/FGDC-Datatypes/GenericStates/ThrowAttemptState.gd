@@ -23,7 +23,9 @@ func transition_into(f: Fighter, moveset: Moveset, input: Dictionary) -> bool:
 
 func transition_out(f: Fighter, moveset: Moveset, input: Dictionary) -> State:
 	if f.state_time > 15:
-		return moveset.walk
+		if f.grounded:
+			return moveset.walk
+		return moveset.jump
 
 	return null
 
@@ -42,3 +44,7 @@ func run(f: Fighter, input: Dictionary) -> void:
 
 func animation(f: Fighter) -> String:
 	return "Throw"
+
+
+func attack_level() -> int:
+	return 8765309

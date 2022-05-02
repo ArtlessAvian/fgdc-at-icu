@@ -68,7 +68,7 @@ func round_reset():
 
 
 func is_dead(f: Fighter) -> bool:
-	return f.health == 0
+	return f.health <= 0
 
 
 func _save_state() -> Dictionary:

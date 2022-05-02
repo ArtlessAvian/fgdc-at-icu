@@ -12,8 +12,6 @@ export(Resource) var moveset
 
 # constants over the length of the game.
 var controlled_by = "kb"
-var is_dummy = false
-var is_mash = false
 export var is_p2 = false
 export var opponent_path: NodePath = ""
 
@@ -45,9 +43,6 @@ func _ready():
 	$Hitboxes.set_player(is_p2)
 	$Hurtboxes.set_player(is_p2)
 	$Throwboxes.set_player(is_p2)
-	if is_p2:
-		controlled_by = "c0"
-		pass
 
 	$AnimationPlayer.playback_process_mode = AnimationPlayer.ANIMATION_PROCESS_MANUAL
 	$AnimationPlayer.playback_speed = 1
@@ -304,19 +299,16 @@ const NULL_INPUT = {
 
 
 func _get_local_input() -> Dictionary:
-	if is_dummy:
-		return NULL_INPUT
-
-	if is_mash:
+	if controlled_by == "mash":
 		var input = {
 			stick_x = int(randi() % 3 - 1),
 			just_stick_x = int(randi() % 3 - 1),
 			stick_y = int(randi() % 3 - 1),
 			just_stick_y = int(randi() % 3 - 1),
-			light = randf() < 0.1,
-			just_light = randf() < 0.1,
-			heavy = randf() < 0.1,
-			just_heavy = randf() < 0.1
+			light = randf() < 0.05,
+			just_light = randf() < 0.05,
+			heavy = randf() < 0.05,
+			just_heavy = randf() < 0.05
 			# stick_x = 1,
 			# just_stick_x = 0,
 			# stick_y = -1,

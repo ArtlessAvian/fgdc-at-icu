@@ -15,3 +15,7 @@ func run(f: Fighter, input: Dictionary) -> void:
 
 func animation(f: Fighter) -> String:
 	return "Hitstun"
+
+
+func attack_level() -> int:
+	return 8765309

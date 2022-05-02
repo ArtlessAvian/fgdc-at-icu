@@ -64,8 +64,8 @@ func correct_positions():
 	max_distance(p1, p2)
 
 	# nothing bad happens if the players are put oob again, buttt
-	# in_bounds(p1)
-	# in_bounds(p2)
+	in_bounds(p1)
+	in_bounds(p2)
 
 	# hey doesn't this cause a very slight p1 advantage lmao
 	last_average = (p1.fixed_position.x + p2.fixed_position.x) >> 1

@@ -18,10 +18,11 @@ func transition_out(f: Fighter, moveset: Moveset, input: Dictionary) -> State:
 	if f.state_time >= f.state_dict["throwdata"].release_time:
 		f.vel.x = (f.state_dict["throwdata"].release_vel_x << 16) * -int(sign(f.fixed_scale.x))
 		f.vel.y = f.state_dict["throwdata"].release_vel_y << 16
+		f.health -= f.state_dict["throwdata"].damage
 
 		f.grounded = false
 		f.invincible = false
-		return moveset.knockdown
+		return moveset.knockdown if f.health > 0 else moveset.dead
 
 	return null
 
@@ -56,4 +57,4 @@ func get_landing_transition(f: Fighter, moveset: Moveset) -> State:
 
 
 func attack_level() -> int:
-	return 10
+	return 8765309
