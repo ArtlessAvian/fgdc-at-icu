@@ -1,5 +1,7 @@
 extends "../State.gd"
 
+# represents the throw, plus any whiff animation.
+
 # also do not use for command grabs, hitgrabs
 
 export(Resource) var throw_data
@@ -17,7 +19,7 @@ func transition_into(f: Fighter, moveset: Moveset, input: Dictionary) -> bool:
 
 
 func transition_out(f: Fighter, moveset: Moveset, input: Dictionary) -> State:
-	if f.state_time > 10:
+	if f.state_time > 15:
 		return moveset.walk
 
 	return null
@@ -29,6 +31,8 @@ func enter(f: Fighter) -> void:
 
 func run(f: Fighter, input: Dictionary) -> void:
 	f.get_node("Throwboxes").set_throw_data(throw_data)
+	if f.grounded:
+		f.vel.x = 0
 
 
 func animation(f: Fighter) -> String:

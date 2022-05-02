@@ -7,12 +7,13 @@
 script = ExtResource( 2 )
 is_air = false
 techable = true
-throw_length = 15
+throw_length = 30
 damage = 1
-throw_position_x = 0
-throw_position_y = 0
-throw_vel_x = 0
-throw_vel_y = 15
+release_time = 20
+release_position_x = null
+release_position_y = null
+release_vel_x = 10
+release_vel_y = 15
 
 [resource]
 script = ExtResource( 1 )

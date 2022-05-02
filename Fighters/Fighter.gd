@@ -44,6 +44,7 @@ func _ready():
 
 	$Hitboxes.set_player(is_p2)
 	$Hurtboxes.set_player(is_p2)
+	$Throwboxes.set_player(is_p2)
 	if is_p2:
 		controlled_by = "c0"
 		pass
@@ -263,12 +264,21 @@ func throw_response(input: Dictionary):
 	if throwdata.is_air == grounded:
 		print("doesn't match")
 		return
+
+	if state == moveset.throw:
+		print("early throw tech")
+		change_to_state(moveset.throw_tech)
+		get_node(opponent_path).change_to_state(moveset.throw_tech)
+		return
 	if not state in moveset.movement and not state in [moveset.walk, moveset.crouch, moveset.jump]:
 		print("not neutral state")
 		return
 
 	state_dict["throwdata"] = throwdata
 	change_to_state(moveset.get_thrown)
+	var opponent = get_node(opponent_path)
+	opponent.state_dict["my_throwdata"] = throwdata
+	opponent.change_to_state(opponent.moveset.do_throw)
 
 
 # Helper

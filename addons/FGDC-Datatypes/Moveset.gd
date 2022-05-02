@@ -29,6 +29,7 @@ var blockstun: Resource = load(prefix + "GenericStates/BlockstunState.gd").new()
 var dead: Resource = load(prefix + "GenericStates/DeadState.gd").new()
 var do_throw: Resource = load(prefix + "GenericStates/DoThrowState.gd").new()
 var get_thrown: Resource = load(prefix + "GenericStates/GetThrownState.gd").new()
+var throw_tech: Resource = load(prefix + "GenericStates/ThrowTechState.gd").new()
 
 # Get moveset as array
 var lazy_all_normals: Array = []
