@@ -13,6 +13,9 @@ func _process(delta):
 	$TextureProgress2.max_value = get_node(game_path).get_node("Fighter2").max_health
 	$TextureProgress2.value = get_node(game_path).get_node("Fighter2").health
 
+	$Input.text = str(get_node(game_path).get_node("Fighter1/InputHistory")._stick_history) + "\n"
+	$Input.text += str(get_node(game_path).get_node("Fighter2/InputHistory")._stick_history)
+
 	# yes they're meant to be swapped
 	var p1_cc = get_node(game_path).get_node("Fighter2").combo_count
 	if p1_cc == 0:

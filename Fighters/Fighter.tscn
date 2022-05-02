@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://Fighters/Fighter.gd" type="Script" id=1]
 [ext_resource path="res://Fighters/debug.gd" type="Script" id=2]
@@ -9,8 +9,8 @@
 [ext_resource path="res://Fighters/Hitboxes.gd" type="Script" id=7]
 [ext_resource path="res://Fighters/InputHistory.gd" type="Script" id=8]
 [ext_resource path="res://Fighters/HitboxHelper.gd" type="Script" id=9]
-[ext_resource path="res://Fighters/debug2.gd" type="Script" id=10]
 [ext_resource path="res://Fighters/Throwboxes.gd" type="Script" id=11]
+[ext_resource path="res://addons/FGDC-Datatypes/AttackData.gd" type="Script" id=12]
 
 [sub_resource type="Animation" id=35]
 resource_name = "Airdash"
@@ -1095,6 +1095,24 @@ tracks/5/keys = {
 "values": [ -5636096, -5636096 ]
 }
 
+[sub_resource type="Resource" id=1]
+script = ExtResource( 12 )
+guard = 2
+startup = 15
+active = 10
+hitstun = 12
+blockstun = 12
+hitstop = 5
+damage = 5
+chipdamage = 1
+knockdown = false
+x_vel = 5
+y_vel = 0
+active_hitboxes = 1
+active_hurtboxes = 0
+animation_name = "jHeavy"
+recovery = 10
+
 [sub_resource type="SGRectangleShape2D" id=33]
 
 [sub_resource type="SGRectangleShape2D" id=38]
@@ -1154,14 +1172,6 @@ margin_bottom = 14.0
 text = "hello"
 script = ExtResource( 2 )
 
-[node name="Label2" type="Label" parent="Debug"]
-margin_left = -20.0
-margin_top = -262.0
-margin_right = 20.0
-margin_bottom = -248.0
-text = "hello"
-script = ExtResource( 10 )
-
 [node name="Visual" type="Node2D" parent="."]
 
 [node name="Character" type="Node2D" parent="Visual"]
@@ -1180,13 +1190,14 @@ script = ExtResource( 7 )
 __meta__ = {
 "_edit_lock_": true
 }
+hit_data = SubResource( 1 )
 
 [node name="SGCollisionShape2D" type="SGCollisionShape2D" parent="Hitboxes"]
-self_modulate = Color( 0.75, 0.75, 0.75, 1 )
+self_modulate = Color( 1, 0, 0, 1 )
+position = Vector2( 80, -100 )
 fixed_position_x = 5242880
 fixed_position_y = -6553600
 shape = SubResource( 33 )
-disabled = true
 
 [node name="Hurtboxes" type="SGArea2D" parent="." groups=["hurtboxes", "network_sync"]]
 collision_layer = 0
@@ -1225,9 +1236,7 @@ margin_top = 50.0
 margin_right = 4.0
 margin_bottom = 64.0
 rect_scale = Vector2( 2, 2 )
-text = "res://Fighters/DefaultMoveset/DefaultJumpingHeavy.tres::1
-15 (10) 10
-"
+text = "No attack loaded!"
 
 [node name="InputHistory" type="Node" parent="." groups=["network_sync"]]
 script = ExtResource( 8 )

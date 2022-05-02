@@ -100,21 +100,27 @@ align = 1
 [node name="ComboTEMP" type="Label" parent="UILayer/UI"]
 anchor_right = 0.333
 margin_left = 10.0
-margin_top = 91.0
+margin_top = 300.0
 margin_right = -10.0
-margin_bottom = 105.0
+margin_bottom = 314.0
 rect_scale = Vector2( 3, 3 )
 text = "999 combo!"
 
 [node name="ComboTEMP2" type="Label" parent="UILayer/UI"]
 anchor_right = 0.333
 margin_left = 10.0
-margin_top = 91.0
+margin_top = 300.0
 margin_right = -10.0
-margin_bottom = 105.0
+margin_bottom = 314.0
 rect_scale = Vector2( 3, 3 )
 text = "999 combo!"
 align = 2
+
+[node name="Input" type="Label" parent="UILayer/UI"]
+anchor_right = 1.0
+margin_top = 200.0
+margin_bottom = 164.0
+text = "999 combo!"
 
 [node name="TextureProgress" type="TextureProgress" parent="UILayer/UI"]
 anchor_left = 0.5

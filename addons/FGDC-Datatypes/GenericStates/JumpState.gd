@@ -26,8 +26,13 @@ func transition_out(f: Fighter, moveset: Moveset, input: Dictionary) -> State:
 	return null
 
 
+func enter(f: Fighter) -> void:
+	f.state_dict.let_go = false
+
+
 func run(f: Fighter, input: Dictionary) -> void:
-	pass
+	if not f.state_dict.let_go and input.stick_y <= 0:
+		f.state_dict.let_go = true
 
 
 func animation(f: Fighter) -> String:

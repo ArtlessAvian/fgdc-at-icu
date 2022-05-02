@@ -68,6 +68,9 @@ func get_attack_data(ani_player: AnimationPlayer, moveset: Moveset):
 	var attack_data = null
 
 	for state in moveset.all_states():
+		if state == null:
+			print("one of your states is null")
+			return null
 		var some_data = state.get("attack_data")
 		if some_data != null and some_data.animation_name == ani_player.assigned_animation:
 			attack_data = some_data

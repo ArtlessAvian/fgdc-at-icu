@@ -298,18 +298,23 @@ const NULL_INPUT = {
 	just_heavy = false
 }
 
+var last_mash = NULL_INPUT
+
 
 func _get_local_input() -> Dictionary:
 	if controlled_by == "mash":
+		if randf() < 0.3:
+			return last_mash
+
 		var input = {
 			stick_x = int(randi() % 3 - 1),
 			just_stick_x = int(randi() % 3 - 1),
 			stick_y = int(randi() % 3 - 1),
 			just_stick_y = int(randi() % 3 - 1),
-			light = randf() < 0.03,
-			just_light = randf() < 0.03,
-			heavy = randf() < 0.01,
-			just_heavy = randf() < 0.01
+			light = randf() < 0.3,
+			just_light = randf() < 0.3,
+			heavy = randf() < 0.3,
+			just_heavy = randf() < 0.3
 			# stick_x = 1,
 			# just_stick_x = 0,
 			# stick_y = -1,
@@ -319,6 +324,7 @@ func _get_local_input() -> Dictionary:
 			# heavy = 0,
 			# just_heavy = 0
 		}
+		last_mash = input
 		return input
 
 	var left = controlled_by + "_left"
