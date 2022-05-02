@@ -18,12 +18,12 @@ func transition_out(f: Fighter, moveset: Moveset, input: Dictionary) -> State:
 
 func run(f: Fighter, input: Dictionary) -> void:
 	if not f.grounded:
-		f.vel.y = f.gravity
+		f.vel.y = f.fighter_gravity
 
 
 func animation(f: Fighter) -> String:
 	return "DoThrow"
 
 
-func attack_level() -> int:
-	return 10
+func get_landing_transition(f: Fighter, moveset: Moveset) -> State:
+	return null

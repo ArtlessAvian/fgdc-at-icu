@@ -29,9 +29,30 @@ func transition_out(f: Fighter, moveset: Moveset, input: Dictionary) -> State:
 func run(f: Fighter, input: Dictionary) -> void:
 	f.invincible = true
 
+	f.vel.x = 0
+	if f.grounded:
+		f.vel.y = 0
+	else:
+		f.vel.y = f.fighter_gravity
+
+	# TODO: HACK: WARNING: IDK: Port priority matters!
+	# var opponent = f.get_node(f.opponent_path)
+	# f.fixed_position.x = (
+	# 	opponent.fixed_position.x
+	# 	+ (f.state_dict["throwdata"].release_position_x << 16)
+	# )
+	# f.fixed_position.y = (
+	# 	opponent.fixed_position.y
+	# 	- (f.state_dict["throwdata"].release_position_y << 16)
+	# )
+
 
 func animation(f: Fighter) -> String:
 	return "Hitstun"
+
+
+func get_landing_transition(f: Fighter, moveset: Moveset) -> State:
+	return null
 
 
 func attack_level() -> int:
