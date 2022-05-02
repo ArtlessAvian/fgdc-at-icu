@@ -54,7 +54,7 @@ func _on_Local_button_up():
 	$CanvasLayer/MarginContainer.visible = false
 	$CanvasLayer/ColorRect.visible = false
 
-	$Match.set_character(load("res://Example/Example.tscn"), true)
+	# $Match.set_character(load("res://Example/Example.tscn"), true)
 
 	SyncManager.start()
 
@@ -145,4 +145,4 @@ func _on_SyncManager_sync_error(msg: String) -> void:
 
 
 func _on_LocalCharacter_item_selected(index: int, is_p2: bool):
-	$Match.set_character(hardcoded_characters[index], is_p2)
+	$Match.set_character(load(hardcoded_characters[index]), is_p2)

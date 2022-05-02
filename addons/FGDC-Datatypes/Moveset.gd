@@ -16,6 +16,7 @@ export(Resource) var c_light
 export(Resource) var c_heavy
 export(Resource) var j_light
 export(Resource) var j_heavy
+export(Resource) var throw
 
 export(Array, Resource) var attacks = []
 export(Array, Resource) var movement = []
@@ -26,7 +27,8 @@ const prefix = "res://addons/FGDC-Datatypes/"
 var hitstun: Resource = load(prefix + "GenericStates/HitstunState.gd").new()
 var blockstun: Resource = load(prefix + "GenericStates/BlockstunState.gd").new()
 var dead: Resource = load(prefix + "GenericStates/DeadState.gd").new()
-var throw: Resource = load(prefix + "GenericStates/ThrowState.gd").new()
+var do_throw: Resource = load(prefix + "GenericStates/DoThrowState.gd").new()
+var get_thrown: Resource = load(prefix + "GenericStates/GetThrownState.gd").new()
 
 # Get moveset as array
 var lazy_all_normals: Array = []
@@ -60,4 +62,7 @@ func all_states():
 		lazy_all_states.append(walk)
 		lazy_all_states.append(crouch)
 		lazy_all_states.append(jump)
+		print(lazy_all_states)
+		print(lazy_all_normals)
+		print(lazy_all_attacks)
 	return lazy_all_states

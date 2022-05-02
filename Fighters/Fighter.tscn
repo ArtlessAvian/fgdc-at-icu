@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://Fighters/Fighter.gd" type="Script" id=1]
 [ext_resource path="res://Fighters/debug.gd" type="Script" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Fighters/InputHistory.gd" type="Script" id=8]
 [ext_resource path="res://Fighters/HitboxHelper.gd" type="Script" id=9]
 [ext_resource path="res://Fighters/debug2.gd" type="Script" id=10]
+[ext_resource path="res://Fighters/Throwboxes.gd" type="Script" id=11]
 
 [sub_resource type="Animation" id=35]
 resource_name = "Airdash"
@@ -350,6 +351,143 @@ tracks/13/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ 655360 ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("Throwboxes/SGCollisionShape2D:shape:extents_x")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 2752512 ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("Throwboxes/SGCollisionShape2D:shape:extents_y")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 6553600 ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("Throwboxes/SGCollisionShape2D:fixed_position_x")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 7602176 ]
+}
+tracks/17/type = "value"
+tracks/17/path = NodePath("Throwboxes/SGCollisionShape2D:fixed_position_y")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -6422528 ]
+}
+tracks/18/type = "value"
+tracks/18/path = NodePath("Throwboxes/SGCollisionShape2D:disabled")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=41]
+resource_name = "Throw"
+length = 10.0
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Visual/Character/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3, 6, 9, 12, 15, 20 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 8, 10, 9, 11, 10, 9, 12 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Throwboxes/SGCollisionShape2D:shape:extents_x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 2752512 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Throwboxes/SGCollisionShape2D:shape:extents_y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 6553600 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Throwboxes/SGCollisionShape2D:fixed_position_x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 7602176 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Throwboxes/SGCollisionShape2D:fixed_position_y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ -6422528 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Throwboxes/SGCollisionShape2D:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 5, 10 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
 }
 
 [sub_resource type="Animation" id=8]
@@ -874,6 +1012,10 @@ tracks/5/keys = {
 extents_x = 2752512
 extents_y = 6553600
 
+[sub_resource type="SGRectangleShape2D" id=42]
+extents_x = 2752512
+extents_y = 6553600
+
 [node name="Fighter" type="SGFixedNode2D" groups=["network_sync"]]
 position = Vector2( -1, -1 )
 fixed_position_x = -65536
@@ -901,6 +1043,7 @@ anims/Jump = SubResource( 23 )
 anims/Knockdown = SubResource( 37 )
 anims/Prejump = SubResource( 24 )
 anims/RESET = SubResource( 7 )
+anims/Throw = SubResource( 41 )
 anims/Walk = SubResource( 8 )
 anims/cHeavy = SubResource( 40 )
 anims/cLight = SubResource( 32 )
@@ -967,6 +1110,21 @@ __meta__ = {
 position = Vector2( 0, -100 )
 fixed_position_y = -6553600
 shape = SubResource( 38 )
+
+[node name="Throwboxes" type="SGArea2D" parent="." groups=["network_sync", "throwboxes"]]
+collision_mask = 0
+script = ExtResource( 11 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="SGCollisionShape2D" type="SGCollisionShape2D" parent="Throwboxes"]
+self_modulate = Color( 0.75, 0.75, 0.75, 1 )
+position = Vector2( 116, -98 )
+fixed_position_x = 7602176
+fixed_position_y = -6422528
+shape = SubResource( 42 )
+disabled = true
 
 [node name="[EDITOR]HitboxHelper" type="Node" parent="."]
 script = ExtResource( 9 )

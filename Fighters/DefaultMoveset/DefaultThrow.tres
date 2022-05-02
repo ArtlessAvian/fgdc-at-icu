@@ -1,0 +1,19 @@
+[gd_resource type="Resource" load_steps=4 format=2]
+
+[ext_resource path="res://addons/FGDC-Datatypes/GenericStates/ThrowAttemptState.gd" type="Script" id=1]
+[ext_resource path="res://addons/FGDC-Datatypes/ThrowData.gd" type="Script" id=2]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 2 )
+is_air = false
+techable = true
+throw_length = 15
+damage = 1
+throw_position_x = 0
+throw_position_y = 0
+throw_vel_x = 0
+throw_vel_y = 15
+
+[resource]
+script = ExtResource( 1 )
+throw_data = SubResource( 1 )

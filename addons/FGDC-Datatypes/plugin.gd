@@ -8,6 +8,7 @@ const generic_states = [
 	"FireballState",
 	"JumpState",
 	"NormalAttackState",
+	"ThrowAttemptState",
 	"WalkState",
 ]
 
@@ -22,6 +23,9 @@ func _enter_tree():
 	)
 	add_custom_type(
 		"AttackData", "Resource", preload("res://addons/FGDC-Datatypes/AttackData.gd"), max_emote
+	)
+	add_custom_type(
+		"ThrowData", "Resource", preload("res://addons/FGDC-Datatypes/ThrowData.gd"), max_emote
 	)
 
 	add_custom_type(

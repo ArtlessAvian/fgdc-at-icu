@@ -162,12 +162,11 @@ func check_for_hit(input: Dictionary):
 			$Hurtboxes.modulate = Color.cyan
 	# End debuggy stuff.
 
-	if $Hurtboxes.hit_hitdata == null or invincible:
-		# The fighter was not hit, so no need to do anything.
-		return
-
-	# This fighter was hit.
-	hit_response(input)
+	if $Hurtboxes.hit_hitdata != null and not invincible:
+		# This fighter was hit.
+		hit_response(input)
+	elif $Hurtboxes.throw_throwdata != null and not invincible:
+		throw_response(input)
 
 
 func is_blocking(input: Dictionary):
@@ -256,6 +255,20 @@ func on_hit():
 		change_to_state(moveset.knockdown)
 	else:
 		change_to_state(moveset.hitstun)
+
+
+func throw_response(input: Dictionary):
+	var throwdata = $Hurtboxes.throw_throwdata
+
+	if throwdata.is_air == grounded:
+		print("doesn't match")
+		return
+	if not state in moveset.movement and not state in [moveset.walk, moveset.crouch, moveset.jump]:
+		print("not neutral state")
+		return
+
+	state_dict["throwdata"] = throwdata
+	change_to_state(moveset.get_thrown)
 
 
 # Helper

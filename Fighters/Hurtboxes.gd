@@ -6,6 +6,9 @@ tool
 var hit_hitdata  # HitData of attack Figher got hit by.
 var hit_hitboxes = null  # (You can't save this one even if you tried. (I also tried saving the path.))
 
+var throw_throwdata = null
+#var throw_throwboxes = null # only the other fighter can throw you.
+
 # Save this
 var attacks_hit_by = {}  # Stores which attacks this Hurtbox has gotten hit by. Prevents being hit multiple times by same attack.
 
@@ -43,6 +46,7 @@ func _process(delta):
 func collide_hitboxes():
 	self.hit_hitdata = null
 	self.hit_hitboxes = null
+	self.throw_throwdata = null
 
 	for hitboxes in self.get_overlapping_areas():
 		if hitboxes is Hitboxes:
@@ -53,7 +57,11 @@ func collide_hitboxes():
 				self.hit_hitdata = hitboxes.get_hit_data()
 				self.hit_hitboxes = hitboxes
 				break  # only one thing can hit you at one time.
-	pass
+
+	for throwboxes in self.get_overlapping_areas():
+		if throwboxes is Throwboxes:
+			self.throw_throwdata = throwboxes.get_throw_data()
+			break
 
 
 # call me if you got hit!

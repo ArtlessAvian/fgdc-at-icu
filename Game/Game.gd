@@ -77,10 +77,12 @@ func collide_hitboxes():
 		area.sync_to_physics_engine()
 	for area in get_tree().get_nodes_in_group("hurtboxes"):
 		area.sync_to_physics_engine()
+	for area in get_tree().get_nodes_in_group("throwboxes"):
+		area.sync_to_physics_engine()
 
 	for area in get_tree().get_nodes_in_group("hurtboxes"):
 		var hurtboxes: Hurtboxes = area
-		hurtboxes.collide_hitboxes()
+		hurtboxes.collide_hitboxes()  # and throwboxes
 
 
 func in_bounds(p: Fighter):
