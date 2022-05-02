@@ -5,14 +5,14 @@
 
 [sub_resource type="Resource" id=1]
 script = ExtResource( 2 )
-guard = "0"
+guard = 1
 startup = 6
 active = 2
 hitstun = 12
 blockstun = 12
 hitstop = 5
-damage = 1
-chipdamage = 0
+damage = 5
+chipdamage = 1
 knockdown = true
 x_vel = 5
 y_vel = 0

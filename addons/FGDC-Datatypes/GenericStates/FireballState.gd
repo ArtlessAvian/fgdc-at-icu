@@ -41,7 +41,8 @@ func run(f: Fighter, input: Dictionary) -> void:
 			f.get_parent().get_node("Spawned"),
 			fireball,
 			{
-				"position": f.fixed_position,
+				"position_x": f.fixed_position.x,
+				"position_y": f.fixed_position.y,
 				"flip": f.fixed_scale.x < 0,
 				"is_p2": f.is_p2,
 				"is_heavy": is_heavy

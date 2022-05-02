@@ -7,6 +7,7 @@ export(int) var fighter_height = 50
 
 # Subpixels per frame squared
 export(int) var fighter_gravity = 32768
+export(int) var max_health = 100
 
 export(Resource) var moveset
 
@@ -35,7 +36,7 @@ func _ready():
 	self.fixed_position.y = 0
 	self.vel = SGFixedVector2.new()
 	self.grounded = true
-	self.health = 20
+	self.health = self.max_health
 	self.state_time = 0
 	self.air_actions = 0
 	self.invincible = false
@@ -305,10 +306,10 @@ func _get_local_input() -> Dictionary:
 			just_stick_x = int(randi() % 3 - 1),
 			stick_y = int(randi() % 3 - 1),
 			just_stick_y = int(randi() % 3 - 1),
-			light = randf() < 0.05,
-			just_light = randf() < 0.05,
-			heavy = randf() < 0.05,
-			just_heavy = randf() < 0.05
+			light = randf() < 0.03,
+			just_light = randf() < 0.03,
+			heavy = randf() < 0.01,
+			just_heavy = randf() < 0.01
 			# stick_x = 1,
 			# just_stick_x = 0,
 			# stick_y = -1,

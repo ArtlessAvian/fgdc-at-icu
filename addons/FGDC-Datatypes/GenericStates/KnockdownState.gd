@@ -13,7 +13,10 @@ func transition_out(f: Fighter, moveset: Moveset, input: Dictionary) -> State:
 	if f.state_dict.knockdown_timer <= 0 and f.grounded:
 		f.invincible = false
 		print("for designers, knockback ended frame ", f.state_time)
-		return moveset.walk
+
+		# jump out of knockdown to not get grabbed to death
+		var jump = transition_into_jump(f, moveset, input)
+		return jump if jump != null else moveset.walk
 
 	return null
 

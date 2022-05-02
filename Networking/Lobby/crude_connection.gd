@@ -101,6 +101,11 @@ func _on_network_peer_connected(peer_id: int):
 	# Tried reordering everything below here. it worked before, but it doesn't seem to work anymore.
 	$CanvasLayer/MarginContainer.visible = false
 	$CanvasLayer/ColorRect.visible = false
+
+	# Get away with setting both to the same, since one is ignored
+	$Match/Game/Fighter1.controlled_by = controllers_by_index[$CanvasLayer/MarginContainer/GridContainer/OnlineInput.selected]
+	$Match/Game/Fighter2.controlled_by = controllers_by_index[$CanvasLayer/MarginContainer/GridContainer/OnlineInput.selected]
+
 	if get_tree().is_network_server():
 		yield(get_tree().create_timer(0.2), "timeout")
 		SyncManager.start()

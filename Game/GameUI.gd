@@ -8,7 +8,9 @@ func _process(delta):
 	var time_str = str(time_msecs)
 
 	$TimerTEMPORARY.text = "Time Left:\n" + time_str
+	$TextureProgress.max_value = get_node(game_path).get_node("Fighter2").max_health
 	$TextureProgress.value = get_node(game_path).get_node("Fighter1").health
+	$TextureProgress2.max_value = get_node(game_path).get_node("Fighter2").max_health
 	$TextureProgress2.value = get_node(game_path).get_node("Fighter2").health
 
 	# yes they're meant to be swapped

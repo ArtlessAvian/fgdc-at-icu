@@ -13,7 +13,8 @@ func _network_spawn(data: Dictionary):
 	self.is_heavy = data.is_heavy
 	self.lifetime = 0
 
-	self.fixed_position = data.position
+	self.fixed_position.x = data.position_x
+	self.fixed_position.y = data.position_y
 	self.fixed_position.x += OFFSET_X * (-1 if flip else 1)
 	self.fixed_position.y -= OFFSET_Y
 
