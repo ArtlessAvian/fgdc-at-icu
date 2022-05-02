@@ -348,7 +348,7 @@ func _get_local_input() -> Dictionary:
 		),
 		light = Input.is_action_pressed(light),
 		just_light = Input.is_action_just_pressed(light),
-		heavy = Input.is_action_just_pressed(heavy),
+		heavy = Input.is_action_pressed(heavy),
 		just_heavy = Input.is_action_just_pressed(heavy)
 	}
 	return input

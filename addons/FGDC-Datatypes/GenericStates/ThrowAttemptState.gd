@@ -14,10 +14,8 @@ func transition_into(f: Fighter, moveset: Moveset, input: Dictionary) -> bool:
 		if f.state in [moveset.walk, moveset.crouch, moveset.jump]:
 			return true
 
-	if f.state in moveset.all_normals():
 		if f.state_time < 5:
-			print("kara throw possible")
-			if input.light and input.heavy:
+			if f.state in moveset.all_normals():
 				return true
 
 	return false
