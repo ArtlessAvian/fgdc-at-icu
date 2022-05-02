@@ -35,7 +35,7 @@ func new_input(input: Dictionary):
 
 
 func _clear_old_inputs():
-	if _hold_total - _hold_duration[-1] > 60:
+	while _hold_total - _hold_duration[-1] > 60 and len(_stick_history) > 30:
 		_hold_total -= _hold_duration[-1]
 
 		_stick_history.pop_back()
@@ -68,8 +68,33 @@ func detect_motion(motion, reversed: bool, frames: int) -> bool:
 	return false
 
 
-func consume_motion():
-	pass
+func detect_qcf(reversed: bool, frames: int) -> bool:
+	# TODO: A crazyass could run KMP Search
+	# I'm just going to do the dumb way that works.
+	# Its not worth.
+	if detect_motion([2, 3, 6], reversed, frames):
+		return true
+	if detect_motion([2, 6], reversed, frames):
+		return true
+	if detect_motion([1, 3, 6], reversed, frames):
+		return true
+	if detect_motion([1, 6], reversed, frames):
+		return true
+	return false
+
+
+func detect_qcb(reversed: bool, frames: int) -> bool:
+	return detect_qcf(not reversed, frames)
+
+
+func detect_dp(reversed: bool, frames: int) -> bool:
+	if detect_motion([6, 2, 3], reversed, frames):
+		return true
+	if detect_motion([6, 5, 2, 3], reversed, frames):
+		return true
+	if detect_motion([6, 3, 2, 3], reversed, frames):
+		return true
+	return false
 
 
 func _save_state() -> Dictionary:

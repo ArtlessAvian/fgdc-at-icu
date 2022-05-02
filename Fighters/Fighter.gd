@@ -23,6 +23,7 @@ var grounded = true
 var health: int = 20
 var state: Resource
 var state_time = 0
+var ani_start_time = 0
 var air_actions = 0
 var state_dict: Dictionary = {}
 var invincible: bool = false
@@ -38,6 +39,7 @@ func _ready():
 	self.grounded = true
 	self.health = self.max_health
 	self.state_time = 0
+	self.ani_start_time = 0
 	self.air_actions = 0
 	self.invincible = false
 
@@ -132,12 +134,15 @@ func anim_process():
 	if assigned != ani:
 		if not $AnimationPlayer.has_animation(ani):
 			printerr("No animation " + ani + "!")
-		else:
-			$AnimationPlayer.play("RESET")
-			# print("RESET")
-			$AnimationPlayer.advance(0)
-			$AnimationPlayer.play(ani)
-	$AnimationPlayer.advance(state_time - $AnimationPlayer.current_animation_position)
+			ani = "Walk"
+		ani_start_time = state_time
+		$AnimationPlayer.play("RESET")
+		# print("RESET")
+		$AnimationPlayer.advance(0)
+		$AnimationPlayer.play(ani)
+	$AnimationPlayer.advance(
+		state_time - ani_start_time - $AnimationPlayer.current_animation_position
+	)
 	pass
 
 
@@ -266,7 +271,10 @@ func throw_response(input: Dictionary):
 		change_to_state(moveset.throw_tech)
 		get_node(opponent_path).change_to_state(moveset.throw_tech)
 		return
-	if not state in moveset.movement and not state in [moveset.walk, moveset.crouch, moveset.jump]:
+	if (
+		not state in moveset.movement
+		and not state in [moveset.walk, moveset.crouch, moveset.jump]
+	):
 		print("not neutral state")
 		return
 
@@ -303,18 +311,18 @@ var last_mash = NULL_INPUT
 
 func _get_local_input() -> Dictionary:
 	if controlled_by == "mash":
-		if randf() < 0.3:
+		if randf() < 0.9:
 			return last_mash
 
 		var input = {
 			stick_x = int(randi() % 3 - 1),
-			just_stick_x = int(randi() % 3 - 1),
+			just_stick_x = 0,
 			stick_y = int(randi() % 3 - 1),
-			just_stick_y = int(randi() % 3 - 1),
+			just_stick_y = 0,
 			light = randf() < 0.3,
-			just_light = randf() < 0.3,
+			just_light = false,
 			heavy = randf() < 0.3,
-			just_heavy = randf() < 0.3
+			just_heavy = false
 			# stick_x = 1,
 			# just_stick_x = 0,
 			# stick_y = -1,
@@ -336,20 +344,15 @@ func _get_local_input() -> Dictionary:
 
 	var input = {
 		stick_x = int(round(Input.get_axis(left, right))),
-		just_stick_x = (
-			int(Input.is_action_just_pressed(right))
-			- int(Input.is_action_just_pressed(left))
-		),
+		just_stick_x = 0,
 		stick_y = int(round(Input.get_axis(down, up))),
-		just_stick_y = (
-			int(Input.is_action_just_pressed(up))
-			- int(Input.is_action_just_pressed(down))
-		),
+		just_stick_y = 0,
 		light = Input.is_action_pressed(light),
 		just_light = Input.is_action_just_pressed(light),
 		heavy = Input.is_action_pressed(heavy),
 		just_heavy = Input.is_action_just_pressed(heavy)
 	}
+	# print(input)
 	return input
 
 
@@ -374,6 +377,7 @@ func _save_state() -> Dictionary:
 		air_actions = air_actions,
 		state = state,
 		state_time = state_time,
+		ani_start_time = ani_start_time,
 		state_dict = state_dict.duplicate(),
 		combo_count = combo_count,
 		hitstop = hitstop,
@@ -393,6 +397,7 @@ func _load_state(save: Dictionary) -> void:
 	air_actions = save.air_actions
 	state = save.state
 	state_time = save.state_time
+	ani_start_time = save.ani_start_time
 	state_dict = save.state_dict.duplicate(true)
 	combo_count = save.combo_count
 	hitstop = save.hitstop

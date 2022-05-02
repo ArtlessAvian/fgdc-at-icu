@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://Fighters/Fighter.gd" type="Script" id=1]
 [ext_resource path="res://Fighters/debug.gd" type="Script" id=2]
@@ -516,6 +516,35 @@ tracks/5/keys = {
 "values": [ true, false, true ]
 }
 
+[sub_resource type="Animation" id=51]
+resource_name = "Wakeup"
+length = 30.0
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Visual/Character/AnimatedSprite:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 20, 30 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ -90.0, -90.0, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Visual/Character/AnimatedSprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 20, 26, 30 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -6, -30 ), Vector2( -6, -30 ), Vector2( -6, -130 ), Vector2( -6, -100 ) ]
+}
+
 [sub_resource type="Animation" id=36]
 resource_name = "Walk"
 
@@ -559,6 +588,7 @@ anims/Knockdown = SubResource( 49 )
 anims/RESET = SubResource( 38 )
 anims/StandingA = SubResource( 45 )
 anims/Throw = SubResource( 50 )
+anims/Wakeup = SubResource( 51 )
 anims/Walk = SubResource( 36 )
 
 [node name="Debug" type="Node2D" parent="."]

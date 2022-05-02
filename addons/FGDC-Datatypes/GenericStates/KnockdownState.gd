@@ -37,7 +37,7 @@ func run(f: Fighter, input: Dictionary) -> void:
 
 
 func animation(f: Fighter) -> String:
-	return "Knockdown"
+	return "Knockdown" if f.state_dict.knockdown_timer == 30 else "Wakeup"
 
 
 func do_landing(f: Fighter, moveset: Moveset) -> void:
