@@ -9,23 +9,7 @@ func transition_into(f: Fighter, moveset: Moveset, input: Dictionary) -> bool:
 
 	if f.state in [moveset.walk, moveset.crouch]:
 		var success = false
-		if f.get_node("InputHistory").detect_motion([2, 5, 8], f.fixed_scale.x < 0, 8):
-			success = true
-		elif f.get_node("InputHistory").detect_motion([2, 5, 9], f.fixed_scale.x < 0, 8):
-			success = true
-		elif f.get_node("InputHistory").detect_motion([2, 5, 7], f.fixed_scale.x < 0, 8):
-			success = true
-		elif f.get_node("InputHistory").detect_motion([2, 6, 9], f.fixed_scale.x < 0, 8):
-			success = true
-		elif f.get_node("InputHistory").detect_motion([2, 4, 7], f.fixed_scale.x < 0, 8):
-			success = true
-		elif f.get_node("InputHistory").detect_motion([2, 5, 4, 7], f.fixed_scale.x < 0, 8):
-			success = true
-		elif f.get_node("InputHistory").detect_motion([2, 4, 5, 7], f.fixed_scale.x < 0, 8):
-			success = true
-		elif f.get_node("InputHistory").detect_motion([2, 5, 6, 9], f.fixed_scale.x < 0, 8):
-			success = true
-		elif f.get_node("InputHistory").detect_motion([2, 6, 5, 9], f.fixed_scale.x < 0, 8):
+		if f.get_node("InputHistory").detect_charge_up(10, 1):
 			success = true
 
 		if success:
@@ -50,10 +34,12 @@ func transition_out(f: Fighter, moveset: Moveset, input: Dictionary) -> State:
 
 func enter(f: Fighter) -> void:
 	f.air_actions = f.moveset.air_actions
+	f.state_dict.let_go = false
 
 
 func run(f: Fighter, input: Dictionary) -> void:
-	pass
+	if not f.state_dict.let_go and input.stick_y <= 0:
+		f.state_dict.let_go = true
 
 
 func animation(f: Fighter) -> String:

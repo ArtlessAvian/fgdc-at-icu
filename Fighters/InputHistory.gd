@@ -68,6 +68,65 @@ func detect_motion(motion, reversed: bool, frames: int) -> bool:
 	return false
 
 
+func detect_charge_forward(reversed: bool, input_frames: int, hold_frames: int) -> bool:
+	# if not holding forward, early exit
+	if not (
+		(_stick_history[0] % 3 == 0 and not reversed)
+		or (_stick_history[0] % 3 == 1 and reversed)
+	):
+		return false
+
+	# search for a back input within input_frames. make sure its held for hold_frames.
+	var first_input_time = 0
+	var charge_time = 0
+	for i in range(len(_stick_history)):
+		var is_backwards = (
+			(_stick_history[i] % 3 == 1 and not reversed)
+			or (_stick_history[i] % 3 == 0 and reversed)
+		)
+
+		if not is_backwards:
+			first_input_time += charge_time
+			charge_time = 0
+			first_input_time += _hold_duration[i]
+			if first_input_time > input_frames:
+				return false
+		else:
+			charge_time += _hold_duration[i]
+			if charge_time >= hold_frames:
+				prints("succ", first_input_time, charge_time, SyncManager.current_tick)
+				return true
+
+	return false
+
+
+# WARNING: COPY PASTED FROM ABOVE.
+func detect_charge_up(input_frames: int, hold_frames: int) -> bool:
+	# if not holding up, early exit. integer division intentional.
+	if not ((_stick_history[0] - 1) / 3) == 2:
+		return false
+
+	# search for a back input within input_frames. make sure its held for hold_frames.
+	var first_input_time = 0
+	var charge_time = 0
+	for i in range(len(_stick_history)):
+		var is_down = ((_stick_history[i] - 1) / 3) == 0
+
+		if not is_down:
+			first_input_time += charge_time
+			charge_time = 0
+			first_input_time += _hold_duration[i]
+			if first_input_time > input_frames:
+				return false
+		else:
+			charge_time += _hold_duration[i]
+			if charge_time >= hold_frames:
+				prints("succ", first_input_time, charge_time, SyncManager.current_tick)
+				return true
+
+	return false
+
+
 func detect_qcf(reversed: bool, frames: int) -> bool:
 	# TODO: A crazyass could run KMP Search
 	# I'm just going to do the dumb way that works.

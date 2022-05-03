@@ -247,9 +247,9 @@ margin_left = 97.0
 margin_top = 326.0
 margin_right = 397.0
 margin_bottom = 346.0
-text = "Mash"
+text = "Controller 1"
 items = [ "Keyboard (Arrows, AS)", null, false, 0, null, "Controller 1", null, false, 1, null, "Controller 2", null, false, 2, null, "Mash", null, false, 3, null ]
-selected = 3
+selected = 1
 
 [node name="SyncLost" type="Label" parent="CanvasLayer"]
 visible = false

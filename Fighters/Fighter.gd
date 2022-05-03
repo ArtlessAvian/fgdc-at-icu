@@ -145,6 +145,13 @@ func anim_process():
 	)
 	pass
 
+	if $InputHistory.detect_charge_forward(self.fixed_scale_x < 0, 5, 30):
+		self.modulate = Color.chartreuse
+	elif $InputHistory.detect_charge_up(5, 30):
+		self.modulate = Color.orange
+	else:
+		self.modulate = Color.white
+
 
 func check_for_hit(input: Dictionary):
 	# HACK: Prevent empty input
