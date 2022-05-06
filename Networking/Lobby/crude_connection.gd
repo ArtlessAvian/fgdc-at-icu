@@ -5,9 +5,18 @@ extends Node
 onready var host_field = $CanvasLayer/MarginContainer/GridContainer/HostField
 onready var port_field = $CanvasLayer/MarginContainer/GridContainer/PortField
 
+var hardcoded_character_names = [
+	"Batperson",
+	"Example (Testing Grounds)",
+	"Max (WIP)",
+	"Lippo (WIP)",
+]
+
 var hardcoded_characters = [
 	"res://Fighters/Fighter.tscn",
-	"res://Example/Example.tscn",
+	"res://Characters/Example/Example.tscn",
+	"res://Characters/Max/Max.tscn",
+	"res://Characters/Lippo/Lippo.tscn",
 ]
 var controllers_by_index = ["kb", "c0", "c1", "mash"]
 
@@ -21,6 +30,16 @@ func _ready():
 	SyncManager.connect("sync_lost", self, "_on_SyncManager_sync_lost")
 	SyncManager.connect("sync_regained", self, "_on_SyncManager_sync_regained")
 	SyncManager.connect("sync_error", self, "_on_SyncManager_sync_error")
+
+	setup_dropdowns($CanvasLayer/MarginContainer/GridContainer/OnlineCharacter)
+	setup_dropdowns($CanvasLayer/MarginContainer/GridContainer/LocalCharacter)
+	setup_dropdowns($CanvasLayer/MarginContainer/GridContainer/LocalCharacter2)
+
+
+func setup_dropdowns(dropdown: OptionButton):
+	dropdown.clear()
+	for i in range(len(hardcoded_character_names)):
+		dropdown.add_item(hardcoded_character_names[i], i)
 
 
 func setup_match_for_replay(my_peer_id: int, peer_ids: Array, match_info: Dictionary) -> void:

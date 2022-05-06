@@ -6,6 +6,7 @@ const generic_states = [
 	"BackdashState",
 	"CrouchState",
 	"FireballState",
+	"PrejumpState",
 	"JumpState",
 	"NormalAttackState",
 	"ThrowAttemptState",
@@ -19,20 +20,32 @@ const lippo_emote = preload("res://addons/FGDC-Datatypes/Assets/lippo-32x32.png"
 
 func _enter_tree():
 	add_custom_type(
-		"HitData", "Resource", preload("res://addons/FGDC-Datatypes/HitData.gd"), max_emote
+		"HitData",
+		"Resource",
+		preload("res://addons/FGDC-Datatypes/HitData.gd"),
+		max_emote
 	)
 	add_custom_type(
-		"AttackData", "Resource", preload("res://addons/FGDC-Datatypes/AttackData.gd"), max_emote
+		"AttackData",
+		"Resource",
+		preload("res://addons/FGDC-Datatypes/AttackData.gd"),
+		max_emote
 	)
 	add_custom_type(
-		"ThrowData", "Resource", preload("res://addons/FGDC-Datatypes/ThrowData.gd"), max_emote
+		"ThrowData",
+		"Resource",
+		preload("res://addons/FGDC-Datatypes/ThrowData.gd"),
+		max_emote
 	)
 
 	add_custom_type(
 		"State", "Resource", preload("res://addons/FGDC-Datatypes/State.gd"), lippo_emote
 	)
 	add_custom_type(
-		"Moveset", "Resource", preload("res://addons/FGDC-Datatypes/Moveset.gd"), max_emote
+		"Moveset",
+		"Resource",
+		preload("res://addons/FGDC-Datatypes/Moveset.gd"),
+		max_emote
 	)
 
 	for state in generic_states:

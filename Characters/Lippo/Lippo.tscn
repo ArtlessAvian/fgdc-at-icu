@@ -1,16 +1,15 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://Fighters/Fighter.gd" type="Script" id=1]
 [ext_resource path="res://Fighters/Hitboxes.gd" type="Script" id=2]
 [ext_resource path="res://Fighters/Throwboxes.gd" type="Script" id=3]
 [ext_resource path="res://Fighters/Hurtboxes.gd" type="Script" id=4]
 [ext_resource path="res://Fighters/debug.gd" type="Script" id=5]
-[ext_resource path="res://Title/Assets/primary_3ADocuments_2FFart_2Ffgdc_2Fmaxsweep.png" type="Texture" id=6]
-[ext_resource path="res://Fighters/InputHistory.gd" type="Script" id=7]
-[ext_resource path="res://Fighters/HitboxHelper.gd" type="Script" id=8]
-[ext_resource path="res://Fighters/FighterSprite.gd" type="Script" id=9]
-[ext_resource path="res://Example/ExampleMoveset.tres" type="Resource" id=10]
-[ext_resource path="res://Example/Max_idle_1.png" type="Texture" id=11]
+[ext_resource path="res://Fighters/InputHistory.gd" type="Script" id=6]
+[ext_resource path="res://Fighters/HitboxHelper.gd" type="Script" id=7]
+[ext_resource path="res://Fighters/FighterSprite.gd" type="Script" id=8]
+[ext_resource path="res://Characters/Max/MaxMoveset.tres" type="Resource" id=9]
+[ext_resource path="res://Example/Lippo.png" type="Texture" id=10]
 
 [sub_resource type="Animation" id=47]
 resource_name = "Blockstun"
@@ -19,7 +18,7 @@ tracks/0/path = NodePath("Visual/Character/AnimatedSprite:rotation_degrees")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
-tracks/0/enabled = true
+tracks/0/enabled = false
 tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -100,71 +99,6 @@ tracks/5/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ 4325376 ]
-}
-
-[sub_resource type="Animation" id=41]
-resource_name = "DP"
-length = 111.0
-step = 1.0
-tracks/0/type = "value"
-tracks/0/path = NodePath("Hitboxes/SGCollisionShape2D:fixed_position_x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 8650752 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Hitboxes/SGCollisionShape2D:fixed_position_y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ -5046272 ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Hitboxes/SGCollisionShape2D:shape:extents_x")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 3239403 ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("Hitboxes/SGCollisionShape2D:shape:extents_y")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 4128808 ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("Visual/Character/AnimatedSprite:rotation_degrees")
-tracks/4/interp = 2
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0, 9, 27, 54 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
-"values": [ 0.0, -180.0, -315.0, -360.0 ]
 }
 
 [sub_resource type="Animation" id=52]
@@ -424,22 +358,17 @@ tracks/16/keys = {
 "update": 0,
 "values": [ true ]
 }
-
-[sub_resource type="Animation" id=45]
-resource_name = "StandingA"
-length = 30.0
-step = 1.0
-tracks/0/type = "value"
-tracks/0/path = NodePath("Visual/Character:flips")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 4, 24 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 0.0, 4.0 ]
+tracks/17/type = "value"
+tracks/17/path = NodePath("Visual/Character/AnimatedSprite:frame")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
 }
 
 [sub_resource type="Animation" id=50]
@@ -550,14 +479,24 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id=36]
 resource_name = "Walk"
+length = 8.0
+loop = true
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Visual/Character/AnimatedSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 1, 2 ]
+}
 
 [sub_resource type="SpriteFrames" id=34]
-animations = [ {
-"frames": [ ExtResource( 11 ), ExtResource( 6 ) ],
-"loop": true,
-"name": "default",
-"speed": 0.0
-} ]
+animations = [  ]
 
 [sub_resource type="SGRectangleShape2D" id=42]
 extents_x = 3239403
@@ -576,21 +515,21 @@ position = Vector2( -2, -2 )
 fixed_position_x = -131072
 fixed_position_y = -131072
 script = ExtResource( 1 )
+fighter_spacing = 100
+fighter_height = 100
 fighter_gravity = 65536
-moveset = ExtResource( 10 )
+moveset = ExtResource( 9 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 playback_speed = 60.0
 anims/Blockstun = SubResource( 47 )
 anims/Crouch = SubResource( 46 )
-anims/DP = SubResource( 41 )
 anims/DoThrow = SubResource( 52 )
 anims/Hitstun = SubResource( 48 )
 anims/Idle = SubResource( 37 )
 anims/Jump = SubResource( 40 )
 anims/Knockdown = SubResource( 49 )
 anims/RESET = SubResource( 38 )
-anims/StandingA = SubResource( 45 )
 anims/Throw = SubResource( 50 )
 anims/Wakeup = SubResource( 51 )
 anims/Walk = SubResource( 36 )
@@ -606,18 +545,18 @@ script = ExtResource( 5 )
 [node name="Visual" type="Node2D" parent="."]
 
 [node name="Character" type="Node2D" parent="Visual"]
-script = ExtResource( 9 )
+script = ExtResource( 8 )
 
 [node name="Sprite" type="Sprite" parent="Visual/Character"]
-visible = false
 position = Vector2( -4, -101 )
-scale = Vector2( 0.085, 0.085 )
-texture = ExtResource( 11 )
+texture = ExtResource( 10 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Visual/Character"]
+visible = false
 position = Vector2( 0, -100 )
 scale = Vector2( 0.085, 0.085 )
 frames = SubResource( 34 )
+animation = "Default"
 
 [node name="Hitboxes" type="SGArea2D" parent="." groups=["hitboxes", "network_sync"]]
 collision_mask = 0
@@ -657,7 +596,7 @@ shape = SubResource( 44 )
 disabled = true
 
 [node name="[EDITOR]HitboxHelper" type="Node" parent="."]
-script = ExtResource( 8 )
+script = ExtResource( 7 )
 
 [node name="Label2" type="Label" parent="[EDITOR]HitboxHelper"]
 margin_left = -134.0
@@ -667,4 +606,4 @@ margin_bottom = 45.0
 text = "No attack loaded!"
 
 [node name="InputHistory" type="Node" parent="." groups=["network_sync"]]
-script = ExtResource( 7 )
+script = ExtResource( 6 )
