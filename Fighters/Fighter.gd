@@ -273,7 +273,8 @@ const NULL_INPUT = {
 	light = false,
 	just_light = false,
 	heavy = false,
-	just_heavy = false
+	just_heavy = false,
+	dash = false
 }
 
 
@@ -308,6 +309,7 @@ func _get_local_input() -> Dictionary:
 	var down = controlled_by + "_down"
 	var light = controlled_by + "_light"
 	var heavy = controlled_by + "_heavy"
+	var dash = controlled_by + "_dash"
 
 	var input = {
 		stick_x = int(round(Input.get_axis(left, right))),
@@ -323,7 +325,8 @@ func _get_local_input() -> Dictionary:
 		light = Input.is_action_pressed(light),
 		just_light = Input.is_action_just_pressed(light),
 		heavy = Input.is_action_just_pressed(heavy),
-		just_heavy = Input.is_action_just_pressed(heavy)
+		just_heavy = Input.is_action_just_pressed(heavy),
+		dash = Input.is_action_just_pressed(dash)
 	}
 	return input
 
