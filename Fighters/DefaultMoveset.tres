@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=19 format=2]
+[gd_resource type="Resource" load_steps=20 format=2]
 
 [ext_resource path="res://addons/FGDC-Datatypes/Moveset.gd" type="Script" id=1]
 [ext_resource path="res://Fighters/DefaultMoveset/DefaultWalk.tres" type="Resource" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://Fighters/DefaultMoveset/DefaultFireballHeavy.tres" type="Resource" id=14]
 [ext_resource path="res://addons/FGDC-Datatypes/GenericStates/KnockdownState.gd" type="Script" id=15]
 [ext_resource path="res://Fighters/DefaultMoveset/DefaultThrow.tres" type="Resource" id=16]
+[ext_resource path="res://Fighters/DefaultMoveset/DefaultPrejump.tres" type="Resource" id=17]
 
 [sub_resource type="Resource" id=2]
 script = ExtResource( 15 )
@@ -31,6 +32,7 @@ script = ExtResource( 1 )
 air_actions = 3
 walk = ExtResource( 2 )
 crouch = ExtResource( 8 )
+prejump = ExtResource( 17 )
 jump = ExtResource( 3 )
 knockdown = SubResource( 2 )
 light = ExtResource( 4 )

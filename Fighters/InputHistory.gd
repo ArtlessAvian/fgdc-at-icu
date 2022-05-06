@@ -6,7 +6,7 @@ var _button_history: Array = [0]
 var _hold_duration: Array = [0]
 var _hold_total = 0
 
-const BUTTON_LIST = ["light", "heavy"]
+const BUTTON_LIST = ["light", "heavy", "dash"]
 
 
 func _ready():

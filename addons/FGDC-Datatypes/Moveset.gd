@@ -6,6 +6,7 @@ export(int) var air_actions = 3
 
 export(Resource) var walk
 export(Resource) var crouch
+export(Resource) var prejump
 export(Resource) var jump
 export(Resource) var knockdown = load(prefix + "GenericStates/KnockdownState.gd").new()
 # export(Resource) var airdash

@@ -19,13 +19,10 @@ func serialize_input(all_input: Dictionary) -> PoolByteArray:
 		bitpacking += 0 if path == game_path + fighter_1 else 1
 
 		bitpacking += (all_input[path]["stick_x"] + 1) << 1
-		bitpacking += (all_input[path]["just_stick_x"] + 1) << 3
-		bitpacking += (all_input[path]["stick_y"] + 1) << 5
-		bitpacking += (all_input[path]["just_stick_y"] + 1) << 7
-		bitpacking += int(all_input[path]["light"]) << 9
-		bitpacking += int(all_input[path]["just_light"]) << 10
-		bitpacking += int(all_input[path]["heavy"]) << 11
-		bitpacking += int(all_input[path]["just_heavy"]) << 12
+		bitpacking += (all_input[path]["stick_y"] + 1) << 3
+		bitpacking += int(all_input[path]["light"]) << 5
+		bitpacking += int(all_input[path]["heavy"]) << 6
+		bitpacking += int(all_input[path]["dash"]) << 7
 
 		buffer.put_u16(bitpacking)
 
@@ -46,13 +43,10 @@ func unserialize_input(serialized: PoolByteArray) -> Dictionary:
 
 	var input_frame = {
 		stick_x = ((bitpacking >> 1) & 0b11) - 1,
-		just_stick_x = ((bitpacking >> 3) & 0b11) - 1,
-		stick_y = ((bitpacking >> 5) & 0b11) - 1,
-		just_stick_y = ((bitpacking >> 7) & 0b11) - 1,
-		light = bool((bitpacking >> 9) & 0b1),
-		just_light = bool((bitpacking >> 10) & 0b1),
-		heavy = bool((bitpacking >> 11) & 0b1),
-		just_heavy = bool((bitpacking >> 12) & 0b1)
+		stick_y = ((bitpacking >> 3) & 0b11) - 1,
+		light = bool((bitpacking >> 5) & 0b1),
+		heavy = bool((bitpacking >> 6) & 0b1),
+		dash = bool((bitpacking >> 7) & 0b1)
 	}
 
 	all_input[game_path + player] = input_frame

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://addons/FGDC-Datatypes/GenericStates/PrejumpState.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+impulse = 1572864
+double_jump_impulse = 1048576
+horizontal_speed = 655360

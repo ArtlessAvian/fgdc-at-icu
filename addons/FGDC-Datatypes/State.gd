@@ -63,21 +63,9 @@ func get_landing_transition(f: Fighter, moveset: Moveset) -> State:
 # Helpers
 
 
-# TODO: Consider moving into jump's transition_into
 func transition_into_jump(f: Fighter, moveset: Moveset, input: Dictionary) -> State:
 	if input.stick_y > 0:
-		if input.stick_x == 0:
-			f.vel.x = 0
-		elif input.stick_x < 0 and f.vel.x > -moveset.jump.horizontal_speed:
-			f.vel.x = -moveset.jump.horizontal_speed
-		elif input.stick_x > 0 and f.vel.x < moveset.jump.horizontal_speed:
-			f.vel.x = moveset.jump.horizontal_speed
-
-		f.vel.y = moveset.jump.impulse
-		f.air_actions = moveset.air_actions
-		f.grounded = false
-
-		return moveset.jump
+		return moveset.prejump
 
 	return null
 

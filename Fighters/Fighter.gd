@@ -310,7 +310,8 @@ const NULL_INPUT = {
 	light = false,
 	just_light = false,
 	heavy = false,
-	just_heavy = false
+	just_heavy = false,
+	dash = false
 }
 
 var last_mash = NULL_INPUT
@@ -323,13 +324,10 @@ func _get_local_input() -> Dictionary:
 
 		var input = {
 			stick_x = int(randi() % 3 - 1),
-			just_stick_x = 0,
 			stick_y = int(randi() % 3 - 1),
-			just_stick_y = 0,
 			light = randf() < 0.3,
-			just_light = false,
 			heavy = randf() < 0.3,
-			just_heavy = false
+			dash = false,
 			# stick_x = 1,
 			# just_stick_x = 0,
 			# stick_y = -1,
@@ -348,16 +346,14 @@ func _get_local_input() -> Dictionary:
 	var down = controlled_by + "_down"
 	var light = controlled_by + "_light"
 	var heavy = controlled_by + "_heavy"
+	var dash = controlled_by + "_dash"
 
 	var input = {
 		stick_x = int(round(Input.get_axis(left, right))),
-		just_stick_x = 0,
 		stick_y = int(round(Input.get_axis(down, up))),
-		just_stick_y = 0,
 		light = Input.is_action_pressed(light),
-		just_light = Input.is_action_just_pressed(light),
 		heavy = Input.is_action_pressed(heavy),
-		just_heavy = Input.is_action_just_pressed(heavy)
+		dash = Input.is_action_just_pressed(dash)
 	}
 	# print(input)
 	return input
