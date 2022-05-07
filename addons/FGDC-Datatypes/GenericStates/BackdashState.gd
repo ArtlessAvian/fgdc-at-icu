@@ -19,7 +19,7 @@ func transition_into(f: Fighter, moveset: Moveset, input: Dictionary) -> bool:
 	return false
 
 
-func transition_out(f: Fighter, moveset: Moveset, input: Dictionary) -> State:
+func transition_out(f: Fighter, moveset: Moveset, input: Dictionary) -> Resource:
 	var attack = transition_into_attack(f, moveset, input)
 	if attack != null:
 		return attack

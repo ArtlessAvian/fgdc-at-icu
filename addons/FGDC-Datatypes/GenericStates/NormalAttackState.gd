@@ -12,7 +12,7 @@ func ensure_not_null():
 		printerr("oh no, the " + resource_path + ", its broken")
 
 
-func transition_out(f: Fighter, moveset: Moveset, input: Dictionary) -> State:
+func transition_out(f: Fighter, moveset: Moveset, input: Dictionary) -> Resource:
 	# FAILSAFES.
 	ensure_not_null()
 

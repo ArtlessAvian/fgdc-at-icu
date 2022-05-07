@@ -1,8 +1,28 @@
-[gd_resource type="Resource" load_steps=2 format=2]
+[gd_resource type="Resource" load_steps=4 format=2]
 
 [ext_resource path="res://addons/FGDC-Datatypes/GenericStates/NormalAttackState.gd" type="Script" id=1]
+[ext_resource path="res://addons/FGDC-Datatypes/AttackData.gd" type="Script" id=2]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 2 )
+guard = 2
+startup = 9
+active = 6
+hitstun = 24
+blockstun = 24
+hitstop = 9
+damage = 5
+chipdamage = 0
+knockdown = false
+x_vel = 2
+y_vel = 0
+active_hitboxes = 1
+active_hurtboxes = 0
+animation_name = "JHeavy"
+recovery = 28
 
 [resource]
 script = ExtResource( 1 )
+attack_data = SubResource( 1 )
 attack_level = 1
 jump_cancellable = false

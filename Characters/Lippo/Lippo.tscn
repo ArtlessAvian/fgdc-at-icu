@@ -556,7 +556,6 @@ visible = false
 position = Vector2( 0, -100 )
 scale = Vector2( 0.085, 0.085 )
 frames = SubResource( 34 )
-animation = "Default"
 
 [node name="Hitboxes" type="SGArea2D" parent="." groups=["hitboxes", "network_sync"]]
 collision_mask = 0

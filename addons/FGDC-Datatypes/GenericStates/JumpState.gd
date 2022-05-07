@@ -8,7 +8,7 @@ export(int) var double_jump_impulse = 16 * 65536
 export(int) var horizontal_speed = 10 * 65536
 
 
-func transition_out(f: Fighter, moveset: Moveset, input: Dictionary) -> State:
+func transition_out(f: Fighter, moveset: Moveset, input: Dictionary) -> Resource:
 	var attack = transition_into_attack(f, moveset, input)
 	if attack != null:
 		return attack

@@ -5,7 +5,7 @@ func transition_into(f: Fighter, moveset: Moveset, input: Dictionary) -> bool:
 	return false
 
 
-func transition_out(f: Fighter, moveset: Moveset, input: Dictionary) -> State:
+func transition_out(f: Fighter, moveset: Moveset, input: Dictionary) -> Resource:
 	if input.light and input.heavy:
 		if f.state_dict["throwdata"].techable:
 			if f.state_time < f.state_dict["throwdata"].tech_window:

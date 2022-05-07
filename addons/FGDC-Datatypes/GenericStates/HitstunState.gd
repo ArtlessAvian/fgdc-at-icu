@@ -1,7 +1,10 @@
 extends "../State.gd"
 
 
-func transition_out(f: Fighter, moveset: Moveset, input: Dictionary) -> State:
+func transition_out(f: Fighter, moveset: Moveset, input: Dictionary) -> Resource:
+	if f.grounded and f.state_dict['hit_hitdata'].knockdown and f.vel.y <= 0:
+		return moveset.knockdown
+	
 	if f.state_time > f.state_dict.hitstun:
 		f.combo_count = 0
 		return moveset.walk

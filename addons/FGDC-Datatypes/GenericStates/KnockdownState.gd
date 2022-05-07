@@ -4,15 +4,15 @@ export(int) var knockdown_timer = 30
 
 
 func transition_into(f: Fighter, moveset: Moveset, input: Dictionary) -> bool:
-	if f.grounded and f.get_node("Hurtboxes").hit_hitdata.knockdown:
-		return true
+	#if f.grounded and f.get_node("Hurtboxes").hit_hitdata.knockdown and f.vel.y <= 0:
+	#	return true
 	return false
 
 
-func transition_out(f: Fighter, moveset: Moveset, input: Dictionary) -> State:
+func transition_out(f: Fighter, moveset: Moveset, input: Dictionary) -> Resource:
 	if f.state_dict.knockdown_timer <= 0 and f.grounded:
 		f.invincible = false
-		print("for designers, knockback ended frame ", f.state_time)
+		print("for designers, knockdown ended frame ", f.state_time)
 
 		# jump out of knockdown to not get grabbed to death
 		var jump = transition_into_jump(f, moveset, input)
