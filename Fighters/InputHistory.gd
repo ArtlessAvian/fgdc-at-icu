@@ -153,8 +153,30 @@ func detect_dp(reversed: bool, frames: int) -> bool:
 		return true
 	if detect_motion([6, 3, 2, 3], reversed, frames):
 		return true
+	if detect_motion([6, 5, 2, 3], reversed, frames):
+		return true
 	return false
-
+	
+func detect_downdown(reversed: bool, frames: int) -> bool:
+	if detect_motion([2, 5, 2], reversed, frames):
+		return true
+	if detect_motion([2, 5, 1], reversed, frames):
+		return true
+	if detect_motion([2, 5, 3], reversed, frames):
+		return true
+	if detect_motion([1, 5, 1], reversed, frames):
+		return true
+	if detect_motion([1, 5, 2], reversed, frames):
+		return true
+	if detect_motion([1, 5, 3], reversed, frames):
+		return true
+	if detect_motion([3, 5, 3], reversed, frames):
+		return true
+	if detect_motion([3, 5, 1], reversed, frames):
+		return true
+	if detect_motion([3, 5, 2], reversed, frames):
+		return true
+	return false
 
 func _save_state() -> Dictionary:
 	return {

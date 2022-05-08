@@ -1,0 +1,24 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://addons/FGDC-Datatypes/AttackData.gd" type="Script" id=1]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 1 )
+guard = 0
+startup = 9
+active = 12
+hitstun = 100
+blockstun = 24
+hitstop = 15
+damage = 15
+chipdamage = 2
+knockdown = true
+x_vel = 5
+y_vel = 16
+active_hitboxes = 1
+active_hurtboxes = 0
+animation_name = "Walk"
+recovery = 100
+
+[resource]
+script = SubResource( 1 )
