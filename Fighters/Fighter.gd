@@ -221,7 +221,7 @@ func hit_response(input: Dictionary):
 func on_block():
 	$Hurtboxes.register_contact(true)
 
-	hitstop = 2
+	hitstop = $Hurtboxes.hit_hitdata.hitstop
 	health = max(health - $Hurtboxes.hit_hitdata.chipdamage, 0)
 
 	state_dict.blockstun = $Hurtboxes.hit_hitdata.blockstun
@@ -242,7 +242,7 @@ func on_block():
 func on_hit():
 	$Hurtboxes.register_contact(false)
 
-	hitstop = 2
+	hitstop = $Hurtboxes.hit_hitdata.hitstop
 	health = max(health - $Hurtboxes.hit_hitdata.damage, 0)
 
 	if state in [moveset.hitstun, moveset.air_hitstun]:
@@ -415,7 +415,8 @@ func _load_state(save: Dictionary) -> void:
 	$Hurtboxes.sync_to_physics_engine()
 
 
-func _on_Hitboxes_on_contact(blocked: bool):
+func _on_Hitboxes_on_contact(blocked: bool, hitstop: int):
+	self.hitstop = hitstop
 	state_dict.last_attack_contact = $Hitboxes.attack_number
 	if not blocked:
 		state_dict.last_attack_hit = $Hitboxes.attack_number
