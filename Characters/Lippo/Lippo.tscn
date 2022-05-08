@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=2]
+[gd_scene load_steps=45 format=2]
 
 [ext_resource path="res://Fighters/Fighter.gd" type="Script" id=1]
 [ext_resource path="res://Fighters/Hitboxes.gd" type="Script" id=2]
@@ -25,6 +25,59 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ -5.0 ]
+}
+
+[sub_resource type="Animation" id=70]
+resource_name = "CHeavy"
+length = 32.0
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Hitboxes/SGCollisionShape2D:shape:extents_x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 3239403 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Hitboxes/SGCollisionShape2D:shape:extents_y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 4128808 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Hitboxes/SGCollisionShape2D:fixed_position_x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 8650752 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Hitboxes/SGCollisionShape2D:fixed_position_y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ -5046272 ]
 }
 
 [sub_resource type="Animation" id=46]
@@ -107,7 +160,7 @@ resource_name = "DoThrow"
 
 [sub_resource type="Animation" id=68]
 resource_name = "Heavy"
-length = 60.0
+length = 62.0
 step = 1.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Hitboxes/SGCollisionShape2D:shape:extents_x")
@@ -721,6 +774,7 @@ moveset = ExtResource( 9 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 playback_speed = 60.0
 anims/Blockstun = SubResource( 47 )
+anims/CHeavy = SubResource( 70 )
 anims/Crouch = SubResource( 46 )
 anims/DoThrow = SubResource( 52 )
 anims/Heavy = SubResource( 68 )
@@ -765,7 +819,7 @@ script = ExtResource( 2 )
 
 [node name="SGCollisionShape2D" type="SGCollisionShape2D" parent="Hitboxes"]
 self_modulate = Color( 0.75, 0.75, 0.75, 1 )
-position = Vector2( 127, -543 )
+position = Vector2( 132, -77 )
 fixed_position_x = 8650752
 fixed_position_y = -5046272
 shape = SubResource( 42 )
@@ -805,7 +859,7 @@ margin_top = 31.0
 margin_right = 184.0
 margin_bottom = 45.0
 text = "res://Characters/Lippo/LippoCHeavy.tres::1
-20 (2) 4 (2) 4 (2) 4 (2) 4 (2) 4 (2) 10
+20 (2) 10
 "
 
 [node name="InputHistory" type="Node" parent="." groups=["network_sync"]]

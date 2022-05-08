@@ -1,38 +1,106 @@
-[gd_resource type="Resource" load_steps=10 format=2]
+[gd_resource type="Resource" load_steps=14 format=2]
 
 [ext_resource path="res://addons/FGDC-Datatypes/GenericStates/NormalAttackState.gd" type="Script" id=1]
 [ext_resource path="res://addons/FGDC-Datatypes/AttackData.gd" type="Script" id=2]
 [ext_resource path="res://addons/FGDC-Datatypes/HitData.gd" type="Script" id=3]
 
-[sub_resource type="Resource" id=2]
+[sub_resource type="Resource" id=7]
 script = ExtResource( 3 )
 guard = 0
-startup = 4
+startup = 2
 active = 2
 hitstun = 12
 blockstun = 12
 hitstop = 5
-damage = 5
+damage = 1
 chipdamage = 1
 knockdown = true
-x_vel = 5
-y_vel = 0
+x_vel = 0
+y_vel = 15
 active_hitboxes = 1
 active_hurtboxes = 0
+
+[sub_resource type="Resource" id=8]
+script = ExtResource( 3 )
+guard = 0
+startup = 2
+active = 2
+hitstun = 12
+blockstun = 12
+hitstop = 5
+damage = 1
+chipdamage = 1
+knockdown = true
+x_vel = 0
+y_vel = 15
+active_hitboxes = 1
+active_hurtboxes = 0
+followup = SubResource( 7 )
+
+[sub_resource type="Resource" id=9]
+script = ExtResource( 3 )
+guard = 0
+startup = 2
+active = 2
+hitstun = 12
+blockstun = 12
+hitstop = 5
+damage = 1
+chipdamage = 1
+knockdown = true
+x_vel = 0
+y_vel = 15
+active_hitboxes = 1
+active_hurtboxes = 0
+followup = SubResource( 8 )
+
+[sub_resource type="Resource" id=10]
+script = ExtResource( 3 )
+guard = 0
+startup = 2
+active = 2
+hitstun = 12
+blockstun = 12
+hitstop = 5
+damage = 1
+chipdamage = 1
+knockdown = true
+x_vel = 0
+y_vel = 15
+active_hitboxes = 1
+active_hurtboxes = 0
+followup = SubResource( 9 )
+
+[sub_resource type="Resource" id=2]
+script = ExtResource( 3 )
+guard = 0
+startup = 2
+active = 2
+hitstun = 12
+blockstun = 12
+hitstop = 5
+damage = 1
+chipdamage = 1
+knockdown = true
+x_vel = 0
+y_vel = 15
+active_hitboxes = 1
+active_hurtboxes = 0
+followup = SubResource( 10 )
 
 [sub_resource type="Resource" id=3]
 script = ExtResource( 3 )
 guard = 0
-startup = 4
+startup = 2
 active = 2
 hitstun = 12
 blockstun = 12
 hitstop = 5
-damage = 5
+damage = 1
 chipdamage = 1
 knockdown = true
-x_vel = 5
-y_vel = 0
+x_vel = 0
+y_vel = 15
 active_hitboxes = 1
 active_hurtboxes = 0
 followup = SubResource( 2 )
@@ -40,16 +108,16 @@ followup = SubResource( 2 )
 [sub_resource type="Resource" id=4]
 script = ExtResource( 3 )
 guard = 0
-startup = 4
+startup = 2
 active = 2
 hitstun = 12
 blockstun = 12
 hitstop = 5
-damage = 5
+damage = 1
 chipdamage = 1
 knockdown = true
-x_vel = 5
-y_vel = 0
+x_vel = 0
+y_vel = 15
 active_hitboxes = 1
 active_hurtboxes = 0
 followup = SubResource( 3 )
@@ -57,16 +125,16 @@ followup = SubResource( 3 )
 [sub_resource type="Resource" id=5]
 script = ExtResource( 3 )
 guard = 0
-startup = 4
+startup = 2
 active = 2
 hitstun = 12
 blockstun = 12
 hitstop = 5
-damage = 5
+damage = 1
 chipdamage = 1
 knockdown = true
-x_vel = 5
-y_vel = 0
+x_vel = 0
+y_vel = 15
 active_hitboxes = 1
 active_hurtboxes = 0
 followup = SubResource( 4 )
@@ -74,16 +142,16 @@ followup = SubResource( 4 )
 [sub_resource type="Resource" id=6]
 script = ExtResource( 3 )
 guard = 0
-startup = 4
+startup = 2
 active = 2
 hitstun = 12
 blockstun = 12
 hitstop = 5
-damage = 5
+damage = 1
 chipdamage = 1
 knockdown = true
-x_vel = 5
-y_vel = 0
+x_vel = 0
+y_vel = 15
 active_hitboxes = 1
 active_hurtboxes = 0
 followup = SubResource( 5 )
@@ -96,10 +164,10 @@ active = 2
 hitstun = 12
 blockstun = 12
 hitstop = 5
-damage = 5
+damage = 1
 chipdamage = 1
 knockdown = true
-x_vel = 30
+x_vel = 0
 y_vel = 15
 active_hitboxes = 1
 active_hurtboxes = 0

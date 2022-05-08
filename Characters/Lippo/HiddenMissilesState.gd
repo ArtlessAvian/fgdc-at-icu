@@ -59,8 +59,11 @@ func run(f: Fighter, input: Dictionary) -> void:
 
 
 func animation(f: Fighter) -> String:
-	return "HiddenMissiles" if f.state_dict["missile_count"] > 0 else "MissilesStartup"
-
+	if f.state_time < 15:
+		return "MissilesStartup" 
+	if f.state_time - f.state_dict["missile_time"] < 5:
+		return "HiddenMissiles"
+	return "Walk"
 
 func attack_level() -> int:
 	return 1

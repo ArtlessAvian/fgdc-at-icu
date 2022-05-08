@@ -245,7 +245,7 @@ func on_hit():
 	hitstop = 2
 	health = max(health - $Hurtboxes.hit_hitdata.damage, 0)
 
-	if state in [moveset.hitstun]:
+	if state in [moveset.hitstun, moveset.air_hitstun]:
 		combo_count += 1
 	else:
 		combo_count = 1
