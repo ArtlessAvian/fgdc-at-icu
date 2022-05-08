@@ -14,13 +14,13 @@ func transition_into(f: Fighter, moveset: Moveset, input: Dictionary) -> bool:
 	if not input.light and not input.heavy:
 		return false
 
-	if f.state in [moveset.walk, moveset.crouch]:
+	if f.state in [moveset.jump]:
 		if f.get_node("InputHistory").detect_downdown(f.fixed_scale.x < 0, 17):
 			f.vel.y = (impulse << 16) if input.heavy else 0
 			f.vel.x = int(sign(f.fixed_scale.x)) * 15 << 16
 			f.grounded = false
 			f.get_node("Hitboxes").new_attack()
-			
+
 			if input.heavy:
 				heavy = true
 			return true
