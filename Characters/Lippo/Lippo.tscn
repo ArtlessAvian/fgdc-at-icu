@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=2]
+[gd_scene load_steps=58 format=2]
 
 [ext_resource path="res://Fighters/Fighter.gd" type="Script" id=1]
 [ext_resource path="res://Fighters/Hitboxes.gd" type="Script" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://Characters/Lippo/Assets/Diamonds.png" type="Texture" id=13]
 [ext_resource path="res://Characters/Lippo/HeavyBeam.gd" type="Script" id=14]
 [ext_resource path="res://Characters/Lippo/Assets/heart.png" type="Texture" id=15]
+[ext_resource path="res://Characters/Lippo/Assets/club.png" type="Texture" id=16]
 
 [sub_resource type="Animation" id=76]
 resource_name = "Airdash"
@@ -99,6 +100,30 @@ tracks/3/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ -5046272 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Visual/Sprite:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Visual/Sprite:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 15, 20 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -3, -236 ), Vector2( -3, -236 ), Vector2( 137, -75 ) ]
 }
 
 [sub_resource type="Animation" id=46]
@@ -729,6 +754,30 @@ tracks/19/keys = {
 "update": 0,
 "values": [ false ]
 }
+tracks/20/type = "value"
+tracks/20/path = NodePath("Visual/Sprite:visible")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/21/type = "value"
+tracks/21/path = NodePath("Visual/Sprite:position")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -8, -214 ) ]
+}
 
 [sub_resource type="Animation" id=50]
 resource_name = "Throw"
@@ -1065,6 +1114,12 @@ position = Vector2( 70, -94 )
 texture = ExtResource( 15 )
 region_rect = Rect2( 0, 0, 100, 2880 )
 
+[node name="Sprite" type="Sprite" parent="Visual"]
+visible = false
+position = Vector2( -8, -214 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 16 )
+
 [node name="Hitboxes" type="SGArea2D" parent="." groups=["hitboxes", "network_sync"]]
 collision_mask = 0
 script = ExtResource( 2 )
@@ -1110,7 +1165,9 @@ margin_left = -134.0
 margin_top = 31.0
 margin_right = 184.0
 margin_bottom = 45.0
-text = "No attack loaded!"
+text = "res://Characters/Lippo/States/LippoCHeavy.tres::1
+20 (2) 10
+"
 
 [node name="InputHistory" type="Node" parent="." groups=["network_sync"]]
 script = ExtResource( 6 )

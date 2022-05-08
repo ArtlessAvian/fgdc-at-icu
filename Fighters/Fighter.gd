@@ -319,7 +319,7 @@ var last_mash = NULL_INPUT
 
 func _get_local_input() -> Dictionary:
 	if controlled_by == "mash":
-		if randf() < 0.9:
+		if randf() < 0.3:
 			return last_mash
 
 		var input = {

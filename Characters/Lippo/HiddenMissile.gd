@@ -62,7 +62,6 @@ func _network_preprocess(input: Dictionary) -> void:
 		# Me. Gets mad when someone bullshits the trig
 		# Also me.
 		$Sprite.rotation_degrees = 90 - rad2deg(self.my_angle / float(1 << 16))
-		print($Sprite.rotation_degrees)
 
 	lifetime += 1
 

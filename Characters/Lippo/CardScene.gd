@@ -21,6 +21,7 @@ func _network_spawn(data: Dictionary):
 	self.fixed_position.y -= OFFSET_Y
 
 	$Hitboxes.set_player(data.is_p2)
+	$Hurtboxes.set_player(data.is_p2)
 
 	add_to_group("network_sync")
 
