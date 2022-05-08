@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=2]
+[gd_scene load_steps=57 format=2]
 
 [ext_resource path="res://Fighters/Fighter.gd" type="Script" id=1]
 [ext_resource path="res://Fighters/Hitboxes.gd" type="Script" id=2]
@@ -14,6 +14,24 @@
 [ext_resource path="res://Characters/Lippo/Assets/card.png" type="Texture" id=12]
 [ext_resource path="res://Characters/Lippo/Assets/Diamonds.png" type="Texture" id=13]
 [ext_resource path="res://Characters/Lippo/HeavyBeam.gd" type="Script" id=14]
+[ext_resource path="res://Characters/Lippo/Assets/heart.png" type="Texture" id=15]
+
+[sub_resource type="Animation" id=76]
+resource_name = "Airdash"
+length = 10.0
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Visual/Character:flips")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 10 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 2.0 ]
+}
 
 [sub_resource type="Animation" id=47]
 resource_name = "Blockstun"
@@ -95,7 +113,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0.085, 0.05 ) ]
+"values": [ Vector2( 1, 0.5 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Visual/Character/AnimatedSprite:position")
@@ -107,7 +125,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0, -60 ) ]
+"values": [ Vector2( 0, -50 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Hurtboxes/SGCollisionShape2D:fixed_position_x")
@@ -160,6 +178,23 @@ tracks/5/keys = {
 
 [sub_resource type="Animation" id=52]
 resource_name = "DoThrow"
+
+[sub_resource type="Animation" id=79]
+resource_name = "Fireball"
+length = 30.0
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Visual/Character/AnimatedSprite:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 10 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -30.0, 30.0 ]
+}
 
 [sub_resource type="Animation" id=68]
 resource_name = "Heavy"
@@ -216,31 +251,20 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id=53]
 resource_name = "HiddenMissiles"
-length = 18.0
+length = 16.0
+loop = true
 step = 1.0
 tracks/0/type = "value"
-tracks/0/path = NodePath("Visual/Character:flips")
+tracks/0/path = NodePath("Visual/Character/AnimatedSprite:rotation_degrees")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
-tracks/0/enabled = false
+tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 18 ),
+"times": PoolRealArray( 0, 8 ),
 "transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 0.0, 2.0 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Visual/Character:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0, -30 ), Vector2( 0, 0 ) ]
+"update": 1,
+"values": [ -15.0, 15.0 ]
 }
 
 [sub_resource type="Animation" id=48]
@@ -315,7 +339,7 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id=72]
 resource_name = "JLight"
-length = 25.0
+length = 30.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Hitboxes/SGCollisionShape2D:fixed_position_x")
 tracks/0/interp = 1
@@ -447,6 +471,18 @@ tracks/3/keys = {
 "update": 1,
 "values": [ -6422528 ]
 }
+tracks/4/type = "value"
+tracks/4/path = NodePath("Visual/LightHeart:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
 
 [sub_resource type="Animation" id=54]
 resource_name = "MissilesStartup"
@@ -523,7 +559,7 @@ tracks/5/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0.085, 0.085 ) ]
+"values": [ Vector2( 1, 1 ) ]
 }
 tracks/6/type = "value"
 tracks/6/path = NodePath("Visual/Character/AnimatedSprite:position")
@@ -681,6 +717,18 @@ tracks/18/keys = {
 "update": 0,
 "values": [ Vector2( 0, 0 ) ]
 }
+tracks/19/type = "value"
+tracks/19/path = NodePath("Visual/LightHeart:visible")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
 
 [sub_resource type="Animation" id=50]
 resource_name = "Throw"
@@ -794,17 +842,25 @@ length = 8.0
 loop = true
 step = 1.0
 tracks/0/type = "value"
-tracks/0/path = NodePath("Visual/Character/AnimatedSprite:frame")
-tracks/0/interp = 1
+tracks/0/path = NodePath("Visual/Character/AnimatedSprite:position")
+tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 4 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ 1, 2 ]
+"times": PoolRealArray( 0, 3, 5.16608, 8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -100 ), Vector2( 0, -120 ), Vector2( 0, -120 ), Vector2( 0, -100 ) ]
 }
+
+[sub_resource type="SpriteFrames" id=78]
+animations = [ {
+"frames": [ ExtResource( 10 ) ],
+"loop": true,
+"name": "default",
+"speed": 0.0
+} ]
 
 [sub_resource type="AtlasTexture" id=55]
 flags = 23
@@ -871,7 +927,7 @@ flags = 23
 atlas = ExtResource( 11 )
 region = Rect2( 2060, 515, 515, 515 )
 
-[sub_resource type="SpriteFrames" id=34]
+[sub_resource type="SpriteFrames" id=77]
 animations = [ {
 "frames": [ SubResource( 55 ), SubResource( 56 ), SubResource( 57 ), SubResource( 58 ), SubResource( 59 ), SubResource( 60 ), SubResource( 61 ), SubResource( 62 ), SubResource( 63 ), SubResource( 64 ), SubResource( 65 ), SubResource( 66 ), SubResource( 67 ) ],
 "loop": true,
@@ -922,10 +978,12 @@ moveset = ExtResource( 9 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 playback_speed = 60.0
+anims/Airdash = SubResource( 76 )
 anims/Blockstun = SubResource( 47 )
 anims/CHeavy = SubResource( 70 )
 anims/Crouch = SubResource( 46 )
 anims/DoThrow = SubResource( 52 )
+anims/Fireball = SubResource( 79 )
 anims/Heavy = SubResource( 68 )
 anims/HiddenMissiles = SubResource( 53 )
 anims/Hitstun = SubResource( 48 )
@@ -955,14 +1013,19 @@ script = ExtResource( 5 )
 script = ExtResource( 8 )
 
 [node name="Sprite" type="Sprite" parent="Visual/Character"]
+visible = false
 position = Vector2( -4, -101 )
 texture = ExtResource( 10 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Visual/Character"]
+position = Vector2( 0, -100 )
+frames = SubResource( 78 )
+
+[node name="AnimatedSprite3" type="AnimatedSprite" parent="Visual/Character"]
 visible = false
 position = Vector2( 0, -100 )
 scale = Vector2( 0.085, 0.085 )
-frames = SubResource( 34 )
+frames = SubResource( 77 )
 
 [node name="JLightEffect" type="Particles2D" parent="Visual"]
 position = Vector2( 69, -62 )
@@ -989,11 +1052,18 @@ process_material = SubResource( 75 )
 texture = ExtResource( 12 )
 
 [node name="HeavyBeam" type="Sprite" parent="Visual"]
+visible = false
 position = Vector2( 125, -10 )
 texture = ExtResource( 13 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 100, 2880 )
 script = ExtResource( 14 )
+
+[node name="LightHeart" type="Sprite" parent="Visual"]
+visible = false
+position = Vector2( 70, -94 )
+texture = ExtResource( 15 )
+region_rect = Rect2( 0, 0, 100, 2880 )
 
 [node name="Hitboxes" type="SGArea2D" parent="." groups=["hitboxes", "network_sync"]]
 collision_mask = 0
@@ -1001,7 +1071,7 @@ script = ExtResource( 2 )
 
 [node name="SGCollisionShape2D" type="SGCollisionShape2D" parent="Hitboxes"]
 self_modulate = Color( 0.75, 0.75, 0.75, 1 )
-position = Vector2( 127, -543 )
+position = Vector2( 132, -77 )
 fixed_position_x = 8650752
 fixed_position_y = -5046272
 shape = SubResource( 42 )
@@ -1040,9 +1110,7 @@ margin_left = -134.0
 margin_top = 31.0
 margin_right = 184.0
 margin_bottom = 45.0
-text = "res://Characters/Lippo/LippoHeavy.tres::1
-20 (2) 2 (2) 2 (2) 2 (2) 2 (2) 2 (2) 2 (2) 2 (2) 2 (2) 2 (2) 10
-"
+text = "No attack loaded!"
 
 [node name="InputHistory" type="Node" parent="." groups=["network_sync"]]
 script = ExtResource( 6 )

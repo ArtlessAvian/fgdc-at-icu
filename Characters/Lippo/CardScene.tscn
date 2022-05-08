@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Fighters/Hitboxes.gd" type="Script" id=1]
+[ext_resource path="res://Fighters/DefaultMoveset/art-supplies-and-pain.jpeg" type="Texture" id=2]
+[ext_resource path="res://Fighters/DefaultMoveset/FireballScene.gd" type="Script" id=3]
+[ext_resource path="res://addons/FGDC-Datatypes/HitData.gd" type="Script" id=4]
+
+[sub_resource type="Resource" id=2]
+script = ExtResource( 4 )
+guard = "0"
+startup = 4
+active = 2
+hitstun = 12
+blockstun = 12
+hitstop = 5
+damage = 3
+chipdamage = 1
+knockdown = true
+x_vel = 5
+y_vel = 15
+active_hitboxes = 1
+active_hurtboxes = 0
+
+[sub_resource type="SGRectangleShape2D" id=1]
+extents_x = 3014656
+extents_y = 2097152
+
+[node name="Fireball" type="SGFixedNode2D" groups=["network_sync"]]
+script = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 2 )
+
+[node name="Hitboxes" type="SGArea2D" parent="." groups=["hitboxes", "network_sync"]]
+script = ExtResource( 1 )
+hit_data = SubResource( 2 )
+
+[node name="SGCollisionShape2D" type="SGCollisionShape2D" parent="Hitboxes"]
+self_modulate = Color( 1, 0, 0, 1 )
+shape = SubResource( 1 )
+
+[connection signal="on_contact" from="Hitboxes" to="." method="_on_Hitboxes_on_contact"]

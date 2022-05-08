@@ -22,8 +22,8 @@ func transition_out(f: Fighter, moveset: Moveset, input: Dictionary) -> Resource
 
 		f.grounded = false
 		f.invincible = false
-		f.state_dict["hitstun"] = 30000
-		return moveset.hitstun if f.health > 0 else moveset.dead
+		f.state_dict["hitstun"] = 120
+		return moveset.air_hitstun if f.health > 0 else moveset.dead
 
 	return null
 
