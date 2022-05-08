@@ -32,7 +32,7 @@ func enter(f: Fighter) -> void:
 
 
 func run(f: Fighter, input: Dictionary) -> void:
-	if f.state_time >= 15 and (f.state_time - 15) % 9 == 0:
+	if f.state_time >= 15 and (f.state_time - 15) % 8 == 0:
 		var do_missile = f.state_dict["missile_count"] == 0
 		do_missile = do_missile or input.light
 		do_missile = do_missile or f.get_node("InputHistory").button_pressed_recently("light", 9)
@@ -60,10 +60,11 @@ func run(f: Fighter, input: Dictionary) -> void:
 
 func animation(f: Fighter) -> String:
 	if f.state_time < 15:
-		return "MissilesStartup" 
-	if f.state_time - f.state_dict["missile_time"] < 5:
+		return "MissilesStartup"
+	if f.state_time - f.state_dict["missile_time"] < 7:
 		return "HiddenMissiles"
 	return "Walk"
+
 
 func attack_level() -> int:
 	return 1

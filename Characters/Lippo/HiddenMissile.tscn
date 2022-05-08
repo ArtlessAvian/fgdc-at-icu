@@ -1,7 +1,7 @@
 [gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Fighters/Hitboxes.gd" type="Script" id=1]
-[ext_resource path="res://Fighters/DefaultMoveset/art-supplies-and-pain.jpeg" type="Texture" id=2]
+[ext_resource path="res://Characters/Lippo/Assets/spades.png" type="Texture" id=2]
 [ext_resource path="res://Characters/Lippo/HiddenMissile.gd" type="Script" id=3]
 [ext_resource path="res://addons/FGDC-Datatypes/HitData.gd" type="Script" id=4]
 [ext_resource path="res://spr_realisticexplosion/spr_realisticexplosion_2.png" type="Texture" id=5]
@@ -27,8 +27,8 @@ script = ExtResource( 4 )
 guard = "0"
 startup = 4
 active = 2
-hitstun = 12
-blockstun = 12
+hitstun = 20
+blockstun = 20
 hitstop = 5
 damage = 1
 chipdamage = 1
@@ -61,7 +61,7 @@ script = ExtResource( 3 )
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )
 region_enabled = true
-region_rect = Rect2( 0, 0, 40, 40 )
+region_rect = Rect2( 0, 0, 50, 50 )
 
 [node name="Hitboxes" type="SGArea2D" parent="." groups=["hitboxes", "network_sync"]]
 script = ExtResource( 1 )

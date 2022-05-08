@@ -3,13 +3,14 @@ extends SGFixedNode2D
 const OFFSET_X = 90 * 65536
 const OFFSET_Y = 0 * 65536
 const TARGET_OFFSET_Y = 100 * 65536
-export(int) var MISSILE_HEIGHT = 3000 << 16
-export(int) var MISSILE_SPEED = 25
-export(int) var MISSILE_TIME = 60
+export(int) var MISSILE_HEIGHT = 700 << 16  # the height of the missiles in subpixels
+export(int) var MISSILE_SPEED = 25  # up, and down
+export(int) var MISSILE_TIME = 120  # when the missiles begin falling
 
 var flip = false
 var lifetime = 0
 var origin_x = 0
+var origin_y = -8765309
 var target_path = ""
 var owner_path = ""
 var my_angle = -8765309
@@ -43,7 +44,7 @@ func _network_preprocess(input: Dictionary) -> void:
 
 	if lifetime < MISSILE_TIME:
 		self.fixed_position.y = -lifetime * MISSILE_SPEED << 16
-	if lifetime == MISSILE_TIME:
+	elif lifetime == MISSILE_TIME:
 		var dy = get_node(target_path).fixed_position.y + TARGET_OFFSET_Y - MISSILE_HEIGHT
 		var dx = get_node(target_path).fixed_position.x - self.origin_x
 		self.my_angle = SGFixed.atan2(dy, dx)
@@ -56,6 +57,10 @@ func _network_preprocess(input: Dictionary) -> void:
 			MISSILE_HEIGHT
 			+ SGFixed.sin(self.my_angle) * (lifetime - MISSILE_TIME) * MISSILE_SPEED
 		)
+		# Me. Gets mad when someone bullshits the trig
+		# Also me.
+		$Sprite.rotation_degrees = 90 - rad2deg(self.my_angle / float(1 << 16))
+		print($Sprite.rotation_degrees)
 
 	lifetime += 1
 
@@ -100,7 +105,7 @@ func _load_state(save: Dictionary) -> void:
 	$Hitboxes.sync_to_physics_engine()
 
 
-func _on_Hitboxes_on_contact(blocked: bool):
+func _on_Hitboxes_on_contact(blocked: bool, hitstop):
 	on_hit()
 
 	var f = get_node(self.owner_path)

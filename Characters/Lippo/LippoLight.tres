@@ -8,17 +8,17 @@ script = ExtResource( 2 )
 guard = 0
 startup = 3
 active = 2
-hitstun = 10
-blockstun = 10
+hitstun = 20
+blockstun = 20
 hitstop = 5
 damage = 1
 chipdamage = 0
 knockdown = false
-x_vel = 1
+x_vel = 2
 y_vel = 0
 active_hitboxes = 1
 active_hurtboxes = 0
-animation_name = "CLight"
+animation_name = "Light"
 recovery = 6
 
 [resource]
