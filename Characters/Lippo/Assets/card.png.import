@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Diamonds.png-a7cf88cf6a0d483b816d4c4c0eee7415.stex"
+path="res://.import/card.png-bb372cc18e1d3e0268a5fc0f94253d9a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Characters/Lippo/Assets/Diamonds.png"
-dest_files=[ "res://.import/Diamonds.png-a7cf88cf6a0d483b816d4c4c0eee7415.stex" ]
+source_file="res://Characters/Lippo/Assets/card.png"
+dest_files=[ "res://.import/card.png-bb372cc18e1d3e0268a5fc0f94253d9a.stex" ]
 
 [params]
 
@@ -19,7 +19,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
-flags/repeat=1
+flags/repeat=0
 flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false

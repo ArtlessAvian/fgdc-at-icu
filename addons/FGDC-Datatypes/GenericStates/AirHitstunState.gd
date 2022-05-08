@@ -22,10 +22,12 @@ func run(f: Fighter, input: Dictionary) -> void:
 		var flash = 0.3 if f.state_time % 2 == 0 else 0.5
 		character.modulate.r = flash
 		character.modulate.g = flash
+		character.modulate.b = 1
 	else:
 		var character = f.find_node("Character")
-		character.modulate.b = 1 - 1.0 / (f.state_time / 10.0 + 1)
+		character.modulate.r = 1
 		character.modulate.g = 1 - 1.0 / (f.state_time / 10.0 + 1)
+		character.modulate.b = 1 - 1.0 / (f.state_time / 10.0 + 1)
 
 
 func animation(f: Fighter) -> String:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=2]
+[gd_scene load_steps=53 format=2]
 
 [ext_resource path="res://Fighters/Fighter.gd" type="Script" id=1]
 [ext_resource path="res://Fighters/Hitboxes.gd" type="Script" id=2]
@@ -11,6 +11,9 @@
 [ext_resource path="res://Characters/Lippo/LippoMoveset.tres" type="Resource" id=9]
 [ext_resource path="res://Example/Lippo.png" type="Texture" id=10]
 [ext_resource path="res://spritesheet test.png" type="Texture" id=11]
+[ext_resource path="res://Characters/Lippo/Assets/card.png" type="Texture" id=12]
+[ext_resource path="res://Characters/Lippo/Assets/Diamonds.png" type="Texture" id=13]
+[ext_resource path="res://Characters/Lippo/HeavyBeam.gd" type="Script" id=14]
 
 [sub_resource type="Animation" id=47]
 resource_name = "Blockstun"
@@ -160,7 +163,7 @@ resource_name = "DoThrow"
 
 [sub_resource type="Animation" id=68]
 resource_name = "Heavy"
-length = 62.0
+length = 68.0
 step = 1.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Hitboxes/SGCollisionShape2D:shape:extents_x")
@@ -257,6 +260,110 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=37]
 resource_name = "Idle"
+
+[sub_resource type="Animation" id=71]
+resource_name = "JHeavy"
+length = 25.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Hitboxes/SGCollisionShape2D:shape:extents_x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 3239403 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Hitboxes/SGCollisionShape2D:shape:extents_y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 4128808 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Hitboxes/SGCollisionShape2D:fixed_position_x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 7602176 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Hitboxes/SGCollisionShape2D:fixed_position_y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ -14680064 ]
+}
+
+[sub_resource type="Animation" id=72]
+resource_name = "JLight"
+length = 25.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Hitboxes/SGCollisionShape2D:fixed_position_x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 7733248 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Hitboxes/SGCollisionShape2D:fixed_position_y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 65536 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Hitboxes/SGCollisionShape2D:shape:extents_x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 3239403 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Hitboxes/SGCollisionShape2D:shape:extents_y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 4128808 ]
+}
 
 [sub_resource type="Animation" id=40]
 resource_name = "Jump"
@@ -772,6 +879,25 @@ animations = [ {
 "speed": 0.0
 } ]
 
+[sub_resource type="Gradient" id=73]
+offsets = PoolRealArray( 0, 0.456026, 0.677524 )
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 )
+
+[sub_resource type="GradientTexture" id=74]
+gradient = SubResource( 73 )
+
+[sub_resource type="ParticlesMaterial" id=75]
+flag_align_y = true
+flag_disable_z = true
+direction = Vector3( 0, -1, 0 )
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 600.0
+initial_velocity_random = 0.2
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = -1000.0
+color_ramp = SubResource( 74 )
+
 [sub_resource type="SGRectangleShape2D" id=42]
 extents_x = 3239403
 extents_y = 4128808
@@ -804,6 +930,8 @@ anims/Heavy = SubResource( 68 )
 anims/HiddenMissiles = SubResource( 53 )
 anims/Hitstun = SubResource( 48 )
 anims/Idle = SubResource( 37 )
+anims/JHeavy = SubResource( 71 )
+anims/JLight = SubResource( 72 )
 anims/Jump = SubResource( 40 )
 anims/Knockdown = SubResource( 49 )
 anims/Light = SubResource( 69 )
@@ -836,13 +964,44 @@ position = Vector2( 0, -100 )
 scale = Vector2( 0.085, 0.085 )
 frames = SubResource( 34 )
 
+[node name="JLightEffect" type="Particles2D" parent="Visual"]
+position = Vector2( 69, -62 )
+rotation = 2.35619
+z_index = 30
+emitting = false
+amount = 52
+one_shot = true
+explosiveness = 0.95
+local_coords = false
+process_material = SubResource( 75 )
+texture = ExtResource( 12 )
+
+[node name="JHeavyEffect" type="Particles2D" parent="Visual"]
+position = Vector2( 67, -162 )
+rotation = 0.785398
+z_index = 30
+emitting = false
+amount = 52
+one_shot = true
+explosiveness = 0.95
+local_coords = false
+process_material = SubResource( 75 )
+texture = ExtResource( 12 )
+
+[node name="HeavyBeam" type="Sprite" parent="Visual"]
+position = Vector2( 125, -10 )
+texture = ExtResource( 13 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 100, 2880 )
+script = ExtResource( 14 )
+
 [node name="Hitboxes" type="SGArea2D" parent="." groups=["hitboxes", "network_sync"]]
 collision_mask = 0
 script = ExtResource( 2 )
 
 [node name="SGCollisionShape2D" type="SGCollisionShape2D" parent="Hitboxes"]
 self_modulate = Color( 0.75, 0.75, 0.75, 1 )
-position = Vector2( 132, -77 )
+position = Vector2( 127, -543 )
 fixed_position_x = 8650752
 fixed_position_y = -5046272
 shape = SubResource( 42 )
@@ -881,7 +1040,9 @@ margin_left = -134.0
 margin_top = 31.0
 margin_right = 184.0
 margin_bottom = 45.0
-text = "No attack loaded!"
+text = "res://Characters/Lippo/LippoHeavy.tres::1
+20 (2) 2 (2) 2 (2) 2 (2) 2 (2) 2 (2) 2 (2) 2 (2) 2 (2) 2 (2) 10
+"
 
 [node name="InputHistory" type="Node" parent="." groups=["network_sync"]]
 script = ExtResource( 6 )

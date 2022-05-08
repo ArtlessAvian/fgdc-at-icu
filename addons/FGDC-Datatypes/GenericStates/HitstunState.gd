@@ -18,3 +18,7 @@ func run(f: Fighter, input: Dictionary) -> void:
 
 func animation(f: Fighter) -> String:
 	return "Hitstun"
+
+func get_landing_transition(f: Fighter, moveset: Moveset) -> State:
+	return null
+	

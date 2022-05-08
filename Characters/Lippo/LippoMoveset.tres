@@ -27,7 +27,7 @@ horizontal_speed = 524288
 script = ExtResource( 4 )
 impulse = 1572864
 double_jump_impulse = 1048576
-horizontal_speed = 655360
+horizontal_speed = 524288
 
 [sub_resource type="Resource" id=5]
 script = ExtResource( 1 )
@@ -60,7 +60,7 @@ air_throw_data = SubResource( 5 )
 
 [sub_resource type="Resource" id=4]
 script = ExtResource( 6 )
-speed = 12
+speed = 8
 
 [resource]
 script = ExtResource( 3 )

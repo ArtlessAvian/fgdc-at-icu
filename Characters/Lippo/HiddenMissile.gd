@@ -10,7 +10,7 @@ export(int) var MISSILE_TIME = 120  # when the missiles begin falling
 var flip = false
 var lifetime = 0
 var origin_x = 0
-var origin_y = -8765309
+var origin_y = 0
 var target_path = ""
 var owner_path = ""
 var my_angle = -8765309
@@ -28,7 +28,9 @@ func _network_spawn(data: Dictionary):
 	self.fixed_position.y = data.position_y
 	self.fixed_position.x += OFFSET_X * (-1 if flip else 1)
 	self.fixed_position.y -= OFFSET_Y
+
 	self.origin_x = self.fixed_position.x
+	self.origin_y = self.fixed_position.y
 
 	$Hitboxes.set_player(data.is_p2)
 
@@ -43,7 +45,7 @@ func _network_preprocess(input: Dictionary) -> void:
 		return
 
 	if lifetime < MISSILE_TIME:
-		self.fixed_position.y = -lifetime * MISSILE_SPEED << 16
+		self.fixed_position.y = self.origin_y - lifetime * MISSILE_SPEED << 16
 	elif lifetime == MISSILE_TIME:
 		var dy = get_node(target_path).fixed_position.y + TARGET_OFFSET_Y - MISSILE_HEIGHT
 		var dx = get_node(target_path).fixed_position.x - self.origin_x
@@ -91,6 +93,8 @@ func _save_state() -> Dictionary:
 		y = fixed_position.y,
 		lifetime = lifetime,
 		hit = hit,
+		origin_x = origin_x,
+		origin_y = origin_y,
 		my_angle = my_angle
 	}
 
@@ -100,6 +104,9 @@ func _load_state(save: Dictionary) -> void:
 	fixed_position.y = save.y
 	lifetime = save.lifetime
 	hit = save.hit
+	origin_x = save.origin_x
+	origin_y = save.origin_y
+	my_angle = save.my_angle
 
 	$Hitboxes/SGCollisionShape2D.disabled = hit
 	$Hitboxes.sync_to_physics_engine()

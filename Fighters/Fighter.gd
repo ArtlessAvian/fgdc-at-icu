@@ -21,7 +21,7 @@ var vel: SGFixedVector2 = SGFixedVector2.new()
 var grounded = true
 
 var health: int = 20
-var state: Resource
+var state: Resource = null
 var state_time = 0
 var ani_start_time = 0
 var air_actions = 0
