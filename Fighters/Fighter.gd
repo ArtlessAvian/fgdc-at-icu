@@ -263,8 +263,10 @@ func on_hit():
 		change_to_state(moveset.dead)
 	#elif $Hurtboxes.hit_hitdata.knockdown:
 	#	change_to_state(moveset.knockdown)
-	else:
+	elif grounded:
 		change_to_state(moveset.hitstun)
+	else:
+		change_to_state(moveset.air_hitstun)
 
 
 func throw_response(input: Dictionary):
@@ -279,10 +281,7 @@ func throw_response(input: Dictionary):
 		change_to_state(moveset.throw_tech)
 		get_node(opponent_path).change_to_state(moveset.throw_tech)
 		return
-	if (
-		not state in moveset.movement
-		and not state in [moveset.walk, moveset.crouch, moveset.jump]
-	):
+	if not state in moveset.movement and not state in [moveset.walk, moveset.crouch, moveset.jump]:
 		print("not neutral state")
 		return
 

@@ -39,8 +39,9 @@ func write_hitbox_positions(time, hitboxes):
 func animation_length():
 	var total = 0
 	var current_data = self
+	# i looveeeeeee linked lists
 	while current_data != null:
-		total += startup
-		total += active
+		total += current_data.startup
+		total += current_data.active
 		current_data = current_data.followup
-	return total + recovery
+	return total + self.recovery

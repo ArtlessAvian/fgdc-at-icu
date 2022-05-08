@@ -26,6 +26,7 @@ export(Array, Resource) var movement = []
 
 const prefix = "res://addons/FGDC-Datatypes/"
 var hitstun: Resource = load(prefix + "GenericStates/HitstunState.gd").new()
+var air_hitstun: Resource = load(prefix + "GenericStates/AirHitstunState.gd").new()
 var blockstun: Resource = load(prefix + "GenericStates/BlockstunState.gd").new()
 var dead: Resource = load(prefix + "GenericStates/DeadState.gd").new()
 var do_throw: Resource = load(prefix + "GenericStates/DoThrowState.gd").new()

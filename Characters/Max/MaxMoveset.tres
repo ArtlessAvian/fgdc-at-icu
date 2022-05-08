@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=21 format=2]
+[gd_resource type="Resource" load_steps=23 format=2]
 
 [ext_resource path="res://addons/FGDC-Datatypes/ThrowData.gd" type="Script" id=1]
 [ext_resource path="res://addons/FGDC-Datatypes/GenericStates/JumpState.gd" type="Script" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://addons/FGDC-Datatypes/GenericStates/WalkState.gd" type="Script" id=6]
 [ext_resource path="res://addons/FGDC-Datatypes/GenericStates/CrouchState.gd" type="Script" id=7]
 [ext_resource path="res://Characters/Max/MaxJHeavy.tres" type="Resource" id=9]
+[ext_resource path="res://addons/FGDC-Datatypes/GenericStates/KnockdownState.gd" type="Script" id=11]
 [ext_resource path="res://Characters/Max/MaxJLight.tres" type="Resource" id=12]
 [ext_resource path="res://Characters/Max/MaxLight.tres" type="Resource" id=13]
 [ext_resource path="res://Characters/Max/MaxHeavy.tres" type="Resource" id=14]
@@ -22,6 +23,10 @@ script = ExtResource( 2 )
 impulse = 1310720
 double_jump_impulse = 983040
 horizontal_speed = 524288
+
+[sub_resource type="Resource" id=10]
+script = ExtResource( 11 )
+knockdown_timer = 30
 
 [sub_resource type="Resource" id=9]
 script = ExtResource( 4 )
@@ -69,6 +74,7 @@ walk = SubResource( 4 )
 crouch = SubResource( 8 )
 prejump = SubResource( 9 )
 jump = SubResource( 3 )
+knockdown = SubResource( 10 )
 light = ExtResource( 13 )
 heavy = ExtResource( 14 )
 c_light = ExtResource( 15 )
