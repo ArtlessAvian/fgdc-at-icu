@@ -100,6 +100,25 @@ func detect_charge_forward(reversed: bool, input_frames: int, hold_frames: int) 
 	return false
 
 
+# positive edge
+func button_pressed_recently(button: String, frames: int) -> bool:
+	var time = 0
+	var list_index = BUTTON_LIST.find(button)
+	var last_pressed = false
+	for i in range(len(_button_history)):
+		var pressed = (_button_history[i] & (1 << list_index)) > 0
+		if not pressed and last_pressed:
+			return true
+		last_pressed = pressed
+		time += _hold_duration[i]
+		if time >= frames:
+			return false
+	return false
+
+
+# negative edge
+
+
 # WARNING: COPY PASTED FROM ABOVE.
 func detect_charge_up(input_frames: int, hold_frames: int) -> bool:
 	# if not holding up, early exit. integer division intentional.

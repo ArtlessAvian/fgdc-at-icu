@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://Fighters/Fighter.gd" type="Script" id=1]
 [ext_resource path="res://Fighters/Hitboxes.gd" type="Script" id=2]
@@ -8,7 +8,7 @@
 [ext_resource path="res://Fighters/InputHistory.gd" type="Script" id=6]
 [ext_resource path="res://Fighters/HitboxHelper.gd" type="Script" id=7]
 [ext_resource path="res://Fighters/FighterSprite.gd" type="Script" id=8]
-[ext_resource path="res://Characters/Max/MaxMoveset.tres" type="Resource" id=9]
+[ext_resource path="res://Characters/Lippo/LippoMoveset.tres" type="Resource" id=9]
 [ext_resource path="res://Example/Lippo.png" type="Texture" id=10]
 
 [sub_resource type="Animation" id=47]
@@ -104,6 +104,24 @@ tracks/5/keys = {
 [sub_resource type="Animation" id=52]
 resource_name = "DoThrow"
 
+[sub_resource type="Animation" id=53]
+resource_name = "HiddenMissiles"
+length = 18.0
+loop = true
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Visual/Character:flips")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 18 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 2.0 ]
+}
+
 [sub_resource type="Animation" id=48]
 resource_name = "Hitstun"
 tracks/0/type = "value"
@@ -151,6 +169,9 @@ tracks/1/keys = {
 "update": 0,
 "values": [ Vector2( -6, -30 ) ]
 }
+
+[sub_resource type="Animation" id=54]
+resource_name = "MissilesStartup"
 
 [sub_resource type="Animation" id=38]
 resource_name = "RESET"
@@ -525,10 +546,12 @@ playback_speed = 60.0
 anims/Blockstun = SubResource( 47 )
 anims/Crouch = SubResource( 46 )
 anims/DoThrow = SubResource( 52 )
+anims/HiddenMissiles = SubResource( 53 )
 anims/Hitstun = SubResource( 48 )
 anims/Idle = SubResource( 37 )
 anims/Jump = SubResource( 40 )
 anims/Knockdown = SubResource( 49 )
+anims/MissilesStartup = SubResource( 54 )
 anims/RESET = SubResource( 38 )
 anims/Throw = SubResource( 50 )
 anims/Wakeup = SubResource( 51 )
@@ -556,7 +579,6 @@ visible = false
 position = Vector2( 0, -100 )
 scale = Vector2( 0.085, 0.085 )
 frames = SubResource( 34 )
-animation = "Default"
 
 [node name="Hitboxes" type="SGArea2D" parent="." groups=["hitboxes", "network_sync"]]
 collision_mask = 0
