@@ -20,7 +20,7 @@ func transition_into(f: Fighter, moveset: Moveset, input: Dictionary) -> bool:
 	return false
 
 
-func transition_out(f: Fighter, moveset: Moveset, input: Dictionary) -> State:
+func transition_out(f: Fighter, moveset: Moveset, input: Dictionary) -> Resource:
 	if f.grounded:
 		f.vel.x = 0
 

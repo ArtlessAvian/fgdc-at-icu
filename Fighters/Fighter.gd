@@ -251,6 +251,7 @@ func on_hit():
 		combo_count = 1
 
 	state_dict.hitstun = $Hurtboxes.hit_hitdata.hitstun
+	state_dict.hit_hitdata = $Hurtboxes.hit_hitdata
 	vel.x = ($Hurtboxes.hit_hitdata.x_vel << 16) * (-1 if fixed_scale.x > 0 else 1)
 	vel.y = $Hurtboxes.hit_hitdata.y_vel << 16
 	if vel.y > 0:
@@ -260,8 +261,8 @@ func on_hit():
 	# print($Hurtboxes.hit_hitdata, SyncManager.current_tick)
 	if self.health <= 0:
 		change_to_state(moveset.dead)
-	elif $Hurtboxes.hit_hitdata.knockdown:
-		change_to_state(moveset.knockdown)
+	#elif $Hurtboxes.hit_hitdata.knockdown:
+	#	change_to_state(moveset.knockdown)
 	else:
 		change_to_state(moveset.hitstun)
 

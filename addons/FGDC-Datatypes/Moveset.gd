@@ -8,7 +8,7 @@ export(Resource) var walk
 export(Resource) var crouch
 export(Resource) var prejump
 export(Resource) var jump
-export(Resource) var knockdown = load(prefix + "GenericStates/KnockdownState.gd").new()
+
 # export(Resource) var airdash
 
 export(Resource) var light
@@ -31,6 +31,7 @@ var dead: Resource = load(prefix + "GenericStates/DeadState.gd").new()
 var do_throw: Resource = load(prefix + "GenericStates/DoThrowState.gd").new()
 var get_thrown: Resource = load(prefix + "GenericStates/GetThrownState.gd").new()
 var throw_tech: Resource = load(prefix + "GenericStates/ThrowTechState.gd").new()
+var knockdown: Resource = load(prefix + "GenericStates/KnockdownState.gd").new()
 
 # Get moveset as array
 var lazy_all_normals: Array = []
@@ -64,6 +65,7 @@ func all_states():
 		lazy_all_states.append(walk)
 		lazy_all_states.append(crouch)
 		lazy_all_states.append(jump)
+		lazy_all_states.append(knockdown)
 		print(lazy_all_states)
 		print(lazy_all_normals)
 		print(lazy_all_attacks)

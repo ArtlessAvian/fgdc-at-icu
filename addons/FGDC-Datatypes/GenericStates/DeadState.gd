@@ -10,7 +10,7 @@ func transition_into(f: Fighter, moveset: Moveset, input: Dictionary) -> bool:
 
 
 # Can't transition out of Dead state. Must reload Game/Match scene.
-func transition_out(f: Fighter, moveset: Moveset, input: Dictionary) -> State:
+func transition_out(f: Fighter, moveset: Moveset, input: Dictionary) -> Resource:
 	return null
 
 

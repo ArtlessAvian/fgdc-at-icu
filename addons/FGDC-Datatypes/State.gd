@@ -10,11 +10,11 @@ func transition_into(f: Fighter, moveset: Moveset, input: Dictionary) -> bool:
 
 # Define transitions from this state OUT.
 # Has less priority over transition_into
-func transition_out(f: Fighter, moveset: Moveset, input: Dictionary) -> State:
+func transition_out(f: Fighter, moveset: Moveset, input: Dictionary) -> Resource:
 	return null
 
 
-func transition(f: Fighter, moveset: Moveset, input: Dictionary) -> State:
+func transition(f: Fighter, moveset: Moveset, input: Dictionary) -> Resource:
 	for state in moveset.all_states():
 		# print(moveset.all_states())
 		if state.transition_into(f, moveset, input):

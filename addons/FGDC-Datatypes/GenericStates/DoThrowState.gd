@@ -7,7 +7,7 @@ func transition_into(f: Fighter, moveset: Moveset, input: Dictionary) -> bool:
 	return false
 
 
-func transition_out(f: Fighter, moveset: Moveset, input: Dictionary) -> State:
+func transition_out(f: Fighter, moveset: Moveset, input: Dictionary) -> Resource:
 	if f.state_time >= f.state_dict["my_throwdata"].throw_length:
 		if f.grounded:
 			return moveset.walk

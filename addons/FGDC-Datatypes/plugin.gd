@@ -8,9 +8,10 @@ const generic_states = [
 	"FireballState",
 	"PrejumpState",
 	"JumpState",
+	"KnockdownState",
 	"NormalAttackState",
 	"ThrowAttemptState",
-	"WalkState",
+	"WalkState"
 ]
 
 # These are **intentionally** oversized.

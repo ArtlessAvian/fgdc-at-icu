@@ -24,7 +24,7 @@ func transition_into(f: Fighter, moveset: Moveset, input: Dictionary) -> bool:
 
 # Define transitions from this state OUT.
 # Has less priority over transition_into
-func transition_out(f: Fighter, moveset: Moveset, input: Dictionary) -> State:
+func transition_out(f: Fighter, moveset: Moveset, input: Dictionary) -> Resource:
 	if f.state_time > 111:
 		return moveset.walk
 	return null
