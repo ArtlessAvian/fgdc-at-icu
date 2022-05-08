@@ -40,7 +40,7 @@ tracks/0/path = NodePath("Visual/Character/AnimatedSprite:rotation_degrees")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
-tracks/0/enabled = false
+tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -104,7 +104,7 @@ tracks/3/keys = {
 [sub_resource type="Animation" id=46]
 resource_name = "Crouch"
 tracks/0/type = "value"
-tracks/0/path = NodePath("Visual/Character/AnimatedSprite:scale")
+tracks/0/path = NodePath("Visual/Character/AnimatedSprite:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -113,10 +113,10 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 1, 0.5 ) ]
+"values": [ Vector2( 0, -50 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Visual/Character/AnimatedSprite:position")
+tracks/1/path = NodePath("Visual/Character/AnimatedSprite:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -125,7 +125,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0, -50 ) ]
+"values": [ Vector2( 1, 0.5 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Hurtboxes/SGCollisionShape2D:fixed_position_x")
@@ -263,7 +263,7 @@ tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0, 8 ),
 "transitions": PoolRealArray( 1, 1 ),
-"update": 1,
+"update": 0,
 "values": [ -15.0, 15.0 ]
 }
 
@@ -395,7 +395,7 @@ resource_name = "Jump"
 [sub_resource type="Animation" id=49]
 resource_name = "Knockdown"
 tracks/0/type = "value"
-tracks/0/path = NodePath("Visual/Character/AnimatedSprite:rotation_degrees")
+tracks/0/path = NodePath("Visual/Character/AnimatedSprite:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -404,10 +404,10 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ -90.0 ]
+"values": [ Vector2( -6, -30 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Visual/Character/AnimatedSprite:position")
+tracks/1/path = NodePath("Visual/Character/AnimatedSprite:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -416,7 +416,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( -6, -30 ) ]
+"values": [ -90.0 ]
 }
 
 [sub_resource type="Animation" id=69]
@@ -550,7 +550,7 @@ tracks/4/keys = {
 "values": [ 0.0 ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("Visual/Character/AnimatedSprite:scale")
+tracks/5/path = NodePath("Visual/Character/AnimatedSprite:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -559,10 +559,10 @@ tracks/5/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 1, 1 ) ]
+"values": [ Vector2( 0, -100 ) ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("Visual/Character/AnimatedSprite:position")
+tracks/6/path = NodePath("Visual/Character/AnimatedSprite:scale")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -571,7 +571,7 @@ tracks/6/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0, -100 ) ]
+"values": [ Vector2( 1, 1 ) ]
 }
 tracks/7/type = "value"
 tracks/7/path = NodePath("Hurtboxes/SGCollisionShape2D:fixed_position_y")
@@ -598,7 +598,7 @@ tracks/8/keys = {
 "values": [ 0 ]
 }
 tracks/9/type = "value"
-tracks/9/path = NodePath("Hurtboxes/SGCollisionShape2D:shape:extents_x")
+tracks/9/path = NodePath("Visual/Character/AnimatedSprite:rotation_degrees")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/imported = false
@@ -606,11 +606,11 @@ tracks/9/enabled = true
 tracks/9/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 2752512 ]
+"update": 0,
+"values": [ 0.0 ]
 }
 tracks/10/type = "value"
-tracks/10/path = NodePath("Hurtboxes/SGCollisionShape2D:shape:extents_y")
+tracks/10/path = NodePath("Hurtboxes/SGCollisionShape2D:shape:extents_x")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/imported = false
@@ -619,10 +619,10 @@ tracks/10/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 6553600 ]
+"values": [ 2752512 ]
 }
 tracks/11/type = "value"
-tracks/11/path = NodePath("Visual/Character/AnimatedSprite:rotation_degrees")
+tracks/11/path = NodePath("Hurtboxes/SGCollisionShape2D:shape:extents_y")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/imported = false
@@ -630,8 +630,8 @@ tracks/11/enabled = true
 tracks/11/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 0.0 ]
+"update": 1,
+"values": [ 6553600 ]
 }
 tracks/12/type = "value"
 tracks/12/path = NodePath("Throwboxes/SGCollisionShape2D:shape:extents_x")
@@ -658,7 +658,7 @@ tracks/13/keys = {
 "values": [ 6553600 ]
 }
 tracks/14/type = "value"
-tracks/14/path = NodePath("Throwboxes/SGCollisionShape2D:fixed_position_x")
+tracks/14/path = NodePath("Visual/Character/AnimatedSprite:frame")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/imported = false
@@ -667,10 +667,10 @@ tracks/14/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 7602176 ]
+"values": [ 0 ]
 }
 tracks/15/type = "value"
-tracks/15/path = NodePath("Throwboxes/SGCollisionShape2D:fixed_position_y")
+tracks/15/path = NodePath("Throwboxes/SGCollisionShape2D:fixed_position_x")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/imported = false
@@ -679,10 +679,10 @@ tracks/15/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ -6422528 ]
+"values": [ 7602176 ]
 }
 tracks/16/type = "value"
-tracks/16/path = NodePath("Throwboxes/SGCollisionShape2D:disabled")
+tracks/16/path = NodePath("Throwboxes/SGCollisionShape2D:fixed_position_y")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/imported = false
@@ -691,10 +691,10 @@ tracks/16/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ true ]
+"values": [ -6422528 ]
 }
 tracks/17/type = "value"
-tracks/17/path = NodePath("Visual/Character/AnimatedSprite:frame")
+tracks/17/path = NodePath("Throwboxes/SGCollisionShape2D:disabled")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/imported = false
@@ -702,8 +702,8 @@ tracks/17/enabled = true
 tracks/17/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 0 ]
+"update": 0,
+"values": [ true ]
 }
 tracks/18/type = "value"
 tracks/18/path = NodePath("Visual/Character:position")
@@ -812,28 +812,28 @@ resource_name = "Wakeup"
 length = 30.0
 step = 1.0
 tracks/0/type = "value"
-tracks/0/path = NodePath("Visual/Character/AnimatedSprite:rotation_degrees")
+tracks/0/path = NodePath("Visual/Character/AnimatedSprite:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 20, 30 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 20, 26, 30 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ -90.0, -90.0, 0.0 ]
+"values": [ Vector2( -6, -30 ), Vector2( -6, -30 ), Vector2( -6, -130 ), Vector2( -6, -100 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Visual/Character/AnimatedSprite:position")
+tracks/1/path = NodePath("Visual/Character/AnimatedSprite:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 20, 26, 30 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 20, 30 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( -6, -30 ), Vector2( -6, -30 ), Vector2( -6, -130 ), Vector2( -6, -100 ) ]
+"values": [ -90.0, -90.0, 0.0 ]
 }
 
 [sub_resource type="Animation" id=36]

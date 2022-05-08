@@ -1,9 +1,14 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Fighters/Hitboxes.gd" type="Script" id=1]
-[ext_resource path="res://Fighters/DefaultMoveset/art-supplies-and-pain.jpeg" type="Texture" id=2]
-[ext_resource path="res://Fighters/DefaultMoveset/FireballScene.gd" type="Script" id=3]
+[ext_resource path="res://Characters/Lippo/Assets/card.png" type="Texture" id=2]
+[ext_resource path="res://Characters/Lippo/CardScene.gd" type="Script" id=3]
 [ext_resource path="res://addons/FGDC-Datatypes/HitData.gd" type="Script" id=4]
+[ext_resource path="res://Fighters/Hurtboxes.gd" type="Script" id=5]
+
+[sub_resource type="SGRectangleShape2D" id=3]
+extents_x = 3276800
+extents_y = 1638400
 
 [sub_resource type="Resource" id=2]
 script = ExtResource( 4 )
@@ -22,15 +27,29 @@ active_hitboxes = 1
 active_hurtboxes = 0
 
 [sub_resource type="SGRectangleShape2D" id=1]
-extents_x = 3014656
-extents_y = 2097152
+extents_x = 3276800
+extents_y = 1638400
 
-[node name="Fireball" type="SGFixedNode2D" groups=["network_sync"]]
+[node name="Card" type="SGFixedNode2D" groups=["network_sync"]]
 script = ExtResource( 3 )
 
-[node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( 0.2, 0.2 )
+[node name="Node2D" type="Node2D" parent="."]
+scale = Vector2( 1, 0.5 )
+
+[node name="Sprite" type="Sprite" parent="Node2D"]
+scale = Vector2( 3, 3 )
 texture = ExtResource( 2 )
+
+[node name="Hurtboxes" type="SGArea2D" parent="." groups=["hurtboxes", "network_sync"]]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="SGCollisionShape2D" type="SGCollisionShape2D" parent="Hurtboxes"]
+shape = SubResource( 3 )
 
 [node name="Hitboxes" type="SGArea2D" parent="." groups=["hitboxes", "network_sync"]]
 script = ExtResource( 1 )

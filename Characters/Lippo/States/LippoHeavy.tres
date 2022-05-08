@@ -1,11 +1,11 @@
 [gd_resource type="Resource" load_steps=14 format=2]
 
 [ext_resource path="res://addons/FGDC-Datatypes/GenericStates/NormalAttackState.gd" type="Script" id=1]
-[ext_resource path="res://addons/FGDC-Datatypes/AttackData.gd" type="Script" id=2]
-[ext_resource path="res://addons/FGDC-Datatypes/HitData.gd" type="Script" id=3]
+[ext_resource path="res://addons/FGDC-Datatypes/HitData.gd" type="Script" id=2]
+[ext_resource path="res://addons/FGDC-Datatypes/AttackData.gd" type="Script" id=3]
 
 [sub_resource type="Resource" id=7]
-script = ExtResource( 3 )
+script = ExtResource( 2 )
 guard = 0
 startup = 2
 active = 2
@@ -21,7 +21,7 @@ active_hitboxes = 1
 active_hurtboxes = 0
 
 [sub_resource type="Resource" id=8]
-script = ExtResource( 3 )
+script = ExtResource( 2 )
 guard = 0
 startup = 2
 active = 2
@@ -38,7 +38,7 @@ active_hurtboxes = 0
 followup = SubResource( 7 )
 
 [sub_resource type="Resource" id=9]
-script = ExtResource( 3 )
+script = ExtResource( 2 )
 guard = 0
 startup = 2
 active = 2
@@ -55,7 +55,7 @@ active_hurtboxes = 0
 followup = SubResource( 8 )
 
 [sub_resource type="Resource" id=10]
-script = ExtResource( 3 )
+script = ExtResource( 2 )
 guard = 0
 startup = 2
 active = 2
@@ -72,7 +72,7 @@ active_hurtboxes = 0
 followup = SubResource( 9 )
 
 [sub_resource type="Resource" id=2]
-script = ExtResource( 3 )
+script = ExtResource( 2 )
 guard = 0
 startup = 2
 active = 2
@@ -89,7 +89,7 @@ active_hurtboxes = 0
 followup = SubResource( 10 )
 
 [sub_resource type="Resource" id=3]
-script = ExtResource( 3 )
+script = ExtResource( 2 )
 guard = 0
 startup = 2
 active = 2
@@ -106,7 +106,7 @@ active_hurtboxes = 0
 followup = SubResource( 2 )
 
 [sub_resource type="Resource" id=4]
-script = ExtResource( 3 )
+script = ExtResource( 2 )
 guard = 0
 startup = 2
 active = 2
@@ -123,7 +123,7 @@ active_hurtboxes = 0
 followup = SubResource( 3 )
 
 [sub_resource type="Resource" id=5]
-script = ExtResource( 3 )
+script = ExtResource( 2 )
 guard = 0
 startup = 2
 active = 2
@@ -140,7 +140,7 @@ active_hurtboxes = 0
 followup = SubResource( 4 )
 
 [sub_resource type="Resource" id=6]
-script = ExtResource( 3 )
+script = ExtResource( 2 )
 guard = 0
 startup = 2
 active = 2
@@ -157,7 +157,7 @@ active_hurtboxes = 0
 followup = SubResource( 5 )
 
 [sub_resource type="Resource" id=1]
-script = ExtResource( 2 )
+script = ExtResource( 3 )
 guard = 0
 startup = 20
 active = 2
