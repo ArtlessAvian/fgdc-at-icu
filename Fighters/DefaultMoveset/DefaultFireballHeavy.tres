@@ -8,3 +8,5 @@ script = ExtResource( 1 )
 fireball = ExtResource( 2 )
 input_frames = 15
 is_heavy = true
+animation_time = 30
+fireball_time = 10

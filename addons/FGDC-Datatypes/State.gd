@@ -1,7 +1,6 @@
 extends Resource
 class_name State
 
-
 # Define transitions from all states IN.
 # Has priority over transition
 func transition_into(f: Fighter, moveset: Moveset, input: Dictionary) -> bool:

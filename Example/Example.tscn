@@ -664,7 +664,9 @@ margin_left = -134.0
 margin_top = 31.0
 margin_right = 184.0
 margin_bottom = 45.0
-text = "No attack loaded!"
+text = "res://Example/MaxDPResourceAAAAAA.tres::1
+1 (100) 10
+"
 
 [node name="InputHistory" type="Node" parent="." groups=["network_sync"]]
 script = ExtResource( 7 )
