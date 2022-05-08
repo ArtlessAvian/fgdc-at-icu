@@ -22,10 +22,14 @@ func _ready():
 	add_to_group("network_sync")
 
 
-func set_player(is_p2):
+func set_player(is_p2, is_projectile = false):
 	collision_layer = 0b01
 	if is_p2:
 		collision_layer ^= 0b11
+	if is_projectile:
+		collision_layer |= 0b0100
+		if is_p2:
+			collision_layer ^= 0b1100
 
 
 func _process(delta):

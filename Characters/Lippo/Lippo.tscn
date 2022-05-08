@@ -416,6 +416,20 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id=40]
 resource_name = "Jump"
+length = 20.0
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Visual/Character/AnimatedSprite:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 20 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 360.0 ]
+}
 
 [sub_resource type="Animation" id=49]
 resource_name = "Knockdown"
@@ -1103,6 +1117,7 @@ texture = ExtResource( 12 )
 [node name="HeavyBeam" type="Sprite" parent="Visual"]
 visible = false
 position = Vector2( 125, -10 )
+z_index = 15
 texture = ExtResource( 13 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 100, 2880 )
@@ -1111,6 +1126,7 @@ script = ExtResource( 14 )
 [node name="LightHeart" type="Sprite" parent="Visual"]
 visible = false
 position = Vector2( 70, -94 )
+z_index = 15
 texture = ExtResource( 15 )
 region_rect = Rect2( 0, 0, 100, 2880 )
 
@@ -1118,6 +1134,7 @@ region_rect = Rect2( 0, 0, 100, 2880 )
 visible = false
 position = Vector2( -8, -214 )
 scale = Vector2( 3, 3 )
+z_index = 15
 texture = ExtResource( 16 )
 
 [node name="Hitboxes" type="SGArea2D" parent="." groups=["hitboxes", "network_sync"]]
@@ -1165,9 +1182,7 @@ margin_left = -134.0
 margin_top = 31.0
 margin_right = 184.0
 margin_bottom = 45.0
-text = "res://Characters/Lippo/States/LippoCHeavy.tres::1
-20 (2) 10
-"
+text = "No attack loaded!"
 
 [node name="InputHistory" type="Node" parent="." groups=["network_sync"]]
 script = ExtResource( 6 )

@@ -32,7 +32,8 @@ func _network_spawn(data: Dictionary):
 	self.origin_x = self.fixed_position.x
 	self.origin_y = self.fixed_position.y
 
-	$Hitboxes.set_player(data.is_p2)
+	$Hitboxes.set_player(data.is_p2, true)
+	$Hurtboxes.set_player(data.is_p2, true)
 
 	add_to_group("network_sync")
 
@@ -72,6 +73,9 @@ func _network_preprocess(input: Dictionary) -> void:
 func _network_postprocess(input: Dictionary) -> void:
 	if fixed_position.y > 0:
 		fixed_position.y = 0
+		on_hit()
+
+	if $Hurtboxes.hit_hitdata != null:
 		on_hit()
 
 	if lifetime > 300:

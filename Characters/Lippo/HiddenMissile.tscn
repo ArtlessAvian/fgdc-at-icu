@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://Fighters/Hitboxes.gd" type="Script" id=1]
 [ext_resource path="res://Characters/Lippo/Assets/spades.png" type="Texture" id=2]
@@ -21,6 +21,7 @@
 [ext_resource path="res://spr_realisticexplosion/spr_realisticexplosion_4.png" type="Texture" id=19]
 [ext_resource path="res://spr_realisticexplosion/spr_realisticexplosion_8.png" type="Texture" id=20]
 [ext_resource path="res://spr_realisticexplosion/spr_realisticexplosion_0.png" type="Texture" id=21]
+[ext_resource path="res://Fighters/Hurtboxes.gd" type="Script" id=22]
 
 [sub_resource type="Resource" id=2]
 script = ExtResource( 4 )
@@ -55,6 +56,10 @@ animations = [ {
 "speed": 20.0
 } ]
 
+[sub_resource type="SGRectangleShape2D" id=5]
+extents_x = 1638400
+extents_y = 1638400
+
 [node name="HiddenMissile" type="SGFixedNode2D" groups=["network_sync"]]
 script = ExtResource( 3 )
 
@@ -76,5 +81,16 @@ frames = SubResource( 3 )
 animation = "explode"
 frame = 16
 playing = true
+
+[node name="Hurtboxes" type="SGArea2D" parent="." groups=["hurtboxes", "network_sync"]]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource( 22 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="SGCollisionShape2D" type="SGCollisionShape2D" parent="Hurtboxes"]
+shape = SubResource( 5 )
 
 [connection signal="on_contact" from="Hitboxes" to="." method="_on_Hitboxes_on_contact"]

@@ -24,10 +24,12 @@ func _ready():
 	add_to_group("network_sync")
 
 
-func set_player(is_p2):
+func set_player(is_p2, is_projectile = false):
 	collision_mask = 0b10
 	if is_p2:
 		collision_mask ^= 0b11
+	if is_projectile:
+		collision_mask <<= 2
 
 
 const color_disabled = Color8(127, 127, 127, 127)
