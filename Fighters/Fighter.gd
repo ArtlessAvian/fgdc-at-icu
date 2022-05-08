@@ -31,6 +31,8 @@ var invincible: bool = false
 var combo_count = 0
 var hitstop = 0
 
+signal countered
+
 
 func _ready():
 	self.fixed_position.x = (-200 << 16) * (-1 if is_p2 else 1)
@@ -256,6 +258,9 @@ func on_hit():
 	if vel.y > 0:
 		grounded = false
 		# gravity takes care of the rest!
+
+	if state.get("attack_data") != null:
+		emit_signal("countered")
 
 	# print($Hurtboxes.hit_hitdata, SyncManager.current_tick)
 	if self.health <= 0:
