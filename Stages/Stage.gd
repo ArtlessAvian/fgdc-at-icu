@@ -17,9 +17,10 @@ func _process(delta):
 
 
 func camera_math():
-	var game_camera = get_node(game_camera_path)
-	$Camera.translation.x = game_camera.position.x
-	$Camera.translation.y = -game_camera.position.y
+	if game_camera_path != "":
+		var game_camera = get_node(game_camera_path)
+		$Camera.translation.x = game_camera.position.x
+		$Camera.translation.y = -game_camera.position.y
 
 	# draw the triangle. we have an angle and the opposite, so get the adjacent.
 	$Camera.translation.z = (720 / 2) / tan(deg2rad(base_fov / 2))

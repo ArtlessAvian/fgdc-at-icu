@@ -1,16 +1,12 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Stages/Stage.gd" type="Script" id=1]
-[ext_resource path="res://100checker.png" type="Texture" id=2]
+[ext_resource path="res://Stages/table_in_perspective.jpg" type="Texture" id=2]
 [ext_resource path="res://Example/Max_idle_1.png" type="Texture" id=3]
 [ext_resource path="res://Example/Lippo.png" type="Texture" id=4]
+[ext_resource path="res://Stages/PXL_20220506_214257418.jpg" type="Texture" id=5]
 
 [sub_resource type="CubeMesh" id=1]
-
-[sub_resource type="AtlasTexture" id=2]
-flags = 18
-atlas = ExtResource( 2 )
-region = Rect2( 0, 0, 1000, 500 )
 
 [sub_resource type="GDScript" id=3]
 script/source = "extends Sprite3D
@@ -30,76 +26,68 @@ func _process(delta):
 script = ExtResource( 1 )
 
 [node name="Camera" type="Camera" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 5 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.81007, 5.141 )
 current = true
-fov = 60.0
 
 [node name="Right2" type="MeshInstance" parent="."]
 transform = Transform( 0.825129, 0.492235, -0.277247, -0.504371, 0.86293, 0.0309954, 0.254502, 0.11426, 0.960299, 0.833203, -3.58651, -25.1491 )
+visible = false
 mesh = SubResource( 1 )
 skeleton = NodePath("")
 material/0 = null
 
 [node name="Right8" type="MeshInstance" parent="."]
 transform = Transform( 0.176912, 0.843697, -0.506832, -0.652558, 0.486045, 0.581316, 0.736797, 0.227895, 0.636548, 4.30646, 4.91794, -24.4209 )
+visible = false
 mesh = SubResource( 1 )
 skeleton = NodePath("")
 material/0 = null
 
 [node name="Right3" type="MeshInstance" parent="."]
 transform = Transform( 0.122423, 0.778045, 0.616164, -0.747607, 0.480621, -0.458353, -0.65276, -0.404536, 0.640511, -2.7538, 4.00658, -11.9393 )
+visible = false
 mesh = SubResource( 1 )
 skeleton = NodePath("")
 material/0 = null
 
 [node name="Right4" type="MeshInstance" parent="."]
 transform = Transform( 0.122423, 0.778045, 0.616164, -0.747607, 0.480621, -0.458353, -0.65276, -0.404536, 0.640511, 3.26158, 2.87603, -18.535 )
+visible = false
 mesh = SubResource( 1 )
 skeleton = NodePath("")
 material/0 = null
 
 [node name="Right5" type="MeshInstance" parent="."]
 transform = Transform( 0.122423, 0.778045, 0.616164, -0.747607, 0.480621, -0.458353, -0.65276, -0.404536, 0.640511, -5.1283, 8.47097, -35.9232 )
+visible = false
 mesh = SubResource( 1 )
 skeleton = NodePath("")
 material/0 = null
 
 [node name="Right6" type="MeshInstance" parent="."]
 transform = Transform( 0.825129, 0.492235, -0.277247, -0.504371, 0.86293, 0.0309954, 0.254502, 0.11426, 0.960299, 3.64375, 12.3125, -32.7125 )
+visible = false
 mesh = SubResource( 1 )
 skeleton = NodePath("")
 material/0 = null
 
 [node name="Right7" type="MeshInstance" parent="."]
 transform = Transform( 0.30302, 0.733256, -0.6087, -0.651952, 0.625376, 0.428793, 0.695081, 0.26691, 0.667548, 0.0648363, 12.7126, -20.3163 )
+visible = false
 mesh = SubResource( 1 )
 skeleton = NodePath("")
 material/0 = null
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
-pixel_size = 0.02
+transform = Transform( 0.6, 0, 0, 0, -1.5299e-08, 1, 0, -0.35, -4.37114e-08, 0, 0, -4.88791 )
 alpha_cut = 2
-texture = SubResource( 2 )
+texture = ExtResource( 2 )
 
 [node name="Sprite3D2" type="Sprite3D" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -5 )
-modulate = Color( 1, 1, 1, 0.156863 )
-pixel_size = 0.02
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.22394, 0.0209551, -15.8145 )
+pixel_size = 0.004
 alpha_cut = 2
-texture = SubResource( 2 )
-
-[node name="Sprite3D3" type="Sprite3D" parent="."]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -10, 5, 5 )
-pixel_size = 0.02
-alpha_cut = 2
-texture = SubResource( 2 )
-
-[node name="Sprite3D4" type="Sprite3D" parent="."]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 10, 5, 5 )
-pixel_size = 0.02
-alpha_cut = 2
-texture = SubResource( 2 )
+texture = ExtResource( 5 )
 
 [node name="Sprite3D5" type="Sprite3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.08352, 1, -3 )
@@ -108,7 +96,7 @@ alpha_cut = 2
 texture = ExtResource( 3 )
 
 [node name="Sprite3D6" type="Sprite3D" parent="."]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 6.68823, 1.39933, -3 )
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 6.68823, 2.45426, -3 )
 alpha_cut = 2
 texture = ExtResource( 4 )
 script = SubResource( 3 )
