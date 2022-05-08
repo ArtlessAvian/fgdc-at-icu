@@ -69,7 +69,7 @@ func register_contact(blocked: bool):
 	var pair = hit_hitboxes.attack_number * 100 + hit_hitboxes.multihit
 	var key = hit_hitboxes.get_path()  # todo make not garbo
 	self.attacks_hit_by[key] = pair
-	hit_hitboxes.emit_signal("on_contact", blocked)
+	hit_hitboxes.emit_signal("on_contact", blocked, hit_hitdata.hitstop)
 
 
 func _save_state() -> Dictionary:

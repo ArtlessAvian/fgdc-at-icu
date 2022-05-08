@@ -52,5 +52,5 @@ func _load_state(save: Dictionary) -> void:
 	$Hitboxes.sync_to_physics_engine()
 
 
-func _on_Hitboxes_on_contact(blocked: bool):
+func _on_Hitboxes_on_contact(blocked: bool, hitstop: int):
 	SyncManager.despawn(self)
