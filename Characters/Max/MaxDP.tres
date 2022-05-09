@@ -26,5 +26,4 @@ script = ExtResource( 2 )
 impulse = 20
 attack_level = 6
 jump_cancellable = false
-heavy = false
 attack_data = SubResource( 1 )

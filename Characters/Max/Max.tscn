@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=2]
+[gd_scene load_steps=57 format=2]
 
 [ext_resource path="res://Fighters/Fighter.gd" type="Script" id=1]
 [ext_resource path="res://Fighters/Hitboxes.gd" type="Script" id=2]
@@ -30,6 +30,8 @@
 [ext_resource path="res://Characters/Max/Assets/c.light.png" type="Texture" id=28]
 [ext_resource path="res://Characters/Max/Assets/c.heavy.png" type="Texture" id=29]
 [ext_resource path="res://Characters/Max/Assets/dragon_punch.png" type="Texture" id=30]
+[ext_resource path="res://Characters/Max/Assets/dash_punch 2.png" type="Texture" id=31]
+[ext_resource path="res://Characters/Max/Assets/dash_punch 1.png" type="Texture" id=32]
 
 [sub_resource type="Animation" id=47]
 resource_name = "Blockstun"
@@ -532,6 +534,71 @@ tracks/11/keys = {
 "values": [ true ]
 }
 
+[sub_resource type="Animation" id=61]
+resource_name = "DashPunch"
+length = 15.0
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Visual/Character/AnimatedSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 11 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 20, 21 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Hitboxes/hitbox1:shape:extents_x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 6175040 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Hitboxes/hitbox1:shape:extents_y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1600000 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Hitboxes/hitbox1:fixed_position_x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 5997696 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Hitboxes/hitbox1:fixed_position_y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ -5963776 ]
+}
+
 [sub_resource type="Animation" id=60]
 resource_name = "Divekick"
 length = 25.0
@@ -570,7 +637,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 320000 ]
+"values": [ 1280000 ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("Hitboxes/hitbox1:shape:extents_y")
@@ -582,7 +649,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 320000 ]
+"values": [ 1280000 ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("Hitboxes/hitbox1:fixed_position_x")
@@ -594,7 +661,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 8650752 ]
+"values": [ 3650752 ]
 }
 tracks/5/type = "value"
 tracks/5/path = NodePath("Hitboxes/hitbox1:fixed_position_y")
@@ -606,7 +673,67 @@ tracks/5/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ -5046272 ]
+"values": [ -3646272 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Hurtboxes/Divekick_hurtbox1:shape:extents_x")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 5600000 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Hurtboxes/Divekick_hurtbox1:shape:extents_y")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 5600000 ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Hurtboxes/Divekick_hurtbox1:fixed_position_x")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 3600000 ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Hurtboxes/Divekick_hurtbox1:fixed_position_y")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Hurtboxes/Divekick_hurtbox1:disabled")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
 }
 
 [sub_resource type="Animation" id=52]
@@ -1450,6 +1577,30 @@ tracks/24/keys = {
 "update": 1,
 "values": [ true ]
 }
+tracks/25/type = "value"
+tracks/25/path = NodePath(".:fighter_gravity")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 65536 ]
+}
+tracks/26/type = "value"
+tracks/26/path = NodePath("Hurtboxes/Divekick_hurtbox1:disabled")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [sub_resource type="Animation" id=50]
 resource_name = "Throw"
@@ -1577,7 +1728,7 @@ tracks/0/keys = {
 
 [sub_resource type="SpriteFrames" id=34]
 animations = [ {
-"frames": [ ExtResource( 26 ), ExtResource( 13 ), ExtResource( 25 ), ExtResource( 20 ), ExtResource( 19 ), ExtResource( 16 ), ExtResource( 12 ), ExtResource( 27 ), ExtResource( 11 ), ExtResource( 17 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 21 ), ExtResource( 18 ), ExtResource( 14 ), ExtResource( 22 ), ExtResource( 15 ), ExtResource( 30 ) ],
+"frames": [ ExtResource( 26 ), ExtResource( 13 ), ExtResource( 25 ), ExtResource( 20 ), ExtResource( 19 ), ExtResource( 16 ), ExtResource( 12 ), ExtResource( 27 ), ExtResource( 11 ), ExtResource( 17 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 21 ), ExtResource( 18 ), ExtResource( 14 ), ExtResource( 22 ), ExtResource( 15 ), ExtResource( 30 ), ExtResource( 32 ), ExtResource( 31 ) ],
 "loop": false,
 "name": "Default",
 "speed": 0.0
@@ -1612,6 +1763,7 @@ anims/CHeavy = SubResource( 56 )
 anims/CLight = SubResource( 55 )
 anims/Crouch = SubResource( 46 )
 anims/DP = SubResource( 59 )
+anims/DashPunch = SubResource( 61 )
 anims/Divekick = SubResource( 60 )
 anims/DoThrow = SubResource( 52 )
 anims/Heavy = SubResource( 54 )
@@ -1658,7 +1810,7 @@ script = ExtResource( 2 )
 
 [node name="hitbox1" type="SGCollisionShape2D" parent="Hitboxes"]
 self_modulate = Color( 0.75, 0.75, 0.75, 1 )
-position = Vector2( 132, -77 )
+position = Vector2( 61, -91 )
 fixed_position_x = 8650752
 fixed_position_y = -5046272
 shape = SubResource( 42 )
@@ -1717,6 +1869,13 @@ disabled = true
 self_modulate = Color( 0.498039, 0.498039, 0.498039, 0.498039 )
 position = Vector2( 0, -46.0518 )
 fixed_position_y = -3018048
+shape = SubResource( 43 )
+disabled = true
+
+[node name="Divekick_hurtbox1" type="SGCollisionShape2D" parent="Hurtboxes"]
+self_modulate = Color( 0.498039, 0.498039, 0.498039, 0.498039 )
+position = Vector2( 54.9316, 0 )
+fixed_position_x = 3600000
 shape = SubResource( 43 )
 disabled = true
 
