@@ -22,9 +22,10 @@ func run(f: Fighter, input: Dictionary) -> void:
 	# f.vel.x = -signn * (65536 * f.state_dict.knockback)
 
 	# visual stuff, i can use floats here lmao
-	var sprite: Sprite = f.find_node("Sprite")
-	sprite.self_modulate.b = 1 - 1.0 / (f.state_time / 3.0 + 1)
-	sprite.self_modulate.g = 1 - 1.0 / (f.state_time / 3.0 + 1)
+	var character = f.find_node("Character")
+	character.modulate = Color.yellow.linear_interpolate(
+		Color.white, f.state_time / 2.0 / f.state_dict.blockstun
+	)
 
 
 func animation(f: Fighter) -> String:

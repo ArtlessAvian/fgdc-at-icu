@@ -32,6 +32,10 @@ func run(f: Fighter, input: Dictionary) -> void:
 	if diff < 0 && f.fixed_scale.x < 0:
 		f.fixed_scale.x *= -1
 
+	# TODO: Remove bandaid fix
+	var character = f.find_node("Character")
+	character.modulate = Color.white
+
 
 func animation(f: Fighter) -> String:
 	return "Walk" if f.vel.x != 0 else "Idle"

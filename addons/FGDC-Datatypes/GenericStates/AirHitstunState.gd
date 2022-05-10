@@ -10,8 +10,13 @@ func transition_out(f: Fighter, moveset: Moveset, input: Dictionary) -> Resource
 		if input.light or input.heavy:
 			f.combo_count = 0
 			print("flip out")
-			f.vel.x += input.stick_x * 6 << 16
+			f.vel.x = input.stick_x * 10 << 16
 			f.vel.y = 3 << 16
+
+			# TODO: bandaid fix
+			var character = f.find_node("Character")
+			character.modulate = Color.white
+
 			return moveset.jump
 
 	return null
@@ -27,9 +32,9 @@ func run(f: Fighter, input: Dictionary) -> void:
 		character.modulate.b = 1
 	else:
 		var character = f.find_node("Character")
-		character.modulate.r = 1
-		character.modulate.g = 1 - 1.0 / (f.state_time / 10.0 + 1)
-		character.modulate.b = 1 - 1.0 / (f.state_time / 10.0 + 1)
+		character.modulate = Color.red.linear_interpolate(
+			Color.white, f.state_time / 2.0 / f.state_dict.hitstun
+		)
 
 
 func animation(f: Fighter) -> String:

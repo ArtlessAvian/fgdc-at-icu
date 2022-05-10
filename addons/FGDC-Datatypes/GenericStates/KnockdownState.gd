@@ -35,6 +35,10 @@ func run(f: Fighter, input: Dictionary) -> void:
 	if f.grounded:
 		f.state_dict.knockdown_timer -= 1
 
+	# TODO: bandaid fix
+	var character = f.find_node("Character")
+	character.modulate = Color.white
+
 
 func animation(f: Fighter) -> String:
 	return "Knockdown" if f.state_dict.knockdown_timer == 30 else "Wakeup"

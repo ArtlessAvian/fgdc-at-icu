@@ -115,6 +115,8 @@ shapes/collision/contact_color=Color( 1, 0.2, 0.101961, 0.8 )
 
 window/size/width=1280
 window/size/height=720
+window/stretch/mode="2d"
+window/stretch/aspect="expand"
 
 [editor_plugins]
 
