@@ -1813,6 +1813,18 @@ tracks/30/keys = {
 "update": 0,
 "values": [ Vector2( 0, 0 ) ]
 }
+tracks/31/type = "value"
+tracks/31/path = NodePath("Hitboxes/hitbox1:disabled")
+tracks/31/interp = 1
+tracks/31/loop_wrap = true
+tracks/31/imported = false
+tracks/31/enabled = true
+tracks/31/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [sub_resource type="Animation" id=50]
 resource_name = "Throw"
@@ -2056,7 +2068,7 @@ script = ExtResource( 2 )
 
 [node name="hitbox1" type="SGCollisionShape2D" parent="Hitboxes"]
 self_modulate = Color( 0.75, 0.75, 0.75, 1 )
-position = Vector2( 76, -43 )
+position = Vector2( 132, -77 )
 fixed_position_x = 8650752
 fixed_position_y = -5046272
 shape = SubResource( 42 )
@@ -2073,6 +2085,7 @@ fixed_position_y = -6553600
 shape = SubResource( 43 )
 
 [node name="Light_hurtbox1" type="SGCollisionShape2D" parent="Hurtboxes"]
+self_modulate = Color( 0.498039, 0.498039, 0.498039, 0.0392157 )
 position = Vector2( 69.4824, -120 )
 fixed_position_x = 4553600
 fixed_position_y = -7864320
@@ -2096,6 +2109,7 @@ shape = SubResource( 43 )
 disabled = true
 
 [node name="CHeavy_hurtbox1" type="SGCollisionShape2D" parent="Hurtboxes"]
+self_modulate = Color( 0.498039, 0.498039, 0.498039, 0.0392157 )
 position = Vector2( 68.5942, -43.4824 )
 fixed_position_x = 4495392
 fixed_position_y = -2849664
@@ -2147,9 +2161,7 @@ margin_left = -134.0
 margin_top = 31.0
 margin_right = 184.0
 margin_bottom = 45.0
-text = "res://Characters/Max/MaxCHeavy.tres::1
-9 (6) 16
-"
+text = "No attack loaded!"
 
 [node name="InputHistory" type="Node" parent="." groups=["network_sync"]]
 script = ExtResource( 6 )

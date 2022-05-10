@@ -6,7 +6,6 @@
 [ext_resource path="res://addons/FGDC-Datatypes/HitData.gd" type="Script" id=4]
 [ext_resource path="res://Fighters/Hurtboxes.gd" type="Script" id=5]
 
-
 [sub_resource type="SGRectangleShape2D" id=3]
 extents_x = 3276800
 extents_y = 1638400
@@ -16,11 +15,11 @@ script = ExtResource( 4 )
 guard = "0"
 startup = 4
 active = 2
-hitstun = 12
-blockstun = 12
+hitstun = 30
+blockstun = 20
 hitstop = 5
-damage = 3
-chipdamage = 1
+damage = 5
+chipdamage = 3
 knockdown = true
 x_vel = 5
 y_vel = 15

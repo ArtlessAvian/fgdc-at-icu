@@ -23,7 +23,6 @@
 [ext_resource path="res://spr_realisticexplosion/spr_realisticexplosion_0.png" type="Texture" id=21]
 [ext_resource path="res://Fighters/Hurtboxes.gd" type="Script" id=22]
 
-
 [sub_resource type="Resource" id=2]
 script = ExtResource( 4 )
 guard = "0"
@@ -32,7 +31,7 @@ active = 2
 hitstun = 20
 blockstun = 20
 hitstop = 5
-damage = 1
+damage = 3
 chipdamage = 1
 knockdown = false
 x_vel = 0

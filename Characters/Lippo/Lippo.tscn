@@ -1342,6 +1342,18 @@ tracks/22/keys = {
 "update": 0,
 "values": [ false ]
 }
+tracks/23/type = "value"
+tracks/23/path = NodePath("Hitboxes/SGCollisionShape2D:disabled")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
 [sub_resource type="Animation" id=50]
 resource_name = "Throw"
