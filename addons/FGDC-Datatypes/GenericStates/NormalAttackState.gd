@@ -25,16 +25,15 @@ func transition_out(f: Fighter, moveset: Moveset, input: Dictionary) -> Resource
 	if attack != null:
 		return attack
 
-	# TODO: Rethink Hitbox, Hurtbox interation.
-	# This checks for contact but /not/ hitting.
-	if f.get_node("Hitboxes").attack_number == f.state_dict.last_attack_contact:
-		var jump
-		if f.grounded:
-			jump = transition_into_jump(f, moveset, input)
-		else:
-			jump = transition_into_double_jump(f, moveset, input)
-		if jump != null:
-			return jump
+	if bool(jump_cancellable):
+		if f.get_node("Hitboxes").attack_number == f.state_dict.last_attack_contact:
+			var jump
+			if f.grounded:
+				jump = transition_into_jump(f, moveset, input)
+			else:
+				jump = transition_into_double_jump(f, moveset, input)
+			if jump != null:
+				return jump
 
 	if f.state_time > attack_data.animation_length():
 		if not f.grounded:

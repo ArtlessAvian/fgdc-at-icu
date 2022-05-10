@@ -53,6 +53,7 @@ func _ready():
 	$AnimationPlayer.playback_speed = 1
 
 	state = moveset.walk
+	state.enter(self)
 
 
 # Stuff happening independently of the other player.
@@ -335,7 +336,7 @@ func _get_local_input() -> Dictionary:
 		}
 
 	if controlled_by == "mash":
-		if randf() < 0.3:
+		if randf() < 0.5:
 			return last_mash
 
 		var input = {

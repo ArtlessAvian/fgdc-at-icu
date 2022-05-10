@@ -13,7 +13,7 @@
 [ext_resource path="res://Characters/Max/MaxDashPunch.tres" type="Resource" id=11]
 [ext_resource path="res://Characters/Max/MaxJLight.tres" type="Resource" id=12]
 [ext_resource path="res://Characters/Max/MaxLight.tres" type="Resource" id=13]
-[ext_resource path="res://Characters/Max/MaxHeavy.tres" type="Resource" id=14]
+[ext_resource path="res://Characters/Max/MaxHeavyStep.tres" type="Resource" id=14]
 [ext_resource path="res://Characters/Max/MaxCLight.tres" type="Resource" id=15]
 [ext_resource path="res://Characters/Max/MaxCHeavy.tres" type="Resource" id=16]
 

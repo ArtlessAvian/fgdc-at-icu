@@ -14,7 +14,7 @@ func transition_into(f: Fighter, moveset: Moveset, input: Dictionary) -> bool:
 	if not input.light and not input.heavy:
 		return false
 
-	if f.state in [moveset.jump]:
+	if f.state in [moveset.jump, moveset.j_light, moveset.j_heavy]:
 		if f.get_node("InputHistory").detect_downdown(f.fixed_scale.x < 0, 17):
 			f.fighter_gravity = 0
 			f.vel.y = 0 if input.heavy else impulse << 14

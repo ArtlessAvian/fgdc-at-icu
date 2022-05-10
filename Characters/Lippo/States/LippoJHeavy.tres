@@ -25,5 +25,5 @@ recovery = 10
 script = ExtResource( 1 )
 attack_data = SubResource( 1 )
 attack_level = 0
-jump_cancellable = false
+jump_cancellable = true
 is_light = false

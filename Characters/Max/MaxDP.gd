@@ -14,16 +14,17 @@ func transition_into(f: Fighter, moveset: Moveset, input: Dictionary) -> bool:
 	if not input.light and not input.heavy:
 		return false
 
-	if f.state in [moveset.walk, moveset.crouch, moveset.lazy_all_normals]:
-		if f.get_node("InputHistory").detect_dp(f.fixed_scale.x < 0, 17):
-			f.vel.y = (impulse << 16) + ((5 << 16) if input.heavy else 0)
-			f.vel.x = int(sign(f.fixed_scale.x)) * 5 << 16
-			f.grounded = false
-			f.get_node("Hitboxes").new_attack()
-			
-			if input.heavy:
-				heavy = true
-			return true
+	if f.state in [moveset.walk, moveset.crouch] + moveset.all_normals():
+		if f.state.attack_level() < self.attack_level():
+			if f.get_node("InputHistory").detect_dp(f.fixed_scale.x < 0, 17):
+				f.vel.y = (impulse << 16) + ((5 << 16) if input.heavy else 0)
+				f.vel.x = int(sign(f.fixed_scale.x)) * 5 << 16
+				f.grounded = false
+				f.get_node("Hitboxes").new_attack()
+
+				if input.heavy:
+					heavy = true
+				return true
 
 	return false
 
@@ -43,3 +44,7 @@ func run(f: Fighter, input: Dictionary) -> void:
 
 func animation(f: Fighter) -> String:
 	return "DP"
+
+
+func attack_level() -> int:
+	return attack_level

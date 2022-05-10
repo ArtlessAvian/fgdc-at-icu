@@ -35,6 +35,8 @@ func run(f: Fighter, input: Dictionary) -> void:
 
 # TODO: Proper prejump animation
 func animation(f: Fighter) -> String:
+	if (f.get_node("AnimationPlayer") as AnimationPlayer).has_animation("Prejump"):
+		return "Prejump"
 	return "Crouch"
 
 

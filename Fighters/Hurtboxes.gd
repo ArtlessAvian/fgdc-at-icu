@@ -32,7 +32,7 @@ func set_player(is_p2, is_projectile = false):
 		collision_mask <<= 2
 
 
-const color_disabled = Color8(127, 127, 127, 127)
+const color_disabled = Color8(127, 127, 127, 10)
 
 
 func _process(delta):

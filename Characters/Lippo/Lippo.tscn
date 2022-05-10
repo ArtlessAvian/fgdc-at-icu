@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=2]
+[gd_scene load_steps=74 format=2]
 
 [ext_resource path="res://Fighters/Fighter.gd" type="Script" id=1]
 [ext_resource path="res://Fighters/Hitboxes.gd" type="Script" id=2]
@@ -1420,6 +1420,23 @@ tracks/5/keys = {
 "values": [ true, false, true ]
 }
 
+[sub_resource type="Animation" id=83]
+resource_name = "Turnaround"
+length = 10.0
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Visual/Character:flips")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 10 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -1.0, 0.0 ]
+}
+
 [sub_resource type="Animation" id=51]
 resource_name = "Wakeup"
 length = 30.0
@@ -1642,6 +1659,7 @@ anims/MissilesEnd = SubResource( 82 )
 anims/MissilesStartup = SubResource( 81 )
 anims/RESET = SubResource( 38 )
 anims/Throw = SubResource( 50 )
+anims/Turnaround = SubResource( 83 )
 anims/Wakeup = SubResource( 51 )
 anims/Walk = SubResource( 36 )
 

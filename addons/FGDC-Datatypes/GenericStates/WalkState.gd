@@ -18,6 +18,10 @@ func transition_out(f: Fighter, moveset: Moveset, input: Dictionary) -> Resource
 	return null
 
 
+func enter(f: Fighter) -> void:
+	f.state_dict["turnaround"] = -8765309
+
+
 func run(f: Fighter, input: Dictionary) -> void:
 	if input.stick_x == 0:
 		f.vel.x = 0
@@ -29,8 +33,10 @@ func run(f: Fighter, input: Dictionary) -> void:
 	var diff = f.fixed_position.x - f.get_node(f.opponent_path).fixed_position.x
 	if diff > 0 && f.fixed_scale.x > 0:
 		f.fixed_scale.x *= -1
+		f.state_dict["turnaround"] = f.state_time
 	if diff < 0 && f.fixed_scale.x < 0:
 		f.fixed_scale.x *= -1
+		f.state_dict["turnaround"] = f.state_time
 
 	# TODO: Remove bandaid fix
 	var character = f.find_node("Character")
@@ -38,7 +44,12 @@ func run(f: Fighter, input: Dictionary) -> void:
 
 
 func animation(f: Fighter) -> String:
-	return "Walk" if f.vel.x != 0 else "Idle"
+	if f.vel.x != 0:
+		return "Walk"
+	if f.state_time < f.state_dict["turnaround"] + 10:
+		if (f.get_node("AnimationPlayer") as AnimationPlayer).has_animation("Turnaround"):
+			return "Turnaround"
+	return "Idle"
 
 
 func can_block() -> bool:

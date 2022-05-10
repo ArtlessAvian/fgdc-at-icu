@@ -14,7 +14,10 @@ func transition_into(f: Fighter, moveset: Moveset, input: Dictionary) -> bool:
 	if not input.light and not input.heavy:
 		return false
 
-	if f.state in [moveset.walk, moveset.crouch]:
+	if (
+		f.state in [moveset.walk, moveset.crouch] + moveset.all_attacks()
+		and f.state.attack_level() < self.attack_level()
+	):
 		if f.get_node("InputHistory").detect_qcb(f.fixed_scale.x < 0, 17):
 			f.vel.x = 0
 			f.get_node("Hitboxes").new_attack()
@@ -31,6 +34,13 @@ func transition_into(f: Fighter, moveset: Moveset, input: Dictionary) -> bool:
 func transition_out(f: Fighter, moveset: Moveset, input: Dictionary) -> Resource:
 	if f.state_time > 40:
 		return moveset.walk
+
+	# lolol what if it jump canceled
+	# if f.get_node("Hitboxes").attack_number == f.state_dict.get("last_attack_contact"):
+	# 	var jump = transition_into_jump(f, moveset, input)
+	# 	if jump != null:
+	# 		return jump
+
 	return null
 
 
@@ -51,5 +61,10 @@ func run(f: Fighter, input: Dictionary) -> void:
 		else:
 			f.vel.x = 0
 
+
 func animation(f: Fighter) -> String:
 	return "DashPunch"
+
+
+func attack_level() -> int:
+	return attack_level
