@@ -11,5 +11,5 @@ func enter(f: Fighter) -> void:
 func run(f: Fighter, input: Dictionary) -> void:
 	.run(f, input)
 	if f.state_time < step_time:
-		print("steppin")
+		# print("steppin")
 		f.vel.x = int(sign(f.fixed_scale.x)) * step_vel

@@ -1996,6 +1996,8 @@ fighter_spacing = 100
 fighter_height = 100
 fighter_gravity = 65536
 moveset = ExtResource( 9 )
+is_p2 = null
+opponent_path = null
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 playback_speed = 60.0

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/rip_in_pieces_2.wav-f9ffe94a9f1e72800972c84fd0e8538d.sample"
+
+[deps]
+
+source_file="res://rip_in_pieces_2.wav"
+dest_files=[ "res://.import/rip_in_pieces_2.wav-f9ffe94a9f1e72800972c84fd0e8538d.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

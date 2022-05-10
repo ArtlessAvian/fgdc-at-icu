@@ -8,9 +8,9 @@ const prejump_frames = 3
 
 
 func transition_out(f: Fighter, moveset: Moveset, input: Dictionary) -> Resource:
-	var attack = transition_into_attack(f, moveset, input)
-	if attack != null:
-		return attack
+	# var attack = transition_into_attack(f, moveset, input)
+	# if attack != null:
+	# 	return attack
 
 	if f.state_time >= prejump_frames:
 		if input.stick_x == 0:

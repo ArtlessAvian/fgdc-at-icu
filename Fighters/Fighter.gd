@@ -229,7 +229,8 @@ func on_block():
 	$Hurtboxes.register_contact(true)
 
 	hitstop = $Hurtboxes.hit_hitdata.hitstop
-	health = max(health - $Hurtboxes.hit_hitdata.chipdamage, 0)
+	# can't die to chip
+	health = max(health - $Hurtboxes.hit_hitdata.chipdamage, 1)
 
 	state_dict.blockstun = $Hurtboxes.hit_hitdata.blockstun
 	vel.x = $Hurtboxes.hit_hitdata.x_vel << 16
@@ -244,13 +245,15 @@ func on_block():
 	combo_count = 0
 
 
-# Rename to "get_hit" when everyone's ready. ;_;
-# Imagine being able to name things
+const hit_sound = preload("res://rip_in_pieces.wav")
+const hit_sound_2 = preload("res://rip_in_pieces_2.wav")
+
+
 func on_hit():
 	$Hurtboxes.register_contact(false)
 
 	hitstop = $Hurtboxes.hit_hitdata.hitstop
-	health = max(health - $Hurtboxes.hit_hitdata.damage, 0)
+	health = health - $Hurtboxes.hit_hitdata.damage
 
 	if state in [moveset.hitstun, moveset.air_hitstun]:
 		combo_count += 1
@@ -275,6 +278,12 @@ func on_hit():
 		change_to_state(moveset.hitstun)
 	else:
 		change_to_state(moveset.air_hitstun)
+
+	SyncManager.play_sound(
+		str(get_path()) + ":hit",
+		hit_sound if SyncManager.current_tick % 2 == 0 else hit_sound_2,
+		{position = self.position, pitch_scale = 1}
+	)
 
 
 func throw_response(input: Dictionary):

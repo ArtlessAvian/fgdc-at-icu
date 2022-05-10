@@ -67,7 +67,7 @@ func all_states():
 		lazy_all_states.append(crouch)
 		lazy_all_states.append(jump)
 		lazy_all_states.append(knockdown)
-		print(lazy_all_states)
-		print(lazy_all_normals)
-		print(lazy_all_attacks)
+		# print(lazy_all_states)
+		# print(lazy_all_normals)
+		# print(lazy_all_attacks)
 	return lazy_all_states
