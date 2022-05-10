@@ -1,6 +1,6 @@
 extends State
 
-export(int) var impulse = 40
+export(int) var impulse = 25
 export(int) var attack_level = 6
 export(bool) var jump_cancellable = false
 
@@ -10,15 +10,17 @@ export(Resource) var attack_data = null
 func transition_into(f: Fighter, moveset: Moveset, input: Dictionary) -> bool:
 	if not f.grounded:
 		return false
-	if not input.light:
+	if not input.heavy:
 		return false
 
-	if f.state in [moveset.walk, moveset.crouch]:
-		if f.get_node("InputHistory").detect_qcb(f.fixed_scale.x < 0, 17):
-			f.vel.x = 0
-			f.get_node("Hitboxes").new_attack()
-
-			return true
+	if f.state in [moveset.walk, moveset.crouch] + moveset.all_normals():
+		if f.state.attack_level() < self.attack_level():
+			if f.get_node("InputHistory").detect_dp(f.fixed_scale.x < 0, 17):
+				f.vel.y = 0
+				f.vel.x = int(sign(f.fixed_scale.x)) * 5 << 16
+				f.grounded = true
+				f.get_node("Hitboxes").new_attack()
+				return true
 
 	return false
 
@@ -26,19 +28,22 @@ func transition_into(f: Fighter, moveset: Moveset, input: Dictionary) -> bool:
 # Define transitions from this state OUT.
 # Has less priority over transition_into
 func transition_out(f: Fighter, moveset: Moveset, input: Dictionary) -> Resource:
-	if f.state_time > 40:
+	if f.state_time > 111:
 		return moveset.walk
 	return null
 
 
 func run(f: Fighter, input: Dictionary) -> void:
 	attack_data.write_hitbox_positions(f.state_time, f.get_node("Hitboxes"))
-	if f.state_time < 11:
-		f.vel.x = 0
-	elif f.state_time < 17:
-		f.vel.x = (impulse * (-1 if f.fixed_scale.x < 0 else 1)) << 16
-	else:
-		f.vel.x = 0
+	f.invincible = f.state_time < 12
+	if f.state_time == 9:
+		f.vel.y = impulse << 16
+		f.grounded = false
+
 
 func animation(f: Fighter) -> String:
-	return "DashPunch"
+	return "DP"
+
+
+func attack_level() -> int:
+	return attack_level

@@ -23,8 +23,7 @@ recovery = 0
 
 [resource]
 script = ExtResource( 2 )
-impulse = -20
+impulse = -3
 attack_level = 6
 jump_cancellable = false
-heavy = false
 attack_data = SubResource( 2 )

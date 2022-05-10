@@ -1601,6 +1601,69 @@ tracks/26/keys = {
 "update": 1,
 "values": [ true ]
 }
+<<<<<<< Updated upstream
+=======
+tracks/27/type = "value"
+tracks/27/path = NodePath("Visual/Character/AnimatedSprite:flip_h")
+tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/imported = false
+tracks/27/enabled = true
+tracks/27/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/28/type = "value"
+tracks/28/path = NodePath("Visual:position")
+tracks/28/interp = 1
+tracks/28/loop_wrap = true
+tracks/28/imported = false
+tracks/28/enabled = true
+tracks/28/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/29/type = "value"
+tracks/29/path = NodePath("Visual/Character:position")
+tracks/29/interp = 1
+tracks/29/loop_wrap = true
+tracks/29/imported = false
+tracks/29/enabled = true
+tracks/29/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/30/type = "value"
+tracks/30/path = NodePath("Visual/Character/AnimatedSprite:offset")
+tracks/30/interp = 1
+tracks/30/loop_wrap = true
+tracks/30/imported = false
+tracks/30/enabled = true
+tracks/30/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/31/type = "value"
+tracks/31/path = NodePath("Hitboxes/hitbox1:disabled")
+tracks/31/interp = 1
+tracks/31/loop_wrap = true
+tracks/31/imported = false
+tracks/31/enabled = true
+tracks/31/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+>>>>>>> Stashed changes
 
 [sub_resource type="Animation" id=50]
 resource_name = "Throw"
@@ -1810,7 +1873,11 @@ script = ExtResource( 2 )
 
 [node name="hitbox1" type="SGCollisionShape2D" parent="Hitboxes"]
 self_modulate = Color( 0.75, 0.75, 0.75, 1 )
+<<<<<<< Updated upstream
 position = Vector2( 61, -91 )
+=======
+position = Vector2( 132, -77 )
+>>>>>>> Stashed changes
 fixed_position_x = 8650752
 fixed_position_y = -5046272
 shape = SubResource( 42 )
@@ -1827,7 +1894,11 @@ fixed_position_y = -6553600
 shape = SubResource( 43 )
 
 [node name="Light_hurtbox1" type="SGCollisionShape2D" parent="Hurtboxes"]
+<<<<<<< Updated upstream
 self_modulate = Color( 0.498039, 0.498039, 0.498039, 0.498039 )
+=======
+self_modulate = Color( 0.498039, 0.498039, 0.498039, 0.0392157 )
+>>>>>>> Stashed changes
 position = Vector2( 69.4824, -120 )
 fixed_position_x = 4553600
 fixed_position_y = -7864320
@@ -1851,7 +1922,11 @@ shape = SubResource( 43 )
 disabled = true
 
 [node name="CHeavy_hurtbox1" type="SGCollisionShape2D" parent="Hurtboxes"]
+<<<<<<< Updated upstream
 self_modulate = Color( 0.498039, 0.498039, 0.498039, 0.498039 )
+=======
+self_modulate = Color( 0.498039, 0.498039, 0.498039, 0.0392157 )
+>>>>>>> Stashed changes
 position = Vector2( 68.5942, -43.4824 )
 fixed_position_x = 4495392
 fixed_position_y = -2849664

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=24 format=2]
+[gd_resource type="Resource" load_steps=27 format=2]
 
 [ext_resource path="res://addons/FGDC-Datatypes/ThrowData.gd" type="Script" id=1]
 [ext_resource path="res://addons/FGDC-Datatypes/GenericStates/JumpState.gd" type="Script" id=2]
@@ -16,6 +16,9 @@
 [ext_resource path="res://Characters/Max/MaxHeavy.tres" type="Resource" id=14]
 [ext_resource path="res://Characters/Max/MaxCLight.tres" type="Resource" id=15]
 [ext_resource path="res://Characters/Max/MaxCHeavy.tres" type="Resource" id=16]
+[ext_resource path="res://Characters/Max/MaxDivekickHeavy.tres" type="Resource" id=17]
+[ext_resource path="res://Characters/Max/MaxDashPunchHeavy.tres" type="Resource" id=18]
+[ext_resource path="res://Characters/Max/MaxDPHeavy.tres" type="Resource" id=19]
 
 [sub_resource type="Resource" id=8]
 script = ExtResource( 7 )
@@ -79,5 +82,5 @@ c_heavy = ExtResource( 16 )
 j_light = ExtResource( 12 )
 j_heavy = ExtResource( 9 )
 throw = SubResource( 7 )
-attacks = [ ExtResource( 8 ), ExtResource( 10 ), ExtResource( 11 ) ]
+attacks = [ ExtResource( 8 ), ExtResource( 19 ), ExtResource( 10 ), ExtResource( 17 ), ExtResource( 11 ), ExtResource( 18 ) ]
 movement = [  ]
