@@ -53,28 +53,16 @@ func setup_input_dropdown(dropdown: OptionButton):
 		dropdown.add_item(controllers_by_name[i], i)
 
 
-func setup_match_for_replay(my_peer_id: int, peer_ids: Array, match_info: Dictionary) -> void:
-	# Setup the match using 'match_info' and disable anything we don't
-	# want or need during replay.
-	pass
-
-
 func _on_Server_button_up():
 	var peer = NetworkedMultiplayerENet.new()
 	peer.create_server(int(port_field.text), 1)
 	get_tree().network_peer = peer
-
-	if not SyncReplay.active:
-		SyncManager.start_logging("res://dump/" + str(OS.get_unix_time()) + "-host.log")
 
 
 func _on_Client_button_up():
 	var peer = NetworkedMultiplayerENet.new()
 	peer.create_client(host_field.text, int(port_field.text))
 	get_tree().network_peer = peer
-
-	if not SyncReplay.active:
-		SyncManager.start_logging("res://dump/" + str(OS.get_unix_time()) + "-client.log")
 
 
 func _on_Local_button_up():
@@ -88,23 +76,21 @@ func _on_Local_button_up():
 	$Match/Game/Fighter1.controlled_by = controllers_by_index[$CanvasLayer/MarginContainer/GridContainer/LocalInput1.selected]
 	$Match/Game/Fighter2.controlled_by = controllers_by_index[$CanvasLayer/MarginContainer/GridContainer/LocalInput2.selected]
 
+	var replay_dict = {}
+	replay_dict["p1"] = hardcoded_characters[$CanvasLayer/MarginContainer/GridContainer/LocalCharacter.selected]
+	replay_dict["p2"] = hardcoded_characters[$CanvasLayer/MarginContainer/GridContainer/LocalCharacter2.selected]
+
 	# $Match.set_character(load("res://Example/Example.tscn"), true)
+	if not SyncReplay.active:
+		var directory = Directory.new()
+		if not directory.open("user://replays/") == OK:
+			print("made directory")
+			directory.make_dir("user://replays/")
+		SyncManager.start_logging(
+			"user://replays/" + str(OS.get_unix_time()) + "-local.log", replay_dict
+		)
 
 	SyncManager.start()
-
-
-func _on_Mash_button_up():
-	var peer = NetworkedMultiplayerENet.new()
-	peer.create_server(31415, 1)
-	get_tree().network_peer = peer
-
-	$CanvasLayer/MarginContainer.visible = false
-	$CanvasLayer/ColorRect.visible = false
-
-	$Match/Game/Fighter2.is_mash = true
-	SyncManager.start()
-
-	# HACK
 
 
 # NETWORKING====================================================
@@ -115,12 +101,22 @@ func _on_network_peer_connected(peer_id: int):
 	SyncManager.add_peer(peer_id)
 
 	var game_instance = find_node("Game", true, false)
-	print(game_instance)
+	var replay_dict = {}
 
 	self.rpc(
 		"set_character_network",
-		hardcoded_characters[$CanvasLayer/MarginContainer/GridContainer/OnlineCharacter.selected]
+		hardcoded_characters[$CanvasLayer/MarginContainer/GridContainer/OnlineCharacter.selected],
+		replay_dict
 	)
+
+	if not SyncReplay.active:
+		var directory = Directory.new()
+		if not directory.open("user://replays/") == OK:
+			print("made directory")
+			directory.make_dir("user://replays/")
+		SyncManager.start_logging(
+			"user://replays/" + str(OS.get_unix_time()) + "-online.log", replay_dict
+		)
 
 	# game_instance.get_node("Fighter1").set_network_master(1)
 	# if get_tree().is_network_server():
@@ -141,9 +137,10 @@ func _on_network_peer_connected(peer_id: int):
 		SyncManager.start()
 
 
-remotesync func set_character_network(scene_path: String):
+remotesync func set_character_network(scene_path: String, replay_dict: Dictionary):
 	var peer_id = get_tree().get_rpc_sender_id()
 	$Match.set_character(load(scene_path), peer_id != 1, peer_id)
+	replay_dict["p1" if peer_id == 1 else "p2"] = scene_path
 	print(scene_path, peer_id)
 
 
@@ -185,3 +182,16 @@ func _on_SyncManager_sync_error(msg: String) -> void:
 
 func _on_LocalCharacter_item_selected(index: int, is_p2: bool):
 	$Match.set_character(load(hardcoded_characters[index]), is_p2)
+
+
+func _notification(what):
+	if what == MainLoop.NOTIFICATION_WM_QUIT_REQUEST:
+		if not SyncReplay.active:
+			SyncManager.stop_logging()
+
+
+func setup_match_for_replay(my_peer_id: int, peer_ids: Array, match_info: Dictionary) -> void:
+	$Match.set_character(load(match_info["p1"]), false)
+	$Match.set_character(load(match_info["p2"]), true)
+	$CanvasLayer/MarginContainer.visible = false
+	$CanvasLayer/ColorRect.visible = false
