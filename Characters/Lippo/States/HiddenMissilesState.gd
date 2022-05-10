@@ -12,7 +12,7 @@ func transition_out(f: Fighter, moveset: Moveset, input: Dictionary) -> Resource
 	if attack != null:
 		return attack
 
-	if f.state_time > f.state_dict["missile_time"] + 30:
+	if f.state_time > f.state_dict["missile_time"] + 45:
 		if f.grounded:
 			return moveset.walk
 		return moveset.jump
@@ -66,7 +66,7 @@ func animation(f: Fighter) -> String:
 		return "MissilesStartup"
 	if f.state_time - f.state_dict["missile_time"] < 8:
 		return "HiddenMissiles"
-	return "Walk"
+	return "MissilesEnd"
 
 
 func attack_level() -> int:

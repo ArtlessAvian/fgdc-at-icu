@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=2]
+[gd_scene load_steps=71 format=2]
 
 [ext_resource path="res://Fighters/Fighter.gd" type="Script" id=1]
 [ext_resource path="res://Fighters/Hitboxes.gd" type="Script" id=2]
@@ -11,11 +11,22 @@
 [ext_resource path="res://Characters/Lippo/LippoMoveset.tres" type="Resource" id=9]
 [ext_resource path="res://Example/Lippo.png" type="Texture" id=10]
 [ext_resource path="res://spritesheet test.png" type="Texture" id=11]
-[ext_resource path="res://Characters/Lippo/Assets/card.png" type="Texture" id=12]
-[ext_resource path="res://Characters/Lippo/Assets/Diamonds.png" type="Texture" id=13]
+[ext_resource path="res://Characters/Lippo/Assets/ProgrammerArt/card.png" type="Texture" id=12]
+[ext_resource path="res://Characters/Lippo/Assets/ProgrammerArt/Diamonds.png" type="Texture" id=13]
 [ext_resource path="res://Characters/Lippo/HeavyBeam.gd" type="Script" id=14]
-[ext_resource path="res://Characters/Lippo/Assets/heart.png" type="Texture" id=15]
-[ext_resource path="res://Characters/Lippo/Assets/club.png" type="Texture" id=16]
+[ext_resource path="res://Characters/Lippo/Assets/ProgrammerArt/heart.png" type="Texture" id=15]
+[ext_resource path="res://Characters/Lippo/Assets/ProgrammerArt/club.png" type="Texture" id=16]
+[ext_resource path="res://Characters/Lippo/Assets/Lippo_Jump_Frames/Lippo_Jump-2.png" type="Texture" id=17]
+[ext_resource path="res://Characters/Lippo/Assets/Lippo_Poke-1.png" type="Texture" id=18]
+[ext_resource path="res://Characters/Lippo/Assets/Lippo_Walk_Frames/Lippo_Walk-1.png" type="Texture" id=19]
+[ext_resource path="res://Characters/Lippo/Assets/Lippo_Walk_Frames/Lippo_Walk-4.png" type="Texture" id=20]
+[ext_resource path="res://Characters/Lippo/Assets/Lippo_Walk_Frames/Lippo_Walk-2.png" type="Texture" id=21]
+[ext_resource path="res://Characters/Lippo/Assets/Lippo_Crouch-1.png" type="Texture" id=22]
+[ext_resource path="res://Characters/Lippo/Assets/Lippo_Jump_Frames/Lippo_Jump-4.png" type="Texture" id=23]
+[ext_resource path="res://Characters/Lippo/Assets/Lippo_Jump_Frames/Lippo_Jump-3.png" type="Texture" id=24]
+[ext_resource path="res://Characters/Lippo/Assets/Lippo_Walk_Frames/Lippo_Walk-3.png" type="Texture" id=25]
+[ext_resource path="res://Characters/Lippo/Assets/Lippo_Jump_Frames/Lippo_Jump-1.png" type="Texture" id=26]
+[ext_resource path="res://Characters/Lippo/Assets/LippoStand.tres" type="Texture" id=27]
 
 [sub_resource type="Animation" id=76]
 resource_name = "Airdash"
@@ -32,6 +43,30 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ 0.0, 2.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Visual/Character/AnimatedSprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -77, -80 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Visual/Character/AnimatedSprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 9 ]
 }
 
 [sub_resource type="Animation" id=47]
@@ -63,7 +98,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 3239403 ]
+"values": [ 4000000 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Hitboxes/SGCollisionShape2D:shape:extents_y")
@@ -75,7 +110,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 4128808 ]
+"values": [ 6000000 ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Hitboxes/SGCollisionShape2D:fixed_position_x")
@@ -87,7 +122,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 8650752 ]
+"values": [ 9437184 ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("Hitboxes/SGCollisionShape2D:fixed_position_y")
@@ -99,7 +134,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ -5046272 ]
+"values": [ -6356992 ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("Visual/Sprite:visible")
@@ -125,6 +160,30 @@ tracks/5/keys = {
 "update": 0,
 "values": [ Vector2( -3, -236 ), Vector2( -3, -236 ), Vector2( 137, -75 ) ]
 }
+tracks/6/type = "value"
+tracks/6/path = NodePath("Visual/Character/AnimatedSprite:frame")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Visual/Character/AnimatedSprite:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -70 ) ]
+}
 
 [sub_resource type="Animation" id=46]
 resource_name = "Crouch"
@@ -138,7 +197,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0, -50 ) ]
+"values": [ Vector2( 0, -70 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Visual/Character/AnimatedSprite:scale")
@@ -150,7 +209,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 1, 0.5 ) ]
+"values": [ Vector2( 0.5, 0.5 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Hurtboxes/SGCollisionShape2D:fixed_position_x")
@@ -200,6 +259,18 @@ tracks/5/keys = {
 "update": 1,
 "values": [ 4325376 ]
 }
+tracks/6/type = "value"
+tracks/6/path = NodePath("Visual/Character/AnimatedSprite:frame")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1 ]
+}
 
 [sub_resource type="Animation" id=52]
 resource_name = "DoThrow"
@@ -213,12 +284,36 @@ tracks/0/path = NodePath("Visual/Character/AnimatedSprite:rotation_degrees")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
-tracks/0/enabled = true
+tracks/0/enabled = false
 tracks/0/keys = {
 "times": PoolRealArray( 0, 10 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ -30.0, 30.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Visual/Character:flips")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 10, 14, 30 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 2.0, 2.4, 2.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Visual/Character/AnimatedSprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 3 ]
 }
 
 [sub_resource type="Animation" id=68]
@@ -273,6 +368,18 @@ tracks/3/keys = {
 "update": 1,
 "values": [ -35586048 ]
 }
+tracks/4/type = "value"
+tracks/4/path = NodePath("Visual/Character/AnimatedSprite:flip_h")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [sub_resource type="Animation" id=53]
 resource_name = "HiddenMissiles"
@@ -288,8 +395,32 @@ tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0, 8 ),
 "transitions": PoolRealArray( 1, 1 ),
-"update": 0,
+"update": 1,
 "values": [ -15.0, 15.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Visual/Character/AnimatedSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Visual/Character/AnimatedSprite:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -70 ) ]
 }
 
 [sub_resource type="Animation" id=48]
@@ -306,6 +437,30 @@ tracks/0/keys = {
 "update": 0,
 "values": [ -30.0 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("Visual/Character/AnimatedSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 7 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Visual/Character/AnimatedSprite:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -6, -173 ) ]
+}
 
 [sub_resource type="Animation" id=37]
 resource_name = "Idle"
@@ -313,6 +468,7 @@ resource_name = "Idle"
 [sub_resource type="Animation" id=71]
 resource_name = "JHeavy"
 length = 25.0
+step = 1.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Hitboxes/SGCollisionShape2D:shape:extents_x")
 tracks/0/interp = 1
@@ -361,10 +517,47 @@ tracks/3/keys = {
 "update": 1,
 "values": [ -14680064 ]
 }
+tracks/4/type = "value"
+tracks/4/path = NodePath("Visual/Character/AnimatedSprite:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -45.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Visual/Character/AnimatedSprite:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 11.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 3, 9 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Visual/Character/AnimatedSprite:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 12 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0, -100 ), Vector2( -31, -17 ) ]
+}
 
 [sub_resource type="Animation" id=72]
 resource_name = "JLight"
 length = 30.0
+step = 1.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Hitboxes/SGCollisionShape2D:fixed_position_x")
 tracks/0/interp = 1
@@ -413,6 +606,42 @@ tracks/3/keys = {
 "update": 1,
 "values": [ 4128808 ]
 }
+tracks/4/type = "value"
+tracks/4/path = NodePath("Visual/Character/AnimatedSprite:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 45.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Visual/Character/AnimatedSprite:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 12 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 3, 9 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Visual/Character/AnimatedSprite:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 12 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0, -100 ), Vector2( -72, -135 ) ]
+}
 
 [sub_resource type="Animation" id=40]
 resource_name = "Jump"
@@ -423,12 +652,77 @@ tracks/0/path = NodePath("Visual/Character/AnimatedSprite:rotation_degrees")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
-tracks/0/enabled = true
+tracks/0/enabled = false
 tracks/0/keys = {
 "times": PoolRealArray( 0, 20 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ 0.0, 360.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Visual/Character/AnimatedSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 7, 8 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Visual/Character/AnimatedSprite:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Vector2( 57, -171 ), Vector2( 3, -37 ) ]
+}
+
+[sub_resource type="Animation" id=80]
+resource_name = "JumpFall"
+length = 20.0
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Visual/Character/AnimatedSprite:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/keys = {
+"times": PoolRealArray( 20 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 360.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Visual/Character/AnimatedSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 10 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 9, 2 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Visual/Character/AnimatedSprite:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 10 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Vector2( -77, -80 ), Vector2( 2, -76 ) ]
 }
 
 [sub_resource type="Animation" id=49]
@@ -469,10 +763,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ 655360 ]
+"values": [ 655360, 1441792 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Hitboxes/SGCollisionShape2D:shape:extents_y")
@@ -481,10 +775,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ 851968 ]
+"values": [ 851968, 1179648 ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Hitboxes/SGCollisionShape2D:fixed_position_x")
@@ -493,10 +787,10 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ 4456448 ]
+"values": [ 4456448, 4390912 ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("Hitboxes/SGCollisionShape2D:fixed_position_y")
@@ -505,26 +799,257 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ -6422528 ]
+"values": [ -6422528, -6225920 ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("Visual/LightHeart:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
-tracks/4/enabled = true
+tracks/4/enabled = false
 tracks/4/keys = {
 "times": PoolRealArray( 0, 3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, true ]
 }
+tracks/5/type = "value"
+tracks/5/path = NodePath("Visual/Character/AnimatedSprite:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 10 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Visual/Character/AnimatedSprite:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0, -100 ), Vector2( 27, -100 ) ]
+}
 
-[sub_resource type="Animation" id=54]
+[sub_resource type="Animation" id=82]
+resource_name = "MissilesEnd"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Visual/Character/AnimatedSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -70 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Visual/Character/AnimatedSprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.5, 0.5 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Hurtboxes/SGCollisionShape2D:fixed_position_x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Hurtboxes/SGCollisionShape2D:fixed_position_y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ -4063232 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Hurtboxes/SGCollisionShape2D:shape:extents_x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 2752512 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Hurtboxes/SGCollisionShape2D:shape:extents_y")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 4325376 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Visual/Character/AnimatedSprite:frame")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Visual/Character/AnimatedSprite:rotation_degrees")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 30.0 ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Visual/Character/AnimatedSprite:flip_h")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=81]
 resource_name = "MissilesStartup"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Visual/Character/AnimatedSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -70 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Visual/Character/AnimatedSprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.5, 0.5 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Hurtboxes/SGCollisionShape2D:fixed_position_x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Hurtboxes/SGCollisionShape2D:fixed_position_y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ -4063232 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Hurtboxes/SGCollisionShape2D:shape:extents_x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 2752512 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Hurtboxes/SGCollisionShape2D:shape:extents_y")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 4325376 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Visual/Character/AnimatedSprite:frame")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Visual/Character/AnimatedSprite:rotation_degrees")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 30.0 ]
+}
 
 [sub_resource type="Animation" id=38]
 resource_name = "RESET"
@@ -610,7 +1135,7 @@ tracks/6/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 1, 1 ) ]
+"values": [ Vector2( 0.5, 0.5 ) ]
 }
 tracks/7/type = "value"
 tracks/7/path = NodePath("Hurtboxes/SGCollisionShape2D:fixed_position_y")
@@ -792,6 +1317,18 @@ tracks/21/keys = {
 "update": 0,
 "values": [ Vector2( -8, -214 ) ]
 }
+tracks/22/type = "value"
+tracks/22/path = NodePath("Visual/Character/AnimatedSprite:flip_h")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
 
 [sub_resource type="Animation" id=50]
 resource_name = "Throw"
@@ -901,7 +1438,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id=36]
 resource_name = "Walk"
-length = 8.0
+length = 20.0
 loop = true
 step = 1.0
 tracks/0/type = "value"
@@ -911,15 +1448,27 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 3, 5.16608, 8 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 3, 7, 10, 13, 17, 20 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, -100 ), Vector2( 0, -120 ), Vector2( 0, -120 ), Vector2( 0, -100 ) ]
+"values": [ Vector2( 0, -100 ), Vector2( 0, -105 ), Vector2( 0, -105 ), Vector2( 0, -100 ), Vector2( 0, -95 ), Vector2( 0, -95 ), Vector2( 0, -100 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Visual/Character/AnimatedSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 4 ]
 }
 
 [sub_resource type="SpriteFrames" id=78]
 animations = [ {
-"frames": [ ExtResource( 10 ) ],
+"frames": [ ExtResource( 27 ), ExtResource( 22 ), ExtResource( 19 ), ExtResource( 21 ), ExtResource( 25 ), ExtResource( 20 ), ExtResource( 26 ), ExtResource( 17 ), ExtResource( 24 ), ExtResource( 23 ), ExtResource( 18 ) ],
 "loop": true,
 "name": "default",
 "speed": 0.0
@@ -1054,9 +1603,11 @@ anims/Idle = SubResource( 37 )
 anims/JHeavy = SubResource( 71 )
 anims/JLight = SubResource( 72 )
 anims/Jump = SubResource( 40 )
+anims/JumpFall = SubResource( 80 )
 anims/Knockdown = SubResource( 49 )
 anims/Light = SubResource( 69 )
-anims/MissilesStartup = SubResource( 54 )
+anims/MissilesEnd = SubResource( 82 )
+anims/MissilesStartup = SubResource( 81 )
 anims/RESET = SubResource( 38 )
 anims/Throw = SubResource( 50 )
 anims/Wakeup = SubResource( 51 )
@@ -1077,11 +1628,12 @@ script = ExtResource( 8 )
 
 [node name="Sprite" type="Sprite" parent="Visual/Character"]
 visible = false
-position = Vector2( -4, -101 )
+position = Vector2( 0, -100 )
 texture = ExtResource( 10 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Visual/Character"]
 position = Vector2( 0, -100 )
+scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 78 )
 
 [node name="AnimatedSprite3" type="AnimatedSprite" parent="Visual/Character"]
@@ -1143,7 +1695,7 @@ script = ExtResource( 2 )
 
 [node name="SGCollisionShape2D" type="SGCollisionShape2D" parent="Hitboxes"]
 self_modulate = Color( 0.75, 0.75, 0.75, 1 )
-position = Vector2( 132, -77 )
+position = Vector2( 144, -97 )
 fixed_position_x = 8650752
 fixed_position_y = -5046272
 shape = SubResource( 42 )
@@ -1182,7 +1734,9 @@ margin_left = -134.0
 margin_top = 31.0
 margin_right = 184.0
 margin_bottom = 45.0
-text = "No attack loaded!"
+text = "res://Characters/Lippo/States/LippoCHeavy.tres::1
+20 (2) 10
+"
 
 [node name="InputHistory" type="Node" parent="." groups=["network_sync"]]
 script = ExtResource( 6 )

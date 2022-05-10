@@ -1,7 +1,7 @@
 [gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://Fighters/Hitboxes.gd" type="Script" id=1]
-[ext_resource path="res://Characters/Lippo/Assets/spades.png" type="Texture" id=2]
+[ext_resource path="res://Characters/Lippo/Assets/ProgrammerArt/spades.png" type="Texture" id=2]
 [ext_resource path="res://Characters/Lippo/HiddenMissile.gd" type="Script" id=3]
 [ext_resource path="res://addons/FGDC-Datatypes/HitData.gd" type="Script" id=4]
 [ext_resource path="res://spr_realisticexplosion/spr_realisticexplosion_2.png" type="Texture" id=5]
@@ -22,6 +22,7 @@
 [ext_resource path="res://spr_realisticexplosion/spr_realisticexplosion_8.png" type="Texture" id=20]
 [ext_resource path="res://spr_realisticexplosion/spr_realisticexplosion_0.png" type="Texture" id=21]
 [ext_resource path="res://Fighters/Hurtboxes.gd" type="Script" id=22]
+
 
 [sub_resource type="Resource" id=2]
 script = ExtResource( 4 )

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/club.png-d3a403011c5bd33eb50be08d92cd9110.stex"
+path="res://.import/Lippo_Poke-1.png-4cdea2b3ae2e9115cbf687748c9f5266.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Characters/Lippo/Assets/club.png"
-dest_files=[ "res://.import/club.png-d3a403011c5bd33eb50be08d92cd9110.stex" ]
+source_file="res://Characters/Lippo/Assets/Lippo_Poke-1.png"
+dest_files=[ "res://.import/Lippo_Poke-1.png-4cdea2b3ae2e9115cbf687748c9f5266.stex" ]
 
 [params]
 

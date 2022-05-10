@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/card.png-bb372cc18e1d3e0268a5fc0f94253d9a.stex"
+path="res://.import/club.png-3b32d15695b81935a892177d9554d66d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Characters/Lippo/Assets/card.png"
-dest_files=[ "res://.import/card.png-bb372cc18e1d3e0268a5fc0f94253d9a.stex" ]
+source_file="res://Characters/Lippo/Assets/ProgrammerArt/club.png"
+dest_files=[ "res://.import/club.png-3b32d15695b81935a892177d9554d66d.stex" ]
 
 [params]
 

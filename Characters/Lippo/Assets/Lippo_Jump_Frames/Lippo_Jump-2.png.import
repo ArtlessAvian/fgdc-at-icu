@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/heart.png-970e9d43cfe54154e5eedc6a55b90a03.stex"
+path="res://.import/Lippo_Jump-2.png-c0fd677cb06605da2891fd8d2d5d0527.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Characters/Lippo/Assets/heart.png"
-dest_files=[ "res://.import/heart.png-970e9d43cfe54154e5eedc6a55b90a03.stex" ]
+source_file="res://Characters/Lippo/Assets/Lippo_Jump_Frames/Lippo_Jump-2.png"
+dest_files=[ "res://.import/Lippo_Jump-2.png-c0fd677cb06605da2891fd8d2d5d0527.stex" ]
 
 [params]
 

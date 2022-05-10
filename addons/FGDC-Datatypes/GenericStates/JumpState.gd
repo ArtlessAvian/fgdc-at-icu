@@ -36,6 +36,9 @@ func run(f: Fighter, input: Dictionary) -> void:
 
 
 func animation(f: Fighter) -> String:
+	if (f.get_node("AnimationPlayer") as AnimationPlayer).has_animation("JumpFall"):
+		if f.vel.y < 0:
+			return "JumpFall"
 	return "Jump"
 
 

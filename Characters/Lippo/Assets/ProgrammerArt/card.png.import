@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/spades.png-a1f0ffc9cdad48b4ead9e9959c9fe236.stex"
+path="res://.import/card.png-cb8e26f667844e864e392c692183f2e4.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Characters/Lippo/Assets/spades.png"
-dest_files=[ "res://.import/spades.png-a1f0ffc9cdad48b4ead9e9959c9fe236.stex" ]
+source_file="res://Characters/Lippo/Assets/ProgrammerArt/card.png"
+dest_files=[ "res://.import/card.png-cb8e26f667844e864e392c692183f2e4.stex" ]
 
 [params]
 
