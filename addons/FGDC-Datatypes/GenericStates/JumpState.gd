@@ -34,6 +34,10 @@ func run(f: Fighter, input: Dictionary) -> void:
 	if not f.state_dict.let_go and input.stick_y <= 0:
 		f.state_dict.let_go = true
 
+	# TODO: Remove bandaid fix
+	var character = f.find_node("Character")
+	character.modulate = Color.white
+
 
 func animation(f: Fighter) -> String:
 	if (f.get_node("AnimationPlayer") as AnimationPlayer).has_animation("JumpFall"):
