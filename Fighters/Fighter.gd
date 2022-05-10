@@ -285,7 +285,7 @@ func on_hit():
 	SyncManager.play_sound(
 		str(get_path()) + ":hit",
 		hit_sound if SyncManager.current_tick % 2 == 0 else hit_sound_2,
-		{position = self.position, pitch_scale = 1}
+		{position = self.position, pitch_scale = 1, volume_db = -20}
 	)
 
 
