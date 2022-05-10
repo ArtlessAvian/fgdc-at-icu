@@ -1352,7 +1352,7 @@ tracks/23/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ false ]
+"values": [ true ]
 }
 
 [sub_resource type="Animation" id=50]
@@ -1757,11 +1757,12 @@ script = ExtResource( 2 )
 hit_data = SubResource( 1 )
 
 [node name="SGCollisionShape2D" type="SGCollisionShape2D" parent="Hitboxes"]
-self_modulate = Color( 1, 0, 0, 1 )
+self_modulate = Color( 0.75, 0.75, 0.75, 1 )
 position = Vector2( 132, -77 )
 fixed_position_x = 8650752
 fixed_position_y = -5046272
 shape = SubResource( 42 )
+disabled = true
 
 [node name="Hurtboxes" type="SGArea2D" parent="." groups=["hurtboxes", "network_sync"]]
 collision_layer = 0
