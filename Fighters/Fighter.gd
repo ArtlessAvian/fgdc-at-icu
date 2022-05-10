@@ -47,6 +47,7 @@ func _ready():
 	$Hitboxes.set_player(is_p2)
 	$Hurtboxes.set_player(is_p2)
 	$Throwboxes.set_player(is_p2)
+	self.fixed_scale.x = (1 << 16) * (-1 if is_p2 else 1)
 
 	$AnimationPlayer.playback_process_mode = AnimationPlayer.ANIMATION_PROCESS_MANUAL
 	$AnimationPlayer.playback_speed = 1
@@ -324,6 +325,15 @@ var last_mash = NULL_INPUT
 
 
 func _get_local_input() -> Dictionary:
+	if controlled_by == "downback":
+		return {
+			stick_x = int(sign(self.fixed_position_x - get_node(opponent_path).fixed_position.x)),
+			stick_y = -1,
+			light = false,
+			heavy = false,
+			dash = false,
+		}
+
 	if controlled_by == "mash":
 		if randf() < 0.3:
 			return last_mash
@@ -334,14 +344,6 @@ func _get_local_input() -> Dictionary:
 			light = randf() < 0.3,
 			heavy = randf() < 0.3,
 			dash = false,
-			# stick_x = 1,
-			# just_stick_x = 0,
-			# stick_y = -1,
-			# just_stick_y = 0,
-			# light = 0,
-			# just_light = 0,
-			# heavy = 0,
-			# just_heavy = 0
 		}
 		last_mash = input
 		return input

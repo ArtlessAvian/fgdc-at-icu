@@ -5,20 +5,17 @@ extends Node
 onready var host_field = $CanvasLayer/MarginContainer/GridContainer/HostField
 onready var port_field = $CanvasLayer/MarginContainer/GridContainer/PortField
 
-var hardcoded_character_names = [
-	"Batperson",
-	"Example (Testing Grounds)",
-	"Max (WIP)",
-	"Lippo (WIP)",
-]
+var hardcoded_character_names = ["Max (WIP)", "Lippo (WIP)", "Batperson (Sample, No Balance)"]
 
 var hardcoded_characters = [
-	"res://Fighters/Fighter.tscn",
-	"res://Characters/Example/Example.tscn",
 	"res://Characters/Max/Max.tscn",
 	"res://Characters/Lippo/Lippo.tscn",
+	"res://Fighters/Fighter.tscn",
 ]
-var controllers_by_index = ["kb", "c0", "c1", "mash"]
+var controllers_by_index = ["kb", "c0", "c1", "mash", "downback"]
+var controllers_by_name = [
+	"Keyboard (Arrows, ASD)", "Controller 1", "Controller 2", "Mash (AI)", "Down Back (AI)"
+]
 
 
 func _ready():
@@ -35,11 +32,25 @@ func _ready():
 	setup_dropdowns($CanvasLayer/MarginContainer/GridContainer/LocalCharacter)
 	setup_dropdowns($CanvasLayer/MarginContainer/GridContainer/LocalCharacter2)
 
+	setup_input_dropdown($CanvasLayer/MarginContainer/GridContainer/LocalInput1)
+	setup_input_dropdown($CanvasLayer/MarginContainer/GridContainer/LocalInput2)
+	$CanvasLayer/MarginContainer/GridContainer/LocalInput2.selected = 1
+	setup_input_dropdown($CanvasLayer/MarginContainer/GridContainer/OnlineInput)
+
+	_on_LocalCharacter_item_selected(0, true)
+	_on_LocalCharacter_item_selected(0, false)
+
 
 func setup_dropdowns(dropdown: OptionButton):
 	dropdown.clear()
 	for i in range(len(hardcoded_character_names)):
 		dropdown.add_item(hardcoded_character_names[i], i)
+
+
+func setup_input_dropdown(dropdown: OptionButton):
+	dropdown.clear()
+	for i in range(len(controllers_by_index)):
+		dropdown.add_item(controllers_by_name[i], i)
 
 
 func setup_match_for_replay(my_peer_id: int, peer_ids: Array, match_info: Dictionary) -> void:
