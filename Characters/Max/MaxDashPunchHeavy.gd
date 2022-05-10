@@ -3,6 +3,7 @@ extends State
 export(int) var impulse = 40
 export(int) var attack_level = 6
 export(bool) var jump_cancellable = false
+export var heavy = false
 
 export(Resource) var attack_data = null
 
@@ -10,7 +11,7 @@ export(Resource) var attack_data = null
 func transition_into(f: Fighter, moveset: Moveset, input: Dictionary) -> bool:
 	if not f.grounded:
 		return false
-	if not input.light:
+	if not input.heavy:
 		return false
 
 	if (
@@ -21,6 +22,8 @@ func transition_into(f: Fighter, moveset: Moveset, input: Dictionary) -> bool:
 			f.vel.x = 0
 			f.get_node("Hitboxes").new_attack()
 
+			if input.heavy:
+				heavy = true
 			return true
 
 	return false
@@ -43,10 +46,10 @@ func transition_out(f: Fighter, moveset: Moveset, input: Dictionary) -> Resource
 
 func run(f: Fighter, input: Dictionary) -> void:
 	attack_data.write_hitbox_positions(f.state_time, f.get_node("Hitboxes"))
-	if f.state_time < 11:
+	if f.state_time < 15:
 		f.vel.x = 0
-	elif f.state_time < 17:
-		f.vel.x = (impulse * (-1 if f.fixed_scale.x < 0 else 1)) << 16
+	elif f.state_time < 21:
+		f.vel.x = (impulse * 2 * (-1 if f.fixed_scale.x < 0 else 1)) << 16
 	else:
 		f.vel.x = 0
 
