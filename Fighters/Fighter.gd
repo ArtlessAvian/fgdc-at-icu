@@ -428,7 +428,7 @@ func _save_state() -> Dictionary:
 		air_actions = air_actions,
 		state = state,
 		state_time = state_time,
-		ani_start_time = ani_start_time,
+		# ani_start_time = ani_start_time,
 		state_dict = state_dict.duplicate(),
 		combo_count = combo_count,
 		hitstop = hitstop,
@@ -448,7 +448,7 @@ func _load_state(save: Dictionary) -> void:
 	air_actions = save.air_actions
 	state = save.state
 	state_time = save.state_time
-	ani_start_time = save.ani_start_time
+	# ani_start_time = save.ani_start_time
 	state_dict = save.state_dict.duplicate(true)
 	combo_count = save.combo_count
 	hitstop = save.hitstop

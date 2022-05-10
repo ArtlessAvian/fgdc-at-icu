@@ -13,7 +13,7 @@ func transition_into(f: Fighter, moveset: Moveset, input: Dictionary) -> bool:
 	if not input.light:
 		return false
 
-	if f.state in [moveset.walk, moveset.crouch, moveset.lazy_all_normals]:
+	if f.state in [moveset.walk, moveset.crouch] + moveset.all_normals():
 		if f.state.attack_level() < self.attack_level():
 			if f.get_node("InputHistory").detect_dp(f.fixed_scale.x < 0, 17):
 				f.vel.y = impulse << 16
@@ -39,3 +39,7 @@ func run(f: Fighter, input: Dictionary) -> void:
 
 func animation(f: Fighter) -> String:
 	return "DP"
+
+
+func attack_level() -> int:
+	return attack_level
