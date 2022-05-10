@@ -3,10 +3,12 @@ extends "../State.gd"
 
 func transition_out(f: Fighter, moveset: Moveset, input: Dictionary) -> Resource:
 	if f.state_time > f.state_dict.hitstun:
-		f.combo_count = 0
+		if len(f.combo_gaps) == 0 or f.combo_gaps[len(f.combo_gaps) - 1] != f.combo_count:
+			f.combo_gaps.append(f.combo_count)
 
 		# choose when to flip out.
 		if input.light or input.heavy:
+			f.combo_count = 0
 			print("flip out")
 			f.vel.x += input.stick_x * 6 << 16
 			f.vel.y = 3 << 16

@@ -9,6 +9,7 @@ signal on_contact(blocked)  # blocked: bool
 
 var attack_number = 0  # only access if you're hurtboxes
 var multihit = 0
+var facing = 0  # -1 for left, 0 for "compare parents", 1 for right
 
 
 func _ready():

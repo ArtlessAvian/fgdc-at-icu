@@ -101,7 +101,7 @@ func detect_charge_forward(reversed: bool, input_frames: int, hold_frames: int) 
 
 
 # positive edge
-func button_pressed_recently(button: String, frames: int) -> bool:
+func button_pressed(button: String, frames: int = 0) -> bool:
 	var time = 0
 	var list_index = BUTTON_LIST.find(button)
 	var last_pressed = false
@@ -175,7 +175,8 @@ func detect_dp(reversed: bool, frames: int) -> bool:
 	if detect_motion([6, 5, 2, 3], reversed, frames):
 		return true
 	return false
-	
+
+
 func detect_downdown(reversed: bool, frames: int) -> bool:
 	if detect_motion([2, 5, 2], reversed, frames):
 		return true
@@ -196,6 +197,7 @@ func detect_downdown(reversed: bool, frames: int) -> bool:
 	if detect_motion([3, 5, 2], reversed, frames):
 		return true
 	return false
+
 
 func _save_state() -> Dictionary:
 	return {

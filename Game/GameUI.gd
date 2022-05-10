@@ -8,7 +8,7 @@ func _process(delta):
 	var time_str = str(time_msecs)
 
 	$TimerTEMPORARY.text = "Time Left:\n" + time_str
-	$TextureProgress.max_value = get_node(game_path).get_node("Fighter2").max_health
+	$TextureProgress.max_value = get_node(game_path).get_node("Fighter1").max_health
 	$TextureProgress.value = get_node(game_path).get_node("Fighter1").health
 	$TextureProgress2.max_value = get_node(game_path).get_node("Fighter2").max_health
 	$TextureProgress2.value = get_node(game_path).get_node("Fighter2").health
@@ -17,13 +17,23 @@ func _process(delta):
 	$Input.text += str(get_node(game_path).get_node("Fighter2/InputHistory")._stick_history)
 
 	# yes they're meant to be swapped
-	var p1_cc = get_node(game_path).get_node("Fighter2").combo_count
-	if p1_cc == 0:
-		$ComboTEMP.text = ""
+	combo_stuff($ComboTEMP, $ComboTEMP3, get_node(game_path).get_node("Fighter2"))
+	combo_stuff($ComboTEMP2, $ComboTEMP4, get_node(game_path).get_node("Fighter1"))
+
+
+func combo_stuff(count, gaps, opponent):
+	if opponent.combo_count == 0:
+		count.text = ""
 	else:
-		$ComboTEMP.text = str(p1_cc) + " combo!"
-	var p2_cc = get_node(game_path).get_node("Fighter1").combo_count
-	if p2_cc == 0:
-		$ComboTEMP2.text = ""
+		count.text = str(opponent.combo_count) + " combo!"
+
+	if len(opponent.combo_gaps) == 0:
+		count.modulate = Color.white
+		gaps.text = ""
 	else:
-		$ComboTEMP2.text = str(p2_cc) + " combo!"
+		count.modulate = Color.cyan
+		gaps.text = " "
+		for val in opponent.combo_gaps:
+			if val == opponent.combo_count:
+				break
+			gaps.text += str(val) + " "

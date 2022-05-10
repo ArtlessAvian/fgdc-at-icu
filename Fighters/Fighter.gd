@@ -29,6 +29,7 @@ var state_dict: Dictionary = {}
 var invincible: bool = false
 
 var combo_count = 0
+var combo_gaps = []
 var hitstop = 0
 
 
@@ -187,11 +188,15 @@ func is_blocking(input: Dictionary):
 
 func hit_response(input: Dictionary):
 	# Look at the hit.
-	var diff = fixed_position.x - $Hurtboxes.hit_hitboxes.get_global_fixed_position().x
-	if diff > 0 && fixed_scale.x > 0:
-		fixed_scale.x *= -1
-	if diff < 0 && fixed_scale.x < 0:
-		fixed_scale.x *= -1
+	if $Hurtboxes.hit_hitboxes.facing == 0:
+		var diff = fixed_position.x - $Hurtboxes.hit_hitboxes.get_global_fixed_position().x
+		if diff > 0 && fixed_scale.x > 0:
+			fixed_scale.x *= -1
+		if diff < 0 && fixed_scale.x < 0:
+			fixed_scale.x *= -1
+	else:
+		if fixed_scale.x * $Hurtboxes.hit_hitboxes.facing > 0:  # if they are facing the same direction
+			fixed_scale.x *= -1  # face in the other direction
 
 	# Check for block.
 	var blocking = is_blocking(input)
@@ -249,6 +254,7 @@ func on_hit():
 		combo_count += 1
 	else:
 		combo_count = 1
+		combo_gaps.clear()
 
 	state_dict.hitstun = $Hurtboxes.hit_hitdata.hitstun
 	state_dict.hit_hitdata = $Hurtboxes.hit_hitdata

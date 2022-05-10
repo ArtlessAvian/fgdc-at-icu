@@ -24,12 +24,12 @@ func run(f: Fighter, input: Dictionary) -> void:
 		f.state_dict["velx"] = f.vel.x
 		f.state_dict["vely"] = f.vel.y
 
-	elif attack_data.startup <= f.state_time and f.state_time < attack_data.startup + 5:
-		# f.vel.x = 0
-		# f.vel.y = f.fighter_gravity
-		f.vel.x = f.state_dict["velx"]
-		f.vel.y = f.state_dict["vely"]
+	if attack_data.startup <= f.state_time and f.state_time < attack_data.startup + 2:
+		f.vel.x = 0
+		f.vel.y = f.fighter_gravity
+		# f.vel.x = f.state_dict["velx"]
+		# f.vel.y = f.state_dict["vely"]
 
-	elif f.state_time == attack_data.startup + 5:
+	elif f.state_time == attack_data.startup + 2:
 		f.vel.x = f.state_dict["velx"]
 		f.vel.y = f.state_dict["vely"]

@@ -9,6 +9,9 @@ func transition_into(f: Fighter, moveset: Moveset, input: Dictionary) -> bool:
 		return false
 
 	if f.state in [moveset.jump, moveset.j_light, moveset.j_heavy]:
+		if input.dash and input.stick_x == -int(sign(f.fixed_scale.x)):
+			f.air_actions -= 1
+			return true
 		if f.get_node("InputHistory").detect_motion([4, 5, 4], f.fixed_scale.x < 0, 8):
 			f.air_actions -= 1
 			return true

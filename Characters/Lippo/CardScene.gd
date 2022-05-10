@@ -20,6 +20,7 @@ func _network_spawn(data: Dictionary):
 	self.fixed_position.x += OFFSET_X * (-1 if flip else 1)
 	self.fixed_position.y -= OFFSET_Y
 
+	$Hitboxes.facing = -1 if self.flip else 1
 	$Hitboxes.set_player(data.is_p2, true)
 	$Hurtboxes.set_player(data.is_p2, true)
 

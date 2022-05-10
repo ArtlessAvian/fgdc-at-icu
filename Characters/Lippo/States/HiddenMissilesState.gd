@@ -35,7 +35,7 @@ func run(f: Fighter, input: Dictionary) -> void:
 	if f.state_time >= 15 and (f.state_time - 15) % 8 == 0:
 		var do_missile = f.state_dict["missile_count"] == 0
 		do_missile = do_missile or input.light
-		do_missile = do_missile or f.get_node("InputHistory").button_pressed_recently("light", 9)
+		do_missile = do_missile or f.get_node("InputHistory").button_pressed("light", 9)
 
 		do_missile = do_missile and f.state_dict["missile_count"] < 8
 
@@ -56,6 +56,9 @@ func run(f: Fighter, input: Dictionary) -> void:
 					"owner_path": f.get_path()
 				}
 			)
+
+	# accidentally left in crawling behavior but it was super fun so
+	f.vel.x = input.stick_x * (5 << 16)
 
 
 func animation(f: Fighter) -> String:
