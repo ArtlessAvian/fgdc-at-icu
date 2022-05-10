@@ -191,7 +191,10 @@ func is_blocking(input: Dictionary):
 func hit_response(input: Dictionary):
 	# Look at the hit.
 	if $Hurtboxes.hit_hitboxes.facing == 0:
-		var diff = fixed_position.x - $Hurtboxes.hit_hitboxes.get_global_fixed_position().x
+		var diff = (
+			fixed_position.x
+			- $Hurtboxes.hit_hitboxes.get_global_fixed_position().x
+		)
 		if diff > 0 && fixed_scale.x > 0:
 			fixed_scale.x *= -1
 		if diff < 0 && fixed_scale.x < 0:
@@ -233,7 +236,7 @@ func on_block():
 	health = max(health - $Hurtboxes.hit_hitdata.chipdamage, 1)
 
 	state_dict.blockstun = $Hurtboxes.hit_hitdata.blockstun
-	vel.x = $Hurtboxes.hit_hitdata.x_vel << 16
+	vel.x = ($Hurtboxes.hit_hitdata.x_vel << 16) * (-1 if fixed_scale.x > 0 else 1)
 	# no y component.
 
 	# TODO: think about dying on hit
@@ -298,7 +301,10 @@ func throw_response(input: Dictionary):
 		change_to_state(moveset.throw_tech)
 		get_node(opponent_path).change_to_state(moveset.throw_tech)
 		return
-	if not state in moveset.movement and not state in [moveset.walk, moveset.crouch, moveset.jump]:
+	if (
+		not state in moveset.movement
+		and not state in [moveset.walk, moveset.crouch, moveset.jump]
+	):
 		print("not neutral state")
 		return
 
@@ -335,11 +341,35 @@ var last_mash = NULL_INPUT
 
 
 func _get_local_input() -> Dictionary:
+	if controlled_by == "upback":
+		return {
+			stick_x = int(
+				(
+					sign(self.fixed_position_x - get_node(opponent_path).fixed_position.x)
+					* (-1 if grounded else 1)
+				)
+			),
+			stick_y = 1 if grounded else 0,
+			light = false,
+			heavy = false,
+			dash = false,
+		}
+
 	if controlled_by == "downback":
 		return {
-			stick_x = int(sign(self.fixed_position_x - get_node(opponent_path).fixed_position.x)),
+			stick_x = int(
+				sign(self.fixed_position_x - get_node(opponent_path).fixed_position.x)
+			),
 			stick_y = -1,
-			light = false,
+			light = (
+				state
+				in [
+					moveset.hitstun,
+					moveset.air_hitstun,
+					moveset.knockdown,
+					moveset.blockstun
+				]
+			),
 			heavy = false,
 			dash = false,
 		}

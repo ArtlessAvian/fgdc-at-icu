@@ -1,6 +1,7 @@
 extends Resource
 class_name State
 
+
 # Define transitions from all states IN.
 # Has priority over transition
 func transition_into(f: Fighter, moveset: Moveset, input: Dictionary) -> bool:
@@ -90,7 +91,7 @@ func transition_into_attack(f: Fighter, moveset: Moveset, input: Dictionary) -> 
 		f.state_dict.last_attack_hit = -1
 
 	if f.state in moveset.all_normals():
-		if f.get_node("Hitboxes").attack_number != f.state_dict.last_attack_hit:
+		if f.get_node("Hitboxes").attack_number != f.state_dict.last_attack_contact:
 			return null
 
 	if not f.grounded:

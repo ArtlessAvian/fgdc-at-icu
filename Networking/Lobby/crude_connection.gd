@@ -5,16 +5,23 @@ extends Node
 onready var host_field = $CanvasLayer/MarginContainer/GridContainer/HostField
 onready var port_field = $CanvasLayer/MarginContainer/GridContainer/PortField
 
-var hardcoded_character_names = ["Max (WIP)", "Lippo (WIP)", "Batperson (Sample, No Balance)"]
+var hardcoded_character_names = [
+	"Max (WIP)", "Lippo (WIP)", "Batperson (Sample, No Balance)"
+]
 
 var hardcoded_characters = [
 	"res://Characters/Max/Max.tscn",
 	"res://Characters/Lippo/Lippo.tscn",
 	"res://Fighters/Fighter.tscn",
 ]
-var controllers_by_index = ["kb", "c0", "c1", "mash", "downback"]
+var controllers_by_index = ["kb", "c0", "c1", "mash", "downback", "upback"]
 var controllers_by_name = [
-	"Keyboard (Arrows, ASD)", "Controller 1", "Controller 2", "Mash (AI)", "Down Back (AI)"
+	"Keyboard (Arrows, ASD)",
+	"Controller 1",
+	"Controller 2",
+	"Mash (AI)",
+	"Down Back (AI)",
+	"Up Back (AI)"
 ]
 
 

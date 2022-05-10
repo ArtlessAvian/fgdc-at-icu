@@ -30,7 +30,7 @@ func transition_out(f: Fighter, moveset: Moveset, input: Dictionary) -> Resource
 
 
 func run(f: Fighter, input: Dictionary) -> void:
-	pass
+	f.vel.x = 0
 
 
 # TODO: Proper prejump animation

@@ -13,8 +13,6 @@ func transition_out(f: Fighter, moveset: Moveset, input: Dictionary) -> Resource
 
 
 func run(f: Fighter, input: Dictionary) -> void:
-	f.vel.x = 0
-
 	# i am aware of the sign function but it seems to be a float.
 	# var signn = 1
 	# if f.fixed_scale.x < 0:
