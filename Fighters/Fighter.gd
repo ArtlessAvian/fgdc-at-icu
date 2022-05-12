@@ -265,6 +265,7 @@ func on_hit():
 		combo_gaps.clear()
 
 	state_dict.hitstun = $Hurtboxes.hit_hitdata.hitstun
+	
 	# state_dict.hit_hitdata = $Hurtboxes.hit_hitdata
 	vel.x = ($Hurtboxes.hit_hitdata.x_vel << 16) * (-1 if fixed_scale.x > 0 else 1)
 	vel.y = $Hurtboxes.hit_hitdata.y_vel << 16
@@ -279,6 +280,7 @@ func on_hit():
 	#	change_to_state(moveset.knockdown)
 	elif grounded:
 		change_to_state(moveset.hitstun)
+		
 	else:
 		change_to_state(moveset.air_hitstun)
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=2]
+[gd_scene load_steps=62 format=2]
 
 [ext_resource path="res://Fighters/Fighter.gd" type="Script" id=1]
 [ext_resource path="res://Fighters/Hitboxes.gd" type="Script" id=2]
@@ -427,6 +427,60 @@ tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 3 ]
+}
+
+[sub_resource type="Animation" id=66]
+resource_name = "CrouchingBlockstun"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Visual/Character/AnimatedSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 3 ]
+}
+
+[sub_resource type="Animation" id=65]
+resource_name = "CrouchingHitstun"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Visual/Character/AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"update": 1,
+"values": [  ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Visual/Character/AnimatedSprite:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"update": 0,
+"values": [  ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Visual/Character/AnimatedSprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
@@ -2015,6 +2069,8 @@ anims/Blockstun = SubResource( 47 )
 anims/CHeavy = SubResource( 56 )
 anims/CLight = SubResource( 55 )
 anims/Crouch = SubResource( 46 )
+anims/CrouchingBlockstun = SubResource( 66 )
+anims/CrouchingHitstun = SubResource( 65 )
 anims/DP = SubResource( 59 )
 anims/DashPunch = SubResource( 61 )
 anims/Divekick = SubResource( 60 )
@@ -2078,7 +2134,7 @@ collision_mask = 2
 script = ExtResource( 4 )
 
 [node name="hurtbox1" type="SGCollisionShape2D" parent="Hurtboxes"]
-position = Vector2( 0, -100 )
+position = Vector2( 0, -62 )
 fixed_position_y = -6553600
 shape = SubResource( 43 )
 

@@ -9,16 +9,32 @@ func transition_out(f: Fighter, moveset: Moveset, input: Dictionary) -> Resource
 	return null
 
 
+func enter(f: Fighter) -> void:
+	var stick = f.get_node("InputHistory")._stick_history[0]
+	if f.state_time == 0 and (stick == 1 or stick == 2 or stick == 3):
+		f.state_dict["CrouchingHitstun"] = true
+	else:
+		f.state_dict["CrouchingHitstun"] = false
+
+
+
+
 func run(f: Fighter, input: Dictionary) -> void:
 	# visual stuff, i can use floats here lmao
 	var character = f.find_node("Character")
 	character.modulate = Color.red.linear_interpolate(
 		Color.white, f.state_time / 2.0 / f.state_dict.hitstun
+	
 	)
+	
+	
 
 
 func animation(f: Fighter) -> String:
-	return "Hitstun"
+	if f.state_dict["CrouchingHitstun"] == true:
+		return "CrouchingHitstun"
+	else:
+		return "Hitstun"
 
 
 func get_landing_transition(f: Fighter, moveset: Moveset) -> State:
