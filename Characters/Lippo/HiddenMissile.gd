@@ -1,6 +1,6 @@
 extends SGFixedNode2D
 
-const OFFSET_X = 90 * 65536
+const OFFSET_X = 0 * 65536
 const OFFSET_Y = 0 * 65536
 const TARGET_OFFSET_Y = 100 * 65536
 export(int) var MISSILE_HEIGHT = 700 << 16  # the height of the missiles in subpixels
@@ -14,6 +14,7 @@ var origin_y = 0
 var target_path = ""
 var owner_path = ""
 var my_angle = -8765309
+var attack_number = -8765309
 var hit = false
 
 
@@ -85,6 +86,7 @@ func _network_postprocess(input: Dictionary) -> void:
 func on_hit():
 	hit = true
 	$Hitboxes/SGCollisionShape2D.disabled = true
+	$Hurtboxes/SGCollisionShape2D.disabled = true
 	$AnimatedSprite.play("explode")
 	$Sprite.visible = false
 	# SyncManager.despawn(self)
@@ -119,6 +121,8 @@ func _on_Hitboxes_on_contact(blocked: bool, hitstop):
 	on_hit()
 
 	var f = get_node(self.owner_path)
-	f.state_dict.last_attack_contact = f.get_node("Hitboxes").attack_number
+	f.state_dict.last_attack_contact = max(
+		attack_number, f.state_dict.last_attack_contact
+	)
 	if not blocked:
-		f.state_dict.last_attack_hit = f.get_node("Hitboxes").attack_number
+		f.state_dict.last_attack_hit = max(attack_number, f.state_dict.last_attack_hit)

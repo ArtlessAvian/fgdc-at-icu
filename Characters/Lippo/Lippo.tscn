@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=2]
+[gd_scene load_steps=72 format=2]
 
 [ext_resource path="res://Fighters/Fighter.gd" type="Script" id=1]
 [ext_resource path="res://Fighters/Hitboxes.gd" type="Script" id=2]
@@ -27,7 +27,6 @@
 [ext_resource path="res://Characters/Lippo/Assets/Lippo_Walk_Frames/Lippo_Walk-3.png" type="Texture" id=25]
 [ext_resource path="res://Characters/Lippo/Assets/Lippo_Jump_Frames/Lippo_Jump-1.png" type="Texture" id=26]
 [ext_resource path="res://Characters/Lippo/Assets/LippoStand.tres" type="Texture" id=27]
-[ext_resource path="res://addons/FGDC-Datatypes/AttackData.gd" type="Script" id=28]
 
 [sub_resource type="Animation" id=76]
 resource_name = "Airdash"
@@ -278,7 +277,7 @@ resource_name = "DoThrow"
 
 [sub_resource type="Animation" id=79]
 resource_name = "Fireball"
-length = 30.0
+length = 45.0
 step = 1.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Visual/Character/AnimatedSprite:rotation_degrees")
@@ -319,7 +318,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id=68]
 resource_name = "Heavy"
-length = 68.0
+length = 88.0
 step = 1.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Hitboxes/SGCollisionShape2D:shape:extents_x")
@@ -1608,24 +1607,6 @@ orbit_velocity_random = 0.0
 linear_accel = -1000.0
 color_ramp = SubResource( 74 )
 
-[sub_resource type="Resource" id=1]
-script = ExtResource( 28 )
-guard = 2
-startup = 15
-active = 5
-hitstun = 20
-blockstun = 20
-hitstop = 5
-damage = 5
-chipdamage = 1
-knockdown = false
-x_vel = 10
-y_vel = -10
-active_hitboxes = 1
-active_hurtboxes = 0
-animation_name = "JLight"
-recovery = 10
-
 [sub_resource type="SGRectangleShape2D" id=42]
 extents_x = 3239403
 extents_y = 4128808
@@ -1676,6 +1657,7 @@ anims/Wakeup = SubResource( 51 )
 anims/Walk = SubResource( 36 )
 
 [node name="Debug" type="Node2D" parent="."]
+visible = false
 
 [node name="Label" type="Label" parent="Debug"]
 margin_right = 40.0
@@ -1754,7 +1736,6 @@ texture = ExtResource( 16 )
 [node name="Hitboxes" type="SGArea2D" parent="." groups=["hitboxes", "network_sync"]]
 collision_mask = 0
 script = ExtResource( 2 )
-hit_data = SubResource( 1 )
 
 [node name="SGCollisionShape2D" type="SGCollisionShape2D" parent="Hitboxes"]
 self_modulate = Color( 0.75, 0.75, 0.75, 1 )
