@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=2]
+[gd_scene load_steps=62 format=2]
 
 [ext_resource path="res://Fighters/Fighter.gd" type="Script" id=1]
 [ext_resource path="res://Fighters/Hitboxes.gd" type="Script" id=2]
@@ -32,6 +32,7 @@
 [ext_resource path="res://Characters/Max/Assets/dragon_punch.png" type="Texture" id=30]
 [ext_resource path="res://Characters/Max/Assets/dash_punch 2.png" type="Texture" id=31]
 [ext_resource path="res://Characters/Max/Assets/dash_punch 1.png" type="Texture" id=32]
+[ext_resource path="res://addons/FGDC-Datatypes/AttackData.gd" type="Script" id=33]
 
 [sub_resource type="Animation" id=47]
 resource_name = "Blockstun"
@@ -1987,6 +1988,24 @@ animations = [ {
 "speed": 0.0
 } ]
 
+[sub_resource type="Resource" id=1]
+script = ExtResource( 33 )
+guard = 2
+startup = 21
+active = 300
+hitstun = 24
+blockstun = 24
+hitstop = 9
+damage = 7
+chipdamage = 2
+knockdown = false
+x_vel = 2
+y_vel = 0
+active_hitboxes = 1
+active_hurtboxes = 0
+animation_name = "Divekick"
+recovery = 0
+
 [sub_resource type="SGRectangleShape2D" id=42]
 extents_x = 3239403
 extents_y = 4128808
@@ -2063,10 +2082,11 @@ animation = "Default"
 [node name="Hitboxes" type="SGArea2D" parent="." groups=["hitboxes", "network_sync"]]
 collision_mask = 0
 script = ExtResource( 2 )
+hit_data = SubResource( 1 )
 
 [node name="hitbox1" type="SGCollisionShape2D" parent="Hitboxes"]
-self_modulate = Color( 0.75, 0.75, 0.75, 1 )
-position = Vector2( 132, -77 )
+self_modulate = Color( 1, 0, 0, 1 )
+position = Vector2( 55, -55 )
 fixed_position_x = 8650752
 fixed_position_y = -5046272
 shape = SubResource( 42 )
@@ -2083,7 +2103,6 @@ fixed_position_y = -6553600
 shape = SubResource( 43 )
 
 [node name="Light_hurtbox1" type="SGCollisionShape2D" parent="Hurtboxes"]
-self_modulate = Color( 0.498039, 0.498039, 0.498039, 0.0392157 )
 position = Vector2( 69.4824, -120 )
 fixed_position_x = 4553600
 fixed_position_y = -7864320
@@ -2130,7 +2149,6 @@ disabled = true
 
 [node name="Divekick_hurtbox1" type="SGCollisionShape2D" parent="Hurtboxes"]
 visible = false
-self_modulate = Color( 0.498039, 0.498039, 0.498039, 0.0392157 )
 position = Vector2( 54.9316, 0 )
 fixed_position_x = 3600000
 shape = SubResource( 43 )
@@ -2159,7 +2177,9 @@ margin_left = -134.0
 margin_top = 31.0
 margin_right = 184.0
 margin_bottom = 45.0
-text = "No attack loaded!"
+text = "res://Characters/Max/MaxDivekickHeavy.tres::1
+21 (300) 0
+Animation too short! Need 296 more frames!"
 
 [node name="InputHistory" type="Node" parent="." groups=["network_sync"]]
 script = ExtResource( 6 )
