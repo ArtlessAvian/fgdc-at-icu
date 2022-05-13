@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=20 format=2]
+[gd_resource type="Resource" load_steps=21 format=2]
 
 [ext_resource path="res://addons/FGDC-Datatypes/Moveset.gd" type="Script" id=1]
 [ext_resource path="res://Fighters/DefaultMoveset/DefaultWalk.tres" type="Resource" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://addons/FGDC-Datatypes/GenericStates/KnockdownState.gd" type="Script" id=15]
 [ext_resource path="res://Fighters/DefaultMoveset/DefaultThrow.tres" type="Resource" id=16]
 [ext_resource path="res://Fighters/DefaultMoveset/DefaultPrejump.tres" type="Resource" id=17]
+[ext_resource path="res://Fighters/DefaultMoveset/DefaultBurst.tres" type="Resource" id=18]
 
 [sub_resource type="Resource" id=2]
 script = ExtResource( 15 )
@@ -42,5 +43,6 @@ c_heavy = ExtResource( 10 )
 j_light = ExtResource( 5 )
 j_heavy = ExtResource( 7 )
 throw = ExtResource( 16 )
+burst = ExtResource( 18 )
 attacks = [ ExtResource( 12 ), ExtResource( 14 ) ]
 movement = [ ExtResource( 9 ), SubResource( 1 ) ]

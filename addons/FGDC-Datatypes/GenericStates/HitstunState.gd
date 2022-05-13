@@ -2,6 +2,10 @@ extends "../State.gd"
 
 
 func transition_out(f: Fighter, moveset: Moveset, input: Dictionary) -> State:
+	# Burst activation
+	if input.heavy and input.light and f.can_burst():
+		moveset.burst
+
 	if f.state_time > f.state_dict.hitstun:
 		f.combo_count = 0
 		return moveset.walk

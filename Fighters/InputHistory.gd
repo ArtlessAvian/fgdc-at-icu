@@ -9,6 +9,10 @@ var _hold_total = 0
 const BUTTON_LIST = ["light", "heavy", "dash"]
 
 
+func get_hold_duration(i: int) -> int:
+	return _hold_duration[i]
+
+
 func _ready():
 	pass
 
@@ -153,6 +157,16 @@ func detect_dp(reversed: bool, frames: int) -> bool:
 		return true
 	if detect_motion([6, 3, 2, 3], reversed, frames):
 		return true
+	return false
+
+
+func detect_burst(frames: int) -> bool:
+	for i in range(1, frames):
+		# TODO: JANK: If L+H is pushed twice within the frame window BUT previous button history has been deleted due to stick inputs, then burst is not activated.
+		if i >= len(_button_history):
+			break
+		if _button_history[i] == 3:
+			return true
 	return false
 
 
