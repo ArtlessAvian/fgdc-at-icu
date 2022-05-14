@@ -22,7 +22,7 @@ var vel: SGFixedVector2 = SGFixedVector2.new()
 var grounded = true
 
 var health: int = 20
-var burst: int = max_burst_meter
+var burst: int = 0
 var state: Resource
 var state_time = 0
 var ani_start_time = 0
@@ -42,7 +42,7 @@ func _ready():
 	self.vel = SGFixedVector2.new()
 	self.grounded = true
 	self.health = self.max_health
-	self.burst = 0
+	self.burst = max_burst_meter
 	self.state_time = 0
 	self.ani_start_time = 0
 	self.air_actions = 0
@@ -82,7 +82,6 @@ func _network_postprocess(input: Dictionary) -> void:
 	if hitstop > 0:
 		hitstop -= 1
 		return
-
 	check_for_hit(input)  # avoid p1 bias.
 
 

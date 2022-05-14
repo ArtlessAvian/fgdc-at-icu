@@ -12,6 +12,7 @@ func transition_into(f: Fighter, moveset: Moveset, input: Dictionary) -> bool:
 func transition_out(f: Fighter, moveset: Moveset, input: Dictionary) -> State:
 	# Burst activation
 	if input.heavy and input.light and f.can_burst():
+		f.invincible = false
 		return moveset.burst
 	
 	if f.state_dict.knockdown_timer <= 0 and f.grounded:

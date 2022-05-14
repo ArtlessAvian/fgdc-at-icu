@@ -12,6 +12,10 @@ func _process(delta):
 	$TextureProgress.value = get_node(game_path).get_node("Fighter1").health
 	$TextureProgress2.max_value = get_node(game_path).get_node("Fighter2").max_health
 	$TextureProgress2.value = get_node(game_path).get_node("Fighter2").health
+	$BurstMeter1.max_value = get_node(game_path).get_node("Fighter1").max_burst_meter
+	$BurstMeter1.value = get_node(game_path).get_node("Fighter1").burst
+	$BurstMeter2.max_value = get_node(game_path).get_node("Fighter2").max_burst_meter
+	$BurstMeter2.value = get_node(game_path).get_node("Fighter2").burst
 
 	$Input.text = str(get_node(game_path).get_node("Fighter1/InputHistory")._stick_history) + "\n"
 	$Input.text += str(get_node(game_path).get_node("Fighter2/InputHistory")._stick_history)
