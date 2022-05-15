@@ -264,7 +264,7 @@ func on_hit():
 		grounded = false
 		# gravity takes care of the rest!
 
-	if state.get("attack_data") != null:
+	if state.get("attack_data") != null and state_time <= state.get("attack_data").startup:
 		emit_signal("countered")
 
 	# print($Hurtboxes.hit_hitdata, SyncManager.current_tick)

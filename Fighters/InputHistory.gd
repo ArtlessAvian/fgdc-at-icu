@@ -98,7 +98,7 @@ func detect_charge_forward(reversed: bool, input_frames: int, hold_frames: int) 
 		else:
 			charge_time += _hold_duration[i]
 			if charge_time >= hold_frames:
-				prints("succ", first_input_time, charge_time, SyncManager.current_tick)
+				# prints("succ", first_input_time, charge_time, SyncManager.current_tick)
 				return true
 
 	return false
@@ -125,7 +125,7 @@ func detect_charge_up(input_frames: int, hold_frames: int) -> bool:
 		else:
 			charge_time += _hold_duration[i]
 			if charge_time >= hold_frames:
-				prints("succ", first_input_time, charge_time, SyncManager.current_tick)
+				# prints("succ", first_input_time, charge_time, SyncManager.current_tick)
 				return true
 
 	return false
