@@ -27,7 +27,7 @@ func transition_out(f: Fighter, moveset: Moveset, input: Dictionary) -> State:
 
 	# TODO: Rethink Hitbox, Hurtbox interation.
 	# This checks for contact but /not/ hitting.
-	if f.get_node("Hitboxes").attack_number == f.state_dict.last_attack_contact:
+	if jump_cancellable or f.get_node("Hitboxes").attack_number == f.state_dict.last_attack_contact:
 		var jump
 		if f.grounded:
 			jump = transition_into_jump(f, moveset, input)
