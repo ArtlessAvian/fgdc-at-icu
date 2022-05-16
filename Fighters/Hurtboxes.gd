@@ -42,7 +42,7 @@ func _process(delta):
 		if child.disabled:
 			child.self_modulate = color_disabled
 		else:
-			child.self_modulate = Color.white
+			child.self_modulate = Color.green
 
 
 func collide_hitboxes():

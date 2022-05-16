@@ -12,10 +12,11 @@ func transition_out(f: Fighter, moveset: Moveset, input: Dictionary) -> Resource
 # 		f.state_dict.knockb
 func enter(f: Fighter) -> void:
 	var stick = f.get_node("InputHistory")._stick_history[0]
-	if f.state_time == 0 and (stick == 1 or stick == 2 or stick == 3):
-		f.state_dict["CrouchingBlockstun"] = true
+	if stick == 1 or stick == 2 or stick == 3:
+		f.state_dict["Crouching"] = true
 	else:
-		f.state_dict["CrouchingBlockstun"] = false
+		f.state_dict["Crouching"] = false
+
 
 func run(f: Fighter, input: Dictionary) -> void:
 	# i am aware of the sign function but it seems to be a float.
@@ -29,16 +30,15 @@ func run(f: Fighter, input: Dictionary) -> void:
 	character.modulate = Color.yellow.linear_interpolate(
 		Color.white, f.state_time / 2.0 / f.state_dict.blockstun
 	)
-	
-	
+
 
 func animation(f: Fighter) -> String:
-	print("Animation run")
-	if f.state_dict["CrouchingBlockstun"] == false:
-		return "CrouchingBlockstun"
+	if f.state_dict["Crouching"]:
+		if f.get_node("AnimationPlayer").has_animation("CrouchingBlockstun"):
+			return "CrouchingBlockstun"
+		return "Crouch"
 	else:
-		
-		return "Hitstun"
+		return "Blockstun"
 
 
 func can_block() -> bool:

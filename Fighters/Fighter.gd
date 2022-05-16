@@ -191,10 +191,7 @@ func is_blocking(input: Dictionary):
 func hit_response(input: Dictionary):
 	# Look at the hit.
 	if $Hurtboxes.hit_hitboxes.facing == 0:
-		var diff = (
-			fixed_position.x
-			- $Hurtboxes.hit_hitboxes.get_global_fixed_position().x
-		)
+		var diff = fixed_position.x - $Hurtboxes.hit_hitboxes.get_global_fixed_position().x
 		if diff > 0 && fixed_scale.x > 0:
 			fixed_scale.x *= -1
 		if diff < 0 && fixed_scale.x < 0:
@@ -265,7 +262,7 @@ func on_hit():
 		combo_gaps.clear()
 
 	state_dict.hitstun = $Hurtboxes.hit_hitdata.hitstun
-	
+
 	# state_dict.hit_hitdata = $Hurtboxes.hit_hitdata
 	vel.x = ($Hurtboxes.hit_hitdata.x_vel << 16) * (-1 if fixed_scale.x > 0 else 1)
 	vel.y = $Hurtboxes.hit_hitdata.y_vel << 16
@@ -280,7 +277,7 @@ func on_hit():
 	#	change_to_state(moveset.knockdown)
 	elif grounded:
 		change_to_state(moveset.hitstun)
-		
+
 	else:
 		change_to_state(moveset.air_hitstun)
 
@@ -303,10 +300,7 @@ func throw_response(input: Dictionary):
 		change_to_state(moveset.throw_tech)
 		get_node(opponent_path).change_to_state(moveset.throw_tech)
 		return
-	if (
-		not state in moveset.movement
-		and not state in [moveset.walk, moveset.crouch, moveset.jump]
-	):
+	if not state in moveset.movement and not state in [moveset.walk, moveset.crouch, moveset.jump]:
 		print("not neutral state")
 		return
 
@@ -357,20 +351,25 @@ func _get_local_input() -> Dictionary:
 			dash = false,
 		}
 
-	if controlled_by == "downback":
+	if controlled_by in ["block", "punish"]:
+		var opponent = get_node(opponent_path)
+		var stand = not opponent.grounded and opponent.state in opponent.moveset.all_attacks()
+		if stand:
+			var attack_data = opponent.state.get("attack_data")
+			if attack_data != null:
+				# i think this is because the roll back library's
+				# internal input delay is two frames?
+				stand = opponent.state_time >= attack_data.startup - 3
+
 		return {
-			stick_x = int(
-				sign(self.fixed_position_x - get_node(opponent_path).fixed_position.x)
-			),
-			stick_y = -1,
+			stick_x = int(sign(self.fixed_position_x - get_node(opponent_path).fixed_position.x)),
+			stick_y = 0 if stand else -1,
 			light = (
-				state
-				in [
-					moveset.hitstun,
-					moveset.air_hitstun,
-					moveset.knockdown,
-					moveset.blockstun
-				]
+				controlled_by == "punish"
+				and (
+					state
+					in [moveset.hitstun, moveset.air_hitstun, moveset.knockdown, moveset.blockstun]
+				)
 			),
 			heavy = false,
 			dash = false,
