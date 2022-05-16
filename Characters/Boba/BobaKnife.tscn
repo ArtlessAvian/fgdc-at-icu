@@ -1,0 +1,99 @@
+[gd_scene load_steps=27 format=2]
+
+[ext_resource path="res://Fighters/Hitboxes.gd" type="Script" id=1]
+[ext_resource path="res://Fighters/Hurtboxes.gd" type="Script" id=2]
+[ext_resource path="res://Characters/Boba/Knife.gd" type="Script" id=3]
+[ext_resource path="res://spr_realisticexplosion/spr_realisticexplosion_13.png" type="Texture" id=4]
+[ext_resource path="res://spr_realisticexplosion/spr_realisticexplosion_1.png" type="Texture" id=5]
+[ext_resource path="res://spr_realisticexplosion/spr_realisticexplosion_4.png" type="Texture" id=6]
+[ext_resource path="res://spr_realisticexplosion/spr_realisticexplosion_8.png" type="Texture" id=7]
+[ext_resource path="res://spr_realisticexplosion/spr_realisticexplosion_15.png" type="Texture" id=8]
+[ext_resource path="res://spr_realisticexplosion/spr_realisticexplosion_5.png" type="Texture" id=9]
+[ext_resource path="res://spr_realisticexplosion/spr_realisticexplosion_16.png" type="Texture" id=10]
+[ext_resource path="res://spr_realisticexplosion/spr_realisticexplosion_9.png" type="Texture" id=11]
+[ext_resource path="res://spr_realisticexplosion/spr_realisticexplosion_14.png" type="Texture" id=12]
+[ext_resource path="res://spr_realisticexplosion/spr_realisticexplosion_10.png" type="Texture" id=13]
+[ext_resource path="res://spr_realisticexplosion/spr_realisticexplosion_6.png" type="Texture" id=14]
+[ext_resource path="res://spr_realisticexplosion/spr_realisticexplosion_12.png" type="Texture" id=15]
+[ext_resource path="res://spr_realisticexplosion/spr_realisticexplosion_7.png" type="Texture" id=16]
+[ext_resource path="res://spr_realisticexplosion/spr_realisticexplosion_11.png" type="Texture" id=17]
+[ext_resource path="res://spr_realisticexplosion/spr_realisticexplosion_3.png" type="Texture" id=18]
+[ext_resource path="res://spr_realisticexplosion/spr_realisticexplosion_0.png" type="Texture" id=19]
+[ext_resource path="res://Characters/Lippo/Assets/ProgrammerArt/spades.png" type="Texture" id=20]
+[ext_resource path="res://spr_realisticexplosion/spr_realisticexplosion_2.png" type="Texture" id=21]
+[ext_resource path="res://addons/FGDC-Datatypes/HitData.gd" type="Script" id=22]
+
+[sub_resource type="Resource" id=6]
+script = ExtResource( 22 )
+guard = "0"
+startup = 4
+active = 2
+hitstun = 20
+blockstun = 20
+hitstop = 0
+damage = 1
+chipdamage = 1
+knockdown = false
+x_vel = 0
+y_vel = 0
+active_hitboxes = 1
+active_hurtboxes = 0
+
+[sub_resource type="SGRectangleShape2D" id=4]
+extents_x = 1310720
+extents_y = 1310720
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [  ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 19 ), ExtResource( 5 ), ExtResource( 21 ), ExtResource( 18 ), ExtResource( 6 ), ExtResource( 9 ), ExtResource( 14 ), ExtResource( 16 ), ExtResource( 7 ), ExtResource( 11 ), ExtResource( 13 ), ExtResource( 17 ), ExtResource( 15 ), ExtResource( 4 ), ExtResource( 12 ), ExtResource( 8 ), ExtResource( 10 ) ],
+"loop": false,
+"name": "explode",
+"speed": 20.0
+} ]
+
+[sub_resource type="SGRectangleShape2D" id=5]
+extents_x = 1638400
+extents_y = 1638400
+
+[node name="HiddenMissile" type="SGFixedNode2D" groups=["network_sync"]]
+script = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 1, 2 )
+texture = ExtResource( 20 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 50, 50 )
+
+[node name="Hitboxes" type="SGArea2D" parent="." groups=["hitboxes", "network_sync"]]
+script = ExtResource( 1 )
+hit_data = SubResource( 6 )
+
+[node name="SGCollisionShape2D" type="SGCollisionShape2D" parent="Hitboxes"]
+modulate = Color( 1, 0, 0, 1 )
+self_modulate = Color( 1, 0, 0, 1 )
+shape = SubResource( 4 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 3 )
+animation = "explode"
+frame = 16
+playing = true
+
+[node name="Hurtboxes" type="SGArea2D" parent="." groups=["hurtboxes", "network_sync"]]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="SGCollisionShape2D" type="SGCollisionShape2D" parent="Hurtboxes"]
+modulate = Color( 0, 1, 0, 1 )
+shape = SubResource( 5 )
+
+[connection signal="on_contact" from="Hitboxes" to="." method="_on_Hitboxes_on_contact"]

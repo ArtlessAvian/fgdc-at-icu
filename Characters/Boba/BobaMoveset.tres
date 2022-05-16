@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=30 format=2]
+[gd_resource type="Resource" load_steps=32 format=2]
 
 [ext_resource path="res://addons/FGDC-Datatypes/ThrowData.gd" type="Script" id=1]
 [ext_resource path="res://addons/FGDC-Datatypes/GenericStates/JumpState.gd" type="Script" id=2]
@@ -10,12 +10,14 @@
 [ext_resource path="res://Characters/Max/MaxDP.tres" type="Resource" id=8]
 [ext_resource path="res://Characters/Max/MaxJHeavy.tres" type="Resource" id=9]
 [ext_resource path="res://Characters/Max/MaxDivekick.tres" type="Resource" id=10]
+[ext_resource path="res://Characters/Boba/States/BobaSLight.tres" type="Resource" id=11]
 [ext_resource path="res://Characters/Boba/States/BobaJLight.tres" type="Resource" id=12]
 [ext_resource path="res://Characters/Boba/States/BobaCHeavy.tres" type="Resource" id=13]
-[ext_resource path="res://Characters/Boba/States/BobaLight.tres" type="Resource" id=14]
+[ext_resource path="res://Characters/Boba/States/BobaSHeavy.tres" type="Resource" id=14]
 [ext_resource path="res://Characters/Boba/States/BobaCLight.tres" type="Resource" id=15]
-[ext_resource path="res://Characters/Boba/States/BobaHeavy.tres" type="Resource" id=16]
+[ext_resource path="res://Characters/Boba/States/BobaKnivesHeavy.tres" type="Resource" id=16]
 [ext_resource path="res://Characters/Max/MaxDivekickHeavy.tres" type="Resource" id=17]
+[ext_resource path="res://Characters/Boba/States/BobaKnives.tres" type="Resource" id=18]
 [ext_resource path="res://Characters/Max/MaxDPHeavy.tres" type="Resource" id=19]
 [ext_resource path="res://addons/FGDC-Datatypes/GenericStates/BurstState.gd" type="Script" id=20]
 [ext_resource path="res://addons/FGDC-Datatypes/StandardBurst.tres" type="Resource" id=21]
@@ -72,7 +74,7 @@ air_throw_data = SubResource( 5 )
 
 [sub_resource type="Resource" id=4]
 script = ExtResource( 6 )
-speed = 8
+speed = 6
 
 [resource]
 script = ExtResource( 3 )
@@ -81,13 +83,13 @@ walk = SubResource( 4 )
 crouch = SubResource( 8 )
 prejump = SubResource( 9 )
 jump = SubResource( 3 )
-light = ExtResource( 14 )
-heavy = ExtResource( 16 )
+light = ExtResource( 11 )
+heavy = ExtResource( 14 )
 c_light = ExtResource( 15 )
 c_heavy = ExtResource( 13 )
 j_light = ExtResource( 12 )
 j_heavy = ExtResource( 9 )
 throw = SubResource( 7 )
 burst = SubResource( 10 )
-attacks = [ ExtResource( 8 ), ExtResource( 19 ), ExtResource( 10 ), ExtResource( 17 ) ]
+attacks = [ ExtResource( 8 ), ExtResource( 19 ), ExtResource( 10 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 16 ) ]
 movement = [ ExtResource( 22 ), ExtResource( 23 ) ]

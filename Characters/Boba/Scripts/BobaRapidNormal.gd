@@ -10,8 +10,8 @@ func run(f: Fighter, input: Dictionary) -> void:
 	.run(f, input)
 
 	# if f.grounded and 5 <= f.state_time and f.state_time < 10:
-	if f.grounded and f.state_time < 10:
-		f.vel.x -= (5 << 16) * sign(f.fixed_scale.x)
+	if f.grounded and f.state_time < 5:
+		f.vel.x -= (3 << 16) * sign(f.fixed_scale.x)
 
 	# if f.state_dict["pushback"] == -2:
 	# 	if f.get_node("Hitboxes").attack_number == f.state_dict.last_attack_contact:

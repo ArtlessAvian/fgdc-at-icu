@@ -59,6 +59,8 @@ func collide_hitboxes():
 				self.hit_hitdata = hitboxes.get_hit_data()
 				self.hit_hitboxes = hitboxes
 				break  # only one thing can hit you at one time.
+			else:
+				print("ignoring", key)
 
 	for throwboxes in self.get_overlapping_areas():
 		if throwboxes is Throwboxes:

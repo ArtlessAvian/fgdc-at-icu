@@ -18,7 +18,7 @@ x_vel = 5
 y_vel = 25
 active_hitboxes = 1
 active_hurtboxes = 0
-animation_name = "CHeavy"
+animation_name = "Heavy"
 recovery = 16
 
 [resource]
