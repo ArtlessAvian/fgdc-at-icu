@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=29 format=2]
+[gd_resource type="Resource" load_steps=30 format=2]
 
 [ext_resource path="res://addons/FGDC-Datatypes/ThrowData.gd" type="Script" id=1]
 [ext_resource path="res://addons/FGDC-Datatypes/GenericStates/JumpState.gd" type="Script" id=2]
@@ -19,12 +19,12 @@
 [ext_resource path="res://Characters/Max/MaxDivekickHeavy.tres" type="Resource" id=17]
 [ext_resource path="res://Characters/Max/MaxDashPunchHeavy.tres" type="Resource" id=18]
 [ext_resource path="res://Characters/Max/MaxDPHeavy.tres" type="Resource" id=19]
-[ext_resource path="res://addons/FGDC-Datatypes/GenericStates/AirdashState.gd" type="Script" id=20]
+[ext_resource path="res://addons/FGDC-Datatypes/GenericStates/BurstState.gd" type="Script" id=20]
+[ext_resource path="res://addons/FGDC-Datatypes/StandardBurst.tres" type="Resource" id=21]
 
 [sub_resource type="Resource" id=10]
 script = ExtResource( 20 )
-speed = 917504
-length = 30
+attack_data = ExtResource( 21 )
 
 [sub_resource type="Resource" id=8]
 script = ExtResource( 7 )

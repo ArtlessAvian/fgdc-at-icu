@@ -8,7 +8,7 @@ export(int) var fighter_height = 50
 # Subpixels per frame squared
 export(int) var fighter_gravity = 32768
 export(int) var max_health = 100
-export(int) var max_burst_meter = 5 * 60
+export(int) var max_burst_meter = 1 * 60
 
 export(Resource) var moveset
 
@@ -179,6 +179,9 @@ func check_for_hit(input: Dictionary):
 			$Hurtboxes.modulate = Color.blue
 		else:
 			$Hurtboxes.modulate = Color.cyan
+	else:
+		$Hurtboxes.modulate = Color.green
+
 	# End debuggy stuff.
 
 	if $Hurtboxes.hit_hitdata != null and not invincible:
@@ -310,7 +313,10 @@ func throw_response(input: Dictionary):
 		change_to_state(moveset.throw_tech)
 		get_node(opponent_path).change_to_state(moveset.throw_tech)
 		return
-	if not state in moveset.movement and not state in [moveset.walk, moveset.crouch, moveset.jump]:
+	if (
+		not state in moveset.movement
+		and not state in [moveset.walk, moveset.crouch, moveset.jump, moveset.burst, moveset.dead]
+	):
 		print("not neutral state")
 		return
 

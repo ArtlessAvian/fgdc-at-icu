@@ -38,12 +38,12 @@ func _process(delta):
 		var child = uncast
 		if not Engine.editor_hint:
 			child.visible = not child.disabled
-			child.self_modulate = Color.red
+			child.modulate = Color.red
 		else:
 			if child.disabled:
-				child.self_modulate = Color.gray
+				child.modulate = Color.gray
 			else:
-				child.self_modulate = Color.red
+				child.modulate = Color.red
 
 		child.position.x = child.fixed_position.x / (1 << 16)
 		child.position.y = child.fixed_position.y / (1 << 16)

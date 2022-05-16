@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=2]
+[gd_scene load_steps=60 format=2]
 
 [ext_resource path="res://Fighters/Fighter.gd" type="Script" id=1]
 [ext_resource path="res://Fighters/Hitboxes.gd" type="Script" id=2]
@@ -81,6 +81,71 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ -5.0 ]
+}
+
+[sub_resource type="Animation" id=67]
+resource_name = "Burst"
+length = 60.0
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Hitboxes/SGCollisionShape2D:shape:extents_x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 10000000 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Hitboxes/SGCollisionShape2D:shape:extents_y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 10000000 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Hitboxes/SGCollisionShape2D:fixed_position_x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Hitboxes/SGCollisionShape2D:fixed_position_y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ -6553600 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Visual/Character:flips")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 10, 30, 50 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 7.0, 10.0 ]
 }
 
 [sub_resource type="Animation" id=70]
@@ -1734,6 +1799,7 @@ playback_process_mode = 0
 playback_speed = 60.0
 anims/Airdash = SubResource( 76 )
 anims/Blockstun = SubResource( 47 )
+anims/Burst = SubResource( 67 )
 anims/CHeavy = SubResource( 70 )
 anims/Crouch = SubResource( 46 )
 anims/CrouchingBlockstun = SubResource( 84 )
@@ -1834,6 +1900,7 @@ collision_mask = 0
 script = ExtResource( 2 )
 
 [node name="SGCollisionShape2D" type="SGCollisionShape2D" parent="Hitboxes"]
+modulate = Color( 0.75, 0.75, 0.75, 1 )
 self_modulate = Color( 0.75, 0.75, 0.75, 1 )
 position = Vector2( 132, -77 )
 fixed_position_x = 8650752
@@ -1847,6 +1914,7 @@ collision_mask = 2
 script = ExtResource( 4 )
 
 [node name="SGCollisionShape2D" type="SGCollisionShape2D" parent="Hurtboxes"]
+modulate = Color( 0, 1, 0, 1 )
 self_modulate = Color( 0, 1, 0, 1 )
 position = Vector2( 0, -100 )
 fixed_position_y = -6553600

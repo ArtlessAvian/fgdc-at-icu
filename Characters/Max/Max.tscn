@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=2]
+[gd_scene load_steps=63 format=2]
 
 [ext_resource path="res://Fighters/Fighter.gd" type="Script" id=1]
 [ext_resource path="res://Fighters/Hitboxes.gd" type="Script" id=2]
@@ -46,6 +46,71 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ -5.0 ]
+}
+
+[sub_resource type="Animation" id=67]
+resource_name = "Burst"
+length = 60.0
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Hitboxes/SGCollisionShape2D:shape:extents_x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 10000000 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Hitboxes/SGCollisionShape2D:shape:extents_y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 10000000 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Hitboxes/SGCollisionShape2D:fixed_position_x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Hitboxes/SGCollisionShape2D:fixed_position_y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ -6553600 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Visual/Character:flips")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 10, 30, 50 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 7.0, 10.0 ]
 }
 
 [sub_resource type="Animation" id=56]
@@ -2162,6 +2227,7 @@ moveset = ExtResource( 9 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 playback_speed = 60.0
 anims/Blockstun = SubResource( 47 )
+anims/Burst = SubResource( 67 )
 anims/CHeavy = SubResource( 56 )
 anims/CLight = SubResource( 55 )
 anims/Crouch = SubResource( 46 )
@@ -2217,7 +2283,7 @@ collision_mask = 0
 script = ExtResource( 2 )
 
 [node name="hitbox1" type="SGCollisionShape2D" parent="Hitboxes"]
-self_modulate = Color( 0.75, 0.75, 0.75, 1 )
+modulate = Color( 0.75, 0.75, 0.75, 1 )
 position = Vector2( 132, -77 )
 fixed_position_x = 8650752
 fixed_position_y = -5046272
@@ -2230,13 +2296,13 @@ collision_mask = 2
 script = ExtResource( 4 )
 
 [node name="hurtbox1" type="SGCollisionShape2D" parent="Hurtboxes"]
-self_modulate = Color( 0, 1, 0, 1 )
+modulate = Color( 0, 1, 0, 1 )
 position = Vector2( 0, -100 )
 fixed_position_y = -6553600
 shape = SubResource( 43 )
 
 [node name="Light_hurtbox1" type="SGCollisionShape2D" parent="Hurtboxes"]
-self_modulate = Color( 0.498039, 0.498039, 0.498039, 0.0392157 )
+modulate = Color( 0.498039, 0.498039, 0.498039, 0.0392157 )
 position = Vector2( 69.4824, -120 )
 fixed_position_x = 4553600
 fixed_position_y = -7864320
@@ -2244,7 +2310,7 @@ shape = SubResource( 43 )
 disabled = true
 
 [node name="Heavy_hurtbox1" type="SGCollisionShape2D" parent="Hurtboxes"]
-self_modulate = Color( 0.498039, 0.498039, 0.498039, 0.0392157 )
+modulate = Color( 0.498039, 0.498039, 0.498039, 0.0392157 )
 position = Vector2( 69.4824, -129.155 )
 fixed_position_x = 4553600
 fixed_position_y = -8464320
@@ -2252,7 +2318,7 @@ shape = SubResource( 43 )
 disabled = true
 
 [node name="CLight_hurtbox1" type="SGCollisionShape2D" parent="Hurtboxes"]
-self_modulate = Color( 0.498039, 0.498039, 0.498039, 0.0392157 )
+modulate = Color( 0.498039, 0.498039, 0.498039, 0.0392157 )
 position = Vector2( 157, -43.4824 )
 fixed_position_x = 10289152
 fixed_position_y = -2849664
@@ -2260,7 +2326,7 @@ shape = SubResource( 43 )
 disabled = true
 
 [node name="CHeavy_hurtbox1" type="SGCollisionShape2D" parent="Hurtboxes"]
-self_modulate = Color( 0.498039, 0.498039, 0.498039, 0.0392157 )
+modulate = Color( 0.498039, 0.498039, 0.498039, 0.0392157 )
 position = Vector2( 68.5942, -43.4824 )
 fixed_position_x = 4495392
 fixed_position_y = -2849664
@@ -2268,21 +2334,21 @@ shape = SubResource( 43 )
 disabled = true
 
 [node name="JLight_hurtbox1" type="SGCollisionShape2D" parent="Hurtboxes"]
-self_modulate = Color( 0.498039, 0.498039, 0.498039, 0.0392157 )
+modulate = Color( 0.498039, 0.498039, 0.498039, 0.0392157 )
 position = Vector2( 0, -61.3105 )
 fixed_position_y = -4018048
 shape = SubResource( 43 )
 disabled = true
 
 [node name="DPLight_hurtbox1" type="SGCollisionShape2D" parent="Hurtboxes"]
-self_modulate = Color( 0.498039, 0.498039, 0.498039, 0.0392157 )
+modulate = Color( 0.498039, 0.498039, 0.498039, 0.0392157 )
 position = Vector2( 0, -46.0518 )
 fixed_position_y = -3018048
 shape = SubResource( 43 )
 disabled = true
 
 [node name="Divekick_hurtbox1" type="SGCollisionShape2D" parent="Hurtboxes"]
-self_modulate = Color( 0.498039, 0.498039, 0.498039, 0.0392157 )
+modulate = Color( 0.498039, 0.498039, 0.498039, 0.0392157 )
 position = Vector2( 54.9316, 0 )
 fixed_position_x = 3600000
 shape = SubResource( 43 )

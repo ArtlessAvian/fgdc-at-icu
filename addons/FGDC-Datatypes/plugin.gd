@@ -4,6 +4,7 @@ extends EditorPlugin
 const generic_states = [
 	"AirdashState",
 	"BackdashState",
+	"BurstState",
 	"CrouchState",
 	"FireballState",
 	"PrejumpState",

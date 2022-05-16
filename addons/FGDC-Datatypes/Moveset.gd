@@ -56,6 +56,7 @@ func all_attacks():
 	if lazy_all_attacks.empty():
 		lazy_all_attacks.append_array(attacks)
 		lazy_all_attacks.append(throw)
+		lazy_all_attacks.append(burst)
 		lazy_all_attacks.append_array(all_normals())
 	return lazy_all_attacks
 
