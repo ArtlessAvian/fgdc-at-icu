@@ -432,7 +432,7 @@ func _get_local_input() -> Dictionary:
 		stick_y = int(round(Input.get_axis(down, up))),
 		light = Input.is_action_pressed(light),
 		heavy = Input.is_action_pressed(heavy),
-		dash = Input.is_action_just_pressed(dash)
+		dash = Input.is_action_pressed(dash)
 	}
 	# print(input)
 	return input
