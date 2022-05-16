@@ -169,6 +169,20 @@ func detect_qcb(reversed: bool, frames: int) -> bool:
 	return detect_qcf(not reversed, frames)
 
 
+func detect_hcb(reversed: bool, frames: int) -> bool:
+	if detect_motion([6, 3, 2, 1, 4], reversed, frames):
+		return true
+	if detect_motion([6, 2, 1, 4], reversed, frames):
+		return true
+	if detect_motion([6, 3, 2, 4], reversed, frames):
+		return true
+	if detect_motion([6, 3, 1, 4], reversed, frames):
+		return true
+	if detect_motion([6, 3, 4], reversed, frames):
+		return true
+	return false
+
+
 func detect_dp(reversed: bool, frames: int) -> bool:
 	if detect_motion([6, 2, 3], reversed, frames):
 		return true

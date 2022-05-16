@@ -14,7 +14,7 @@ func transition_into(f: Fighter, moveset: Moveset, input: Dictionary) -> bool:
 		f.state in [moveset.walk, moveset.crouch, moveset.jump] + moveset.all_attacks()
 		and f.state.attack_level() < self.attack_level()
 	):
-		if f.get_node("InputHistory").detect_qcf(f.fixed_scale.x < 0, 17):
+		if f.get_node("InputHistory").detect_hcb(f.fixed_scale.x < 0, 17):
 			f.vel.x = 0
 			f.get_node("Hitboxes").new_attack()
 
@@ -37,7 +37,7 @@ func transition_out(f: Fighter, moveset: Moveset, input: Dictionary) -> Resource
 
 
 func run(f: Fighter, input: Dictionary) -> void:
-	if f.state_time == (55 if is_heavy else 30):
+	if f.state_time == (59 if is_heavy else 30):
 		for i in range(-3, 7, 2):
 			var angle = i * 2860 * (1 if f.grounded else -1)
 
