@@ -2,6 +2,11 @@ extends "../State.gd"
 
 
 func transition_out(f: Fighter, moveset: Moveset, input: Dictionary) -> Resource:
+	# Burst activation
+	if input.heavy and input.light and f.can_burst():
+		f.invincible = false
+		return moveset.burst
+
 	if f.state_time > f.state_dict.hitstun:
 		if len(f.combo_gaps) == 0 or f.combo_gaps[len(f.combo_gaps) - 1] != f.combo_count:
 			f.combo_gaps.append(f.combo_count)

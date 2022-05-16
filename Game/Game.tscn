@@ -196,3 +196,28 @@ texture_progress = ExtResource( 26 )
 tint_under = Color( 0, 0, 0, 1 )
 tint_progress = Color( 1, 0, 0, 1 )
 nine_patch_stretch = true
+
+[node name="BurstMeter1" type="TextureProgress" parent="UILayer/UI"]
+margin_left = 302.0
+margin_top = 87.0
+margin_right = 494.0
+margin_bottom = 118.0
+value = 50.0
+texture_under = ExtResource( 26 )
+texture_progress = ExtResource( 26 )
+fill_mode = 1
+tint_under = Color( 0, 0, 0, 1 )
+tint_progress = Color( 0.705882, 0.694118, 0.984314, 1 )
+nine_patch_stretch = true
+
+[node name="BurstMeter2" type="TextureProgress" parent="UILayer/UI"]
+margin_left = 790.0
+margin_top = 87.0
+margin_right = 982.0
+margin_bottom = 118.0
+value = 50.0
+texture_under = ExtResource( 26 )
+texture_progress = ExtResource( 26 )
+tint_under = Color( 0, 0, 0, 1 )
+tint_progress = Color( 0.705882, 0.694118, 0.984314, 1 )
+nine_patch_stretch = true

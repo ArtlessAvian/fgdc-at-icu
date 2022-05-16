@@ -9,6 +9,10 @@ var _hold_total = 0
 const BUTTON_LIST = ["light", "heavy", "dash"]
 
 
+func get_hold_duration(i: int) -> int:
+	return _hold_duration[i]
+
+
 func _ready():
 	pass
 
@@ -94,7 +98,7 @@ func detect_charge_forward(reversed: bool, input_frames: int, hold_frames: int) 
 		else:
 			charge_time += _hold_duration[i]
 			if charge_time >= hold_frames:
-				prints("succ", first_input_time, charge_time, SyncManager.current_tick)
+				# prints("succ", first_input_time, charge_time, SyncManager.current_tick)
 				return true
 
 	return false
@@ -140,7 +144,7 @@ func detect_charge_up(input_frames: int, hold_frames: int) -> bool:
 		else:
 			charge_time += _hold_duration[i]
 			if charge_time >= hold_frames:
-				prints("succ", first_input_time, charge_time, SyncManager.current_tick)
+				# prints("succ", first_input_time, charge_time, SyncManager.current_tick)
 				return true
 
 	return false
@@ -196,6 +200,16 @@ func detect_downdown(reversed: bool, frames: int) -> bool:
 		return true
 	if detect_motion([3, 5, 2], reversed, frames):
 		return true
+	return false
+
+
+func detect_burst(frames: int) -> bool:
+	for i in range(1, frames):
+		# TODO: JANK: If L+H is pushed twice within the frame window BUT previous button history has been deleted due to stick inputs, then burst is not activated.
+		if i >= len(_button_history):
+			break
+		if _button_history[i] == 3:
+			return true
 	return false
 
 

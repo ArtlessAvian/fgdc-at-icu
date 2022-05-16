@@ -18,6 +18,7 @@ export(Resource) var c_heavy
 export(Resource) var j_light
 export(Resource) var j_heavy
 export(Resource) var throw
+export(Resource) var burst
 
 export(Array, Resource) var attacks = []
 export(Array, Resource) var movement = []

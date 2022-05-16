@@ -8,6 +8,7 @@ export(int) var fighter_height = 50
 # Subpixels per frame squared
 export(int) var fighter_gravity = 32768
 export(int) var max_health = 100
+export(int) var max_burst_meter = 5 * 60
 
 export(Resource) var moveset
 
@@ -21,7 +22,8 @@ var vel: SGFixedVector2 = SGFixedVector2.new()
 var grounded = true
 
 var health: int = 20
-var state: Resource = null
+var burst: int = 0
+var state: Resource
 var state_time = 0
 var ani_start_time = 0
 var air_actions = 0
@@ -32,6 +34,8 @@ var combo_count = 0
 var combo_gaps = []
 var hitstop = 0
 
+signal countered
+
 
 func _ready():
 	self.fixed_position.x = (-200 << 16) * (-1 if is_p2 else 1)
@@ -39,6 +43,7 @@ func _ready():
 	self.vel = SGFixedVector2.new()
 	self.grounded = true
 	self.health = self.max_health
+	self.burst = max_burst_meter
 	self.state_time = 0
 	self.ani_start_time = 0
 	self.air_actions = 0
@@ -80,7 +85,6 @@ func _network_postprocess(input: Dictionary) -> void:
 	if hitstop > 0:
 		hitstop -= 1
 		return
-
 	check_for_hit(input)  # avoid p1 bias.
 
 
@@ -91,6 +95,9 @@ func state_process(input: Dictionary):
 		change_to_state(new_state)
 	else:
 		state_time += 1
+
+	if burst < max_burst_meter:
+		burst += 1
 
 	# Hitbox enabledness is calculated every frame,
 	# rather have it be stateful, and saved in the state for rollbacks!
@@ -270,6 +277,9 @@ func on_hit():
 		grounded = false
 		# gravity takes care of the rest!
 
+	if state.get("attack_data") != null and state_time <= state.get("attack_data").startup:
+		emit_signal("countered")
+
 	# print($Hurtboxes.hit_hitdata, SyncManager.current_tick)
 	if self.health <= 0:
 		change_to_state(moveset.dead)
@@ -334,6 +344,20 @@ const NULL_INPUT = {
 }
 
 var last_mash = NULL_INPUT
+
+
+func can_burst() -> bool:
+	# BUG: Going between Hitstun and Knockdown will reset the burst input window.
+	# Burst if L+H just pressed and L+H was previously pressed while stunned at most 30 frames ago.
+	if (
+		burst == max_burst_meter
+		and $InputHistory.get_hold_duration(0) == 1
+		and $InputHistory.detect_burst(min(state_time, 30))
+	):
+		burst = 0
+		return true
+
+	return false
 
 
 func _get_local_input() -> Dictionary:
@@ -434,6 +458,7 @@ func _save_state() -> Dictionary:
 		combo_count = combo_count,
 		hitstop = hitstop,
 		health = health,
+		burst = burst,
 		invincible = invincible
 	}
 	# return save
@@ -454,6 +479,7 @@ func _load_state(save: Dictionary) -> void:
 	combo_count = save.combo_count
 	hitstop = save.hitstop
 	health = save.health
+	burst = save.burst
 	invincible = save.invincible
 
 	$AnimationPlayer.play("RESET")
