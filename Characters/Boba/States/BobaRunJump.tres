@@ -4,4 +4,5 @@
 
 [resource]
 script = ExtResource( 1 )
-speed = 917504
+impulse = 1638400
+speed_limit = 983040

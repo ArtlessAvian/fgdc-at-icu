@@ -316,6 +316,7 @@ func throw_response(input: Dictionary):
 	if (
 		not state in moveset.movement
 		and not state in [moveset.walk, moveset.crouch, moveset.jump, moveset.burst, moveset.dead]
+		and not (state == moveset.air_hitstun and state_time > state_dict.hitstun)
 	):
 		print("not neutral state")
 		return
