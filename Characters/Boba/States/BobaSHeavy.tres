@@ -6,11 +6,11 @@
 [sub_resource type="Resource" id=1]
 script = ExtResource( 2 )
 guard = 0
-startup = 4
-active = 2
+startup = 20
+active = 5
 hitstun = 12
 blockstun = 12
-hitstop = 5
+hitstop = 10
 damage = 5
 chipdamage = 1
 knockdown = true
@@ -18,13 +18,13 @@ x_vel = 5
 y_vel = 0
 active_hitboxes = 1
 active_hurtboxes = 0
-animation_name = "Walk"
-recovery = 10
+animation_name = "Heavy"
+recovery = 5
 
 [resource]
 script = ExtResource( 1 )
 attack_data = SubResource( 1 )
-attack_level = 0
+attack_level = 2
 jump_cancellable = false
-step_vel = 1310720
-step_time = 8
+step_vel = 655360
+step_time = 15

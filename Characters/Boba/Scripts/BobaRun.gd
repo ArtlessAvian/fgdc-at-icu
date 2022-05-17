@@ -61,7 +61,7 @@ func run(f: Fighter, input: Dictionary) -> void:
 
 
 func animation(f: Fighter) -> String:
-	return "Walk"
+	return "Run"
 
 
 func ignore_collision() -> bool:

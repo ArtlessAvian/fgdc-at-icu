@@ -11,14 +11,14 @@ active = 6
 hitstun = 30
 blockstun = 16
 hitstop = 9
-damage = 5
+damage = 3
 chipdamage = 0
 knockdown = true
 x_vel = 5
 y_vel = 25
 active_hitboxes = 1
 active_hurtboxes = 0
-animation_name = "Heavy"
+animation_name = "CHeavy"
 recovery = 16
 
 [resource]
