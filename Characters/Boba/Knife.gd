@@ -15,8 +15,8 @@ var hit = false
 
 
 func _network_spawn(data: Dictionary):
-	self.flip = data.flip
 	self.lifetime = 0
+	self.flip = data.flip
 
 	self.fixed_position.x = data.position_x
 	self.fixed_position.y = data.position_y
@@ -28,6 +28,10 @@ func _network_spawn(data: Dictionary):
 
 	self.angle = data.angle
 
+	$Sprite.rotation_degrees = 90 - rad2deg(angle / float(1 << 16))
+	if self.flip:
+		$Sprite.rotation_degrees = -$Sprite.rotation_degrees
+
 	$Hitboxes.facing = -1 if self.flip else 1
 	$Hitboxes.set_player(data.is_p2, true)
 	$Hurtboxes.set_player(data.is_p2, true)
@@ -35,6 +39,8 @@ func _network_spawn(data: Dictionary):
 	add_to_group("network_sync")
 
 	$AnimatedSprite.play("default")
+
+	# _network_preprocess({})
 
 
 func _network_preprocess(input: Dictionary) -> void:
@@ -47,7 +53,6 @@ func _network_preprocess(input: Dictionary) -> void:
 		+ SGFixed.cos(angle) * lifetime * KNIFE_SPEED * (-1 if flip else 1)
 	)
 	self.fixed_position.y = (origin_y - SGFixed.sin(angle) * lifetime * KNIFE_SPEED)
-	$Sprite.rotation_degrees = 90 - rad2deg(angle / float(1 << 16))
 
 	lifetime += 1
 
