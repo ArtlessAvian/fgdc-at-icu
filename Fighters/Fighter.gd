@@ -36,6 +36,14 @@ var hitstop = 0
 
 signal countered
 
+const hit_sound = preload("res://rip_in_pieces.wav")
+const hit_sound_2 = preload("res://rip_in_pieces_2.wav")
+const sounds = {
+	light = preload("res://Sounds/hit_1_light.wav"),
+	heavy = preload("res://Sounds/hit_1_hard.wav"),
+	landing = preload("res://Sounds/landing_on_floor_1.wav")
+}
+
 
 func _ready():
 	self.fixed_position.x = (-200 << 16) * (-1 if is_p2 else 1)
@@ -255,10 +263,6 @@ func on_block():
 	combo_count = 0
 
 
-const hit_sound = preload("res://rip_in_pieces.wav")
-const hit_sound_2 = preload("res://rip_in_pieces_2.wav")
-
-
 func on_hit():
 	$Hurtboxes.register_contact(false)
 
@@ -294,11 +298,12 @@ func on_hit():
 	else:
 		change_to_state(moveset.air_hitstun)
 
-	SyncManager.play_sound(
-		str(get_path()) + ":hit",
-		hit_sound if SyncManager.current_tick % 2 == 0 else hit_sound_2,
-		{position = self.position, pitch_scale = 1, volume_db = -20}
-	)
+	# TODO: Disabled for changing how sounds are played
+	# SyncManager.play_sound(
+	# 	str(get_path()) + ":hit",
+	# 	hit_sound if SyncManager.current_tick % 2 == 0 else hit_sound_2,
+	# 	{position = self.position, pitch_scale = 1, volume_db = -20}
+	# )
 
 
 func throw_response(input: Dictionary):
@@ -364,6 +369,17 @@ func can_burst() -> bool:
 		return true
 
 	return false
+
+
+func network_play_sound(sound_name: String):
+	# Plan for this:
+
+	# TODO: Change sound tag. Maybe something to do with sound_name parameter.
+	SyncManager.play_sound(
+		str(get_path()) + ":hit",
+		sounds[sound_name], #hit_sound if SyncManager.current_tick % 2 == 0 else hit_sound_2,
+		{position = self.position, pitch_scale = 1, volume_db = 10}
+	)
 
 
 func _get_local_input() -> Dictionary:
