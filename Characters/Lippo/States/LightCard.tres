@@ -1,9 +1,9 @@
 [gd_resource type="Resource" load_steps=2 format=2]
 
-[ext_resource path="res://Characters/Lippo/LippoCardState.gd" type="Script" id=1]
+[ext_resource path="res://Characters/Lippo/States/LippoCardState.gd" type="Script" id=1]
 
 [resource]
 script = ExtResource( 1 )
 is_heavy = false
-animation_time = 30
+animation_time = 45
 fireball_time = 10

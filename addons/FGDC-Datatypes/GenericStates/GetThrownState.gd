@@ -6,7 +6,7 @@ func transition_into(f: Fighter, moveset: Moveset, input: Dictionary) -> bool:
 
 
 func transition_out(f: Fighter, moveset: Moveset, input: Dictionary) -> Resource:
-	if input.light and input.heavy:
+	if input.light and input.heavy and f.health > 0:
 		if f.state_dict["throwdata"].techable:
 			if f.state_time < f.state_dict["throwdata"].tech_window:
 				# WARNING: TODO: HACK: Port priority is a factor!

@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=2]
+[gd_scene load_steps=60 format=2]
 
 [ext_resource path="res://Fighters/Fighter.gd" type="Script" id=1]
 [ext_resource path="res://Fighters/Hitboxes.gd" type="Script" id=2]
@@ -10,7 +10,6 @@
 [ext_resource path="res://Fighters/FighterSprite.gd" type="Script" id=8]
 [ext_resource path="res://Characters/Lippo/LippoMoveset.tres" type="Resource" id=9]
 [ext_resource path="res://Example/Lippo.png" type="Texture" id=10]
-[ext_resource path="res://spritesheet test.png" type="Texture" id=11]
 [ext_resource path="res://Characters/Lippo/Assets/ProgrammerArt/card.png" type="Texture" id=12]
 [ext_resource path="res://Characters/Lippo/Assets/ProgrammerArt/Diamonds.png" type="Texture" id=13]
 [ext_resource path="res://Characters/Lippo/HeavyBeam.gd" type="Script" id=14]
@@ -27,7 +26,6 @@
 [ext_resource path="res://Characters/Lippo/Assets/Lippo_Walk_Frames/Lippo_Walk-3.png" type="Texture" id=25]
 [ext_resource path="res://Characters/Lippo/Assets/Lippo_Jump_Frames/Lippo_Jump-1.png" type="Texture" id=26]
 [ext_resource path="res://Characters/Lippo/Assets/LippoStand.tres" type="Texture" id=27]
-[ext_resource path="res://addons/FGDC-Datatypes/AttackData.gd" type="Script" id=28]
 
 [sub_resource type="Animation" id=76]
 resource_name = "Airdash"
@@ -83,6 +81,71 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ -5.0 ]
+}
+
+[sub_resource type="Animation" id=67]
+resource_name = "Burst"
+length = 60.0
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Hitboxes/SGCollisionShape2D:shape:extents_x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 10000000 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Hitboxes/SGCollisionShape2D:shape:extents_y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 10000000 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Hitboxes/SGCollisionShape2D:fixed_position_x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Hitboxes/SGCollisionShape2D:fixed_position_y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ -6553600 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Visual/Character:flips")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 10, 30, 50 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 7.0, 10.0 ]
 }
 
 [sub_resource type="Animation" id=70]
@@ -273,12 +336,186 @@ tracks/6/keys = {
 "values": [ 1 ]
 }
 
+[sub_resource type="Animation" id=84]
+resource_name = "CrouchingBlockstun"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Visual/Character/AnimatedSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Visual/Character/AnimatedSprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -70 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Visual/Character/AnimatedSprite:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 30.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Hurtboxes/SGCollisionShape2D:shape:extents_x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 2752512 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Hurtboxes/SGCollisionShape2D:shape:extents_y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 4325376 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Hurtboxes/SGCollisionShape2D:fixed_position_x")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Hurtboxes/SGCollisionShape2D:fixed_position_y")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ -4063232 ]
+}
+
+[sub_resource type="Animation" id=85]
+resource_name = "CrouchingHitstun"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Visual/Character/AnimatedSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Visual/Character/AnimatedSprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -70 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Visual/Character/AnimatedSprite:flip_h")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Hurtboxes/SGCollisionShape2D:shape:extents_x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 2752512 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Hurtboxes/SGCollisionShape2D:shape:extents_y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 4325376 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Hurtboxes/SGCollisionShape2D:fixed_position_x")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Hurtboxes/SGCollisionShape2D:fixed_position_y")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ -4063232 ]
+}
+
 [sub_resource type="Animation" id=52]
 resource_name = "DoThrow"
 
 [sub_resource type="Animation" id=79]
 resource_name = "Fireball"
-length = 30.0
+length = 45.0
 step = 1.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Visual/Character/AnimatedSprite:rotation_degrees")
@@ -319,7 +556,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id=68]
 resource_name = "Heavy"
-length = 68.0
+length = 88.0
 step = 1.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Hitboxes/SGCollisionShape2D:shape:extents_x")
@@ -1516,79 +1753,6 @@ animations = [ {
 "speed": 0.0
 } ]
 
-[sub_resource type="AtlasTexture" id=55]
-flags = 23
-atlas = ExtResource( 11 )
-region = Rect2( 0, 0, 515, 515 )
-
-[sub_resource type="AtlasTexture" id=56]
-flags = 23
-atlas = ExtResource( 11 )
-region = Rect2( 515, 0, 515, 515 )
-
-[sub_resource type="AtlasTexture" id=57]
-flags = 23
-atlas = ExtResource( 11 )
-region = Rect2( 1030, 0, 515, 515 )
-
-[sub_resource type="AtlasTexture" id=58]
-flags = 23
-atlas = ExtResource( 11 )
-region = Rect2( 1545, 0, 515, 515 )
-
-[sub_resource type="AtlasTexture" id=59]
-flags = 23
-atlas = ExtResource( 11 )
-region = Rect2( 2060, 0, 515, 515 )
-
-[sub_resource type="AtlasTexture" id=60]
-flags = 23
-atlas = ExtResource( 11 )
-region = Rect2( 2575, 0, 515, 515 )
-
-[sub_resource type="AtlasTexture" id=61]
-flags = 23
-atlas = ExtResource( 11 )
-region = Rect2( 3090, 0, 515, 515 )
-
-[sub_resource type="AtlasTexture" id=62]
-flags = 23
-atlas = ExtResource( 11 )
-region = Rect2( 3605, 0, 515, 515 )
-
-[sub_resource type="AtlasTexture" id=63]
-flags = 23
-atlas = ExtResource( 11 )
-region = Rect2( 0, 515, 515, 515 )
-
-[sub_resource type="AtlasTexture" id=64]
-flags = 23
-atlas = ExtResource( 11 )
-region = Rect2( 515, 515, 515, 515 )
-
-[sub_resource type="AtlasTexture" id=65]
-flags = 23
-atlas = ExtResource( 11 )
-region = Rect2( 1030, 515, 515, 515 )
-
-[sub_resource type="AtlasTexture" id=66]
-flags = 23
-atlas = ExtResource( 11 )
-region = Rect2( 1545, 515, 515, 515 )
-
-[sub_resource type="AtlasTexture" id=67]
-flags = 23
-atlas = ExtResource( 11 )
-region = Rect2( 2060, 515, 515, 515 )
-
-[sub_resource type="SpriteFrames" id=77]
-animations = [ {
-"frames": [ SubResource( 55 ), SubResource( 56 ), SubResource( 57 ), SubResource( 58 ), SubResource( 59 ), SubResource( 60 ), SubResource( 61 ), SubResource( 62 ), SubResource( 63 ), SubResource( 64 ), SubResource( 65 ), SubResource( 66 ), SubResource( 67 ) ],
-"loop": true,
-"name": "default",
-"speed": 0.0
-} ]
-
 [sub_resource type="Gradient" id=73]
 offsets = PoolRealArray( 0, 0.456026, 0.677524 )
 colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 )
@@ -1607,24 +1771,6 @@ orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 linear_accel = -1000.0
 color_ramp = SubResource( 74 )
-
-[sub_resource type="Resource" id=1]
-script = ExtResource( 28 )
-guard = 2
-startup = 15
-active = 5
-hitstun = 20
-blockstun = 20
-hitstop = 5
-damage = 5
-chipdamage = 1
-knockdown = false
-x_vel = 10
-y_vel = -10
-active_hitboxes = 1
-active_hurtboxes = 0
-animation_name = "JLight"
-recovery = 10
 
 [sub_resource type="SGRectangleShape2D" id=42]
 extents_x = 3239403
@@ -1653,8 +1799,11 @@ playback_process_mode = 0
 playback_speed = 60.0
 anims/Airdash = SubResource( 76 )
 anims/Blockstun = SubResource( 47 )
+anims/Burst = SubResource( 67 )
 anims/CHeavy = SubResource( 70 )
 anims/Crouch = SubResource( 46 )
+anims/CrouchingBlockstun = SubResource( 84 )
+anims/CrouchingHitstun = SubResource( 85 )
 anims/DoThrow = SubResource( 52 )
 anims/Fireball = SubResource( 79 )
 anims/Heavy = SubResource( 68 )
@@ -1676,6 +1825,7 @@ anims/Wakeup = SubResource( 51 )
 anims/Walk = SubResource( 36 )
 
 [node name="Debug" type="Node2D" parent="."]
+visible = false
 
 [node name="Label" type="Label" parent="Debug"]
 margin_right = 40.0
@@ -1697,12 +1847,6 @@ texture = ExtResource( 10 )
 position = Vector2( 0, -100 )
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 78 )
-
-[node name="AnimatedSprite3" type="AnimatedSprite" parent="Visual/Character"]
-visible = false
-position = Vector2( 0, -100 )
-scale = Vector2( 0.085, 0.085 )
-frames = SubResource( 77 )
 
 [node name="JLightEffect" type="Particles2D" parent="Visual"]
 position = Vector2( 69, -62 )
@@ -1754,9 +1898,9 @@ texture = ExtResource( 16 )
 [node name="Hitboxes" type="SGArea2D" parent="." groups=["hitboxes", "network_sync"]]
 collision_mask = 0
 script = ExtResource( 2 )
-hit_data = SubResource( 1 )
 
 [node name="SGCollisionShape2D" type="SGCollisionShape2D" parent="Hitboxes"]
+modulate = Color( 0.75, 0.75, 0.75, 1 )
 self_modulate = Color( 0.75, 0.75, 0.75, 1 )
 position = Vector2( 132, -77 )
 fixed_position_x = 8650752
@@ -1770,6 +1914,8 @@ collision_mask = 2
 script = ExtResource( 4 )
 
 [node name="SGCollisionShape2D" type="SGCollisionShape2D" parent="Hurtboxes"]
+modulate = Color( 0, 1, 0, 1 )
+self_modulate = Color( 0, 1, 0, 1 )
 position = Vector2( 0, -100 )
 fixed_position_y = -6553600
 shape = SubResource( 43 )

@@ -18,6 +18,7 @@ export(Resource) var c_heavy
 export(Resource) var j_light
 export(Resource) var j_heavy
 export(Resource) var throw
+export(Resource) var burst
 
 export(Array, Resource) var attacks = []
 export(Array, Resource) var movement = []
@@ -55,6 +56,7 @@ func all_attacks():
 	if lazy_all_attacks.empty():
 		lazy_all_attacks.append_array(attacks)
 		lazy_all_attacks.append(throw)
+		lazy_all_attacks.append(burst)
 		lazy_all_attacks.append_array(all_normals())
 	return lazy_all_attacks
 

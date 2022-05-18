@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=27 format=2]
+[gd_resource type="Resource" load_steps=29 format=2]
 
 [ext_resource path="res://addons/FGDC-Datatypes/ThrowData.gd" type="Script" id=1]
 [ext_resource path="res://addons/FGDC-Datatypes/GenericStates/JumpState.gd" type="Script" id=2]
@@ -17,6 +17,10 @@
 [ext_resource path="res://addons/FGDC-Datatypes/GenericStates/BackdashState.gd" type="Script" id=15]
 [ext_resource path="res://Characters/Lippo/States/LippoLight.tres" type="Resource" id=16]
 [ext_resource path="res://Characters/Lippo/States/LippoCHeavy.tres" type="Resource" id=17]
+[ext_resource path="res://addons/FGDC-Datatypes/GenericStates/BurstState.gd" type="Script" id=18]
+
+[sub_resource type="Resource" id=12]
+script = ExtResource( 18 )
 
 [sub_resource type="Resource" id=8]
 script = ExtResource( 7 )
@@ -90,5 +94,6 @@ c_heavy = ExtResource( 17 )
 j_light = ExtResource( 8 )
 j_heavy = ExtResource( 9 )
 throw = SubResource( 7 )
+burst = SubResource( 12 )
 attacks = [ ExtResource( 12 ), ExtResource( 13 ) ]
 movement = [ SubResource( 10 ), SubResource( 11 ) ]

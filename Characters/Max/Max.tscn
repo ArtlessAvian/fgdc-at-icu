@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=2]
+[gd_scene load_steps=63 format=2]
 
 [ext_resource path="res://Fighters/Fighter.gd" type="Script" id=1]
 [ext_resource path="res://Fighters/Hitboxes.gd" type="Script" id=2]
@@ -32,7 +32,6 @@
 [ext_resource path="res://Characters/Max/Assets/dragon_punch.png" type="Texture" id=30]
 [ext_resource path="res://Characters/Max/Assets/dash_punch 2.png" type="Texture" id=31]
 [ext_resource path="res://Characters/Max/Assets/dash_punch 1.png" type="Texture" id=32]
-[ext_resource path="res://addons/FGDC-Datatypes/AttackData.gd" type="Script" id=33]
 
 [sub_resource type="Animation" id=47]
 resource_name = "Blockstun"
@@ -47,6 +46,71 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ -5.0 ]
+}
+
+[sub_resource type="Animation" id=67]
+resource_name = "Burst"
+length = 60.0
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Hitboxes/SGCollisionShape2D:shape:extents_x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 10000000 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Hitboxes/SGCollisionShape2D:shape:extents_y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 10000000 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Hitboxes/SGCollisionShape2D:fixed_position_x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Hitboxes/SGCollisionShape2D:fixed_position_y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ -6553600 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Visual/Character:flips")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 10, 30, 50 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 7.0, 10.0 ]
 }
 
 [sub_resource type="Animation" id=56]
@@ -432,6 +496,156 @@ tracks/6/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ 3 ]
+}
+
+[sub_resource type="Animation" id=66]
+resource_name = "CrouchingBlockstun"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Visual/Character/AnimatedSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 3 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Hurtboxes/hurtbox1:fixed_position_y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ -4063232 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Hurtboxes/hurtbox1:fixed_position_x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Hurtboxes/hurtbox1:shape:extents_x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 2752512 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Hurtboxes/hurtbox1:shape:extents_y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 4325376 ]
+}
+
+[sub_resource type="Animation" id=65]
+resource_name = "CrouchingHitstun"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Visual/Character/AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"update": 1,
+"values": [  ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Visual/Character/AnimatedSprite:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"update": 0,
+"values": [  ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Visual/Character/AnimatedSprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 3 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Hurtboxes/hurtbox1:shape:extents_x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 2752512 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Hurtboxes/hurtbox1:shape:extents_y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 4325376 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Hurtboxes/hurtbox1:fixed_position_x")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Hurtboxes/hurtbox1:fixed_position_y")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ -4063232 ]
 }
 
 [sub_resource type="Animation" id=59]
@@ -1988,24 +2202,6 @@ animations = [ {
 "speed": 0.0
 } ]
 
-[sub_resource type="Resource" id=1]
-script = ExtResource( 33 )
-guard = 2
-startup = 21
-active = 300
-hitstun = 24
-blockstun = 24
-hitstop = 9
-damage = 7
-chipdamage = 2
-knockdown = false
-x_vel = 2
-y_vel = 0
-active_hitboxes = 1
-active_hurtboxes = 0
-animation_name = "Divekick"
-recovery = 0
-
 [sub_resource type="SGRectangleShape2D" id=42]
 extents_x = 3239403
 extents_y = 4128808
@@ -2031,9 +2227,12 @@ moveset = ExtResource( 9 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 playback_speed = 60.0
 anims/Blockstun = SubResource( 47 )
+anims/Burst = SubResource( 67 )
 anims/CHeavy = SubResource( 56 )
 anims/CLight = SubResource( 55 )
 anims/Crouch = SubResource( 46 )
+anims/CrouchingBlockstun = SubResource( 66 )
+anims/CrouchingHitstun = SubResource( 65 )
 anims/DP = SubResource( 59 )
 anims/DashPunch = SubResource( 61 )
 anims/Divekick = SubResource( 60 )
@@ -2082,11 +2281,10 @@ animation = "Default"
 [node name="Hitboxes" type="SGArea2D" parent="." groups=["hitboxes", "network_sync"]]
 collision_mask = 0
 script = ExtResource( 2 )
-hit_data = SubResource( 1 )
 
 [node name="hitbox1" type="SGCollisionShape2D" parent="Hitboxes"]
-self_modulate = Color( 1, 0, 0, 1 )
-position = Vector2( 55, -55 )
+modulate = Color( 0.75, 0.75, 0.75, 1 )
+position = Vector2( 132, -77 )
 fixed_position_x = 8650752
 fixed_position_y = -5046272
 shape = SubResource( 42 )
@@ -2098,11 +2296,13 @@ collision_mask = 2
 script = ExtResource( 4 )
 
 [node name="hurtbox1" type="SGCollisionShape2D" parent="Hurtboxes"]
+modulate = Color( 0, 1, 0, 1 )
 position = Vector2( 0, -100 )
 fixed_position_y = -6553600
 shape = SubResource( 43 )
 
 [node name="Light_hurtbox1" type="SGCollisionShape2D" parent="Hurtboxes"]
+modulate = Color( 0.498039, 0.498039, 0.498039, 0.0392157 )
 position = Vector2( 69.4824, -120 )
 fixed_position_x = 4553600
 fixed_position_y = -7864320
@@ -2110,7 +2310,7 @@ shape = SubResource( 43 )
 disabled = true
 
 [node name="Heavy_hurtbox1" type="SGCollisionShape2D" parent="Hurtboxes"]
-self_modulate = Color( 0.498039, 0.498039, 0.498039, 0.0392157 )
+modulate = Color( 0.498039, 0.498039, 0.498039, 0.0392157 )
 position = Vector2( 69.4824, -129.155 )
 fixed_position_x = 4553600
 fixed_position_y = -8464320
@@ -2118,7 +2318,7 @@ shape = SubResource( 43 )
 disabled = true
 
 [node name="CLight_hurtbox1" type="SGCollisionShape2D" parent="Hurtboxes"]
-self_modulate = Color( 0.498039, 0.498039, 0.498039, 0.0392157 )
+modulate = Color( 0.498039, 0.498039, 0.498039, 0.0392157 )
 position = Vector2( 157, -43.4824 )
 fixed_position_x = 10289152
 fixed_position_y = -2849664
@@ -2126,7 +2326,7 @@ shape = SubResource( 43 )
 disabled = true
 
 [node name="CHeavy_hurtbox1" type="SGCollisionShape2D" parent="Hurtboxes"]
-self_modulate = Color( 0.498039, 0.498039, 0.498039, 0.0392157 )
+modulate = Color( 0.498039, 0.498039, 0.498039, 0.0392157 )
 position = Vector2( 68.5942, -43.4824 )
 fixed_position_x = 4495392
 fixed_position_y = -2849664
@@ -2134,21 +2334,21 @@ shape = SubResource( 43 )
 disabled = true
 
 [node name="JLight_hurtbox1" type="SGCollisionShape2D" parent="Hurtboxes"]
-self_modulate = Color( 0.498039, 0.498039, 0.498039, 0.0392157 )
+modulate = Color( 0.498039, 0.498039, 0.498039, 0.0392157 )
 position = Vector2( 0, -61.3105 )
 fixed_position_y = -4018048
 shape = SubResource( 43 )
 disabled = true
 
 [node name="DPLight_hurtbox1" type="SGCollisionShape2D" parent="Hurtboxes"]
-self_modulate = Color( 0.498039, 0.498039, 0.498039, 0.0392157 )
+modulate = Color( 0.498039, 0.498039, 0.498039, 0.0392157 )
 position = Vector2( 0, -46.0518 )
 fixed_position_y = -3018048
 shape = SubResource( 43 )
 disabled = true
 
 [node name="Divekick_hurtbox1" type="SGCollisionShape2D" parent="Hurtboxes"]
-visible = false
+modulate = Color( 0.498039, 0.498039, 0.498039, 0.0392157 )
 position = Vector2( 54.9316, 0 )
 fixed_position_x = 3600000
 shape = SubResource( 43 )
@@ -2177,9 +2377,7 @@ margin_left = -134.0
 margin_top = 31.0
 margin_right = 184.0
 margin_bottom = 45.0
-text = "res://Characters/Max/MaxDivekickHeavy.tres::1
-21 (300) 0
-Animation too short! Need 296 more frames!"
+text = "No attack loaded!"
 
 [node name="InputHistory" type="Node" parent="." groups=["network_sync"]]
 script = ExtResource( 6 )

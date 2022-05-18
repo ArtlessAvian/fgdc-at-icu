@@ -2,11 +2,24 @@ extends "../State.gd"
 
 
 func transition_out(f: Fighter, moveset: Moveset, input: Dictionary) -> Resource:
+	# Burst activation
+	if input.heavy and input.light and f.can_burst():
+		f.combo_count = 0
+		return moveset.burst
+
 	if f.state_time > f.state_dict.hitstun:
 		f.combo_count = 0
 		if f.grounded:
 			return moveset.walk
 	return null
+
+
+func enter(f: Fighter) -> void:
+	var stick = f.get_node("InputHistory")._stick_history[0]
+	if stick == 1 or stick == 2 or stick == 3:
+		f.state_dict["Crouching"] = true
+	else:
+		f.state_dict["Crouching"] = false
 
 
 func run(f: Fighter, input: Dictionary) -> void:
@@ -18,7 +31,12 @@ func run(f: Fighter, input: Dictionary) -> void:
 
 
 func animation(f: Fighter) -> String:
-	return "Hitstun"
+	if f.state_dict["Crouching"]:
+		if f.get_node("AnimationPlayer").has_animation("CrouchingHitstun"):
+			return "CrouchingHitstun"
+		return "Crouch"
+	else:
+		return "Hitstun"
 
 
 func get_landing_transition(f: Fighter, moveset: Moveset) -> State:

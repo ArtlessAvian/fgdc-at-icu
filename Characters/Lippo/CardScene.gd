@@ -29,10 +29,13 @@ func _network_spawn(data: Dictionary):
 
 func _network_preprocess(input: Dictionary) -> void:
 	if is_heavy:
-		self.fixed_position.x += 12 * 65536 * (-1 if flip else 1)
-		self.fixed_position.y += 6 * 65536 * (1 if self.is_air else -1)
+		var thirty_deg = SGFixed.asin(1 << 15)
+		var dx = 9 * SGFixed.cos(thirty_deg)
+		var dy = 9 * SGFixed.sin(thirty_deg)
+		self.fixed_position.x += dx * (-1 if flip else 1)
+		self.fixed_position.y += dy * (1 if self.is_air else -1)
 	else:
-		self.fixed_position.x += 12 * 65536 * (-1 if flip else 1)
+		self.fixed_position.x += (9 << 16) * (-1 if flip else 1)
 
 	get_node("Node2D/Sprite").rotation_degrees = lifetime * 19
 	lifetime += 1

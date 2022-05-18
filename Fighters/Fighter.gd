@@ -8,6 +8,7 @@ export(int) var fighter_height = 50
 # Subpixels per frame squared
 export(int) var fighter_gravity = 32768
 export(int) var max_health = 100
+export(int) var max_burst_meter = 30 * 60
 
 export(Resource) var moveset
 
@@ -21,7 +22,8 @@ var vel: SGFixedVector2 = SGFixedVector2.new()
 var grounded = true
 
 var health: int = 20
-var state: Resource = null
+var burst: int = 0
+var state: Resource
 var state_time = 0
 var ani_start_time = 0
 var air_actions = 0
@@ -32,6 +34,8 @@ var combo_count = 0
 var combo_gaps = []
 var hitstop = 0
 
+signal countered
+
 
 func _ready():
 	self.fixed_position.x = (-200 << 16) * (-1 if is_p2 else 1)
@@ -39,6 +43,7 @@ func _ready():
 	self.vel = SGFixedVector2.new()
 	self.grounded = true
 	self.health = self.max_health
+	self.burst = max_burst_meter
 	self.state_time = 0
 	self.ani_start_time = 0
 	self.air_actions = 0
@@ -80,7 +85,6 @@ func _network_postprocess(input: Dictionary) -> void:
 	if hitstop > 0:
 		hitstop -= 1
 		return
-
 	check_for_hit(input)  # avoid p1 bias.
 
 
@@ -91,6 +95,9 @@ func state_process(input: Dictionary):
 		change_to_state(new_state)
 	else:
 		state_time += 1
+
+	if burst < max_burst_meter:
+		burst += 1
 
 	# Hitbox enabledness is calculated every frame,
 	# rather have it be stateful, and saved in the state for rollbacks!
@@ -172,6 +179,9 @@ func check_for_hit(input: Dictionary):
 			$Hurtboxes.modulate = Color.blue
 		else:
 			$Hurtboxes.modulate = Color.cyan
+	else:
+		$Hurtboxes.modulate = Color.green
+
 	# End debuggy stuff.
 
 	if $Hurtboxes.hit_hitdata != null and not invincible:
@@ -265,12 +275,19 @@ func on_hit():
 		combo_gaps.clear()
 
 	state_dict.hitstun = $Hurtboxes.hit_hitdata.hitstun
-	state_dict.hit_hitdata = $Hurtboxes.hit_hitdata
+
+	# state_dict.hit_hitdata = $Hurtboxes.hit_hitdata
 	vel.x = ($Hurtboxes.hit_hitdata.x_vel << 16) * (-1 if fixed_scale.x > 0 else 1)
 	vel.y = $Hurtboxes.hit_hitdata.y_vel << 16
 	if vel.y > 0:
 		grounded = false
 		# gravity takes care of the rest!
+
+	if (
+		state.get("attack_data") != null
+		and state_time <= state.get("attack_data").startup
+	):
+		emit_signal("countered")
 
 	# print($Hurtboxes.hit_hitdata, SyncManager.current_tick)
 	if self.health <= 0:
@@ -279,6 +296,7 @@ func on_hit():
 	#	change_to_state(moveset.knockdown)
 	elif grounded:
 		change_to_state(moveset.hitstun)
+
 	else:
 		change_to_state(moveset.air_hitstun)
 
@@ -303,7 +321,11 @@ func throw_response(input: Dictionary):
 		return
 	if (
 		not state in moveset.movement
-		and not state in [moveset.walk, moveset.crouch, moveset.jump]
+		and not (
+			state
+			in [moveset.walk, moveset.crouch, moveset.jump, moveset.burst, moveset.dead]
+		)
+		and not (state == moveset.air_hitstun and state_time > state_dict.hitstun)
 	):
 		print("not neutral state")
 		return
@@ -340,6 +362,20 @@ const NULL_INPUT = {
 var last_mash = NULL_INPUT
 
 
+func can_burst() -> bool:
+	# BUG: Going between Hitstun and Knockdown will reset the burst input window.
+	# Burst if L+H just pressed and L+H was previously pressed while stunned at most 30 frames ago.
+	if (
+		burst == max_burst_meter
+		and $InputHistory.get_hold_duration(0) == 1
+		and $InputHistory.detect_burst(min(state_time, 30))
+	):
+		burst = 0
+		return true
+
+	return false
+
+
 func _get_local_input() -> Dictionary:
 	if controlled_by == "upback":
 		return {
@@ -355,20 +391,35 @@ func _get_local_input() -> Dictionary:
 			dash = false,
 		}
 
-	if controlled_by == "downback":
+	if controlled_by in ["block", "punish"]:
+		var opponent = get_node(opponent_path)
+		var stand = (
+			not opponent.grounded
+			and opponent.state in opponent.moveset.all_attacks()
+		)
+		if stand:
+			var attack_data = opponent.state.get("attack_data")
+			if attack_data != null:
+				# i think this is because the roll back library's
+				# internal input delay is two frames?
+				stand = opponent.state_time >= attack_data.startup - 3
+
 		return {
 			stick_x = int(
 				sign(self.fixed_position_x - get_node(opponent_path).fixed_position.x)
 			),
-			stick_y = -1,
+			stick_y = 0 if stand else -1,
 			light = (
-				state
-				in [
-					moveset.hitstun,
-					moveset.air_hitstun,
-					moveset.knockdown,
-					moveset.blockstun
-				]
+				controlled_by == "punish"
+				and (
+					state
+					in [
+						moveset.hitstun,
+						moveset.air_hitstun,
+						moveset.knockdown,
+						moveset.blockstun
+					]
+				)
 			),
 			heavy = false,
 			dash = false,
@@ -401,7 +452,7 @@ func _get_local_input() -> Dictionary:
 		stick_y = int(round(Input.get_axis(down, up))),
 		light = Input.is_action_pressed(light),
 		heavy = Input.is_action_pressed(heavy),
-		dash = Input.is_action_just_pressed(dash)
+		dash = Input.is_action_pressed(dash)
 	}
 	# print(input)
 	return input
@@ -433,6 +484,7 @@ func _save_state() -> Dictionary:
 		combo_count = combo_count,
 		hitstop = hitstop,
 		health = health,
+		burst = burst,
 		invincible = invincible
 	}
 	# return save
@@ -453,6 +505,7 @@ func _load_state(save: Dictionary) -> void:
 	combo_count = save.combo_count
 	hitstop = save.hitstop
 	health = save.health
+	burst = save.burst
 	invincible = save.invincible
 
 	$AnimationPlayer.play("RESET")

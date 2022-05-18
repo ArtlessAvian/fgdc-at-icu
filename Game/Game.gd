@@ -93,6 +93,9 @@ func in_bounds(p: Fighter):
 
 
 func min_distance(p1: Fighter, p2: Fighter):
+	if p1.state.ignore_collision() or p2.state.ignore_collision():
+		return
+
 	# temporary, each fighter has their own height and width
 	var fighter_spacing = (p1.fighter_spacing + p2.fighter_spacing) * 65536 >> 1
 

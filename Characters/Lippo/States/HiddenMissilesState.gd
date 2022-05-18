@@ -53,12 +53,14 @@ func run(f: Fighter, input: Dictionary) -> void:
 					"flip": f.fixed_scale.x < 0,
 					"is_p2": f.is_p2,
 					"target_path": f.opponent_path,
-					"owner_path": f.get_path()
+					"owner_path": f.get_path(),
+					"attack_number": f.get_node("Hitboxes").attack_number
 				}
 			)
 
 	# accidentally left in crawling behavior but it was super fun so
-	f.vel.x = input.stick_x * (5 << 16)
+	# f.vel.x = input.stick_x * (5 << 16)
+	f.vel.x = 0
 
 
 func animation(f: Fighter) -> String:

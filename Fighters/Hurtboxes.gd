@@ -40,9 +40,9 @@ func _process(delta):
 		var child: SGCollisionShape2D = uncast
 		# child.visible = not child.disabled
 		if child.disabled:
-			child.self_modulate = color_disabled
+			child.modulate = color_disabled
 		else:
-			child.self_modulate = Color.white
+			child.modulate = Color.white if not Engine.editor_hint else Color.green
 
 
 func collide_hitboxes():
