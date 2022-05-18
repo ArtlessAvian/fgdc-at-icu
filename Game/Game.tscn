@@ -210,6 +210,13 @@ tint_under = Color( 0, 0, 0, 1 )
 tint_progress = Color( 0.705882, 0.694118, 0.984314, 1 )
 nine_patch_stretch = true
 
+[node name="Burst" type="Label" parent="UILayer/UI/BurstMeter1"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "BURST"
+align = 1
+valign = 1
+
 [node name="BurstMeter2" type="TextureProgress" parent="UILayer/UI"]
 margin_left = 790.0
 margin_top = 87.0
@@ -221,3 +228,10 @@ texture_progress = ExtResource( 26 )
 tint_under = Color( 0, 0, 0, 1 )
 tint_progress = Color( 0.705882, 0.694118, 0.984314, 1 )
 nine_patch_stretch = true
+
+[node name="Burst" type="Label" parent="UILayer/UI/BurstMeter2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "BURST"
+align = 1
+valign = 1

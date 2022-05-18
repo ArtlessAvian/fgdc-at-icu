@@ -2424,7 +2424,7 @@ script = ExtResource( 3 )
 
 [node name="hitbox1" type="SGCollisionShape2D" parent="Hitboxes"]
 modulate = Color( 0.75, 0.75, 0.75, 1 )
-position = Vector2( 157, -43 )
+position = Vector2( 132, -77 )
 fixed_position_x = 8650752
 fixed_position_y = -5046272
 shape = SubResource( 42 )
@@ -2518,9 +2518,7 @@ margin_left = -134.0
 margin_top = 31.0
 margin_right = 184.0
 margin_bottom = 45.0
-text = "res://Characters/Boba/States/BobaCLight.tres::1
-4 (4) 8
-"
+text = "No attack loaded!"
 
 [node name="InputHistory" type="Node" parent="." groups=["network_sync"]]
 script = ExtResource( 4 )
