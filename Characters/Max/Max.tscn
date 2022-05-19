@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=2]
+[gd_scene load_steps=66 format=2]
 
 [ext_resource path="res://Fighters/Fighter.gd" type="Script" id=1]
 [ext_resource path="res://Fighters/Hitboxes.gd" type="Script" id=2]
@@ -32,6 +32,9 @@
 [ext_resource path="res://Characters/Max/Assets/dragon_punch.png" type="Texture" id=30]
 [ext_resource path="res://Characters/Max/Assets/dash_punch 2.png" type="Texture" id=31]
 [ext_resource path="res://Characters/Max/Assets/dash_punch 1.png" type="Texture" id=32]
+[ext_resource path="res://Sounds/hit_1_hard.wav" type="AudioStream" id=33]
+[ext_resource path="res://Sounds/hit_1_light.wav" type="AudioStream" id=34]
+[ext_resource path="res://Sounds/whiff_1.wav" type="AudioStream" id=35]
 
 [sub_resource type="Animation" id=47]
 resource_name = "Blockstun"
@@ -2251,6 +2254,11 @@ fighter_spacing = 100
 fighter_height = 100
 fighter_gravity = 65536
 moveset = ExtResource( 9 )
+sounds = {
+"heavy": ExtResource( 33 ),
+"light": ExtResource( 34 ),
+"miss": ExtResource( 35 )
+}
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 playback_speed = 60.0
@@ -2292,7 +2300,6 @@ script = ExtResource( 5 )
 [node name="Visual" type="Node2D" parent="."]
 
 [node name="Character" type="Node2D" parent="Visual"]
-scale = Vector2( -0.809017, 1 )
 script = ExtResource( 8 )
 
 [node name="Sprite" type="Sprite" parent="Visual/Character"]
@@ -2313,7 +2320,7 @@ script = ExtResource( 2 )
 
 [node name="hitbox1" type="SGCollisionShape2D" parent="Hitboxes"]
 modulate = Color( 0.75, 0.75, 0.75, 1 )
-position = Vector2( 2, -74 )
+position = Vector2( 132, -77 )
 fixed_position_x = 8650752
 fixed_position_y = -5046272
 shape = SubResource( 42 )
@@ -2331,7 +2338,7 @@ fixed_position_y = -6553600
 shape = SubResource( 43 )
 
 [node name="Light_hurtbox1" type="SGCollisionShape2D" parent="Hurtboxes"]
-modulate = Color( 0, 1, 0, 1 )
+modulate = Color( 0.498039, 0.498039, 0.498039, 0.0392157 )
 position = Vector2( 69.4824, -120 )
 fixed_position_x = 4553600
 fixed_position_y = -7864320
@@ -2339,7 +2346,7 @@ shape = SubResource( 43 )
 disabled = true
 
 [node name="Heavy_hurtbox1" type="SGCollisionShape2D" parent="Hurtboxes"]
-modulate = Color( 0, 1, 0, 1 )
+modulate = Color( 0.498039, 0.498039, 0.498039, 0.0392157 )
 position = Vector2( 69.4824, -129.155 )
 fixed_position_x = 4553600
 fixed_position_y = -8464320
@@ -2406,9 +2413,7 @@ margin_left = -134.0
 margin_top = 31.0
 margin_right = 184.0
 margin_bottom = 45.0
-text = "res://Characters/Max/MaxHeavyStep.tres::1
-8 (3) 20
-"
+text = "No attack loaded!"
 
 [node name="InputHistory" type="Node" parent="." groups=["network_sync"]]
 script = ExtResource( 6 )

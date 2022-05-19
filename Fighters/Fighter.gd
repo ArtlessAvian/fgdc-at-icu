@@ -12,6 +12,8 @@ export(int) var max_burst_meter = 1 * 60
 
 export(Resource) var moveset
 
+export(Dictionary) var sounds
+
 # constants over the length of the game.
 var controlled_by = "kb"
 export var is_p2 = false
@@ -38,11 +40,6 @@ signal countered
 
 const hit_sound = preload("res://rip_in_pieces.wav")
 const hit_sound_2 = preload("res://rip_in_pieces_2.wav")
-const sounds = {
-	light = preload("res://Sounds/hit_1_light.wav"),
-	heavy = preload("res://Sounds/hit_1_hard.wav"),
-	landing = preload("res://Sounds/landing_on_floor_1.wav")
-}
 
 
 func _ready():
