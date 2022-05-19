@@ -1208,11 +1208,14 @@ tracks/14/loop_wrap = true
 tracks/14/imported = false
 tracks/14/enabled = true
 tracks/14/keys = {
-"times": PoolRealArray( 6 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 6, 11 ),
+"transitions": PoolRealArray( 1, 1 ),
 "values": [ {
 "args": [ "heavy" ],
-"method": "network_play_sound"
+"method": "set_hit_sound"
+}, {
+"args": [ "miss" ],
+"method": "play_miss_sound"
 } ]
 }
 
@@ -1662,11 +1665,14 @@ tracks/10/loop_wrap = true
 tracks/10/imported = false
 tracks/10/enabled = true
 tracks/10/keys = {
-"times": PoolRealArray( 5 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 5, 11 ),
+"transitions": PoolRealArray( 1, 1 ),
 "values": [ {
 "args": [ "light" ],
-"method": "network_play_sound"
+"method": "set_hit_sound"
+}, {
+"args": [ "miss" ],
+"method": "play_miss_sound"
 } ]
 }
 
@@ -2300,7 +2306,7 @@ script = ExtResource( 5 )
 [node name="Visual" type="Node2D" parent="."]
 
 [node name="Character" type="Node2D" parent="Visual"]
-scale = Vector2( -0.309017, 1 )
+scale = Vector2( -1, 1 )
 script = ExtResource( 8 )
 
 [node name="Sprite" type="Sprite" parent="Visual/Character"]
@@ -2321,7 +2327,7 @@ script = ExtResource( 2 )
 
 [node name="hitbox1" type="SGCollisionShape2D" parent="Hitboxes"]
 modulate = Color( 0.75, 0.75, 0.75, 1 )
-position = Vector2( 2, -74 )
+position = Vector2( 100, -120 )
 fixed_position_x = 8650752
 fixed_position_y = -5046272
 shape = SubResource( 42 )
@@ -2339,7 +2345,7 @@ fixed_position_y = -6553600
 shape = SubResource( 43 )
 
 [node name="Light_hurtbox1" type="SGCollisionShape2D" parent="Hurtboxes"]
-modulate = Color( 0.498039, 0.498039, 0.498039, 0.0392157 )
+modulate = Color( 0, 1, 0, 1 )
 position = Vector2( 69.4824, -120 )
 fixed_position_x = 4553600
 fixed_position_y = -7864320
@@ -2414,8 +2420,8 @@ margin_left = -134.0
 margin_top = 31.0
 margin_right = 184.0
 margin_bottom = 45.0
-text = "res://Characters/Max/Max.tscn::1
-8 (3) 20
+text = "res://Characters/Max/MaxLight.tres::1
+7 (4) 8
 "
 
 [node name="InputHistory" type="Node" parent="." groups=["network_sync"]]
