@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://CharSelect/Descriptions/CharDescription.gd" type="Script" id=1]
+[ext_resource path="res://Characters/Lippo/Assets/LippoStand.tres" type="Texture" id=2]
+
+[resource]
+script = ExtResource( 1 )
+name = "Lippo"
+portrait = ExtResource( 2 )
+blurb = "ZONING DEMON"
+description = "QCF: Card. Heavy goes angled.
+Air 656: Airdash. Stalls, cancels momentup
+
+Keep them out! C.L (Missiles) is a \"balanced\" and \"fun\" tool."
