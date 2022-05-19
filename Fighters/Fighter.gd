@@ -35,6 +35,7 @@ var invincible: bool = false
 var combo_count = 0
 var combo_gaps = []
 var hitstop = 0
+var attack_sound_name
 
 signal countered
 
@@ -369,14 +370,22 @@ func can_burst() -> bool:
 
 
 func network_play_sound(sound_name: String):
-	# Plan for this:
+	# Must be called at least 2 animation frames before hitbox activates. 
+	# Otherwise, attack_sound_name might not be set when hitbox contacts opponent. (jank)
+	# Defaults by playing the miss sound effect
+	attack_sound_name = sound_name
 
 	# TODO: Change sound tag. Maybe something to do with sound_name parameter.
 	SyncManager.play_sound(
-		str(get_path()) + ":hit",
+		str(get_path()) + ":" + sound_name,
 		sounds[sound_name], #hit_sound if SyncManager.current_tick % 2 == 0 else hit_sound_2,
 		{position = self.position, pitch_scale = 1, volume_db = 10}
 	)
+
+
+func play_miss_sound(sound_name: String):
+	# Play some sound if you miss
+	pass
 
 
 func _get_local_input() -> Dictionary:
@@ -476,6 +485,7 @@ func _save_state() -> Dictionary:
 		state_dict = state_dict.duplicate(),
 		combo_count = combo_count,
 		hitstop = hitstop,
+		attack_sound_name = attack_sound_name,
 		health = health,
 		burst = burst,
 		invincible = invincible
@@ -497,6 +507,7 @@ func _load_state(save: Dictionary) -> void:
 	state_dict = save.state_dict.duplicate(true)
 	combo_count = save.combo_count
 	hitstop = save.hitstop
+	attack_sound_name = save.attack_sound_name
 	health = save.health
 	burst = save.burst
 	invincible = save.invincible
@@ -510,7 +521,9 @@ func _load_state(save: Dictionary) -> void:
 
 
 func _on_Hitboxes_on_contact(blocked: bool, hitstop: int):
+	print(attack_sound_name)
 	self.hitstop = hitstop
+	print(String(state_dict.last_attack_hit))
 	state_dict.last_attack_contact = $Hitboxes.attack_number
 	if not blocked:
 		state_dict.last_attack_hit = $Hitboxes.attack_number
