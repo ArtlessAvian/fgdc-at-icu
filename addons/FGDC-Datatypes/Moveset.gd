@@ -34,6 +34,7 @@ var do_throw: Resource = load(prefix + "GenericStates/DoThrowState.gd").new()
 var get_thrown: Resource = load(prefix + "GenericStates/GetThrownState.gd").new()
 var throw_tech: Resource = load(prefix + "GenericStates/ThrowTechState.gd").new()
 var knockdown: Resource = load(prefix + "GenericStates/KnockdownState.gd").new()
+var flip: Resource = load(prefix + "GenericStates/FlipState.gd").new()
 
 # Get moveset as array
 var lazy_all_normals: Array = []
@@ -69,6 +70,7 @@ func all_states():
 		lazy_all_states.append(crouch)
 		lazy_all_states.append(jump)
 		lazy_all_states.append(knockdown)
+		lazy_all_states.append(flip)
 		# print(lazy_all_states)
 		# print(lazy_all_normals)
 		# print(lazy_all_attacks)

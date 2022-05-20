@@ -16,13 +16,13 @@ func transition_out(f: Fighter, moveset: Moveset, input: Dictionary) -> Resource
 			f.combo_count = 0
 			print("flip out")
 			f.vel.x = input.stick_x * 10 << 16
-			f.vel.y = 3 << 16
+			f.vel.y = 10 << 16
 
 			# TODO: bandaid fix
 			var character = f.find_node("Character")
 			character.modulate = Color.white
 
-			return moveset.jump
+			return moveset.flip
 
 	return null
 

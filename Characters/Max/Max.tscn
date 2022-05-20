@@ -921,7 +921,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 11, 27 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ 33, 34, 20 ]
+"values": [ 33, 34, 33 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Hitboxes/hitbox1:shape:extents_x")
@@ -2424,7 +2424,7 @@ script = ExtResource( 2 )
 
 [node name="hitbox1" type="SGCollisionShape2D" parent="Hitboxes"]
 modulate = Color( 0.75, 0.75, 0.75, 1 )
-position = Vector2( 61, -91 )
+position = Vector2( 91, -91 )
 fixed_position_x = 8650752
 fixed_position_y = -5046272
 shape = SubResource( 42 )
@@ -2517,9 +2517,9 @@ margin_left = -134.0
 margin_top = 31.0
 margin_right = 184.0
 margin_bottom = 45.0
-text = "res://Characters/Max/MaxDP.tres::1
-5 (12) 100
-Animation too short! Need 87 more frames!"
+text = "res://Characters/Max/MaxDashPunch.tres::1
+11 (12) 6
+"
 
 [node name="InputHistory" type="Node" parent="." groups=["network_sync"]]
 script = ExtResource( 6 )
