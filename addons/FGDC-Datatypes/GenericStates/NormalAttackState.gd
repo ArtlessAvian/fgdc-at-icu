@@ -63,6 +63,14 @@ func run(f: Fighter, input: Dictionary) -> void:
 	attack_data.write_hitbox_positions(f.state_time, f.get_node("Hitboxes"))
 	# print(f.state_time)
 
+	# TODO: Testing sounds with states
+	if attack_data.hit_sound != null and f.state_time == attack_data.startup + 1:
+		SyncManager.play_sound(
+			str(get_path()) + ":test_sound",
+			attack_data.hit_sound, #hit_sound if SyncManager.current_tick % 2 == 0 else hit_sound_2,
+			{position = f.position, pitch_scale = 1, volume_db = 10}
+		)
+
 	pass
 
 

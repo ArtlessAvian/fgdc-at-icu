@@ -2284,7 +2284,7 @@ script = ExtResource( 2 )
 
 [node name="hitbox1" type="SGCollisionShape2D" parent="Hitboxes"]
 modulate = Color( 0.75, 0.75, 0.75, 1 )
-position = Vector2( 100, -120 )
+position = Vector2( 132, -77 )
 fixed_position_x = 8650752
 fixed_position_y = -5046272
 shape = SubResource( 42 )
@@ -2302,7 +2302,7 @@ fixed_position_y = -6553600
 shape = SubResource( 43 )
 
 [node name="Light_hurtbox1" type="SGCollisionShape2D" parent="Hurtboxes"]
-modulate = Color( 0, 1, 0, 1 )
+modulate = Color( 0.498039, 0.498039, 0.498039, 0.0392157 )
 position = Vector2( 69.4824, -120 )
 fixed_position_x = 4553600
 fixed_position_y = -7864320
@@ -2377,9 +2377,7 @@ margin_left = -134.0
 margin_top = 31.0
 margin_right = 184.0
 margin_bottom = 45.0
-text = "res://Characters/Max/MaxLight.tres::1
-7 (4) 8
-"
+text = "No attack loaded!"
 
 [node name="InputHistory" type="Node" parent="." groups=["network_sync"]]
 script = ExtResource( 6 )
