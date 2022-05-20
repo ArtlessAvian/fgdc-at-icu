@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=2]
+[gd_scene load_steps=63 format=2]
 
 [ext_resource path="res://Fighters/Fighter.gd" type="Script" id=1]
 [ext_resource path="res://Fighters/Hitboxes.gd" type="Script" id=2]
@@ -32,9 +32,6 @@
 [ext_resource path="res://Characters/Max/Assets/dragon_punch.png" type="Texture" id=30]
 [ext_resource path="res://Characters/Max/Assets/dash_punch 2.png" type="Texture" id=31]
 [ext_resource path="res://Characters/Max/Assets/dash_punch 1.png" type="Texture" id=32]
-[ext_resource path="res://Sounds/hit_1_hard.wav" type="AudioStream" id=33]
-[ext_resource path="res://Sounds/hit_1_light.wav" type="AudioStream" id=34]
-[ext_resource path="res://Sounds/whiff_1.wav" type="AudioStream" id=35]
 
 [sub_resource type="Animation" id=47]
 resource_name = "Blockstun"
@@ -1201,23 +1198,6 @@ tracks/13/keys = {
 "update": 1,
 "values": [ false, true, false ]
 }
-tracks/14/type = "method"
-tracks/14/path = NodePath(".")
-tracks/14/interp = 1
-tracks/14/loop_wrap = true
-tracks/14/imported = false
-tracks/14/enabled = true
-tracks/14/keys = {
-"times": PoolRealArray( 6, 11 ),
-"transitions": PoolRealArray( 1, 1 ),
-"values": [ {
-"args": [ "heavy" ],
-"method": "set_hit_sound"
-}, {
-"args": [ "miss" ],
-"method": "play_miss_sound"
-} ]
-}
 
 [sub_resource type="Animation" id=48]
 resource_name = "Hitstun"
@@ -1657,23 +1637,6 @@ tracks/9/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ false ]
-}
-tracks/10/type = "method"
-tracks/10/path = NodePath(".")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/keys = {
-"times": PoolRealArray( 5, 11 ),
-"transitions": PoolRealArray( 1, 1 ),
-"values": [ {
-"args": [ "light" ],
-"method": "set_hit_sound"
-}, {
-"args": [ "miss" ],
-"method": "play_miss_sound"
-} ]
 }
 
 [sub_resource type="Animation" id=62]
@@ -2260,11 +2223,6 @@ fighter_spacing = 100
 fighter_height = 100
 fighter_gravity = 65536
 moveset = ExtResource( 9 )
-sounds = {
-"heavy": ExtResource( 33 ),
-"light": ExtResource( 34 ),
-"miss": ExtResource( 35 )
-}
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 playback_speed = 60.0
@@ -2306,7 +2264,6 @@ script = ExtResource( 5 )
 [node name="Visual" type="Node2D" parent="."]
 
 [node name="Character" type="Node2D" parent="Visual"]
-scale = Vector2( -1, 1 )
 script = ExtResource( 8 )
 
 [node name="Sprite" type="Sprite" parent="Visual/Character"]
@@ -2353,7 +2310,7 @@ shape = SubResource( 43 )
 disabled = true
 
 [node name="Heavy_hurtbox1" type="SGCollisionShape2D" parent="Hurtboxes"]
-modulate = Color( 0, 1, 0, 1 )
+modulate = Color( 0.498039, 0.498039, 0.498039, 0.0392157 )
 position = Vector2( 69.4824, -129.155 )
 fixed_position_x = 4553600
 fixed_position_y = -8464320

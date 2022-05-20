@@ -12,8 +12,6 @@ export(int) var max_burst_meter = 1 * 60
 
 export(Resource) var moveset
 
-export(Dictionary) var sounds
-
 # constants over the length of the game.
 var controlled_by = "kb"
 export var is_p2 = false
@@ -35,7 +33,6 @@ var invincible: bool = false
 var combo_count = 0
 var combo_gaps = []
 var hitstop = 0
-var hit_sound_name
 
 signal countered
 
@@ -369,19 +366,20 @@ func can_burst() -> bool:
 	return false
 
 
-func set_hit_sound(sound_name: String):
-	# Must be called at least 2 animation frames before hitbox activates. 
-	# Otherwise, hit_sound_name might not be set when hitbox contacts opponent. (jank)
-	hit_sound_name = sound_name
+# TODO: Moving sound playing to state
+# func set_hit_sound(sound_name: String):
+# 	# Must be called at least 2 animation frames before hitbox activates. 
+# 	# Otherwise, hit_sound_name might not be set when hitbox contacts opponent. (jank)
+# 	hit_sound_name = sound_name
 
 
-func play_miss_sound(sound_name: String):
-	if state_dict.last_attack_contact != $Hitboxes.attack_number:
-		SyncManager.play_sound(
-			str(get_path()) + ":" + sound_name,
-			sounds[sound_name], #hit_sound if SyncManager.current_tick % 2 == 0 else hit_sound_2,
-			{position = self.position, pitch_scale = 1, volume_db = 10}
-		)
+# func play_miss_sound(sound_name: String):
+# 	if state_dict.last_attack_contact != $Hitboxes.attack_number:
+# 		SyncManager.play_sound(
+# 			str(get_path()) + ":" + sound_name,
+# 			sounds[sound_name], #hit_sound if SyncManager.current_tick % 2 == 0 else hit_sound_2,
+# 			{position = self.position, pitch_scale = 1, volume_db = 10}
+# 		)
 
 
 func _get_local_input() -> Dictionary:
@@ -481,7 +479,6 @@ func _save_state() -> Dictionary:
 		state_dict = state_dict.duplicate(),
 		combo_count = combo_count,
 		hitstop = hitstop,
-		hit_sound_name = hit_sound_name,
 		health = health,
 		burst = burst,
 		invincible = invincible
@@ -503,7 +500,6 @@ func _load_state(save: Dictionary) -> void:
 	state_dict = save.state_dict.duplicate(true)
 	combo_count = save.combo_count
 	hitstop = save.hitstop
-	hit_sound_name = save.hit_sound_name
 	health = save.health
 	burst = save.burst
 	invincible = save.invincible
@@ -518,14 +514,6 @@ func _load_state(save: Dictionary) -> void:
 
 func _on_Hitboxes_on_contact(blocked: bool, hitstop: int):
 	self.hitstop = hitstop
-
-	# TODO: Testing playing sound on hit
-	SyncManager.play_sound(
-		str(get_path()) + ":" + hit_sound_name,
-		sounds[hit_sound_name], 
-		{position = self.position, pitch_scale = 1, volume_db = 10}
-	)
-
 	state_dict.last_attack_contact = $Hitboxes.attack_number
 	if not blocked:
 		state_dict.last_attack_hit = $Hitboxes.attack_number
