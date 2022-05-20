@@ -149,7 +149,6 @@ remotesync func set_character_network(scene_path: String, replay_dict: Dictionar
 	var peer_id = get_tree().get_rpc_sender_id()
 	$Match.set_character(load(scene_path), peer_id != 1, peer_id)
 	replay_dict["p1" if peer_id == 1 else "p2"] = scene_path
-	print(scene_path, peer_id)
 
 
 func _on_network_peer_disconnected(peer_id: int):

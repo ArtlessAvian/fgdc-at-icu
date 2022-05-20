@@ -3,7 +3,7 @@
 [ext_resource path="res://Game/Match/Match.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Networking/Lobby/crude_connection.gd" type="Script" id=2]
 
-[node name="Crude" type="Node"]
+[node name="Lobby" type="Node"]
 script = ExtResource( 2 )
 
 [node name="Match" parent="." groups=["network_sync"] instance=ExtResource( 1 )]

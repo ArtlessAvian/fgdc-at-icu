@@ -77,7 +77,7 @@ rect_min_size = Vector2( 300, 0 )
 text = "Keyboard (Arrows, ASD)"
 clip_text = true
 align = 1
-items = [ "Keyboard (Arrows, ASD)", null, false, 4096, null, "XInput Gamepad", null, false, 0, null ]
+items = [ "Keyboard (Arrows, ASD)", null, false, 4096, null ]
 selected = 0
 
 [node name="d" type="VBoxContainer" parent="a/b"]
@@ -102,7 +102,7 @@ rect_min_size = Vector2( 300, 0 )
 text = "Keyboard (Arrows, ASD)"
 clip_text = true
 align = 1
-items = [ "Keyboard (Arrows, ASD)", null, false, 4096, null, "XInput Gamepad", null, false, 0, null, "Mash (AI)", null, false, 100, null, "Block (AI)", null, false, 101, null, "Block and Punish (AI)", null, false, 102, null, "Advancing Chickenblock (AI)", null, false, 103, null ]
+items = [ "Keyboard (Arrows, ASD)", null, false, 4096, null, "Mash (AI)", null, false, 100, null, "Block (AI)", null, false, 101, null, "Block and Punish (AI)", null, false, 102, null, "Advancing Chickenblock (AI)", null, false, 103, null ]
 selected = 0
 
 [node name="LocalButton" type="Button" parent="a"]
@@ -208,7 +208,7 @@ rect_min_size = Vector2( 300, 0 )
 text = "Keyboard (Arrows, ASD)"
 clip_text = true
 align = 1
-items = [ "Keyboard (Arrows, ASD)", null, false, 4096, null, "XInput Gamepad", null, false, 0, null, "Mash (AI)", null, false, 100, null, "Block (AI)", null, false, 101, null, "Block and Punish (AI)", null, false, 102, null, "Advancing Chickenblock (AI)", null, false, 103, null ]
+items = [ "Keyboard (Arrows, ASD)", null, false, 4096, null, "Mash (AI)", null, false, 100, null, "Block (AI)", null, false, 101, null, "Block and Punish (AI)", null, false, 102, null, "Advancing Chickenblock (AI)", null, false, 103, null ]
 selected = 0
 
 [node name="Control" type="Control" parent="a/e/i"]
