@@ -14,7 +14,7 @@
 [ext_resource path="res://CharSelect/Descriptions/BobaDescription.tres" type="Resource" id=12]
 [ext_resource path="res://CharSelect/Descriptions/SnailDescription.tres" type="Resource" id=13]
 [ext_resource path="res://Characters/Max/Assets/Max_idle_1.png" type="Texture" id=14]
-[ext_resource path="res://Characters/Lippo/Assets/ProgrammerArt/spades.png" type="Texture" id=15]
+[ext_resource path="res://CharSelect/Assets/very-good-art.png" type="Texture" id=15]
 [ext_resource path="res://CharSelect/Descriptions/RandomDescription.tres" type="Resource" id=16]
 
 [sub_resource type="AtlasTexture" id=1]
@@ -136,12 +136,15 @@ stretch_mode = 6
 flip_h = true
 
 [node name="P1Cursor" type="Sprite" parent="."]
-position = Vector2( -148, -55 )
+position = Vector2( 480, 120 )
+rotation = 1.5708
 texture = ExtResource( 15 )
 
 [node name="P2Cursor" type="Sprite" parent="."]
-position = Vector2( 1432, 340 )
+position = Vector2( 700, 120 )
+rotation = 1.5708
 texture = ExtResource( 15 )
+flip_v = true
 
 [node name="Fgdc" type="Sprite" parent="."]
 modulate = Color( 0.588235, 0.588235, 0.588235, 1 )

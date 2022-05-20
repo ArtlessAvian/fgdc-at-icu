@@ -1,6 +1,8 @@
 extends Control
 tool
 
+signal both_ready
+
 export(String) var p1_controlled_by = "kb"
 export(String) var p2_controlled_by = "kb"
 
@@ -12,29 +14,46 @@ var p2_selected = false
 
 export(Array, Resource) var descriptions
 
-# visual only
-var p1_random = 0
-var p2_random = 0
-
 
 func _ready():
 	pass  # Replace with function body.
 
 
 func _process(delta):
-	if p1_controlled_by != "network":
-		p1_index += int(Input.is_action_just_pressed(p1_controlled_by + "_down"))
-		p1_index -= int(Input.is_action_just_pressed(p1_controlled_by + "_up"))
-		p1_index = (p1_index + 5) % 5
-		if p2_controlled_by == "network":
-			rset("p1_index", p1_index)
-	if p2_controlled_by != "network":
-		p2_index += int(Input.is_action_just_pressed(p2_controlled_by + "_down"))
-		p2_index -= int(Input.is_action_just_pressed(p2_controlled_by + "_up"))
-		p2_index = (p2_index + 5) % 5
-		if p1_controlled_by == "network":
-			rset("p2_index", p2_index)
+	logic()
+	visuals(delta)
 
+
+func logic():
+	if Engine.editor_hint:
+		return
+
+	if p1_controlled_by != "network":
+		if not p1_selected:
+			p1_index += int(Input.is_action_just_pressed(p1_controlled_by + "_down"))
+			p1_index -= int(Input.is_action_just_pressed(p1_controlled_by + "_up"))
+			p1_index = (p1_index + 5) % 5
+		if Input.is_action_just_pressed(p1_controlled_by + "_light"):
+			p1_selected = not p1_selected
+
+	if p2_controlled_by != "network":
+		if not p2_selected:
+			p2_index += int(Input.is_action_just_pressed(p2_controlled_by + "_down"))
+			p2_index -= int(Input.is_action_just_pressed(p2_controlled_by + "_up"))
+			p2_index = (p2_index + 5) % 5
+		if Input.is_action_just_pressed(p2_controlled_by + "_light"):
+			p2_selected = not p2_selected
+
+	if p2_controlled_by == "network":
+		rpc("set_p1", p1_index, p1_selected)
+	if p1_controlled_by == "network":
+		rpc("set_p2", p2_index, p2_selected)
+
+	if p1_selected and p2_selected:
+		emit_signal("both_ready", p1_index, p2_index)
+
+
+func visuals(delta):
 	update_player(
 		p1_index,
 		null,
@@ -60,9 +79,8 @@ func _process(delta):
 	p2_target.x = 800 - ((p2_index + 1) % 2) * 100
 	$P2Cursor.position = $P2Cursor.position.linear_interpolate(p2_target, 0.2)
 
-
-func do_input():
-	pass
+	$P1Cursor.rotation_degrees = 90 if not p1_selected else $P1Cursor.rotation_degrees + delta * 720
+	$P2Cursor.rotation_degrees = 90 if not p2_selected else $P2Cursor.rotation_degrees + delta * 720
 
 
 func update_player(index, title, portrait, blurb, text):
@@ -70,3 +88,13 @@ func update_player(index, title, portrait, blurb, text):
 	portrait.texture = desc.portrait
 	blurb.text = desc.blurb
 	text.text = desc.description
+
+
+remote func set_p1(i, ye):
+	p1_index = i
+	p1_selected = ye
+
+
+remote func set_p2(i, ye):
+	p2_index = i
+	p2_selected = ye
