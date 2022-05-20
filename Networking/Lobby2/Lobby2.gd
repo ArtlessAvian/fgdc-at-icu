@@ -47,7 +47,7 @@ func _ready():
 
 
 func _on_HostButton():
-	SyncManager.network_adaptor = load("res://addons/godot-rollback-network/RPCNetworkAdaptor.gd").new()
+	SyncManager.network_adaptor = load("res://addons/godot-rollback-netcode/RPCNetworkAdaptor.gd").new()
 
 	var peer = NetworkedMultiplayerENet.new()
 	peer.create_server(int(find_node("Port").text), 1)
@@ -59,7 +59,7 @@ func _on_HostButton():
 
 
 func _on_ClientButton():
-	SyncManager.network_adaptor = load("res://addons/godot-rollback-network/RPCNetworkAdaptor.gd").new()
+	SyncManager.network_adaptor = load("res://addons/godot-rollback-netcode/RPCNetworkAdaptor.gd").new()
 
 	var peer = NetworkedMultiplayerENet.new()
 	peer.create_client(find_node("Host").text, int(find_node("Port").text))
@@ -94,37 +94,42 @@ func _on_network_peer_connected(peer_id: int):
 	SyncManager.add_peer(peer_id)
 	if peer_id != 1:
 		# i am the host.
-		self.rpc("_host_decides_side", peer_id, bool(randi() % 2))
+		self.rpc("_host_decides_side", peer_id, true)  # bool(randi() % 2))
 
 
 var p1_peer = 1
 var p2_peer = 1
 
 
-remotesync func _host_decides_side(peer_id, is_p1):
+remotesync func _host_decides_side(client_id, host_is_p1):
 	var dropdown: OptionButton = find_node("OnlineInput")
 	var controller = dropdown_index_to_action(dropdown.get_item_id(dropdown.selected))
 
-	if is_p1 == (get_tree().get_network_unique_id() == 1):
-		p1_peer = get_tree().get_network_unique_id()
+	if host_is_p1:
+		p1_peer = 1
+		p2_peer = client_id
+	else:
+		p1_peer = client_id
+		p2_peer = 1
+
+	var i_am_host = get_tree().get_network_unique_id() == 1
+
+	if host_is_p1 == i_am_host:
 		$CanvasLayer/CharacterSelect.p1_controlled_by = controller
-		p2_peer = peer_id
 		$CanvasLayer/CharacterSelect.p2_controlled_by = "network"
 	else:
-		p1_peer = peer_id
 		$CanvasLayer/CharacterSelect.p1_controlled_by = "network"
-		p2_peer = get_tree().get_network_unique_id()
 		$CanvasLayer/CharacterSelect.p2_controlled_by = controller
+	print(p1_peer, " ", p2_peer)
 
 	$CanvasLayer/ConnectionScreen.visible = false
 	$CanvasLayer/CharacterSelect.set_process(true)
 
 
 func _on_CharactersSelected(p1, p2):
+	print("called")
 	$CanvasLayer/CharacterSelect.set_process(false)
-	if get_tree().network_peer != null:
-		rpc("_host_decides_random", p1, p2)
-	else:
+	if get_tree().network_peer == null or get_tree().get_network_unique_id() == 1:
 		_host_decides_random(p1, p2)
 
 
@@ -177,8 +182,9 @@ remotesync func im_ready():
 
 func start_the_game():
 	$CanvasLayer/CharacterSelect.visible = false
-	yield(get_tree().create_timer(1), "timeout")
-	SyncManager.start()
+	if get_tree().get_network_unique_id() == 1:
+		yield(get_tree().create_timer(0.1), "timeout")
+		SyncManager.start()
 
 
 # HELPER
