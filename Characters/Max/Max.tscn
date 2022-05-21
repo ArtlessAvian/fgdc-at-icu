@@ -1589,12 +1589,13 @@ tracks/0/keys = {
 [sub_resource type="Animation" id=49]
 resource_name = "Knockdown"
 length = 6.0
+step = 1.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Visual/Character/AnimatedSprite:rotation_degrees")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
-tracks/0/enabled = true
+tracks/0/enabled = false
 tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -1608,10 +1609,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 5 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
 "update": 0,
-"values": [ Vector2( -6, -50 ), Vector2( -6, -50 ) ]
+"values": [  ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Visual/Character/AnimatedSprite:frame")
@@ -1620,10 +1621,10 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 5 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 7, 65 ]
+"values": [ 65 ]
 }
 
 [sub_resource type="Animation" id=53]
@@ -2273,7 +2274,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 20, 30 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ -90.0, -90.0, 0.0 ]
+"values": [ 0.0, 0.0, 0.0 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Visual/Character/AnimatedSprite:position")
@@ -2285,7 +2286,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 20, 26, 30 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( -6, -50 ), Vector2( -6, -50 ), Vector2( -6, -130 ), Vector2( -6, -100 ) ]
+"values": [ Vector2( -6, -100 ), Vector2( -6, -100 ), Vector2( -6, -130 ), Vector2( -6, -100 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Visual/Character/AnimatedSprite:frame")
@@ -2297,7 +2298,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 20, 26 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ 7, 8, 1 ]
+"values": [ 65, 8, 1 ]
 }
 
 [sub_resource type="Animation" id=36]
@@ -2424,7 +2425,7 @@ script = ExtResource( 2 )
 
 [node name="hitbox1" type="SGCollisionShape2D" parent="Hitboxes"]
 modulate = Color( 0.75, 0.75, 0.75, 1 )
-position = Vector2( 91, -91 )
+position = Vector2( 132, -77 )
 fixed_position_x = 8650752
 fixed_position_y = -5046272
 shape = SubResource( 42 )
@@ -2436,7 +2437,7 @@ collision_mask = 2
 script = ExtResource( 4 )
 
 [node name="hurtbox1" type="SGCollisionShape2D" parent="Hurtboxes"]
-modulate = Color( 0.498039, 0.498039, 0.498039, 0.0392157 )
+modulate = Color( 0, 1, 0, 1 )
 position = Vector2( 0, -100 )
 fixed_position_y = -6553600
 shape = SubResource( 43 )
@@ -2481,7 +2482,7 @@ shape = SubResource( 43 )
 disabled = true
 
 [node name="DPLight_hurtbox1" type="SGCollisionShape2D" parent="Hurtboxes"]
-modulate = Color( 0, 1, 0, 1 )
+modulate = Color( 0.498039, 0.498039, 0.498039, 0.0392157 )
 position = Vector2( 0, -46.0518 )
 fixed_position_y = -3018048
 shape = SubResource( 43 )
@@ -2517,9 +2518,7 @@ margin_left = -134.0
 margin_top = 31.0
 margin_right = 184.0
 margin_bottom = 45.0
-text = "res://Characters/Max/MaxDashPunch.tres::1
-11 (12) 6
-"
+text = "No attack loaded!"
 
 [node name="InputHistory" type="Node" parent="." groups=["network_sync"]]
 script = ExtResource( 6 )
