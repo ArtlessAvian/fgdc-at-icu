@@ -1,15 +1,8 @@
-[gd_resource type="Resource" load_steps=21 format=2]
+[gd_resource type="Resource" load_steps=14 format=2]
 
 [ext_resource path="res://addons/FGDC-Datatypes/GenericStates/NormalAttackState.gd" type="Script" id=1]
 [ext_resource path="res://addons/FGDC-Datatypes/HitData.gd" type="Script" id=2]
 [ext_resource path="res://addons/FGDC-Datatypes/AttackData.gd" type="Script" id=3]
-[ext_resource path="res://Sounds/special_1.wav" type="AudioStream" id=4]
-[ext_resource path="res://Sounds/hit_1_slap.wav" type="AudioStream" id=5]
-[ext_resource path="res://Sounds/hit_1_hard.wav" type="AudioStream" id=6]
-[ext_resource path="res://Sounds/boom_hit_1.wav" type="AudioStream" id=7]
-[ext_resource path="res://Sounds/max_chomp.wav" type="AudioStream" id=8]
-[ext_resource path="res://Sounds/landing_on_floor_1.wav" type="AudioStream" id=9]
-[ext_resource path="res://Sounds/hit_light_2.wav" type="AudioStream" id=10]
 
 [sub_resource type="Resource" id=7]
 script = ExtResource( 2 )
@@ -110,7 +103,6 @@ x_vel = 1
 y_vel = 15
 active_hitboxes = 1
 active_hurtboxes = 0
-startup_sound = ExtResource( 4 )
 followup = SubResource( 2 )
 
 [sub_resource type="Resource" id=4]
@@ -128,8 +120,6 @@ x_vel = 1
 y_vel = 15
 active_hitboxes = 1
 active_hurtboxes = 0
-startup_sound = ExtResource( 8 )
-hit_sound = ExtResource( 6 )
 followup = SubResource( 3 )
 
 [sub_resource type="Resource" id=5]
@@ -147,8 +137,6 @@ x_vel = 1
 y_vel = 15
 active_hitboxes = 1
 active_hurtboxes = 0
-startup_sound = ExtResource( 8 )
-hit_sound = ExtResource( 5 )
 followup = SubResource( 4 )
 
 [sub_resource type="Resource" id=6]
@@ -166,8 +154,6 @@ x_vel = 1
 y_vel = 15
 active_hitboxes = 1
 active_hurtboxes = 0
-startup_sound = ExtResource( 9 )
-hit_sound = ExtResource( 4 )
 followup = SubResource( 5 )
 
 [sub_resource type="Resource" id=1]
@@ -185,8 +171,6 @@ x_vel = 1
 y_vel = 15
 active_hitboxes = 1
 active_hurtboxes = 0
-startup_sound = ExtResource( 10 )
-hit_sound = ExtResource( 7 )
 followup = SubResource( 6 )
 animation_name = "Heavy"
 recovery = 30
@@ -195,4 +179,4 @@ recovery = 30
 script = ExtResource( 1 )
 attack_data = SubResource( 1 )
 attack_level = 2
-jump_cancellable = true
+jump_cancellable = false
