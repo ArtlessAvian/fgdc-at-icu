@@ -202,3 +202,7 @@ func setup_match_for_replay(my_peer_id: int, peer_ids: Array, match_info: Dictio
 	$Match.set_character(load(match_info["p2"]), true)
 	$CanvasLayer/MarginContainer.visible = false
 	$CanvasLayer/ColorRect.visible = false
+
+
+func _on_newmenu_button_up():
+	get_tree().change_scene("res://Networking/Lobby2/Lobby2.tscn")
