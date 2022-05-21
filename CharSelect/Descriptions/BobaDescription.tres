@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://CharSelect/Descriptions/CharDescription.gd" type="Script" id=1]
+[ext_resource path="res://CharSelect/Assets/Games/Boba.png" type="Texture" id=2]
+
+[resource]
+script = ExtResource( 1 )
+name = "Boba"
+portrait = ExtResource( 2 )
+blurb = "RUSHDOWN GIRL"
+description = "656: Run. Crosses through. Can
+	 jump out. No blocking though.
+HCB: Knives. Use fullscreen. Heavy
+      less recovery more startup.
+Keep the pressure! Run cancels lights."

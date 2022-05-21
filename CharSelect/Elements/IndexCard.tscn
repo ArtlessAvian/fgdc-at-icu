@@ -1,0 +1,52 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://CharSelect/Elements/GloriaHallelujah2.tres" type="DynamicFont" id=1]
+[ext_resource path="res://CharSelect/Elements/GloriaHallelujah.tres" type="DynamicFont" id=2]
+[ext_resource path="res://CharSelect/Assets/better index.png" type="Texture" id=3]
+
+[node name="IndexCard" type="TextureRect"]
+anchor_top = 0.75
+anchor_bottom = 0.75
+margin_left = -190.0
+margin_top = -114.0
+margin_right = 190.0
+margin_bottom = 114.0
+texture = ExtResource( 3 )
+expand = true
+
+[node name="Title" type="RichTextLabel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_right = -20.0
+margin_bottom = -20.0
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = ExtResource( 1 )
+bbcode_enabled = true
+bbcode_text = "MIDRANGE
+"
+text = "MIDRANGE
+"
+
+[node name="Text" type="RichTextLabel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = 27.0
+margin_right = -20.0
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = ExtResource( 2 )
+bbcode_enabled = true
+bbcode_text = "Here is where the text goes.
+Here is where the text goes.
+Here is where the text goes.
+Here is where the text goes.
+Here is where the text goes.
+Here is where the text goes."
+text = "Here is where the text goes.
+Here is where the text goes.
+Here is where the text goes.
+Here is where the text goes.
+Here is where the text goes.
+Here is where the text goes."
+scroll_active = false

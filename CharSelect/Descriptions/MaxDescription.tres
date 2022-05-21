@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://CharSelect/Descriptions/CharDescription.gd" type="Script" id=1]
+[ext_resource path="res://Characters/Max/Assets/Max_idle_1.png" type="Texture" id=2]
+
+[resource]
+script = ExtResource( 1 )
+name = "Max"
+portrait = ExtResource( 2 )
+blurb = "MIDRANGE LIZARD"
+description = "QCB: Dash Punch. Poke.
+Air 22: Divekick. Very fast high.
+
+Use H to step in from midrange.
+QCB + H if you're feeling lucky.
+Launch with c.H"

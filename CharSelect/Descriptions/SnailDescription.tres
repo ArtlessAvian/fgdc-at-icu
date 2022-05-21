@@ -1,0 +1,17 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://CharSelect/Descriptions/CharDescription.gd" type="Script" id=1]
+[ext_resource path="res://CharSelect/Assets/Games/Snail.PNG" type="Texture" id=2]
+
+[resource]
+script = ExtResource( 1 )
+name = "Snail"
+portrait = ExtResource( 2 )
+blurb = "SNAIL :)"
+description = "Snail: Snail. Snail Snail Snail Snail.
+Snail: Snail Snail. Snail Snail.
+
+Figure it out.
+
+
+                oh no hes here oh shi"

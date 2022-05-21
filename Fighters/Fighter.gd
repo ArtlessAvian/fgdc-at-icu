@@ -8,7 +8,7 @@ export(int) var fighter_height = 50
 # Subpixels per frame squared
 export(int) var fighter_gravity = 32768
 export(int) var max_health = 100
-export(int) var max_burst_meter = 1 * 60
+export(int) var max_burst_meter = 30 * 60
 
 export(Resource) var moveset
 
@@ -308,7 +308,7 @@ func throw_response(input: Dictionary):
 		return
 	if (
 		not state in moveset.movement
-		and not state in [moveset.walk, moveset.crouch, moveset.jump, moveset.burst, moveset.dead]
+		and not (state in [moveset.walk, moveset.crouch, moveset.jump, moveset.burst, moveset.dead])
 		and not (state == moveset.air_hitstun and state_time > state_dict.hitstun)
 	):
 		print("not neutral state")

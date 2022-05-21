@@ -13,6 +13,8 @@ var game_params = {}
 
 
 func set_character(scene: PackedScene, is_p2: bool = false, peer_id = 1) -> void:
+	print("hello", scene.resource_path, is_p2, peer_id)
+
 	var old = $Game/Fighter1 if not is_p2 else $Game/Fighter2
 	var opponent = $Game/Fighter2 if not is_p2 else $Game/Fighter1
 	var new = scene.instance()
