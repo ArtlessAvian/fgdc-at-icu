@@ -114,6 +114,9 @@ func change_to_state(new_state):
 	state = new_state
 	state_time = 0
 
+	# HACK
+	invincible = false
+
 
 func move():
 	if not grounded:
@@ -362,10 +365,9 @@ func can_burst() -> bool:
 
 # TODO: Moving sound playing to state
 # func set_hit_sound(sound_name: String):
-# 	# Must be called at least 2 animation frames before hitbox activates. 
+# 	# Must be called at least 2 animation frames before hitbox activates.
 # 	# Otherwise, hit_sound_name might not be set when hitbox contacts opponent. (jank)
 # 	hit_sound_name = sound_name
-
 
 # func play_miss_sound(sound_name: String):
 # 	if state_dict.last_attack_contact != $Hitboxes.attack_number:
@@ -511,6 +513,10 @@ func _on_Hitboxes_on_contact(blocked: bool, hitstop: int):
 	state_dict.last_attack_contact = $Hitboxes.attack_number
 	if not blocked:
 		state_dict.last_attack_hit = $Hitboxes.attack_number
-		
+
 	if state.attack_data.hit_sound != null:
-		SyncManager.play_sound(str(get_path()) + ":hit_sound", state.attack_data.get_hitdata(state_time).hit_sound,{position = self.position, pitch_scale = 1, volume_db = 10})
+		SyncManager.play_sound(
+			str(get_path()) + ":hit_sound",
+			state.attack_data.get_hitdata(state_time).hit_sound,
+			{position = self.position, pitch_scale = 1, volume_db = 10}
+		)
