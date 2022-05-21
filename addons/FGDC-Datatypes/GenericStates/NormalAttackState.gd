@@ -63,8 +63,6 @@ func run(f: Fighter, input: Dictionary) -> void:
 	attack_data.write_hitbox_positions(f.state_time, f.get_node("Hitboxes"))
 	# print(f.state_time)
 
-	pass
-
 
 func animation(f: Fighter) -> String:
 	ensure_not_null()

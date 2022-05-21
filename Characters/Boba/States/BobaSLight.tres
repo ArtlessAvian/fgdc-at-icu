@@ -1,28 +1,28 @@
 [gd_resource type="Resource" load_steps=4 format=2]
 
-[ext_resource path="res://addons/FGDC-Datatypes/GenericStates/NormalAttackState.gd" type="Script" id=1]
+[ext_resource path="res://Characters/Boba/Scripts/BobaRapidNormal.gd" type="Script" id=1]
 [ext_resource path="res://addons/FGDC-Datatypes/AttackData.gd" type="Script" id=2]
 
 [sub_resource type="Resource" id=1]
 script = ExtResource( 2 )
-guard = 2
-startup = 7
-active = 10
-hitstun = 20
-blockstun = 20
+guard = 0
+startup = 4
+active = 4
+hitstun = 17
+blockstun = 13
 hitstop = 6
 damage = 1
 chipdamage = 0
 knockdown = false
-x_vel = 4
+x_vel = 3
 y_vel = 0
 active_hitboxes = 1
-active_hurtboxes = 0
-animation_name = "JLight"
-recovery = 10
+active_hurtboxes = 2
+animation_name = "Light"
+recovery = 8
 
 [resource]
 script = ExtResource( 1 )
 attack_data = SubResource( 1 )
 attack_level = 0
-jump_cancellable = true
+jump_cancellable = false

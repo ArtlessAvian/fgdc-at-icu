@@ -5,24 +5,24 @@
 
 [sub_resource type="Resource" id=1]
 script = ExtResource( 2 )
-guard = 2
-startup = 7
-active = 10
-hitstun = 20
-blockstun = 20
-hitstop = 6
-damage = 1
+guard = 1
+startup = 9
+active = 6
+hitstun = 30
+blockstun = 16
+hitstop = 9
+damage = 3
 chipdamage = 0
-knockdown = false
-x_vel = 4
-y_vel = 0
+knockdown = true
+x_vel = 5
+y_vel = 25
 active_hitboxes = 1
 active_hurtboxes = 0
-animation_name = "JLight"
-recovery = 10
+animation_name = "CHeavy"
+recovery = 16
 
 [resource]
 script = ExtResource( 1 )
 attack_data = SubResource( 1 )
-attack_level = 0
+attack_level = 3
 jump_cancellable = true

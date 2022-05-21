@@ -316,6 +316,7 @@ func throw_response(input: Dictionary):
 	if (
 		not state in moveset.movement
 		and not state in [moveset.walk, moveset.crouch, moveset.jump, moveset.burst, moveset.dead]
+		and not (state == moveset.air_hitstun and state_time > state_dict.hitstun)
 	):
 		print("not neutral state")
 		return
@@ -432,7 +433,7 @@ func _get_local_input() -> Dictionary:
 		stick_y = int(round(Input.get_axis(down, up))),
 		light = Input.is_action_pressed(light),
 		heavy = Input.is_action_pressed(heavy),
-		dash = Input.is_action_just_pressed(dash)
+		dash = Input.is_action_pressed(dash)
 	}
 	# print(input)
 	return input

@@ -60,6 +60,10 @@ func get_landing_transition(f: Fighter, moveset: Moveset) -> State:
 	return moveset.walk
 
 
+func ignore_collision() -> bool:
+	return false
+
+
 # Helpers
 
 
