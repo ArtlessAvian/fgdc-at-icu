@@ -293,13 +293,6 @@ func on_hit():
 	else:
 		change_to_state(moveset.air_hitstun)
 
-	# TODO: Disabled for changing how sounds are played
-	# SyncManager.play_sound(
-	# 	str(get_path()) + ":hit",
-	# 	hit_sound if SyncManager.current_tick % 2 == 0 else hit_sound_2,
-	# 	{position = self.position, pitch_scale = 1, volume_db = -20}
-	# )
-
 
 func throw_response(input: Dictionary):
 	var throwdata = $Hurtboxes.throw_throwdata
@@ -517,3 +510,6 @@ func _on_Hitboxes_on_contact(blocked: bool, hitstop: int):
 	state_dict.last_attack_contact = $Hitboxes.attack_number
 	if not blocked:
 		state_dict.last_attack_hit = $Hitboxes.attack_number
+		
+	if state.attack_data.hit_sound != null:
+		SyncManager.play_sound(str(get_path()) + ":hit_sound", state.attack_data.get_hitdata(state_time).hit_sound,{position = self.position, pitch_scale = 1, volume_db = 10})

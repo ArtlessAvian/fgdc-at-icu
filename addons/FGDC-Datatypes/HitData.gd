@@ -23,6 +23,7 @@ export(int) var y_vel = 0
 export(int) var active_hitboxes = 1
 export(int) var active_hurtboxes = 0  # for counterhit!
 
+export(AudioStreamSample) var startup_sound = null
 export(AudioStreamSample) var hit_sound = null
 
 # desgustang linked list approach
