@@ -305,8 +305,8 @@ c_dash={
 [network]
 
 rollback/max_buffer_size=60
+rollback/limits/max_state_mismatch_count=2
 rollback/classes/message_serializer="res://Networking/FGDCMessageSerializer.gd"
-rollback/debug/rollback_ticks=10
 rollback/log_inspector/replay_match_scene_path="res://Networking/Lobby/crude_connection.tscn"
 
 [physics]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=2]
+[gd_scene load_steps=67 format=2]
 
 [ext_resource path="res://Fighters/debug.gd" type="Script" id=1]
 [ext_resource path="res://Fighters/Hurtboxes.gd" type="Script" id=2]
@@ -1066,6 +1066,9 @@ tracks/10/keys = {
 
 [sub_resource type="Animation" id=52]
 resource_name = "DoThrow"
+
+[sub_resource type="Animation" id=73]
+resource_name = "Flip"
 
 [sub_resource type="Animation" id=54]
 resource_name = "Heavy"
@@ -2361,6 +2364,7 @@ anims/DP = SubResource( 59 )
 anims/DashPunch = SubResource( 61 )
 anims/Divekick = SubResource( 60 )
 anims/DoThrow = SubResource( 52 )
+anims/Flip = SubResource( 73 )
 anims/Heavy = SubResource( 54 )
 anims/Hitstun = SubResource( 48 )
 anims/Idle = SubResource( 37 )

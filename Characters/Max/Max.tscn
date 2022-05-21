@@ -1,4 +1,4 @@
-[gd_scene load_steps=114 format=2]
+[gd_scene load_steps=115 format=2]
 
 [ext_resource path="res://Fighters/Fighter.gd" type="Script" id=1]
 [ext_resource path="res://Fighters/Hitboxes.gd" type="Script" id=2]
@@ -110,12 +110,12 @@ tracks/1/keys = {
 "values": [ 23 ]
 }
 
-[sub_resource type="Animation" id=67]
+[sub_resource type="Animation" id=69]
 resource_name = "Burst"
 length = 60.0
 step = 1.0
 tracks/0/type = "value"
-tracks/0/path = NodePath("Hitboxes/SGCollisionShape2D:shape:extents_x")
+tracks/0/path = NodePath("Hitboxes/hitbox1:shape:extents_x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -127,7 +127,7 @@ tracks/0/keys = {
 "values": [ 10000000 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Hitboxes/SGCollisionShape2D:shape:extents_y")
+tracks/1/path = NodePath("Hitboxes/hitbox1:shape:extents_y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -139,7 +139,7 @@ tracks/1/keys = {
 "values": [ 10000000 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Hitboxes/SGCollisionShape2D:fixed_position_x")
+tracks/2/path = NodePath("Hitboxes/hitbox1:fixed_position_x")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -151,7 +151,7 @@ tracks/2/keys = {
 "values": [ 0 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Hitboxes/SGCollisionShape2D:fixed_position_y")
+tracks/3/path = NodePath("Hitboxes/hitbox1:fixed_position_y")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -1135,6 +1135,9 @@ tracks/10/keys = {
 
 [sub_resource type="Animation" id=52]
 resource_name = "DoThrow"
+
+[sub_resource type="Animation" id=70]
+resource_name = "Flip"
 
 [sub_resource type="Animation" id=54]
 resource_name = "Heavy"
@@ -2360,7 +2363,7 @@ moveset = ExtResource( 9 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 playback_speed = 60.0
 anims/Blockstun = SubResource( 47 )
-anims/Burst = SubResource( 67 )
+anims/Burst = SubResource( 69 )
 anims/CHeavy = SubResource( 56 )
 anims/CLight = SubResource( 55 )
 anims/Crouch = SubResource( 46 )
@@ -2370,6 +2373,7 @@ anims/DP = SubResource( 59 )
 anims/DashPunch = SubResource( 61 )
 anims/Divekick = SubResource( 60 )
 anims/DoThrow = SubResource( 52 )
+anims/Flip = SubResource( 70 )
 anims/Heavy = SubResource( 54 )
 anims/Hitstun = SubResource( 48 )
 anims/Idle = SubResource( 37 )

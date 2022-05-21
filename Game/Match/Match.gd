@@ -6,9 +6,6 @@ onready var p1_score = 0
 onready var p2_score = 0
 
 var dead_timer = -1  # -1 if in game, non-negative if someone is dead
-
-export(PackedScene) var game_scene = load("res://Game/Game.tscn")
-
 var game_params = {}
 
 
