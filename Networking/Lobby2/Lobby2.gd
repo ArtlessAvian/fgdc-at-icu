@@ -182,7 +182,7 @@ remotesync func im_ready():
 
 func start_the_game():
 	$CanvasLayer/CharacterSelect.visible = false
-	if get_tree().get_network_unique_id() == 1:
+	if get_tree().network_peer == null or get_tree().get_network_unique_id() == 1:
 		yield(get_tree().create_timer(0.1), "timeout")
 		SyncManager.start()
 
