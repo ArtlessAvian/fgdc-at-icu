@@ -9,7 +9,7 @@ var hardcoded_characters = [
 	"res://Characters/Max/Max.tscn",
 	"res://Characters/Lippo/Lippo.tscn",
 	"res://Characters/Boba/Boba.tscn",
-	"res://Characters/Max/Max.tscn",
+	"res://Characters/Snail/Snail.tscn",
 ]
 
 # var controllers_by_index = ["kb", "c0", "c1", "mash", "block", "punish", "upback"]
