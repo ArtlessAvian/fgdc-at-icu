@@ -37,13 +37,6 @@ func transition_out(f: Fighter, moveset: Moveset, input: Dictionary) -> Resource
 
 
 func run(f: Fighter, input: Dictionary) -> void:
-	# if f.state_time == (59 if is_heavy else 30):
-	# 	for i in range(-3, 7, 2):
-	# 		var angle = i * 2860 * (1 if f.grounded else -1)
-
-	# var i = f.state_time - (50 if is_heavy else 30)
-	# if 0 <= i and i < 10 and i % 2 == 0:
-	# 	var angle = (i - 3) * 2860 * (1 if f.grounded else -1)
 	if f.state_time == 0:
 		var taxi = SyncManager.spawn(
 			"Taxi",

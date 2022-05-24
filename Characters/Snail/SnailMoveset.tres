@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=35 format=2]
+[gd_resource type="Resource" load_steps=26 format=2]
 
 [ext_resource path="res://addons/FGDC-Datatypes/GenericStates/PrejumpState.gd" type="Script" id=1]
 [ext_resource path="res://addons/FGDC-Datatypes/GenericStates/ThrowAttemptState.gd" type="Script" id=2]
@@ -7,11 +7,14 @@
 [ext_resource path="res://addons/FGDC-Datatypes/GenericStates/BurstState.gd" type="Script" id=5]
 [ext_resource path="res://addons/FGDC-Datatypes/Moveset.gd" type="Script" id=6]
 [ext_resource path="res://addons/FGDC-Datatypes/GenericStates/CrouchState.gd" type="Script" id=7]
-[ext_resource path="res://addons/FGDC-Datatypes/AttackData.gd" type="Script" id=8]
+[ext_resource path="res://Characters/Snail/States/SnailSHeavy.tres" type="Resource" id=8]
 [ext_resource path="res://Characters/Snail/States/SnailCallTaxi.tres" type="Resource" id=9]
-[ext_resource path="res://addons/FGDC-Datatypes/GenericStates/NormalAttackState.gd" type="Script" id=10]
-[ext_resource path="res://Characters/Max/StepForwardNormalState.gd" type="Script" id=11]
+[ext_resource path="res://Characters/Snail/States/SnailCHeavy.tres" type="Resource" id=11]
+[ext_resource path="res://Characters/Snail/States/SnailSLight.tres" type="Resource" id=12]
+[ext_resource path="res://Characters/Snail/States/SnailJLight.tres" type="Resource" id=13]
+[ext_resource path="res://Characters/Snail/States/SnailJHeavy.tres" type="Resource" id=14]
 [ext_resource path="res://Characters/Snail/States/SnailRideTaxi.tres" type="Resource" id=15]
+[ext_resource path="res://Characters/Snail/States/SnailCLight.tres" type="Resource" id=16]
 [ext_resource path="res://addons/FGDC-Datatypes/ThrowData.gd" type="Script" id=17]
 [ext_resource path="res://addons/FGDC-Datatypes/StandardBurst.tres" type="Resource" id=21]
 
@@ -19,166 +22,20 @@
 script = ExtResource( 5 )
 attack_data = ExtResource( 21 )
 
-[sub_resource type="Resource" id=1]
-script = ExtResource( 8 )
-guard = 1
-startup = 9
-active = 6
-hitstun = 30
-blockstun = 16
-hitstop = 9
-damage = 5
-chipdamage = 0
-knockdown = true
-x_vel = 3
-y_vel = 14
-active_hitboxes = 1
-active_hurtboxes = 0
-animation_name = "CHeavy"
-recovery = 16
-
-[sub_resource type="Resource" id=11]
-script = ExtResource( 10 )
-attack_data = SubResource( 1 )
-attack_level = 3
-jump_cancellable = true
-
-[sub_resource type="Resource" id=12]
-script = ExtResource( 8 )
-guard = 1
-startup = 4
-active = 4
-hitstun = 12
-blockstun = 10
-hitstop = 6
-damage = 2
-chipdamage = 0
-knockdown = false
-x_vel = 2
-y_vel = 0
-active_hitboxes = 1
-active_hurtboxes = 0
-animation_name = "CLight"
-recovery = 8
-
-[sub_resource type="Resource" id=13]
-script = ExtResource( 10 )
-attack_data = SubResource( 12 )
-attack_level = 1
-jump_cancellable = false
-
 [sub_resource type="Resource" id=8]
 script = ExtResource( 7 )
-
-[sub_resource type="Resource" id=14]
-script = ExtResource( 8 )
-guard = 0
-startup = 8
-active = 3
-hitstun = 20
-blockstun = 16
-hitstop = 9
-damage = 8
-chipdamage = 0
-knockdown = false
-x_vel = 5
-y_vel = 0
-active_hitboxes = 1
-active_hurtboxes = 0
-animation_name = "Heavy"
-recovery = 20
-
-[sub_resource type="Resource" id=15]
-script = ExtResource( 11 )
-attack_data = SubResource( 14 )
-attack_level = 2
-jump_cancellable = false
-step_vel = 1310720
-step_time = 8
-
-[sub_resource type="Resource" id=16]
-script = ExtResource( 8 )
-guard = 2
-startup = 9
-active = 6
-hitstun = 24
-blockstun = 24
-hitstop = 9
-damage = 5
-chipdamage = 0
-knockdown = false
-x_vel = 5
-y_vel = 15
-active_hitboxes = 1
-active_hurtboxes = 0
-animation_name = "JHeavy"
-recovery = 28
-
-[sub_resource type="Resource" id=17]
-script = ExtResource( 10 )
-attack_data = SubResource( 16 )
-attack_level = 1
-jump_cancellable = true
-
-[sub_resource type="Resource" id=18]
-script = ExtResource( 8 )
-guard = 2
-startup = 7
-active = 10
-hitstun = 20
-blockstun = 20
-hitstop = 6
-damage = 1
-chipdamage = 0
-knockdown = false
-x_vel = 4
-y_vel = 0
-active_hitboxes = 1
-active_hurtboxes = 0
-animation_name = "JLight"
-recovery = 10
-
-[sub_resource type="Resource" id=19]
-script = ExtResource( 10 )
-attack_data = SubResource( 18 )
-attack_level = 0
-jump_cancellable = true
 
 [sub_resource type="Resource" id=3]
 script = ExtResource( 4 )
 impulse = 1310720
 double_jump_impulse = 983040
-horizontal_speed = 524288
-
-[sub_resource type="Resource" id=20]
-script = ExtResource( 8 )
-guard = 0
-startup = 10
-active = 5
-hitstun = 15
-blockstun = 15
-hitstop = 6
-damage = 3
-chipdamage = 0
-knockdown = false
-x_vel = 3
-y_vel = 0
-active_hitboxes = 1
-active_hurtboxes = 1
-animation_name = "Light"
-recovery = 25
-
-[sub_resource type="Resource" id=21]
-script = ExtResource( 10 )
-attack_data = SubResource( 20 )
-attack_level = 0
-jump_cancellable = false
+horizontal_speed = -262144
 
 [sub_resource type="Resource" id=9]
 script = ExtResource( 1 )
 impulse = 1572864
 double_jump_impulse = 1048576
-horizontal_speed = 655360
+horizontal_speed = -262144
 
 [sub_resource type="Resource" id=5]
 script = ExtResource( 17 )
@@ -211,7 +68,7 @@ air_throw_data = SubResource( 5 )
 
 [sub_resource type="Resource" id=4]
 script = ExtResource( 3 )
-speed = 12
+speed = -4
 
 [resource]
 script = ExtResource( 6 )
@@ -220,12 +77,12 @@ walk = SubResource( 4 )
 crouch = SubResource( 8 )
 prejump = SubResource( 9 )
 jump = SubResource( 3 )
-light = SubResource( 21 )
-heavy = SubResource( 15 )
-c_light = SubResource( 13 )
-c_heavy = SubResource( 11 )
-j_light = SubResource( 19 )
-j_heavy = SubResource( 17 )
+light = ExtResource( 12 )
+heavy = ExtResource( 8 )
+c_light = ExtResource( 16 )
+c_heavy = ExtResource( 11 )
+j_light = ExtResource( 13 )
+j_heavy = ExtResource( 14 )
 throw = SubResource( 7 )
 burst = SubResource( 10 )
 attacks = [ ExtResource( 9 ) ]

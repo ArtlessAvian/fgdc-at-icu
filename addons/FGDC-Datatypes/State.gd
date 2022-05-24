@@ -79,9 +79,22 @@ func transition_into_double_jump(f: Fighter, moveset: Moveset, input: Dictionary
 		if input.stick_y > 0:
 			if input.stick_x == 0:
 				f.vel.x = 0
-			elif input.stick_x < 0 and f.vel.x > -moveset.jump.horizontal_speed:
+			# snail polluting my codebase again
+			elif (
+				input.stick_x < 0
+				and (
+					f.vel.x > -moveset.jump.horizontal_speed
+					or moveset.jump.horizontal_speed < 0
+				)
+			):
 				f.vel.x = -moveset.jump.horizontal_speed
-			elif input.stick_x > 0 and f.vel.x < moveset.jump.horizontal_speed:
+			elif (
+				input.stick_x > 0
+				and (
+					f.vel.x < moveset.jump.horizontal_speed
+					or moveset.jump.horizontal_speed < 0
+				)
+			):
 				f.vel.x = moveset.jump.horizontal_speed
 
 			f.vel.y = moveset.jump.double_jump_impulse

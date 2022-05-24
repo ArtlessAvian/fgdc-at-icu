@@ -29,7 +29,7 @@ guard = "0"
 startup = 4
 active = 2
 hitstun = 50
-blockstun = 50
+blockstun = 20
 hitstop = 0
 damage = 3
 chipdamage = 1
@@ -41,7 +41,7 @@ active_hurtboxes = 0
 
 [sub_resource type="SGRectangleShape2D" id=4]
 extents_x = 13107200
-extents_y = 6553600
+extents_y = 5242880
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
@@ -76,8 +76,8 @@ hit_data = SubResource( 6 )
 [node name="SGCollisionShape2D" type="SGCollisionShape2D" parent="Hitboxes"]
 modulate = Color( 1, 0, 0, 1 )
 self_modulate = Color( 1, 0, 0, 1 )
-position = Vector2( 0, -100 )
-fixed_position_y = -6553600
+position = Vector2( 0, -80 )
+fixed_position_y = -5242880
 shape = SubResource( 4 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
