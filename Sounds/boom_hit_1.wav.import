@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/boom_hit_1.wav-ca96e4c200316cc3b2b820eb1d33be7a.sample"
+
+[deps]
+
+source_file="res://Sounds/boom_hit_1.wav"
+dest_files=[ "res://.import/boom_hit_1.wav-ca96e4c200316cc3b2b820eb1d33be7a.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

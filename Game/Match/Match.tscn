@@ -7,7 +7,6 @@
 
 [node name="Match" type="SGFixedNode2D"]
 script = ExtResource( 1 )
-game_scene = ExtResource( 2 )
 
 [node name="BackgroundLayer" type="CanvasLayer" parent="."]
 layer = -64

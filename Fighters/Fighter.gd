@@ -36,6 +36,9 @@ var hitstop = 0
 
 signal countered
 
+const hit_sound = preload("res://rip_in_pieces.wav")
+const hit_sound_2 = preload("res://rip_in_pieces_2.wav")
+
 
 func _ready():
 	self.fixed_position.x = (-200 << 16) * (-1 if is_p2 else 1)
@@ -110,6 +113,9 @@ func change_to_state(new_state):
 	new_state.enter(self)
 	state = new_state
 	state_time = 0
+
+	# HACK
+	invincible = false
 
 
 func move():
@@ -255,10 +261,6 @@ func on_block():
 	combo_count = 0
 
 
-const hit_sound = preload("res://rip_in_pieces.wav")
-const hit_sound_2 = preload("res://rip_in_pieces_2.wav")
-
-
 func on_hit():
 	$Hurtboxes.register_contact(false)
 
@@ -293,12 +295,6 @@ func on_hit():
 
 	else:
 		change_to_state(moveset.air_hitstun)
-
-	SyncManager.play_sound(
-		str(get_path()) + ":hit",
-		hit_sound if SyncManager.current_tick % 2 == 0 else hit_sound_2,
-		{position = self.position, pitch_scale = 1, volume_db = -20}
-	)
 
 
 func throw_response(input: Dictionary):
@@ -365,6 +361,21 @@ func can_burst() -> bool:
 		return true
 
 	return false
+
+
+# TODO: Moving sound playing to state
+# func set_hit_sound(sound_name: String):
+# 	# Must be called at least 2 animation frames before hitbox activates.
+# 	# Otherwise, hit_sound_name might not be set when hitbox contacts opponent. (jank)
+# 	hit_sound_name = sound_name
+
+# func play_miss_sound(sound_name: String):
+# 	if state_dict.last_attack_contact != $Hitboxes.attack_number:
+# 		SyncManager.play_sound(
+# 			str(get_path()) + ":" + sound_name,
+# 			sounds[sound_name], #hit_sound if SyncManager.current_tick % 2 == 0 else hit_sound_2,
+# 			{position = self.position, pitch_scale = 1, volume_db = 10}
+# 		)
 
 
 func _get_local_input() -> Dictionary:
@@ -502,3 +513,10 @@ func _on_Hitboxes_on_contact(blocked: bool, hitstop: int):
 	state_dict.last_attack_contact = $Hitboxes.attack_number
 	if not blocked:
 		state_dict.last_attack_hit = $Hitboxes.attack_number
+
+	if state.attack_data.hit_sound != null:
+		SyncManager.play_sound(
+			str(get_path()) + ":hit_sound",
+			state.attack_data.get_hitdata(state_time).hit_sound,
+			{position = self.position, pitch_scale = 1, volume_db = 10}
+		)

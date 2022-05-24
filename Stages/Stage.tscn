@@ -108,7 +108,7 @@ alpha_cut = 2
 texture = ExtResource( 3 )
 
 [node name="Sprite3D6" type="Sprite3D" parent="."]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 6.68823, 1.21622, -3 )
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 6.68823, 2.44193, -3 )
 alpha_cut = 2
 texture = ExtResource( 4 )
 script = SubResource( 3 )

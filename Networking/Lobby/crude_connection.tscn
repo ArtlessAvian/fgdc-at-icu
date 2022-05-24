@@ -251,6 +251,21 @@ text = "Controller 1"
 items = [ "Keyboard (Arrows, AS)", null, false, 0, null, "Controller 1", null, false, 1, null, "Controller 2", null, false, 2, null, "Mash", null, false, 3, null ]
 selected = 1
 
+[node name="Control" type="Control" parent="CanvasLayer/MarginContainer/GridContainer"]
+margin_top = 356.0
+margin_right = 87.0
+margin_bottom = 376.0
+
+[node name="newmenu" type="Button" parent="CanvasLayer/MarginContainer/GridContainer"]
+margin_left = 97.0
+margin_top = 356.0
+margin_right = 397.0
+margin_bottom = 376.0
+text = "Try New Menu! (mostly working)"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="SyncLost" type="Label" parent="CanvasLayer"]
 visible = false
 margin_right = 40.0
@@ -266,3 +281,4 @@ __meta__ = {
 [connection signal="button_up" from="CanvasLayer/MarginContainer/GridContainer/Local" to="." method="_on_Local_button_up"]
 [connection signal="item_selected" from="CanvasLayer/MarginContainer/GridContainer/LocalCharacter" to="." method="_on_LocalCharacter_item_selected" binds= [ false ]]
 [connection signal="item_selected" from="CanvasLayer/MarginContainer/GridContainer/LocalCharacter2" to="." method="_on_LocalCharacter_item_selected" binds= [ true ]]
+[connection signal="button_up" from="CanvasLayer/MarginContainer/GridContainer/newmenu" to="." method="_on_newmenu_button_up"]

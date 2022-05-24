@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=2]
+[gd_scene load_steps=61 format=2]
 
 [ext_resource path="res://Fighters/Fighter.gd" type="Script" id=1]
 [ext_resource path="res://Fighters/Hitboxes.gd" type="Script" id=2]
@@ -553,6 +553,9 @@ tracks/2/keys = {
 "update": 1,
 "values": [ 3 ]
 }
+
+[sub_resource type="Animation" id=86]
+resource_name = "Flip"
 
 [sub_resource type="Animation" id=68]
 resource_name = "Heavy"
@@ -1806,6 +1809,7 @@ anims/CrouchingBlockstun = SubResource( 84 )
 anims/CrouchingHitstun = SubResource( 85 )
 anims/DoThrow = SubResource( 52 )
 anims/Fireball = SubResource( 79 )
+anims/Flip = SubResource( 86 )
 anims/Heavy = SubResource( 68 )
 anims/HiddenMissiles = SubResource( 53 )
 anims/Hitstun = SubResource( 48 )
