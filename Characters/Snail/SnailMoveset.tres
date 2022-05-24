@@ -33,9 +33,6 @@ horizontal_speed = -262144
 
 [sub_resource type="Resource" id=9]
 script = ExtResource( 1 )
-impulse = 1572864
-double_jump_impulse = 1048576
-horizontal_speed = -262144
 
 [sub_resource type="Resource" id=5]
 script = ExtResource( 17 )

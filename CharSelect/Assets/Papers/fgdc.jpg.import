@@ -2,19 +2,21 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/fgdc.jpg-2575e027d0218cdc0527a7ff7103e211.stex"
+path.s3tc="res://.import/fgdc.jpg-2575e027d0218cdc0527a7ff7103e211.s3tc.stex"
+path.etc2="res://.import/fgdc.jpg-2575e027d0218cdc0527a7ff7103e211.etc2.stex"
 metadata={
-"vram_texture": false
+"imported_formats": [ "s3tc", "etc2" ],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://CharSelect/Assets/Papers/fgdc.jpg"
-dest_files=[ "res://.import/fgdc.jpg-2575e027d0218cdc0527a7ff7103e211.stex" ]
+dest_files=[ "res://.import/fgdc.jpg-2575e027d0218cdc0527a7ff7103e211.s3tc.stex", "res://.import/fgdc.jpg-2575e027d0218cdc0527a7ff7103e211.etc2.stex" ]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
