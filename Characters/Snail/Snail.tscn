@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=2]
+[gd_scene load_steps=75 format=2]
 
 [ext_resource path="res://Fighters/Fighter.gd" type="Script" id=1]
 [ext_resource path="res://Fighters/Hitboxes.gd" type="Script" id=2]
@@ -1035,6 +1035,9 @@ tracks/10/keys = {
 
 [sub_resource type="Animation" id=52]
 resource_name = "DoThrow"
+
+[sub_resource type="Animation" id=69]
+resource_name = "Flip"
 
 [sub_resource type="Animation" id=54]
 resource_name = "Heavy"
@@ -2252,7 +2255,7 @@ tracks/0/keys = {
 "values": [ 1, 2 ]
 }
 
-[sub_resource type="SpriteFrames" id=34]
+[sub_resource type="SpriteFrames" id=70]
 animations = [ {
 "frames": [ ExtResource( 26 ), ExtResource( 13 ), ExtResource( 25 ), ExtResource( 20 ), ExtResource( 19 ), ExtResource( 16 ), ExtResource( 12 ), ExtResource( 27 ), ExtResource( 11 ), ExtResource( 17 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 21 ), ExtResource( 18 ), ExtResource( 14 ), ExtResource( 22 ), ExtResource( 15 ), ExtResource( 30 ), ExtResource( 32 ), ExtResource( 31 ) ],
 "loop": false,
@@ -2303,6 +2306,7 @@ anims/DP = SubResource( 59 )
 anims/DashPunch = SubResource( 61 )
 anims/Divekick = SubResource( 60 )
 anims/DoThrow = SubResource( 52 )
+anims/Flip = SubResource( 69 )
 anims/Heavy = SubResource( 54 )
 anims/Hitstun = SubResource( 48 )
 anims/Idle = SubResource( 37 )
@@ -2329,16 +2333,30 @@ script = ExtResource( 5 )
 
 [node name="Visual" type="Node2D" parent="."]
 
+[node name="Label" type="RichTextLabel" parent="Visual"]
+margin_left = -92.0
+margin_top = -365.0
+margin_right = 208.0
+margin_bottom = -315.0
+rect_scale = Vector2( 5, 5 )
+bbcode_enabled = true
+bbcode_text = "SNAIL
+    \\/"
+text = "SNAIL
+    \\/"
+scroll_active = false
+
 [node name="Character" type="Node2D" parent="Visual"]
 script = ExtResource( 8 )
 
 [node name="derp" type="Node2D" parent="Visual/Character"]
-modulate = Color( 1, 1, 1, 0.498039 )
+visible = false
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Visual/Character/derp"]
+visible = false
 position = Vector2( 0, -100 )
 scale = Vector2( 0.085, 0.085 )
-frames = SubResource( 34 )
+frames = SubResource( 70 )
 animation = "Default"
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="Visual/Character"]
@@ -2347,6 +2365,7 @@ scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 68 )
 
 [node name="100White" type="Sprite" parent="Visual/Character/AnimatedSprite2"]
+visible = false
 self_modulate = Color( 1, 1, 1, 0.501961 )
 scale = Vector2( 6, 6 )
 z_index = -20
@@ -2358,7 +2377,7 @@ script = ExtResource( 2 )
 
 [node name="hitbox1" type="SGCollisionShape2D" parent="Hitboxes"]
 modulate = Color( 0.75, 0.75, 0.75, 1 )
-position = Vector2( 137, -120 )
+position = Vector2( 132, -77 )
 fixed_position_x = 8650752
 fixed_position_y = -5046272
 shape = SubResource( 42 )
@@ -2371,7 +2390,7 @@ script = ExtResource( 4 )
 
 [node name="hurtbox1" type="SGCollisionShape2D" parent="Hurtboxes"]
 modulate = Color( 0, 1, 0, 1 )
-position = Vector2( 0, -54.2236 )
+position = Vector2( 0, -100 )
 fixed_position_y = -6553600
 shape = SubResource( 43 )
 
@@ -2450,9 +2469,7 @@ margin_left = -134.0
 margin_top = 31.0
 margin_right = 184.0
 margin_bottom = 45.0
-text = "res://Characters/Snail/States/SnailLight.tres::1
-10 (5) 25
-"
+text = "No attack loaded!"
 
 [node name="InputHistory" type="Node" parent="." groups=["network_sync"]]
 script = ExtResource( 6 )
