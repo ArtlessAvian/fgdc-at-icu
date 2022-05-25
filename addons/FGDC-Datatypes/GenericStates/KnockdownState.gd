@@ -53,6 +53,10 @@ func run(f: Fighter, input: Dictionary) -> void:
 	character.modulate = Color.white
 
 
+func exit(f: Fighter) -> void:
+	f.invincible = false
+
+
 func animation(f: Fighter) -> String:
 	return "Knockdown" if f.state_dict.knockdown_timer == 30 else "Wakeup"
 

@@ -17,6 +17,10 @@ func run(f: Fighter, input: Dictionary) -> void:
 	character.modulate = Color.purple
 
 
+func exit(f: Fighter) -> void:
+	f.invincible = false
+
+
 func animation(f: Fighter) -> String:
 	return "Hitstun"
 

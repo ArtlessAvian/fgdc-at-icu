@@ -32,6 +32,11 @@ func run(f: Fighter, input: Dictionary) -> void:
 	return
 
 
+# dunno what params i want for this
+func exit(f: Fighter) -> void:
+	return
+
+
 func animation(f: Fighter) -> String:
 	return "Idle"
 
@@ -82,18 +87,12 @@ func transition_into_double_jump(f: Fighter, moveset: Moveset, input: Dictionary
 			# snail polluting my codebase again
 			elif (
 				input.stick_x < 0
-				and (
-					f.vel.x > -moveset.jump.horizontal_speed
-					or moveset.jump.horizontal_speed < 0
-				)
+				and (f.vel.x > -moveset.jump.horizontal_speed or moveset.jump.horizontal_speed < 0)
 			):
 				f.vel.x = -moveset.jump.horizontal_speed
 			elif (
 				input.stick_x > 0
-				and (
-					f.vel.x < moveset.jump.horizontal_speed
-					or moveset.jump.horizontal_speed < 0
-				)
+				and (f.vel.x < moveset.jump.horizontal_speed or moveset.jump.horizontal_speed < 0)
 			):
 				f.vel.x = moveset.jump.horizontal_speed
 

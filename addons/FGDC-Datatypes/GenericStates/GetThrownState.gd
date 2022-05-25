@@ -49,6 +49,10 @@ func run(f: Fighter, input: Dictionary) -> void:
 	# )
 
 
+func exit(f: Fighter) -> void:
+	f.invincible = false
+
+
 func animation(f: Fighter) -> String:
 	return "Hitstun"
 

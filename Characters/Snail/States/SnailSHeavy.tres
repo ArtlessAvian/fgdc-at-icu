@@ -1,28 +1,30 @@
 [gd_resource type="Resource" load_steps=4 format=2]
 
-[ext_resource path="res://addons/FGDC-Datatypes/GenericStates/NormalAttackState.gd" type="Script" id=1]
+[ext_resource path="res://Characters/Boba/Scripts/BobaLoopingNormal.gd" type="Script" id=1]
 [ext_resource path="res://addons/FGDC-Datatypes/AttackData.gd" type="Script" id=2]
 
 [sub_resource type="Resource" id=1]
 script = ExtResource( 2 )
 guard = 0
-startup = 10
+startup = 15
 active = 5
-hitstun = 15
-blockstun = 15
-hitstop = 6
+hitstun = 32
+blockstun = 25
+hitstop = 5
 damage = 3
-chipdamage = 0
-knockdown = false
-x_vel = 3
+chipdamage = 1
+knockdown = true
+x_vel = -1
 y_vel = 0
 active_hitboxes = 1
-active_hurtboxes = 1
-animation_name = "Light"
-recovery = 25
+active_hurtboxes = 0
+animation_name = "Heavy"
+recovery = 30
 
 [resource]
 script = ExtResource( 1 )
 attack_data = SubResource( 1 )
 attack_level = 2
-jump_cancellable = false
+jump_cancellable = true
+loop_limit = 6
+loop_frames = 16

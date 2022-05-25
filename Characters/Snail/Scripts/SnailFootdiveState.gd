@@ -19,17 +19,18 @@ func run(f: Fighter, input: Dictionary) -> void:
 				f.vel.y = (-6 << 16) + f.fighter_gravity
 			else:
 				# heavy
-				f.vel.x = (6 << 16) * int(sign(f.fixed_scale.x))
-				f.vel.y = (-20 << 16) + f.fighter_gravity
+				f.vel.x = (15 << 16) * int(sign(f.fixed_scale.x))
+				f.vel.y = (-15 << 16) + f.fighter_gravity
 
 		if f.state_dict.last_attack_contact == f.get_node("Hitboxes").attack_number:
-			f.vel.x = (-8 << 16) * int(sign(f.fixed_scale.x))
+			f.vel.x = (-4 << 16) * int(sign(f.fixed_scale.x))
 			f.vel.y = (8 << 16) + f.fighter_gravity
 			f.state_dict["footdive_hit"] = true
 
 	else:
 		for child in f.get_node("Hitboxes").get_children():
 			child.disabled = true
+
 
 func animation(f: Fighter):
 	return "Footdive" if attack_level() != 1 else "FootdiveHeavy"

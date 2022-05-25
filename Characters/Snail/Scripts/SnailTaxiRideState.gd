@@ -24,6 +24,10 @@ func run(f: Fighter, input: Dictionary) -> void:
 	f.invincible = true
 
 
+func exit(f: Fighter) -> void:
+	f.invincible = false
+
+
 func animation(f: Fighter) -> String:
 	return "Crouch"
 

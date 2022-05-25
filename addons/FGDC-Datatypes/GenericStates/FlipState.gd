@@ -2,6 +2,7 @@ extends "../State.gd"
 
 const length = 20
 
+
 func transition_into(f: Fighter, moveset: Moveset, input: Dictionary) -> bool:
 	return false
 
@@ -19,6 +20,10 @@ func run(f: Fighter, input: Dictionary) -> void:
 	character.modulate = Color.skyblue.linear_interpolate(
 		Color.white, f.state_time / 2.0 / f.state_dict.hitstun
 	)
+
+
+func exit(f: Fighter) -> void:
+	f.invincible = false
 
 
 func animation(f: Fighter) -> String:

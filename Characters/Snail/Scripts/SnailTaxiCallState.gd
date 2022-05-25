@@ -13,7 +13,7 @@ func transition_into(f: Fighter, moveset: Moveset, input: Dictionary) -> bool:
 		f.state in [moveset.walk, moveset.crouch, moveset.jump] + moveset.all_attacks()
 		and f.state.attack_level() < self.attack_level()
 	):
-		if f.get_node("InputHistory").detect_qcb(f.fixed_scale.x < 0, 17):
+		if f.get_node("InputHistory").detect_charge_forward(f.fixed_scale.x < 0, 17, 30):
 			f.vel.x = 0
 			f.get_node("Hitboxes").new_attack()
 

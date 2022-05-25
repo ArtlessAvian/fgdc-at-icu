@@ -37,6 +37,10 @@ func run(f: Fighter, input: Dictionary) -> void:
 	attack_data.write_hitbox_positions(f.state_time, f.get_node("Hitboxes"))
 
 
+func exit(f: Fighter) -> void:
+	f.invincible = false
+
+
 func animation(f: Fighter) -> String:
 	return "DP"
 
