@@ -8,6 +8,7 @@ func transition_out(f: Fighter, moveset: Moveset, input: Dictionary) -> Resource
 		f.grounded = false
 		f.state_dict.hitstun = 45
 		f.vel.y = 30 << 16
+		f.invincible = false
 		return moveset.air_hitstun
 
 	return null
@@ -20,6 +21,7 @@ func run(f: Fighter, input: Dictionary) -> void:
 		f.fixed_position.y = 0
 	f.vel.x = 0
 	f.vel.y = 0
+	f.invincible = true
 
 
 func animation(f: Fighter) -> String:

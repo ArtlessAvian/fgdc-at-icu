@@ -1,10 +1,7 @@
 extends SGFixedNode2D
 
 export(int) var TAXI_SPEED = 30
-export(int) var arrival = 30
-export(int) var stall_time = 10
-# export(int) var deacc = 30
-# export(int) var acc = 30
+export(int) var arrival = 60
 
 var flip = false
 var lifetime = 0
@@ -18,12 +15,13 @@ func _network_spawn(data: Dictionary):
 	self.flip = data.flip
 
 	self.origin_x = data.position_x
+	self.origin_x += (-1 if self.flip else 1) * (300 << 16)
 
 	self.fixed_scale.x = (-1 if self.flip else 1) * (1 << 16)
 
 	$Hitboxes.facing = -1 if self.flip else 1
 	$Hitboxes.set_player(data.is_p2, true)
-	$Hurtboxes.set_player(data.is_p2, true)
+	# $Hurtboxes.set_player(data.is_p2, true)
 
 	add_to_group("network_sync")
 
@@ -40,14 +38,15 @@ func _network_preprocess(input: Dictionary) -> void:
 	var offset
 	if lifetime < arrival:
 		var t = lifetime - arrival
-		offset = -t * t
-	elif lifetime < arrival + stall_time:
-		offset = 0
+		offset = t
 	else:
-		var t = lifetime - arrival - stall_time
-		offset = t * t
+		offset = 0
 
-	self.fixed_position.x = (origin_x + offset * (1 << 16) * (-1 if flip else 1))
+	self.fixed_position.x = (origin_x + offset * (25 << 16) * (-1 if flip else 1))
+	self.fixed_position.y = (offset * (50 << 16))
+
+	if self.fixed_position.y <= 0:
+		$Hitboxes/SGCollisionShape2D.disabled = false
 
 	lifetime += 1
 
@@ -59,8 +58,11 @@ func _network_postprocess(input: Dictionary) -> void:
 	if fixed_position.x * (-1 if flip else 1) > 1000 << 16:
 		on_hit()
 
-	if $Hurtboxes.hit_hitdata != null:
+	if fixed_position.y >= 0:
 		on_hit()
+
+	# if $Hurtboxes.hit_hitdata != null:
+	# 	on_hit()
 
 	if lifetime > 300:
 		SyncManager.despawn(self)
@@ -69,7 +71,7 @@ func _network_postprocess(input: Dictionary) -> void:
 func on_hit():
 	hit = true
 	$Hitboxes/SGCollisionShape2D.disabled = true
-	$Hurtboxes/SGCollisionShape2D.disabled = true
+	# $Hurtboxes/SGCollisionShape2D.disabled = true
 	$AnimatedSprite.play("explode")
 	$Sprite.visible = false
 	# SyncManager.despawn(self)

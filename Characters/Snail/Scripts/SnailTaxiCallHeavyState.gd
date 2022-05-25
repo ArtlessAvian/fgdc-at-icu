@@ -1,12 +1,12 @@
 extends "res://addons/FGDC-Datatypes/State.gd"
 
-const TAXI_SCENE = preload("res://Characters/Snail/Taxi.tscn")
+const TAXI_SCENE = preload("res://Characters/Snail/CrazyTaxi.tscn")
 
 
 func transition_into(f: Fighter, moveset: Moveset, input: Dictionary) -> bool:
 	if not f.grounded:
 		return false
-	if not input.light:
+	if not input.heavy:
 		return false
 
 	if (
@@ -23,13 +23,8 @@ func transition_into(f: Fighter, moveset: Moveset, input: Dictionary) -> bool:
 
 
 func transition_out(f: Fighter, moveset: Moveset, input: Dictionary) -> Resource:
-	if f.state_time >= 35:
-		var taxi = f.get_node_or_null(f.state_dict["my_taxi"])
-		if input.light or taxi == null or taxi.hit:
-			return moveset.walk
-		for state in moveset.movement:
-			if "Ride" in state.resource_path:
-				return state
+	if f.state_time >= 20 + 35:
+		return moveset.walk
 
 	return null
 
@@ -37,7 +32,7 @@ func transition_out(f: Fighter, moveset: Moveset, input: Dictionary) -> Resource
 func run(f: Fighter, input: Dictionary) -> void:
 	if f.state_time == 0:
 		var taxi = SyncManager.spawn(
-			"Taxi",
+			"OverheadTaxi",
 			f.get_parent().get_node("Spawned"),
 			TAXI_SCENE,
 			{
@@ -53,7 +48,7 @@ func run(f: Fighter, input: Dictionary) -> void:
 
 
 func animation(f: Fighter) -> String:
-	return "HeyTaxi"
+	return "HeyTaxi" if f.state_time < 20 else "HeyTaxi?"
 
 
 func attack_level() -> int:

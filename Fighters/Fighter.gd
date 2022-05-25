@@ -207,7 +207,10 @@ func is_blocking(input: Dictionary):
 func hit_response(input: Dictionary):
 	# Look at the hit.
 	if $Hurtboxes.hit_hitboxes.facing == 0:
-		var diff = fixed_position.x - $Hurtboxes.hit_hitboxes.get_global_fixed_position().x
+		var diff = (
+			fixed_position.x
+			- $Hurtboxes.hit_hitboxes.get_global_fixed_position().x
+		)
 		if diff > 0 && fixed_scale.x > 0:
 			fixed_scale.x *= -1
 		if diff < 0 && fixed_scale.x < 0:
@@ -282,7 +285,10 @@ func on_hit():
 		grounded = false
 		# gravity takes care of the rest!
 
-	if state.get("attack_data") != null and state_time <= state.get("attack_data").startup:
+	if (
+		state.get("attack_data") != null
+		and state_time <= state.get("attack_data").startup
+	):
 		emit_signal("countered")
 
 	# print($Hurtboxes.hit_hitdata, SyncManager.current_tick)
@@ -311,7 +317,10 @@ func throw_response(input: Dictionary):
 		return
 	if (
 		not state in moveset.movement
-		and not (state in [moveset.walk, moveset.crouch, moveset.jump, moveset.burst, moveset.dead])
+		and not (
+			state
+			in [moveset.walk, moveset.crouch, moveset.jump, moveset.burst, moveset.dead]
+		)
 		and not (state == moveset.air_hitstun and state_time > state_dict.hitstun)
 	):
 		print("not neutral state")
@@ -395,7 +404,10 @@ func _get_local_input() -> Dictionary:
 
 	if controlled_by in ["block", "punish"]:
 		var opponent = get_node(opponent_path)
-		var stand = not opponent.grounded and opponent.state in opponent.moveset.all_attacks()
+		var stand = (
+			not opponent.grounded
+			and opponent.state in opponent.moveset.all_attacks()
+		)
 		if stand:
 			var attack_data = opponent.state.get("attack_data")
 			if attack_data != null:
@@ -404,13 +416,20 @@ func _get_local_input() -> Dictionary:
 				stand = opponent.state_time >= attack_data.startup - 3
 
 		return {
-			stick_x = int(sign(self.fixed_position_x - get_node(opponent_path).fixed_position.x)),
+			stick_x = int(
+				sign(self.fixed_position_x - get_node(opponent_path).fixed_position.x)
+			),
 			stick_y = 0 if stand else -1,
 			light = (
 				controlled_by == "punish"
 				and (
 					state
-					in [moveset.hitstun, moveset.air_hitstun, moveset.knockdown, moveset.blockstun]
+					in [
+						moveset.hitstun,
+						moveset.air_hitstun,
+						moveset.knockdown,
+						moveset.blockstun
+					]
 				)
 			),
 			heavy = false,
@@ -514,7 +533,8 @@ func _on_Hitboxes_on_contact(blocked: bool, hitstop: int):
 	if not blocked:
 		state_dict.last_attack_hit = $Hitboxes.attack_number
 
-	if state.attack_data.hit_sound != null:
+	var attack_data = state.get("attack_data")
+	if attack_data != null and attack_data.hit_sound != null:
 		SyncManager.play_sound(
 			str(get_path()) + ":hit_sound",
 			state.attack_data.get_hitdata(state_time).hit_sound,
