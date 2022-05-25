@@ -1,7 +1,9 @@
 extends SGFixedNode2D
 
-export(int) var TAXI_SPEED = 30
-export(int) var arrival = 60
+export(int) var arrival = 30
+export(int) var stall_time = 10
+# export(int) var deacc = 30
+# export(int) var acc = 30
 
 var flip = false
 var lifetime = 0
@@ -15,13 +17,12 @@ func _network_spawn(data: Dictionary):
 	self.flip = data.flip
 
 	self.origin_x = data.position_x
-	self.origin_x += (-1 if self.flip else 1) * (300 << 16)
 
 	self.fixed_scale.x = (-1 if self.flip else 1) * (1 << 16)
 
 	$Hitboxes.facing = -1 if self.flip else 1
 	$Hitboxes.set_player(data.is_p2, true)
-	# $Hurtboxes.set_player(data.is_p2, true)
+	$Hurtboxes.set_player(data.is_p2, true)
 
 	add_to_group("network_sync")
 
@@ -37,13 +38,18 @@ func _network_preprocess(input: Dictionary) -> void:
 		lifetime += 1
 		return
 
-	var offset = min(0, lifetime - arrival)
+	var offset
+	if lifetime < arrival:
+		var t = lifetime - arrival
+		offset = -t * t
+	elif lifetime < arrival + stall_time:
+		offset = 0
+	else:
+		var t = lifetime - arrival - stall_time
+		offset = t * t
 
-	self.fixed_position.x = (origin_x + offset * (25 << 16) * (-1 if flip else 1))
-	self.fixed_position.y = (offset * (50 << 16))
-
-	if self.fixed_position.y <= 0:
-		$Hitboxes/SGCollisionShape2D.disabled = false
+	self.fixed_position.x = (origin_x + offset * (3 << 15) * (-1 if flip else 1))
+	self.fixed_position.y = -(offset * (3 << 15))
 
 	lifetime += 1
 
@@ -55,11 +61,8 @@ func _network_postprocess(input: Dictionary) -> void:
 	if fixed_position.x * (-1 if flip else 1) > 1000 << 16:
 		on_hit()
 
-	if fixed_position.y >= 0:
+	if $Hurtboxes.hit_hitdata != null:
 		on_hit()
-
-	# if $Hurtboxes.hit_hitdata != null:
-	# 	on_hit()
 
 	if lifetime > 300:
 		SyncManager.despawn(self)
@@ -73,13 +76,12 @@ func on_hit():
 		return
 	hit = true
 	$Hitboxes/SGCollisionShape2D.disabled = true
-	# $Hurtboxes/SGCollisionShape2D.disabled = true
+	$Hurtboxes/SGCollisionShape2D.disabled = true
 	$AnimatedSprite.play("explode")
 	$AnimatedSprite2.play("explode")
 	$AnimatedSprite3.play("explode")
 	$Sprite.visible = false
 	# SyncManager.despawn(self)
-
 	SyncManager.play_sound(
 		str(get_path()) + ":hit", EXPLOSION, {position = position, pitch_scale = 1, volume_db = 10}
 	)

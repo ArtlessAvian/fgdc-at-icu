@@ -24,7 +24,7 @@
 
 [sub_resource type="Resource" id=6]
 script = ExtResource( 22 )
-guard = "0"
+guard = 2
 startup = 4
 active = 2
 hitstun = 50
@@ -77,10 +77,24 @@ fixed_position_y = -5242880
 shape = SubResource( 4 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( -114, 0 )
 scale = Vector2( 4, 4 )
 frames = SubResource( 3 )
 animation = "explode"
-frame = 16
-playing = true
+frame = 5
+
+[node name="AnimatedSprite2" type="AnimatedSprite" parent="."]
+position = Vector2( 90, 0 )
+scale = Vector2( 4, 4 )
+frames = SubResource( 3 )
+animation = "explode"
+frame = 5
+
+[node name="AnimatedSprite3" type="AnimatedSprite" parent="."]
+position = Vector2( 0, -58 )
+scale = Vector2( 4, 4 )
+frames = SubResource( 3 )
+animation = "explode"
+frame = 5
 
 [connection signal="on_contact" from="Hitboxes" to="." method="_on_Hitboxes_on_contact"]

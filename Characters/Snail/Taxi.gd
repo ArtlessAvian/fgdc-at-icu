@@ -1,6 +1,5 @@
 extends SGFixedNode2D
 
-export(int) var TAXI_SPEED = 30
 export(int) var arrival = 30
 export(int) var stall_time = 10
 # export(int) var deacc = 30
@@ -28,6 +27,8 @@ func _network_spawn(data: Dictionary):
 	add_to_group("network_sync")
 
 	$AnimatedSprite.play("default")
+	$AnimatedSprite2.play("default")
+	$AnimatedSprite3.play("default")
 
 	_network_preprocess({})
 
@@ -48,6 +49,7 @@ func _network_preprocess(input: Dictionary) -> void:
 		offset = t * t
 
 	self.fixed_position.x = (origin_x + offset * (1 << 16) * (-1 if flip else 1))
+	$Sprite.offset.y = (offset % 5)
 
 	lifetime += 1
 
@@ -66,13 +68,24 @@ func _network_postprocess(input: Dictionary) -> void:
 		SyncManager.despawn(self)
 
 
+const EXPLOSION = preload("res://Sounds/boom_hit_1.wav")
+
+
 func on_hit():
+	if hit:
+		return
 	hit = true
 	$Hitboxes/SGCollisionShape2D.disabled = true
 	$Hurtboxes/SGCollisionShape2D.disabled = true
 	$AnimatedSprite.play("explode")
+	$AnimatedSprite2.play("explode")
+	$AnimatedSprite3.play("explode")
 	$Sprite.visible = false
 	# SyncManager.despawn(self)
+
+	SyncManager.play_sound(
+		str(get_path()) + ":hit", EXPLOSION, {position = position, pitch_scale = 1, volume_db = 10}
+	)
 
 
 func _save_state() -> Dictionary:

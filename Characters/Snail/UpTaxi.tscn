@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Fighters/Hitboxes.gd" type="Script" id=1]
 [ext_resource path="res://Fighters/Hurtboxes.gd" type="Script" id=2]
-[ext_resource path="res://Characters/Snail/Taxi.gd" type="Script" id=3]
+[ext_resource path="res://Characters/Snail/UpTaxi.gd" type="Script" id=3]
 [ext_resource path="res://spr_realisticexplosion/spr_realisticexplosion_13.png" type="Texture" id=4]
 [ext_resource path="res://spr_realisticexplosion/spr_realisticexplosion_1.png" type="Texture" id=5]
 [ext_resource path="res://spr_realisticexplosion/spr_realisticexplosion_4.png" type="Texture" id=6]
@@ -60,11 +60,12 @@ animations = [ {
 extents_x = 1638400
 extents_y = 1638400
 
-[node name="Taxi" type="SGFixedNode2D" groups=["network_sync"]]
+[node name="UpTaxi" type="SGFixedNode2D" groups=["network_sync"]]
 script = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 0, -100 )
+rotation = -0.785398
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 20 )
 region_rect = Rect2( 0, 0, 50, 50 )
@@ -81,20 +82,21 @@ fixed_position_y = -5242880
 shape = SubResource( 4 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( 121, -125 )
+position = Vector2( -7, -60 )
 scale = Vector2( 4, 4 )
 frames = SubResource( 3 )
 animation = "explode"
 frame = 5
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="."]
-position = Vector2( -142, -80 )
+position = Vector2( 136, -139 )
 scale = Vector2( 4, 4 )
 frames = SubResource( 3 )
 animation = "explode"
 frame = 5
 
 [node name="AnimatedSprite3" type="AnimatedSprite" parent="."]
+position = Vector2( -149, 0 )
 scale = Vector2( 4, 4 )
 frames = SubResource( 3 )
 animation = "explode"
@@ -107,6 +109,7 @@ monitorable = false
 script = ExtResource( 2 )
 
 [node name="SGCollisionShape2D" type="SGCollisionShape2D" parent="Hurtboxes"]
+visible = false
 modulate = Color( 0, 1, 0, 1 )
 shape = SubResource( 5 )
 

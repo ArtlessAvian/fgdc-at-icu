@@ -1,4 +1,4 @@
-[gd_scene load_steps=95 format=2]
+[gd_scene load_steps=96 format=2]
 
 [ext_resource path="res://Fighters/Fighter.gd" type="Script" id=1]
 [ext_resource path="res://Fighters/Hitboxes.gd" type="Script" id=2]
@@ -977,7 +977,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=72]
 resource_name = "HeyTaxi?"
-length = 50.0
+length = 45.0
 step = 1.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Visual/Character/AnimatedSprite2:flip_h")
@@ -986,10 +986,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 20, 30 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ false, true, false ]
+"values": [ false ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Visual/Character/AnimatedSprite2:scale")
@@ -998,10 +998,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 30, 50 ),
+"times": PoolRealArray( 0, 25, 45 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ Vector2( 0.5, 0.5 ), Vector2( 0.8, 0.4 ), Vector2( 0.5, 0.5 ) ]
+"values": [ Vector2( 0.5, 0.5 ), Vector2( 1, 0.3 ), Vector2( 0.5, 0.5 ) ]
 }
 
 [sub_resource type="Animation" id=48]
@@ -1763,24 +1763,41 @@ tracks/29/keys = {
 "values": [ Vector2( 0.5, 0.5 ) ]
 }
 
-[sub_resource type="Animation" id=50]
-resource_name = "Throw"
-length = 15.0
+[sub_resource type="Animation" id=75]
+resource_name = "Taunt"
+length = 3000.0
 step = 1.0
 tracks/0/type = "value"
-tracks/0/path = NodePath("Visual/Character/derp/AnimatedSprite:rotation_degrees")
+tracks/0/path = NodePath("Visual/Character/AnimatedSprite2:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 6 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 0.0, 30.0 ]
+"times": PoolRealArray( 0, 40, 43, 44, 45 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 10, 11, 12, 13, 14 ]
+}
+
+[sub_resource type="Animation" id=50]
+resource_name = "Throw"
+length = 15.0
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Throwboxes/SGCollisionShape2D:shape:extents_x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 2752512 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Throwboxes/SGCollisionShape2D:shape:extents_x")
+tracks/1/path = NodePath("Throwboxes/SGCollisionShape2D:shape:extents_y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -1789,10 +1806,10 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 2752512 ]
+"values": [ 6553600 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Throwboxes/SGCollisionShape2D:shape:extents_y")
+tracks/2/path = NodePath("Throwboxes/SGCollisionShape2D:fixed_position_x")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -1801,10 +1818,10 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 6553600 ]
+"values": [ 7602176 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Throwboxes/SGCollisionShape2D:fixed_position_x")
+tracks/3/path = NodePath("Throwboxes/SGCollisionShape2D:fixed_position_y")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -1813,31 +1830,43 @@ tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 7602176 ]
+"values": [ -6422528 ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("Throwboxes/SGCollisionShape2D:fixed_position_y")
+tracks/4/path = NodePath("Throwboxes/SGCollisionShape2D:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 5, 10 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ -6422528 ]
+"values": [ true, false, true ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("Throwboxes/SGCollisionShape2D:disabled")
+tracks/5/path = NodePath("Visual/Character/AnimatedSprite2:frame")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0, 5, 10 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ true, false, true ]
+"values": [ 1 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Visual/Character/AnimatedSprite2:rotation_degrees")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 15.0 ]
 }
 
 [sub_resource type="Animation" id=64]
@@ -1982,6 +2011,7 @@ anims/Knockdown = SubResource( 49 )
 anims/Light = SubResource( 53 )
 anims/Prejump = SubResource( 62 )
 anims/RESET = SubResource( 38 )
+anims/Taunt = SubResource( 75 )
 anims/Throw = SubResource( 50 )
 anims/Turnaround = SubResource( 64 )
 anims/Wakeup = SubResource( 51 )
@@ -2040,7 +2070,7 @@ script = ExtResource( 2 )
 
 [node name="hitbox1" type="SGCollisionShape2D" parent="Hitboxes"]
 modulate = Color( 0.75, 0.75, 0.75, 1 )
-position = Vector2( 61, -46 )
+position = Vector2( 132, -77 )
 fixed_position_x = 8650752
 fixed_position_y = -5046272
 shape = SubResource( 42 )
