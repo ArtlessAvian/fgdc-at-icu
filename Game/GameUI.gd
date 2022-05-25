@@ -2,9 +2,11 @@ extends Control
 
 var game_path: NodePath = "../.."
 
+const max_time = 90
+
 
 func _process(delta):
-	var time_msecs = get_node(game_path).time_in_frames / 60
+	var time_msecs = clamp(get_node(game_path).time_in_frames / 60, 0, max_time)
 	var time_str = str(time_msecs)
 
 	$TimerTEMPORARY.text = "Time Left:\n" + time_str
