@@ -61,9 +61,16 @@ func round_reset():
 	dead_timer = -1
 	for child in $Game/Spawned.get_children():
 		SyncManager.despawn(child)
+
+	# TODO: UI thing for best of 3
 	$Game._ready()
-	$Game/Fighter1._ready()
-	$Game/Fighter2._ready()
+	if p1_score >= 2 or p2_score >= 2:
+		p1_score = 0
+		p2_score = 0
+		self.get_node("..").reset_the_game()
+	else:
+		$Game/Fighter1._ready()
+		$Game/Fighter2._ready()
 
 
 func is_dead(f: Fighter) -> bool:
