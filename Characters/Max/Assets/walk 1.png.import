@@ -14,7 +14,7 @@ dest_files=[ "res://.import/walk 1.png-8c5448fe183934b402acf86e09859100.stex" ]
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0

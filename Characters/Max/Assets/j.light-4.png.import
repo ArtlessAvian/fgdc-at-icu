@@ -14,7 +14,7 @@ dest_files=[ "res://.import/j.light-4.png-aa794bdf8efb870fa2c127bf4ebc3273.stex"
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
