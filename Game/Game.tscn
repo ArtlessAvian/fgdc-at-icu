@@ -1,6 +1,7 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://Fighters/Fighter.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Game/TestIntro.gd" type="Script" id=2]
 [ext_resource path="res://Game/GameCamera.gd" type="Script" id=3]
 [ext_resource path="res://Game/Game.gd" type="Script" id=4]
 [ext_resource path="res://icon.png" type="Texture" id=6]
@@ -36,6 +37,49 @@ animations = [ {
 "name": "explode",
 "speed": 20.0
 } ]
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 194 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "ZoomIn"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 20, 20 ), Vector2( 5, 5 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -1875, -332 ), Vector2( 0, 194 ) ]
+}
 
 [node name="Game" type="SGFixedNode2D" groups=["network_sync"]]
 script = ExtResource( 4 )
@@ -235,3 +279,22 @@ anchor_bottom = 1.0
 text = "BURST"
 align = 1
 valign = 1
+
+[node name="TestIntro" type="Label" parent="UILayer/UI"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -640.0
+margin_top = -166.0
+margin_right = -383.0
+margin_bottom = -94.9999
+rect_scale = Vector2( 20, 20 )
+text = "The doctor said six months"
+align = 1
+valign = 1
+script = ExtResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UILayer/UI/TestIntro"]
+anims/RESET = SubResource( 3 )
+anims/ZoomIn = SubResource( 2 )

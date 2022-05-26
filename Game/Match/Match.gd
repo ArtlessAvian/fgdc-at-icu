@@ -69,6 +69,11 @@ func round_reset():
 		p2_score = 0
 		self.get_node("..").reset_the_game()
 	else:
+		print($Game.name)
+		print($Game/UILayer.name)
+		print($Game/UILayer/UI.name)
+		print($Game/UILayer/UI/TestIntro)
+		$Game/UILayer/UI/TestIntro.start()
 		$Game/Fighter1._ready()
 		$Game/Fighter2._ready()
 
