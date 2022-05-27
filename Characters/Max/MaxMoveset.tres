@@ -1,93 +1,40 @@
-[gd_resource type="Resource" load_steps=30 format=2]
+[gd_resource type="Resource" load_steps=21 format=2]
 
-[ext_resource path="res://addons/FGDC-Datatypes/ThrowData.gd" type="Script" id=1]
-[ext_resource path="res://addons/FGDC-Datatypes/GenericStates/JumpState.gd" type="Script" id=2]
-[ext_resource path="res://addons/FGDC-Datatypes/Moveset.gd" type="Script" id=3]
-[ext_resource path="res://addons/FGDC-Datatypes/GenericStates/PrejumpState.gd" type="Script" id=4]
-[ext_resource path="res://addons/FGDC-Datatypes/GenericStates/ThrowAttemptState.gd" type="Script" id=5]
-[ext_resource path="res://addons/FGDC-Datatypes/GenericStates/WalkState.gd" type="Script" id=6]
-[ext_resource path="res://addons/FGDC-Datatypes/GenericStates/CrouchState.gd" type="Script" id=7]
-[ext_resource path="res://Characters/Max/MaxDP.tres" type="Resource" id=8]
-[ext_resource path="res://Characters/Max/MaxJHeavy.tres" type="Resource" id=9]
-[ext_resource path="res://Characters/Max/MaxDivekick.tres" type="Resource" id=10]
-[ext_resource path="res://Characters/Max/MaxDashPunch.tres" type="Resource" id=11]
-[ext_resource path="res://Characters/Max/MaxJLight.tres" type="Resource" id=12]
-[ext_resource path="res://Characters/Max/MaxLight.tres" type="Resource" id=13]
+[ext_resource path="res://Characters/Max/MaxDashPunchHeavy.tres" type="Resource" id=1]
+[ext_resource path="res://Characters/Max/MaxJHeavy.tres" type="Resource" id=2]
+[ext_resource path="res://Characters/Max/MaxDivekick.tres" type="Resource" id=3]
+[ext_resource path="res://Characters/Max/MaxJLight.tres" type="Resource" id=4]
+[ext_resource path="res://Characters/Max/MaxDashPunch.tres" type="Resource" id=5]
+[ext_resource path="res://Fighters/DefaultMoveset/DefaultThrow.tres" type="Resource" id=6]
+[ext_resource path="res://Characters/Max/MaxMoveset.gd" type="Script" id=7]
+[ext_resource path="res://Characters/Max/MaxDPHeavy.tres" type="Resource" id=8]
+[ext_resource path="res://Characters/Max/MaxDP.tres" type="Resource" id=9]
+[ext_resource path="res://Fighters/DefaultMoveset/DefaultBurst.tres" type="Resource" id=10]
+[ext_resource path="res://Fighters/DefaultMoveset/DefaultWalk.tres" type="Resource" id=11]
+[ext_resource path="res://Fighters/DefaultMoveset/DefaultCrouch.tres" type="Resource" id=12]
+[ext_resource path="res://Fighters/DefaultMoveset/DefaultPrejump.tres" type="Resource" id=13]
 [ext_resource path="res://Characters/Max/MaxHeavyStep.tres" type="Resource" id=14]
-[ext_resource path="res://Characters/Max/MaxCLight.tres" type="Resource" id=15]
-[ext_resource path="res://Characters/Max/MaxCHeavy.tres" type="Resource" id=16]
-[ext_resource path="res://Characters/Max/MaxDivekickHeavy.tres" type="Resource" id=17]
-[ext_resource path="res://Characters/Max/MaxDashPunchHeavy.tres" type="Resource" id=18]
-[ext_resource path="res://Characters/Max/MaxDPHeavy.tres" type="Resource" id=19]
-[ext_resource path="res://addons/FGDC-Datatypes/GenericStates/BurstState.gd" type="Script" id=20]
-[ext_resource path="res://addons/FGDC-Datatypes/StandardBurst.tres" type="Resource" id=21]
-
-[sub_resource type="Resource" id=10]
-script = ExtResource( 20 )
-attack_data = ExtResource( 21 )
-
-[sub_resource type="Resource" id=8]
-script = ExtResource( 7 )
-
-[sub_resource type="Resource" id=3]
-script = ExtResource( 2 )
-impulse = 1310720
-double_jump_impulse = 983040
-horizontal_speed = 524288
-
-[sub_resource type="Resource" id=9]
-script = ExtResource( 4 )
-impulse = 1572864
-double_jump_impulse = 1048576
-horizontal_speed = 655360
-
-[sub_resource type="Resource" id=5]
-script = ExtResource( 1 )
-is_air = true
-techable = true
-throw_length = 30
-damage = 5
-release_time = 20
-release_position_x = 150
-release_position_y = 0
-release_vel_x = 10
-release_vel_y = -30
-
-[sub_resource type="Resource" id=6]
-script = ExtResource( 1 )
-is_air = false
-techable = true
-throw_length = 30
-damage = 5
-release_time = 20
-release_position_x = 150
-release_position_y = 0
-release_vel_x = 10
-release_vel_y = 30
-
-[sub_resource type="Resource" id=7]
-script = ExtResource( 5 )
-throw_data = SubResource( 6 )
-air_throw_data = SubResource( 5 )
-
-[sub_resource type="Resource" id=4]
-script = ExtResource( 6 )
-speed = 12
+[ext_resource path="res://Characters/Max/MaxLight.tres" type="Resource" id=15]
+[ext_resource path="res://Fighters/DefaultMoveset/DefaultJump.tres" type="Resource" id=16]
+[ext_resource path="res://Characters/Max/MaxCLight.tres" type="Resource" id=17]
+[ext_resource path="res://Characters/Max/MaxCHeavy.tres" type="Resource" id=18]
+[ext_resource path="res://Characters/Max/MaxDivekickHeavy.tres" type="Resource" id=19]
+[ext_resource path="res://Characters/Max/DPRecovery.tres" type="Resource" id=20]
 
 [resource]
-script = ExtResource( 3 )
+script = ExtResource( 7 )
 air_actions = 2
-walk = SubResource( 4 )
-crouch = SubResource( 8 )
-prejump = SubResource( 9 )
-jump = SubResource( 3 )
-light = ExtResource( 13 )
+walk = ExtResource( 11 )
+crouch = ExtResource( 12 )
+prejump = ExtResource( 13 )
+jump = ExtResource( 16 )
+light = ExtResource( 15 )
 heavy = ExtResource( 14 )
-c_light = ExtResource( 15 )
-c_heavy = ExtResource( 16 )
-j_light = ExtResource( 12 )
-j_heavy = ExtResource( 9 )
-throw = SubResource( 7 )
-burst = SubResource( 10 )
-attacks = [ ExtResource( 8 ), ExtResource( 19 ), ExtResource( 10 ), ExtResource( 17 ), ExtResource( 11 ), ExtResource( 18 ) ]
-movement = [  ]
+c_light = ExtResource( 17 )
+c_heavy = ExtResource( 18 )
+j_light = ExtResource( 4 )
+j_heavy = ExtResource( 2 )
+throw = ExtResource( 6 )
+burst = ExtResource( 10 )
+attacks = [ ExtResource( 9 ), ExtResource( 8 ), ExtResource( 5 ), ExtResource( 1 ), ExtResource( 3 ), ExtResource( 19 ) ]
+movement = [ ExtResource( 20 ) ]

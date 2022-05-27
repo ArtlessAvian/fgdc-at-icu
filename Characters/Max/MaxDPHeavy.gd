@@ -28,9 +28,10 @@ func transition_into(f: Fighter, moveset: Moveset, input: Dictionary) -> bool:
 # Define transitions from this state OUT.
 # Has less priority over transition_into
 func transition_out(f: Fighter, moveset: Moveset, input: Dictionary) -> Resource:
-	if f.state_time > 111:
-		return moveset.walk
+	if f.state_dict.last_attack_hit != f.get_node("Hitboxes").attack_number and f.state_time > 21 and f.fixed_position.y >= 0:
+		return moveset.dp_recovery
 	return null
+
 
 
 func run(f: Fighter, input: Dictionary) -> void:
@@ -44,6 +45,10 @@ func run(f: Fighter, input: Dictionary) -> void:
 func animation(f: Fighter) -> String:
 	return "DP"
 
+func get_landing_transition(f: Fighter, moveset: Moveset) -> State:
+	if f.state_dict.last_attack_hit == f.get_node("Hitboxes").attack_number:
+		return moveset.walk
+	return null
 
 func attack_level() -> int:
 	return attack_level

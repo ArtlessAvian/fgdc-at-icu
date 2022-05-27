@@ -5,5 +5,5 @@
 [resource]
 script = ExtResource( 1 )
 is_heavy = true
-animation_time = 45
+animation_time = 56
 fireball_time = 10

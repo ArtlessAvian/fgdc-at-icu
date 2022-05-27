@@ -24,8 +24,8 @@ damage = 5
 release_time = 20
 release_position_x = 150
 release_position_y = 0
-release_vel_x = 10
-release_vel_y = 15
+release_vel_x = 7
+release_vel_y = 30
 
 [resource]
 script = ExtResource( 1 )
