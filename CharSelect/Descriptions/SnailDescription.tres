@@ -1,17 +1,16 @@
-[gd_resource type="Resource" load_steps=3 format=2]
+[gd_resource type="Resource" load_steps=4 format=2]
 
 [ext_resource path="res://CharSelect/Descriptions/CharDescription.gd" type="Script" id=1]
-[ext_resource path="res://CharSelect/Assets/Games/Snail.PNG" type="Texture" id=2]
+[ext_resource path="res://Characters/Snail/Assets/Frames/frame0000.png" type="Texture" id=2]
+[ext_resource path="res://Characters/Snail/Assets/Frames/frame0014.png" type="Texture" id=3]
 
 [resource]
 script = ExtResource( 1 )
 name = "Snail"
 portrait = ExtResource( 2 )
+portrait_selected = ExtResource( 3 )
 blurb = "SNAIL :)"
-description = "Snail: Snail. Snail Snail Snail Snail.
-Snail: Snail Snail. Snail Snail.
+description = "Charge Back (30f): HEY. TAXI.
+QCF: Persona! (Warning: fragile)
 
-Figure it out.
-
-
-                oh no hes here oh shi"
+What is this character even? We think he's got zoning tools? We honestly don't know. Figure it out."

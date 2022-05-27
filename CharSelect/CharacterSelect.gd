@@ -9,13 +9,15 @@ export(String) var p2_controlled_by = "kb"
 export(int, 0, 4) var p1_index = 0
 export(int, 0, 4) var p2_index = 1
 
-var p1_selected = false
-var p2_selected = false
+export(bool) var p1_selected = false
+export(bool) var p2_selected = false
 
 export(Array, Resource) var descriptions
 
 
 func _ready():
+	p1_selected = false
+	p2_selected = false
 	pass  # Replace with function body.
 
 
@@ -56,14 +58,16 @@ func logic():
 func visuals(delta):
 	update_player(
 		p1_index,
-		null,
+		p1_selected,
+		$Player1/CenterLine/Name,
 		$Player1/CenterLine/Portrait,
 		$Player1/CenterLine/IndexCard/Title,
 		$Player1/CenterLine/IndexCard/Text
 	)
 	update_player(
 		p2_index,
-		null,
+		p2_selected,
+		$Player2/CenterLine/Name,
 		$Player2/CenterLine/Portrait,
 		$Player2/CenterLine/IndexCard/Title,
 		$Player2/CenterLine/IndexCard/Text
@@ -83,9 +87,10 @@ func visuals(delta):
 	$P2Cursor.rotation_degrees = 90 if not p2_selected else $P2Cursor.rotation_degrees + delta * 720
 
 
-func update_player(index, title, portrait, blurb, text):
+func update_player(index, selected, title, portrait, blurb, text):
 	var desc = descriptions[index]
-	portrait.texture = desc.portrait
+	portrait.texture = desc.portrait if not selected else desc.portrait_selected
+	title.text = desc.name
 	blurb.text = desc.blurb
 	text.text = desc.description
 
