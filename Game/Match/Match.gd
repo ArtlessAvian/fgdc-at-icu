@@ -69,17 +69,17 @@ func round_reset():
 		p2_score = 0
 		self.get_node("..").reset_the_game()
 	else:
-		print($Game.name)
-		print($Game/UILayer.name)
-		print($Game/UILayer/UI.name)
-		print($Game/UILayer/UI/TestIntro)
-		$Game/UILayer/UI/TestIntro.start()
+		$Game/UILayer/UI/TestIntro.round_call(p1_score + p2_score + 1)
 		$Game/Fighter1._ready()
 		$Game/Fighter2._ready()
 
 
 func is_dead(f: Fighter) -> bool:
 	return f.health <= 0
+
+
+func is_first_round() -> bool:
+	return p1_score == 0 and p2_score == 0
 
 
 func _save_state() -> Dictionary:
