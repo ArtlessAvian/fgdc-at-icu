@@ -127,7 +127,7 @@ remotesync func _host_decides_side(client_id, host_is_p1):
 
 
 func _on_CharactersSelected(p1, p2):
-	print("called")
+	print("Characters selected called")
 	$CanvasLayer/CharacterSelect.set_process(false)
 	if get_tree().network_peer == null or get_tree().get_network_unique_id() == 1:
 		_host_decides_random(p1, p2)
@@ -185,6 +185,14 @@ func start_the_game():
 	if get_tree().network_peer == null or get_tree().get_network_unique_id() == 1:
 		yield(get_tree().create_timer(0.1), "timeout")
 		SyncManager.start()
+
+
+func reset_the_game():
+	SyncManager.stop()
+	self._ready()
+	$CanvasLayer/CharacterSelect.visible = true
+	$CanvasLayer/CharacterSelect.reset_char_select()
+	$CanvasLayer/CharacterSelect.set_process(true)
 
 
 # HELPER

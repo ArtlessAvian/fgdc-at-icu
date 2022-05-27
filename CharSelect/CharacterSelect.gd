@@ -90,6 +90,11 @@ func update_player(index, title, portrait, blurb, text):
 	text.text = desc.description
 
 
+func reset_char_select():
+	p1_selected = false
+	p2_selected = false
+
+
 remote func set_p1(i, ye):
 	p1_index = i
 	p1_selected = ye

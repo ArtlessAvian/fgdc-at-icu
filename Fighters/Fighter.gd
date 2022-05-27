@@ -36,6 +36,7 @@ var hitstop = 0
 
 signal countered
 
+const starting_timer = 3 * 60
 const hit_sound = preload("res://rip_in_pieces.wav")
 const hit_sound_2 = preload("res://rip_in_pieces_2.wav")
 
@@ -51,6 +52,7 @@ func _ready():
 	self.ani_start_time = 0
 	self.air_actions = 0
 	self.invincible = false
+	self.hitstop = starting_timer
 
 	$Hitboxes.set_player(is_p2)
 	$Hurtboxes.set_player(is_p2)
