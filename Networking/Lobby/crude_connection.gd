@@ -5,9 +5,7 @@ extends Node
 onready var host_field = $CanvasLayer/MarginContainer/GridContainer/HostField
 onready var port_field = $CanvasLayer/MarginContainer/GridContainer/PortField
 
-var hardcoded_character_names = [
-	"Max", "Lippo (WIP)", "Boba (WIPPPP)", "Snail (don't play)"
-]  #, "Batperson (Sample, No Balance)"
+var hardcoded_character_names = ["Max", "Lippo (WIP)", "Boba (WIPPPP)", "Snail (don't play)"]  #, "Batperson (Sample, No Balance)"
 
 var hardcoded_characters = [
 	"res://Characters/Max/Max.tscn",
@@ -101,6 +99,7 @@ func _on_Local_button_up():
 		)
 
 	SyncManager.start()
+	$Match/Game/UILayer/TestIntro.match_start()
 
 
 # NETWORKING====================================================
@@ -145,6 +144,7 @@ func _on_network_peer_connected(peer_id: int):
 	if get_tree().is_network_server():
 		yield(get_tree().create_timer(0.2), "timeout")
 		SyncManager.start()
+		$Match/Game/UILayer/TestIntro.match_start()
 
 
 remotesync func set_character_network(scene_path: String, replay_dict: Dictionary):
@@ -208,3 +208,9 @@ func setup_match_for_replay(my_peer_id: int, peer_ids: Array, match_info: Dictio
 
 func _on_newmenu_button_up():
 	get_tree().change_scene("res://Networking/Lobby2/Lobby2.tscn")
+
+
+func reset_the_game():
+	# HACK: eughagu.
+	SyncManager.stop()
+	get_tree().change_scene("res://Networking/Lobby/crude_connection.tscn")

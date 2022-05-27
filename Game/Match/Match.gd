@@ -64,12 +64,14 @@ func round_reset():
 
 	# TODO: UI thing for best of 3
 	$Game._ready()
+	$Game.time_in_frames = $Game.round_start_length
 	if p1_score >= 2 or p2_score >= 2:
 		p1_score = 0
 		p2_score = 0
+		# HACK: I'll allow it.
 		self.get_node("..").reset_the_game()
 	else:
-		$Game/UILayer/UI/TestIntro.round_call(p1_score + p2_score + 1)
+		$Game/UILayer/TestIntro.round_call(p1_score + p2_score + 1)
 		$Game/Fighter1._ready()
 		$Game/Fighter2._ready()
 

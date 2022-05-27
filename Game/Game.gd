@@ -10,17 +10,14 @@ const max_spacing = 1000 << 16
 var last_average: int = 0
 var last_diff: int = 0
 
-const match_start_length = 94 * 60 + 30 # in frames. remember to add a countdown
-const round_start_length = 91 * 60 + 30 # separate start time for rounds after the first
+const match_start_length = 94 * 60 + 30  # in frames. remember to add a countdown
+const round_start_length = 91 * 60 + 30  # separate start time for rounds after the first
 var time_in_frames = match_start_length
 
 
 func _ready():
 	add_to_group("network_sync")
-	if self.get_node("..").is_first_round():
-		time_in_frames = match_start_length
-	else:
-		time_in_frames = round_start_length
+	time_in_frames = match_start_length
 
 
 func _network_process(input: Dictionary) -> void:
