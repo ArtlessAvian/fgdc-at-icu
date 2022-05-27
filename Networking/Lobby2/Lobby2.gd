@@ -185,6 +185,8 @@ func start_the_game():
 	if get_tree().network_peer == null or get_tree().get_network_unique_id() == 1:
 		yield(get_tree().create_timer(0.1), "timeout")
 		SyncManager.start()
+		$Match/Game._ready()
+		$Match/Game/UILayer/UI/TestIntro.match_start()
 
 
 func reset_the_game():
