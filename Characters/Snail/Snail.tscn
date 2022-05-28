@@ -1,4 +1,4 @@
-[gd_scene load_steps=96 format=2]
+[gd_scene load_steps=97 format=2]
 
 [ext_resource path="res://Fighters/Fighter.gd" type="Script" id=1]
 [ext_resource path="res://Fighters/Hitboxes.gd" type="Script" id=2]
@@ -1384,6 +1384,21 @@ tracks/10/keys = {
 "values": [ -3553600 ]
 }
 
+[sub_resource type="Animation" id=76]
+resource_name = "PERSONA"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Visual/Character/AnimatedSprite2:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 3 ]
+}
+
 [sub_resource type="Animation" id=62]
 resource_name = "Prejump"
 tracks/0/type = "value"
@@ -2009,6 +2024,7 @@ anims/Jump = SubResource( 40 )
 anims/JumpFall = SubResource( 63 )
 anims/Knockdown = SubResource( 49 )
 anims/Light = SubResource( 53 )
+anims/PERSONA = SubResource( 76 )
 anims/Prejump = SubResource( 62 )
 anims/RESET = SubResource( 38 )
 anims/Taunt = SubResource( 75 )

@@ -89,10 +89,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ false ]
+"values": [ false, true ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -182,7 +182,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ 0.0, 1.0 ]
+"values": [ 0.001, 1.0 ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -279,7 +279,7 @@ grow_vertical = 2
 rect_min_size = Vector2( 1000, 720 )
 rect_pivot_offset = Vector2( 500, 360 )
 custom_fonts/font = ExtResource( 5 )
-text = "The doctor said six months"
+text = "The doctor said six months."
 align = 1
 valign = 1
 autowrap = true

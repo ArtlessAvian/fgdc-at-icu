@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=29 format=2]
+[gd_resource type="Resource" load_steps=30 format=2]
 
 [ext_resource path="res://addons/FGDC-Datatypes/GenericStates/PrejumpState.gd" type="Script" id=1]
 [ext_resource path="res://addons/FGDC-Datatypes/GenericStates/ThrowAttemptState.gd" type="Script" id=2]
@@ -19,6 +19,7 @@
 [ext_resource path="res://addons/FGDC-Datatypes/ThrowData.gd" type="Script" id=17]
 [ext_resource path="res://Characters/Snail/States/SnailCallUpTaxi.tres" type="Resource" id=18]
 [ext_resource path="res://Characters/Snail/States/SnailTaunt.tres" type="Resource" id=19]
+[ext_resource path="res://Characters/Snail/States/SnailCallSnedge.tres" type="Resource" id=20]
 [ext_resource path="res://addons/FGDC-Datatypes/StandardBurst.tres" type="Resource" id=21]
 
 [sub_resource type="Resource" id=10]
@@ -85,5 +86,5 @@ j_light = ExtResource( 13 )
 j_heavy = ExtResource( 14 )
 throw = SubResource( 7 )
 burst = SubResource( 10 )
-attacks = [ ExtResource( 9 ), ExtResource( 10 ), ExtResource( 18 ) ]
+attacks = [ ExtResource( 9 ), ExtResource( 10 ), ExtResource( 18 ), ExtResource( 20 ) ]
 movement = [ ExtResource( 15 ), ExtResource( 19 ) ]
