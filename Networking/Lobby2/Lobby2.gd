@@ -202,8 +202,8 @@ func dropdown_index_to_action(index):
 	if index == 4096:
 		return "kb"
 	if index < 100:
-		# return "c" + str(index)
-		return "c"
+		return "c" + str(index)
+		# return "c"
 	return ai_by_index[index - 100]
 
 
