@@ -1457,7 +1457,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 1 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 6000000 ]
+"values": [ 3200000 ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Hitboxes/hitbox1:fixed_position_x")
@@ -1481,7 +1481,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 1 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ -4818048 ]
+"values": [ -8018048 ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("Visual/Character/AnimatedSprite:frame")
@@ -1505,7 +1505,7 @@ tracks/5/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 7200000 ]
+"values": [ 6400000 ]
 }
 tracks/6/type = "value"
 tracks/6/path = NodePath("Hurtboxes/JLight_hurtbox1:shape:extents_y")
@@ -1517,7 +1517,7 @@ tracks/6/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 7200000 ]
+"values": [ 5600000 ]
 }
 tracks/7/type = "value"
 tracks/7/path = NodePath("Hurtboxes/JLight_hurtbox1:fixed_position_x")
@@ -1541,7 +1541,7 @@ tracks/8/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ -4018048 ]
+"values": [ -5618048 ]
 }
 tracks/9/type = "value"
 tracks/9/path = NodePath("Hurtboxes/JLight_hurtbox1:disabled")
@@ -2480,8 +2480,8 @@ disabled = true
 
 [node name="JLight_hurtbox1" type="SGCollisionShape2D" parent="Hurtboxes"]
 modulate = Color( 0.498039, 0.498039, 0.498039, 0.0392157 )
-position = Vector2( 0, -61.3105 )
-fixed_position_y = -4018048
+position = Vector2( 0, -85.7246 )
+fixed_position_y = -5618048
 shape = SubResource( 43 )
 disabled = true
 

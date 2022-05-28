@@ -29,6 +29,7 @@ var ani_start_time = 0
 var air_actions = 0
 var state_dict: Dictionary = {}
 var invincible: bool = false
+var cornered: bool = false
 
 var combo_count = 0
 var combo_gaps = []
@@ -126,6 +127,9 @@ func change_to_state(new_state):
 func move():
 	if not grounded:
 		vel.y -= fighter_gravity
+
+	if cornered and sign(self.vel.x) != sign(self.fixed_position_x):
+		cornered = false 
 
 	self.fixed_position.x += vel.x
 	self.fixed_position.y -= vel.y
