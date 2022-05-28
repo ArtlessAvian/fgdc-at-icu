@@ -15,10 +15,12 @@ func transition_out(f: Fighter, moveset: Moveset, input: Dictionary) -> Resource
 	# Burst activation
 	if input.heavy and input.light and f.can_burst():
 		f.invincible = false
+		f.combo_count = 0
 		return moveset.burst
 
 	if f.state_dict.knockdown_timer <= 0 and f.grounded:
 		f.invincible = false
+		f.combo_count = 0
 		print("for designers, knockdown ended frame ", f.state_time)
 
 		# jump out of knockdown to not get grabbed to death

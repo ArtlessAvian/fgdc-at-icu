@@ -11,6 +11,8 @@ func transition_out(f: Fighter, moveset: Moveset, input: Dictionary) -> Resource
 		f.combo_count = 0
 		if f.grounded:
 			return moveset.walk
+		else:
+			print("does this ever happen?")
 	return null
 
 
