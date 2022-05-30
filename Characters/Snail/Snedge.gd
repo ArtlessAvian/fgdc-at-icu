@@ -14,6 +14,9 @@ var origin_x = 0
 var im_hit = false
 var snail = null
 
+# const SPAWN_SOUND = preload("res://Characters/Snail/Assets/now-im-dedicated.wav")
+# const GET_HIT_SOUND = preload("res://Characters/Snail/Assets/OOOAAAAAHHH.wav")
+
 
 func _network_spawn(data: Dictionary):
 	self.lifetime = 0
@@ -39,6 +42,12 @@ func _network_spawn(data: Dictionary):
 	add_to_group("network_sync")
 
 	_network_preprocess({})
+
+	# SyncManager.play_sound(
+	# 	str(self.get_path()),
+	# 	SPAWN_SOUND,
+	# 	{position = Vector2(fixed_position.x >> 16, 0), pitch_scale = 1, volume_db = 10}
+	# )
 
 
 func _network_preprocess(input: Dictionary) -> void:
@@ -95,6 +104,12 @@ func on_hit():
 	$Node2D/Snedge.visible = false
 	$Deadge.visible = true
 	$SnedgeSlice.visible = false
+
+	# SyncManager.play_sound(
+	# 	str(self.get_path()),
+	# 	GET_HIT_SOUND,
+	# 	{position = Vector2(fixed_position.x >> 16, 0), pitch_scale = 1, volume_db = 10}
+	# )
 
 
 func _save_state() -> Dictionary:

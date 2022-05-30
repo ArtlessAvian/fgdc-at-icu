@@ -9,6 +9,8 @@ var origin_x = 0
 
 var hit = false
 
+const HONK_SOUND = preload("res://Characters/Snail/Assets/mixkit-car-horn-718.wav")
+
 
 func _network_spawn(data: Dictionary):
 	self.lifetime = 0
@@ -30,6 +32,12 @@ func _network_spawn(data: Dictionary):
 	$AnimatedSprite3.play("default")
 
 	_network_preprocess({})
+
+	SyncManager.play_sound(
+		str(get_path()) + ":honk",
+		HONK_SOUND,
+		{position = Vector2(fixed_position.x >> 16, 0), pitch_scale = 1, volume_db = 10}
+	)
 
 
 func _network_preprocess(input: Dictionary) -> void:

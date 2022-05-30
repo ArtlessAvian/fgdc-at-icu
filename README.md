@@ -10,3 +10,10 @@ Releases for the custom build can be found here: https://gitlab.com/snopek-games
 
 Additionally, this project incorporates Snopek Games Rollback Networking addon for the netcode portion of this project. 
 The repo for that can be found here: https://gitlab.com/snopek-games/godot-rollback-netcode/
+
+
+
+# External Credits
+
+Car honk: https://mixkit.co/free-sound-effects/horn/
+SPEEEEN: Vinesauce
