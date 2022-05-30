@@ -131,7 +131,7 @@ func move():
 		vel.y -= fighter_gravity
 
 	if cornered and sign(self.vel.x) != sign(self.fixed_position_x):
-		cornered = false 
+		cornered = false
 
 	self.fixed_position.x += vel.x
 	self.fixed_position.y -= vel.y
@@ -526,9 +526,16 @@ func _on_Hitboxes_on_contact(blocked: bool, hitstop: int):
 		state_dict.last_attack_hit = $Hitboxes.attack_number
 
 	var attack_data = state.get("attack_data")
-	if attack_data != null and attack_data.hit_sound != null:
-		SyncManager.play_sound(
-			str(get_path()) + ":hit_sound",
-			state.attack_data.get_hitdata(state_time).hit_sound,
-			{position = self.position, pitch_scale = 1, volume_db = 10}
-		)
+	if attack_data != null:
+		if attack_data.hit_sound != null:
+			SyncManager.play_sound(
+				str(get_path()) + ":hit_sound",
+				state.attack_data.get_hitdata(state_time).hit_sound,
+				{position = self.position, pitch_scale = 1, volume_db = 10}
+			)
+		else:
+			SyncManager.play_sound(
+				str(get_path()) + ":hit_sound",
+				hit_sound if SyncManager.current_tick % 2 == 0 else hit_sound_2,
+				{position = self.position, pitch_scale = 1, volume_db = -10}
+			)
