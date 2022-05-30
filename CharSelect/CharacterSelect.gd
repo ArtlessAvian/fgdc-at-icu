@@ -31,30 +31,38 @@ func logic():
 		return
 
 	if p1_controlled_by != "network":
-		if not p1_selected:
-			p1_index += int(Input.is_action_just_pressed(p1_controlled_by + "_down"))
-			p1_index += int(Input.is_action_just_pressed(p1_controlled_by + "_right"))
-			p1_index -= int(Input.is_action_just_pressed(p1_controlled_by + "_up"))
-			p1_index -= int(Input.is_action_just_pressed(p1_controlled_by + "_left"))
-			p1_index = (p1_index + 5) % 5
-		if (
-			Input.is_action_just_pressed(p1_controlled_by + "_light")
-			or Input.is_action_just_pressed(p1_controlled_by + "_heavy")
-		):
-			p1_selected = not p1_selected
+		if is_real(p1_controlled_by):
+			if not p1_selected:
+				p1_index += int(Input.is_action_just_pressed(p1_controlled_by + "_down"))
+				p1_index += int(Input.is_action_just_pressed(p1_controlled_by + "_right"))
+				p1_index -= int(Input.is_action_just_pressed(p1_controlled_by + "_up"))
+				p1_index -= int(Input.is_action_just_pressed(p1_controlled_by + "_left"))
+				p1_index = (p1_index + 5) % 5
+			if (
+				Input.is_action_just_pressed(p1_controlled_by + "_light")
+				or Input.is_action_just_pressed(p1_controlled_by + "_heavy")
+			):
+				p1_selected = not p1_selected
+		else:
+			p1_index = 4
+			p1_selected = true
 
 	if p2_controlled_by != "network":
-		if not p2_selected:
-			p2_index += int(Input.is_action_just_pressed(p2_controlled_by + "_down"))
-			p2_index += int(Input.is_action_just_pressed(p2_controlled_by + "_right"))
-			p2_index -= int(Input.is_action_just_pressed(p2_controlled_by + "_up"))
-			p2_index -= int(Input.is_action_just_pressed(p2_controlled_by + "_left"))
-			p2_index = (p2_index + 5) % 5
-		if (
-			Input.is_action_just_pressed(p2_controlled_by + "_light")
-			or Input.is_action_just_pressed(p2_controlled_by + "_heavy")
-		):
-			p2_selected = not p2_selected
+		if is_real(p2_controlled_by):
+			if not p2_selected:
+				p2_index += int(Input.is_action_just_pressed(p2_controlled_by + "_down"))
+				p2_index += int(Input.is_action_just_pressed(p2_controlled_by + "_right"))
+				p2_index -= int(Input.is_action_just_pressed(p2_controlled_by + "_up"))
+				p2_index -= int(Input.is_action_just_pressed(p2_controlled_by + "_left"))
+				p2_index = (p2_index + 5) % 5
+			if (
+				Input.is_action_just_pressed(p2_controlled_by + "_light")
+				or Input.is_action_just_pressed(p2_controlled_by + "_heavy")
+			):
+				p2_selected = not p2_selected
+		else:
+			p2_index = 4
+			p2_selected = true
 
 	if p2_controlled_by == "network":
 		rpc("set_p1", p1_index, p1_selected)
@@ -126,3 +134,7 @@ remote func set_p1(i, ye):
 remote func set_p2(i, ye):
 	p2_index = i
 	p2_selected = ye
+
+
+func is_real(controller):
+	return not (controller in ["mash", "block", "punish", "upback"])

@@ -85,7 +85,7 @@
 
 [sub_resource type="Animation" id=71]
 resource_name = "Backdash"
-length = 15.0
+length = 18.0
 step = 1.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Visual/Character:flips")
@@ -118,7 +118,7 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 4, 15 ),
+"times": PoolRealArray( 0, 4, 18 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0, -100 ), Vector2( 0, -120 ), Vector2( 0, -100 ) ]

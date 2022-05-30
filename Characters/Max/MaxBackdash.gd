@@ -27,7 +27,7 @@ func transition_into(f: Fighter, moveset: Moveset, input: Dictionary) -> bool:
 
 
 func transition_out(f: Fighter, moveset: Moveset, input: Dictionary) -> Resource:
-	if f.state_time >= 15:
+	if f.state_time >= 18:
 		return moveset.walk
 
 	return null
