@@ -55,6 +55,8 @@ func _ready():
 	self.air_actions = 0
 	self.invincible = false
 
+	self.state_dict = {}
+
 	if self.get_node("../..").is_first_round():
 		self.hitstop = starting_timer
 	else:

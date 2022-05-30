@@ -1,21 +1,24 @@
 extends SGFixedNode2D
 
-export(int) var stall_time = 30
+export(int) var stall_time = 15
 export(int) var offset_x = -200 << 16
 export(int) var dash_distance = 800 << 16
-export(int) var dash_time = 30
-export(int) var exit_time = 60
+export(int) var dash_time = 20
+export(int) var slicey_time = 20
+export(int) var exit_time = 50
 
 var flip = false
 var lifetime = 0
 var origin_x = 0
 
 var im_hit = false
+var snail = null
 
 
 func _network_spawn(data: Dictionary):
 	self.lifetime = 0
 	self.flip = data.flip
+	self.snail = data.snail
 
 	self.origin_x = data.position_x
 	self.origin_x += offset_x * (-1 if self.flip else 1)
@@ -23,8 +26,15 @@ func _network_spawn(data: Dictionary):
 	self.fixed_scale.x = (-1 if self.flip else 1) * (1 << 16)
 
 	$Hitboxes.facing = -1 if self.flip else 1
-	# $Hitboxes.set_player(data.is_p2, true) # snedge hits snail too
-	$Hurtboxes.set_player(data.is_p2, true)
+
+	# snedge hits snail too
+	# $Hitboxes.set_player(data.is_p2, true)
+	# snedge breaks enemy projectiles
+	$ProjectileBreaker.collision_layer = 0b0100 ^ (0b1100 if data.is_p2 else 0b0000)
+
+	# snedge is hit by fighters, but not projectiles
+	$Hurtboxes.set_player(data.is_p2, false)
+	# $Hurtboxes.collision_mask =
 
 	add_to_group("network_sync")
 
@@ -43,14 +53,19 @@ func _network_preprocess(input: Dictionary) -> void:
 		var aaaaaa = SGFixed.div(aaa, dash_time << 16)
 		self.fixed_position.x = self.origin_x + aaaaaa * (-1 if self.flip else 1)
 
-		$Node2D/Snedge.rotation_degrees = 720.0 * (lifetime - stall_time) / dash_time
+		$Node2D/Snedge.rotation_degrees = 1800.0 * (lifetime - stall_time) / dash_time
 	else:
 		self.fixed_position.x = self.origin_x + dash_distance * (-1 if self.flip else 1)
 		$Node2D/Snedge.rotation_degrees = 0
 
-	$Hitboxes/SGCollisionShape2D.disabled = (
+	$Hitboxes/SGCollisionShape2D.disabled = (lifetime != stall_time + dash_time + slicey_time)
+	$ProjectileBreaker/SGCollisionShape2D.disabled = (
 		lifetime
-		!= stall_time + dash_time + (exit_time >> 1)
+		>= stall_time + dash_time + slicey_time
+	)
+	$SnedgeSlice.visible = (
+		(lifetime >= stall_time + dash_time + slicey_time - 2)
+		and (lifetime <= stall_time + dash_time + slicey_time + 2)
 	)
 
 	lifetime += 1
@@ -72,9 +87,14 @@ func on_hit():
 		return
 	im_hit = true
 	print("ouchy")
+	snail.state_dict["SnedgeIsDedge"] = true
 
 	$Hitboxes/SGCollisionShape2D.disabled = true
 	$Hurtboxes/SGCollisionShape2D.disabled = true
+	$ProjectileBreaker/SGCollisionShape2D.disabled = true
+	$Node2D/Snedge.visible = false
+	$Deadge.visible = true
+	$SnedgeSlice.visible = false
 
 
 func _save_state() -> Dictionary:
@@ -89,6 +109,7 @@ func _load_state(save: Dictionary) -> void:
 	im_hit = save.im_hit
 
 	$Hitboxes/SGCollisionShape2D.disabled = im_hit
+	$Hurtboxes/SGCollisionShape2D.disabled = im_hit
 	$Hurtboxes/SGCollisionShape2D.disabled = im_hit
 	$Hitboxes.sync_to_physics_engine()
 	$Hurtboxes.sync_to_physics_engine()

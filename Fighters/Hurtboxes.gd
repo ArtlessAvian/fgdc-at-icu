@@ -52,6 +52,10 @@ func collide_hitboxes():
 
 	for hitboxes in self.get_overlapping_areas():
 		if hitboxes is Hitboxes:
+			# don't hit yourself. snail polluting codebase again
+			if hitboxes.get_parent() == get_parent():
+				continue
+
 			var pair = hitboxes.attack_number * 100 + hitboxes.multihit
 			var key = hitboxes.get_path()  # todo make not garbo
 

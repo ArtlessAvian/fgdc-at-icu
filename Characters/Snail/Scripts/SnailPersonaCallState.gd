@@ -13,7 +13,9 @@ func transition_into(f: Fighter, moveset: Moveset, input: Dictionary) -> bool:
 		f.state in [moveset.walk, moveset.crouch, moveset.jump] + moveset.all_attacks()
 		and f.state.attack_level() < self.attack_level()
 	):
-		if f.get_node("InputHistory").detect_qcf(f.fixed_scale.x < 0, 17):
+		# as much as i think input overlap would make snail play worse
+		# i think people genuinely want to play snail and not suffer
+		if f.get_node("InputHistory").detect_qcb(f.fixed_scale.x < 0, 17):
 			f.vel.x = 0
 			f.get_node("Hitboxes").new_attack()
 
@@ -30,7 +32,10 @@ func transition_out(f: Fighter, moveset: Moveset, input: Dictionary) -> Resource
 
 
 func run(f: Fighter, input: Dictionary) -> void:
-	if f.state_time == 0:
+	if (
+		f.state_time == 0
+		and not (f.state_dict.has("SnedgeIsDedge") and f.state_dict["SnedgeIsDedge"])
+	):
 		var taxi = SyncManager.spawn(
 			"Taxi",
 			f.get_parent().get_node("Spawned"),
@@ -39,6 +44,7 @@ func run(f: Fighter, input: Dictionary) -> void:
 				"position_x": f.fixed_position.x,
 				"flip": f.fixed_scale.x < 0,
 				"is_p2": f.is_p2,
+				"snail": f,
 			}
 		)
 
