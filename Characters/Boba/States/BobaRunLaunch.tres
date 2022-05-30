@@ -1,0 +1,28 @@
+[gd_resource type="Resource" load_steps=4 format=2]
+
+[ext_resource path="res://Characters/Boba/Scripts/BobaRunLaunch.gd" type="Script" id=1]
+[ext_resource path="res://addons/FGDC-Datatypes/AttackData.gd" type="Script" id=2]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 2 )
+guard = 0
+startup = 4
+active = 2
+hitstun = 30
+blockstun = 30
+hitstop = 5
+damage = 5
+chipdamage = 1
+knockdown = true
+x_vel = 13
+y_vel = 23
+active_hitboxes = 1
+active_hurtboxes = 0
+animation_name = "RunLaunch"
+recovery = 10
+
+[resource]
+script = ExtResource( 1 )
+attack_data = SubResource( 1 )
+attack_level = 100
+jump_cancellable = false

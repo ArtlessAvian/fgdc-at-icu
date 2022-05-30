@@ -1859,7 +1859,6 @@ scale = Vector2( 0.5, 1 )
 script = ExtResource( 11 )
 
 [node name="Card" type="Sprite" parent="Visual/Shield"]
-rotation = 11562.0
 scale = Vector2( 4, 4 )
 texture = ExtResource( 12 )
 
@@ -1867,21 +1866,18 @@ texture = ExtResource( 12 )
 self_modulate = Color( 1, 1, 1, 0.501961 )
 show_behind_parent = true
 rotation = -0.349066
-scale = Vector2( 1, 1 )
 texture = ExtResource( 12 )
 
 [node name="Card3" type="Sprite" parent="Visual/Shield/Card"]
 self_modulate = Color( 1, 1, 1, 0.501961 )
 show_behind_parent = true
 rotation = -0.698132
-scale = Vector2( 1, 1 )
 texture = ExtResource( 12 )
 
 [node name="Card4" type="Sprite" parent="Visual/Shield/Card"]
 self_modulate = Color( 1, 1, 1, 0.501961 )
 show_behind_parent = true
 rotation = -1.0472
-scale = Vector2( 1, 1 )
 texture = ExtResource( 12 )
 
 [node name="JLightEffect" type="Particles2D" parent="Visual"]

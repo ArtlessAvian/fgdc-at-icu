@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/speen.wav-ac82ab71dae90df9e2c7b0ffb56cd56b.sample"
+
+[deps]
+
+source_file="res://Characters/Snail/Assets/speen.wav"
+dest_files=[ "res://.import/speen.wav-ac82ab71dae90df9e2c7b0ffb56cd56b.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

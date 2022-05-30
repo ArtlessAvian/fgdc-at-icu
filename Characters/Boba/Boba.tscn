@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=2]
+[gd_scene load_steps=69 format=2]
 
 [ext_resource path="res://Fighters/debug.gd" type="Script" id=1]
 [ext_resource path="res://Fighters/Hurtboxes.gd" type="Script" id=2]
@@ -1069,6 +1069,83 @@ resource_name = "DoThrow"
 
 [sub_resource type="Animation" id=73]
 resource_name = "Flip"
+
+[sub_resource type="Animation" id=74]
+resource_name = "GreedSever"
+length = 33.0
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Visual/Character/AnimatedSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 4, 17 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Visual/Character/AnimatedSprite:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 8, 9, 18, 33 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, -90.0, 0.0, 135.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Hitboxes/hitbox1:shape:extents_x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 18 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 3239403 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Hitboxes/hitbox1:shape:extents_y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 18 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 4128808 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Hitboxes/hitbox1:fixed_position_x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 18, 23, 28 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ -196608, 4653056, 6029312 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Hitboxes/hitbox1:fixed_position_y")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 18, 23, 28 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ -10027008, -10485760, -6881280 ]
+}
 
 [sub_resource type="Animation" id=54]
 resource_name = "Heavy"
@@ -2163,6 +2240,83 @@ tracks/0/keys = {
 "values": [ 1, 2 ]
 }
 
+[sub_resource type="Animation" id=75]
+resource_name = "RunLaunch"
+length = 16.0
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Visual/Character/AnimatedSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 21 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Visual/Character/AnimatedSprite:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -45.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Hitboxes/hitbox1:fixed_position_x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 2849664 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Hitboxes/hitbox1:fixed_position_y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ -11141120 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Hitboxes/hitbox1:shape:extents_y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 5242880 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Hitboxes/hitbox1:shape:extents_x")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 4239403 ]
+}
+
 [sub_resource type="Animation" id=50]
 resource_name = "Throw"
 length = 15.0
@@ -2351,6 +2505,7 @@ fighter_gravity = 65536
 moveset = ExtResource( 32 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+playback_process_mode = 0
 playback_speed = 60.0
 anims/Blockstun = SubResource( 47 )
 anims/BobaRunJump = SubResource( 68 )
@@ -2365,6 +2520,7 @@ anims/DashPunch = SubResource( 61 )
 anims/Divekick = SubResource( 60 )
 anims/DoThrow = SubResource( 52 )
 anims/Flip = SubResource( 73 )
+anims/GreedSever = SubResource( 74 )
 anims/Heavy = SubResource( 54 )
 anims/Hitstun = SubResource( 48 )
 anims/Idle = SubResource( 37 )
@@ -2377,6 +2533,7 @@ anims/Light = SubResource( 72 )
 anims/Prejump = SubResource( 62 )
 anims/RESET = SubResource( 38 )
 anims/Run = SubResource( 71 )
+anims/RunLaunch = SubResource( 75 )
 anims/Throw = SubResource( 50 )
 anims/Turnaround = SubResource( 64 )
 anims/Wakeup = SubResource( 51 )
@@ -2428,7 +2585,7 @@ script = ExtResource( 3 )
 
 [node name="hitbox1" type="SGCollisionShape2D" parent="Hitboxes"]
 modulate = Color( 0.75, 0.75, 0.75, 1 )
-position = Vector2( 132, -77 )
+position = Vector2( 43, -170 )
 fixed_position_x = 8650752
 fixed_position_y = -5046272
 shape = SubResource( 42 )
@@ -2522,7 +2679,9 @@ margin_left = -134.0
 margin_top = 31.0
 margin_right = 184.0
 margin_bottom = 45.0
-text = "No attack loaded!"
+text = "res://Characters/Boba/States/BobaRunLaunch.tres::1
+4 (2) 10
+"
 
 [node name="InputHistory" type="Node" parent="." groups=["network_sync"]]
 script = ExtResource( 4 )

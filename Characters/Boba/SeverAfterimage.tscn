@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Characters/Boba/SeverAfterimage.gd" type="Script" id=1]
+
+[sub_resource type="Gradient" id=1]
+colors = PoolColorArray( 0, 0.858824, 1, 1, 0, 1, 0.321569, 1 )
+
+[node name="Fighter" type="SGFixedNode2D" groups=["network_sync"]]
+z_index = -100
+script = ExtResource( 1 )
+color_ramp = SubResource( 1 )

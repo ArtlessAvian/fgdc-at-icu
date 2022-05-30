@@ -1,0 +1,104 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://addons/FGDC-Datatypes/HitData.gd" type="Script" id=1]
+[ext_resource path="res://Characters/Snail/Assets/snedge_v1_normal_expression.png" type="Texture" id=2]
+[ext_resource path="res://Fighters/Hitboxes.gd" type="Script" id=3]
+[ext_resource path="res://Fighters/Hurtboxes.gd" type="Script" id=4]
+[ext_resource path="res://Characters/Snail/Assets/snedge_slice.png" type="Texture" id=5]
+[ext_resource path="res://Characters/Snail/Assets/deadge.png" type="Texture" id=6]
+[ext_resource path="res://Characters/Snail/Snedge.gd" type="Script" id=22]
+
+[sub_resource type="Resource" id=6]
+script = ExtResource( 1 )
+guard = "0"
+startup = 4
+active = 2
+hitstun = 50
+blockstun = 20
+hitstop = 0
+damage = 3
+chipdamage = 1
+knockdown = false
+x_vel = 0
+y_vel = 30
+active_hitboxes = 1
+active_hurtboxes = 0
+
+[sub_resource type="SGRectangleShape2D" id=7]
+extents_x = 65536000
+extents_y = 5242880
+
+[sub_resource type="SGRectangleShape2D" id=9]
+extents_x = 3276800
+extents_y = 5242880
+
+[sub_resource type="SGRectangleShape2D" id=8]
+extents_x = 5000000
+extents_y = 5000000
+
+[node name="Snedge" type="SGFixedNode2D" groups=["network_sync"]]
+script = ExtResource( 22 )
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2( 0, -100 )
+scale = Vector2( 1, 2 )
+
+[node name="Snedge" type="Sprite" parent="Node2D"]
+rotation = -6.28319
+scale = Vector2( 0.2, 0.1 )
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 50, 50 )
+
+[node name="Hitboxes" type="SGArea2D" parent="." groups=["hitboxes", "network_sync"]]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource( 3 )
+hit_data = SubResource( 6 )
+
+[node name="SGCollisionShape2D" type="SGCollisionShape2D" parent="Hitboxes"]
+modulate = Color( 1, 0, 0, 1 )
+self_modulate = Color( 1, 0, 0, 1 )
+position = Vector2( -900, -80 )
+fixed_position_x = -58982400
+fixed_position_y = -5242880
+shape = SubResource( 7 )
+
+[node name="ProjectileBreaker" type="SGArea2D" parent="." groups=["hitboxes", "network_sync"]]
+collision_layer = 12
+collision_mask = 12
+script = ExtResource( 3 )
+hit_data = SubResource( 6 )
+
+[node name="SGCollisionShape2D" type="SGCollisionShape2D" parent="ProjectileBreaker"]
+modulate = Color( 1, 0, 0, 1 )
+self_modulate = Color( 1, 0, 0, 1 )
+position = Vector2( 100, -80 )
+fixed_position_x = 6553600
+fixed_position_y = -5242880
+shape = SubResource( 9 )
+
+[node name="Hurtboxes" type="SGArea2D" parent="." groups=["hurtboxes", "network_sync"]]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource( 4 )
+
+[node name="SGCollisionShape2D" type="SGCollisionShape2D" parent="Hurtboxes"]
+modulate = Color( 0, 1, 0, 1 )
+position = Vector2( 0, -100 )
+fixed_position_y = -6553600
+shape = SubResource( 8 )
+
+[node name="SnedgeSlice" type="Sprite" parent="."]
+position = Vector2( -432, -90 )
+scale = Vector2( 0.8, 0.5 )
+texture = ExtResource( 5 )
+
+[node name="Deadge" type="Sprite" parent="."]
+visible = false
+scale = Vector2( 0.5, 0.5 )
+z_index = -2
+texture = ExtResource( 6 )
+
+[connection signal="on_contact" from="Hitboxes" to="." method="_on_Hitboxes_on_contact"]
+[connection signal="on_contact" from="ProjectileBreaker" to="." method="_on_Hitboxes_on_contact"]

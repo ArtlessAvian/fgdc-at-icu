@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=21 format=2]
+[gd_resource type="Resource" load_steps=22 format=2]
 
 [ext_resource path="res://Characters/Max/MaxDashPunchHeavy.tres" type="Resource" id=1]
 [ext_resource path="res://Characters/Max/MaxJHeavy.tres" type="Resource" id=2]
@@ -20,6 +20,7 @@
 [ext_resource path="res://Characters/Max/MaxCHeavy.tres" type="Resource" id=18]
 [ext_resource path="res://Characters/Max/MaxDivekickHeavy.tres" type="Resource" id=19]
 [ext_resource path="res://Characters/Max/DPRecovery.tres" type="Resource" id=20]
+[ext_resource path="res://Characters/Max/MaxBackdashState.tres" type="Resource" id=21]
 
 [resource]
 script = ExtResource( 7 )
@@ -37,4 +38,4 @@ j_heavy = ExtResource( 2 )
 throw = ExtResource( 6 )
 burst = ExtResource( 10 )
 attacks = [ ExtResource( 9 ), ExtResource( 8 ), ExtResource( 5 ), ExtResource( 1 ), ExtResource( 3 ), ExtResource( 19 ) ]
-movement = [ ExtResource( 20 ) ]
+movement = [ ExtResource( 20 ), ExtResource( 21 ) ]
