@@ -1,4 +1,4 @@
-[gd_scene load_steps=115 format=2]
+[gd_scene load_steps=116 format=2]
 
 [ext_resource path="res://Fighters/Fighter.gd" type="Script" id=1]
 [ext_resource path="res://Fighters/Hitboxes.gd" type="Script" id=2]
@@ -82,6 +82,59 @@
 [ext_resource path="res://Characters/Max/Assets/j.heavy-6.png" type="Texture" id=80]
 [ext_resource path="res://Characters/Max/Assets/j.light-1.png" type="Texture" id=81]
 [ext_resource path="res://Characters/Max/Assets/dragon_punch_effect-6.png" type="Texture" id=82]
+
+[sub_resource type="Animation" id=71]
+resource_name = "Backdash"
+length = 15.0
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Visual/Character:flips")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/keys = {
+"times": PoolRealArray( 0, 15 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 2.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Visual/Character/AnimatedSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 63, 64 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Visual/Character/AnimatedSprite:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 4, 15 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -100 ), Vector2( 0, -120 ), Vector2( 0, -100 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Visual/Character/AnimatedSprite:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -30.0 ]
+}
 
 [sub_resource type="Animation" id=47]
 resource_name = "Blockstun"
@@ -2362,6 +2415,7 @@ moveset = ExtResource( 9 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 playback_speed = 60.0
+anims/Backdash = SubResource( 71 )
 anims/Blockstun = SubResource( 47 )
 anims/Burst = SubResource( 69 )
 anims/CHeavy = SubResource( 56 )
