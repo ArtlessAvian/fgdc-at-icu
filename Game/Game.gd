@@ -18,6 +18,7 @@ var time_in_frames = match_start_length
 func _ready():
 	add_to_group("network_sync")
 	time_in_frames = match_start_length
+	$Camera2D/HugeExplosion.play("default")
 
 
 func _network_process(input: Dictionary) -> void:
@@ -65,7 +66,6 @@ func correct_positions():
 	# these two probably don't activate at the same time.
 	min_distance(p1, p2)
 	max_distance(p1, p2)
-
 
 	# nothing bad happens if the players are put oob again, buttt
 	in_bounds(p1, p2)
@@ -123,7 +123,7 @@ func min_distance(p1: Fighter, p2: Fighter):
 
 		p1.fixed_position.x = average + (fighter_spacing >> 1) * sign(diff)
 		p2.fixed_position.x = average + (fighter_spacing >> 1) * sign(-diff)
-		
+
 	#print(diff, average)
 
 
@@ -163,11 +163,13 @@ func max_distance(p1: Fighter, p2: Fighter):
 		p1.fixed_position.x = target_average + (max_spacing >> 1) * sign(diff)
 		p2.fixed_position.x = target_average + (max_spacing >> 1) * sign(-diff)
 
+
 func handle_corners(p1: Fighter, p2: Fighter):
 	if p1.cornered and not p2.cornered and p1.fixed_position_x == p2.fixed_position_x:
-		p2.fixed_position_x = p1.fixed_position_x - 1*sign(p1.fixed_position_x)
+		p2.fixed_position_x = p1.fixed_position_x - 1 * sign(p1.fixed_position_x)
 	if p2.cornered and not p1.cornered and p1.fixed_position_x == p2.fixed_position_x:
-		p1.fixed_position_x = p2.fixed_position_x - 1*sign(p2.fixed_position_x)
+		p1.fixed_position_x = p2.fixed_position_x - 1 * sign(p2.fixed_position_x)
+
 
 # think Comparator<Fighter>. We are comparing the "winningness".
 # So, returns [negative / zero / positive] if [p1 losing / tie / p1 winning]

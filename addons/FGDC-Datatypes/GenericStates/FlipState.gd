@@ -28,3 +28,7 @@ func exit(f: Fighter) -> void:
 
 func animation(f: Fighter) -> String:
 	return "Flip"
+
+
+func attack_level():
+	return 8765309

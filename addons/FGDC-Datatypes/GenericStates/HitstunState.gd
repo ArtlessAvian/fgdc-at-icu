@@ -43,3 +43,7 @@ func animation(f: Fighter) -> String:
 
 func get_landing_transition(f: Fighter, moveset: Moveset) -> State:
 	return null
+
+
+func attack_level():
+	return 8765309
