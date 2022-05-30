@@ -2,7 +2,7 @@ extends "../State.gd"
 
 export(int) var knockdown_timer = 30
 
-const klonk = preload("res://Sounds/landing_on_floor_2.wav")
+const klonk = preload("res://Sounds/keyboard_drop.wav")
 
 
 func transition_into(f: Fighter, moveset: Moveset, input: Dictionary) -> bool:
@@ -39,11 +39,11 @@ func enter(f: Fighter) -> void:
 
 	f.state_dict.knockdown_timer = 30  # same here? unless we make it consistent
 
-	# SyncManager.play_sound(
-	# 	str(f.get_path()) + ":knockdown",
-	# 	klonk,
-	# 	{position = f.position, pitch_scale = 2, volume_db = 10}
-	# )
+	SyncManager.play_sound(
+		str(f.get_path()) + ":knockdown",
+		klonk,
+		{position = f.position, pitch_scale = 1, volume_db = 5}
+	)
 
 
 func run(f: Fighter, input: Dictionary) -> void:
