@@ -21,7 +21,7 @@ func _ready():
 
 
 func _on_hotplug(device: int, connected: bool):
-	refresh_inputs($a/b/c/LocalInput1, false)
+	refresh_inputs($a/b/c/LocalInput1)
 	refresh_inputs($a/b/d/LocalInput2)
 	refresh_inputs($a/e/i/j/OnlineInput)
 

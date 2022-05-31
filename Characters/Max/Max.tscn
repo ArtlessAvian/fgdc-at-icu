@@ -945,7 +945,7 @@ tracks/14/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0.1, 0.1 ) ]
+"values": [ Vector2( 0.375, 0.375 ) ]
 }
 tracks/15/type = "value"
 tracks/15/path = NodePath("Visual/Character/DPFX:visible")
@@ -1895,7 +1895,7 @@ tracks/5/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0.085, 0.085 ) ]
+"values": [ Vector2( 0.319, 0.319 ) ]
 }
 tracks/6/type = "value"
 tracks/6/path = NodePath("Visual/Character/AnimatedSprite:position")
@@ -2466,17 +2466,16 @@ texture = ExtResource( 10 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Visual/Character"]
 position = Vector2( 0, -100 )
-scale = Vector2( 0.085, 0.085 )
+scale = Vector2( 0.319, 0.319 )
 frames = SubResource( 34 )
 animation = "Default"
 
 [node name="DPFX" type="AnimatedSprite" parent="Visual/Character"]
 visible = false
 position = Vector2( 30, -100 )
-scale = Vector2( 0.1, 0.1 )
+scale = Vector2( 0.375, 0.375 )
 frames = SubResource( 68 )
 animation = "DPFX"
-frame = 7
 
 [node name="Hitboxes" type="SGArea2D" parent="." groups=["hitboxes", "network_sync"]]
 collision_mask = 0
@@ -2484,7 +2483,7 @@ script = ExtResource( 2 )
 
 [node name="hitbox1" type="SGCollisionShape2D" parent="Hitboxes"]
 modulate = Color( 0.75, 0.75, 0.75, 1 )
-position = Vector2( 132, -77 )
+position = Vector2( 61, -91 )
 fixed_position_x = 8650752
 fixed_position_y = -5046272
 shape = SubResource( 42 )
@@ -2496,13 +2495,13 @@ collision_mask = 2
 script = ExtResource( 4 )
 
 [node name="hurtbox1" type="SGCollisionShape2D" parent="Hurtboxes"]
-modulate = Color( 0, 1, 0, 1 )
+modulate = Color( 0.498039, 0.498039, 0.498039, 0.0392157 )
 position = Vector2( 0, -100 )
 fixed_position_y = -6553600
 shape = SubResource( 43 )
 
 [node name="Light_hurtbox1" type="SGCollisionShape2D" parent="Hurtboxes"]
-modulate = Color( 0.498039, 0.498039, 0.498039, 0.0392157 )
+modulate = Color( 0, 1, 0, 1 )
 position = Vector2( 69.4824, -120 )
 fixed_position_x = 4553600
 fixed_position_y = -7864320
@@ -2541,7 +2540,7 @@ shape = SubResource( 43 )
 disabled = true
 
 [node name="DPLight_hurtbox1" type="SGCollisionShape2D" parent="Hurtboxes"]
-modulate = Color( 0.498039, 0.498039, 0.498039, 0.0392157 )
+modulate = Color( 0, 1, 0, 1 )
 position = Vector2( 0, -46.0518 )
 fixed_position_y = -3018048
 shape = SubResource( 43 )
