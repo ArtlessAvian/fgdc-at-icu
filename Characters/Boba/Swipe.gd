@@ -17,11 +17,12 @@ func _ready():
 func _physics_process(delta):  #(input: Dictionary) -> void:
 	lifetime += 1
 
-	self.scale = (Vector2.ONE / 2000.0) * (1000 * sqrt(lifetime / 10.0))
-	self.modulate.a = clamp((10 - lifetime) / 10.0, 0, 1)
+	# self.scale = (Vector2.ONE / 2000.0) * (1000 * lifetime / 10.0)
+	self.scale = Vector2.ONE / 2
+	self.modulate.a = clamp((10 - lifetime) / 3.0, 0, 1)
 
 	if lifetime > 10:
-		if Engine.editor_hint:
+		if self.get_parent().name != "SwipeSpawner":
 			_ready()
 		else:
 			self.queue_free()

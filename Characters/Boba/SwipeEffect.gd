@@ -1,4 +1,5 @@
 extends Node2D
+tool
 
 const SWIPE = preload("res://Characters/Boba/Swipe.tscn")
 
@@ -10,7 +11,7 @@ func _process(delta):
 		do_the_thing = false
 		var noddeee = SWIPE.instance()
 		add_child(noddeee)
-		noddeee = SWIPE.instance()
-		add_child(noddeee)
-		noddeee = SWIPE.instance()
-		add_child(noddeee)
+		# noddeee = SWIPE.instance()
+		# add_child(noddeee)
+		# noddeee = SWIPE.instance()
+		# add_child(noddeee)
