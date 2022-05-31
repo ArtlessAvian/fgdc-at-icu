@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=2]
+[gd_scene load_steps=50 format=2]
 
 [ext_resource path="res://Fighters/debug.gd" type="Script" id=1]
 [ext_resource path="res://Fighters/Hurtboxes.gd" type="Script" id=2]
@@ -11,6 +11,8 @@
 [ext_resource path="res://Fighters/Fighter.gd" type="Script" id=9]
 [ext_resource path="res://Characters/Boba/BobaSpriteFrames.tres" type="SpriteFrames" id=10]
 [ext_resource path="res://Characters/Boba/SwipeEffect.gd" type="Script" id=11]
+[ext_resource path="res://Characters/Boba/eueguegh.tres" type="Material" id=12]
+[ext_resource path="res://100white.png" type="Texture" id=13]
 [ext_resource path="res://Characters/Boba/BobaMoveset.tres" type="Resource" id=32]
 
 [sub_resource type="Animation" id=47]
@@ -772,7 +774,7 @@ tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0, 10, 12, 18, 23, 35, 36 ),
+"times": PoolRealArray( 0, 8, 12, 18, 23, 35, 36 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ Vector2( 0, -170 ), Vector2( 30, -170 ), Vector2( 0, -170 ), Vector2( 21, -195 ), Vector2( 70, -160 ), Vector2( 70, -160 ), Vector2( 0, -170 ) ]
@@ -804,7 +806,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 3145728 ]
+"values": [ 6145728 ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Hitboxes/hitbox1:fixed_position_x")
@@ -828,7 +830,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ -4864320 ]
+"values": [ -9864320 ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("Hurtboxes/Heavy_hurtbox1:shape:extents_x")
@@ -889,6 +891,30 @@ tracks/8/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Visual/Character/AnimatedSprite:frame")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 4, 16, 17, 20, 23 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 25, 26, 25, 27, 28, 29 ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Visual/Character/AnimatedSprite:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 80, -100 ) ]
 }
 
 [sub_resource type="Animation" id=48]
@@ -2238,6 +2264,14 @@ fighter_height = 100
 fighter_gravity = 65536
 moveset = ExtResource( 32 )
 
+[node name="100White" type="Sprite" parent="."]
+visible = false
+modulate = Color( 0.945098, 0, 1, 1 )
+position = Vector2( -27, -95 )
+scale = Vector2( 5, 5 )
+z_index = -1000
+texture = ExtResource( 13 )
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 playback_process_mode = 0
 playback_speed = 60.0
@@ -2307,6 +2341,7 @@ scale = Vector2( 0.085, 0.085 )
 texture = ExtResource( 8 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Visual/Character"]
+material = ExtResource( 12 )
 position = Vector2( 0, -100 )
 scale = Vector2( 0.319, 0.319 )
 frames = ExtResource( 10 )
@@ -2317,18 +2352,20 @@ position = Vector2( 40, -51 )
 script = ExtResource( 11 )
 
 [node name="Hitboxes" type="SGArea2D" parent="." groups=["hitboxes", "network_sync"]]
+visible = false
 collision_mask = 0
 script = ExtResource( 3 )
 
 [node name="hitbox1" type="SGCollisionShape2D" parent="Hitboxes"]
 modulate = Color( 0.75, 0.75, 0.75, 1 )
-position = Vector2( 92, -105 )
+position = Vector2( 157, -43 )
 fixed_position_x = 8650752
 fixed_position_y = -5046272
 shape = SubResource( 42 )
 disabled = true
 
 [node name="Hurtboxes" type="SGArea2D" parent="." groups=["hurtboxes", "network_sync"]]
+visible = false
 collision_layer = 0
 collision_mask = 2
 script = ExtResource( 2 )
@@ -2356,10 +2393,10 @@ shape = SubResource( 43 )
 disabled = true
 
 [node name="CLight_hurtbox1" type="SGCollisionShape2D" parent="Hurtboxes"]
-modulate = Color( 0.498039, 0.498039, 0.498039, 0.0392157 )
-position = Vector2( 126.482, -135.035 )
-fixed_position_x = 8289152
-fixed_position_y = -8849664
+modulate = Color( 0, 1, 0, 1 )
+position = Vector2( 157, -43.4824 )
+fixed_position_x = 10289152
+fixed_position_y = -2849664
 shape = SubResource( 43 )
 disabled = true
 
@@ -2394,6 +2431,7 @@ shape = SubResource( 43 )
 disabled = true
 
 [node name="Throwboxes" type="SGArea2D" parent="." groups=["network_sync", "throwboxes"]]
+visible = false
 collision_mask = 0
 script = ExtResource( 5 )
 __meta__ = {
@@ -2416,8 +2454,8 @@ margin_left = -134.0
 margin_top = 31.0
 margin_right = 184.0
 margin_bottom = 45.0
-text = "res://Characters/Boba/States/BobaRunSever.tres::1
-18 (15) 10
+text = "res://Characters/Boba/States/BobaCLight.tres::1
+4 (4) 8
 "
 
 [node name="InputHistory" type="Node" parent="." groups=["network_sync"]]
