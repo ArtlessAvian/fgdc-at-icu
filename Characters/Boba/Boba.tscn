@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=2]
+[gd_scene load_steps=56 format=2]
 
 [ext_resource path="res://Fighters/debug.gd" type="Script" id=1]
 [ext_resource path="res://Fighters/Hurtboxes.gd" type="Script" id=2]
@@ -9,28 +9,7 @@
 [ext_resource path="res://Fighters/FighterSprite.gd" type="Script" id=7]
 [ext_resource path="res://Example/Max_idle_1.png" type="Texture" id=8]
 [ext_resource path="res://Fighters/Fighter.gd" type="Script" id=9]
-[ext_resource path="res://Characters/Max/Assets/light 2.png" type="Texture" id=10]
-[ext_resource path="res://Characters/Max/Assets/c.light.png" type="Texture" id=11]
-[ext_resource path="res://Characters/Max/Assets/heavy.png" type="Texture" id=12]
-[ext_resource path="res://Characters/Max/Assets/dragon_punch.png" type="Texture" id=13]
-[ext_resource path="res://Characters/Max/Assets/dash_punch 2.png" type="Texture" id=14]
-[ext_resource path="res://Characters/Max/Assets/c.heavy.png" type="Texture" id=15]
-[ext_resource path="res://Characters/Max/Assets/Max_idle_1.png" type="Texture" id=16]
-[ext_resource path="res://Characters/Max/Assets/dash_punch 1.png" type="Texture" id=17]
-[ext_resource path="res://Characters/Max/Assets/j.heavy 1.png" type="Texture" id=18]
-[ext_resource path="res://Characters/Max/Assets/walk 2.png" type="Texture" id=19]
-[ext_resource path="res://Characters/Max/Assets/hitstun.png" type="Texture" id=20]
-[ext_resource path="res://Characters/Max/Assets/j.heavy 2.png" type="Texture" id=21]
-[ext_resource path="res://Characters/Max/Assets/jump 2.png" type="Texture" id=22]
-[ext_resource path="res://Characters/Max/Assets/jump 1.png" type="Texture" id=23]
-[ext_resource path="res://Characters/Max/Assets/dash.png" type="Texture" id=24]
-[ext_resource path="res://Characters/Max/Assets/jump 3.png" type="Texture" id=25]
-[ext_resource path="res://Characters/Max/Assets/walk 1.png" type="Texture" id=26]
-[ext_resource path="res://Characters/Max/Assets/j.light 3.png" type="Texture" id=27]
-[ext_resource path="res://Characters/Max/Assets/j.light 2.png" type="Texture" id=28]
-[ext_resource path="res://Characters/Max/Assets/light 1.png" type="Texture" id=29]
-[ext_resource path="res://Characters/Max/Assets/Max_crouch_1.png" type="Texture" id=30]
-[ext_resource path="res://Characters/Max/Assets/j.light 1.png" type="Texture" id=31]
+[ext_resource path="res://Characters/Boba/BobaSpriteFrames.tres" type="SpriteFrames" id=10]
 [ext_resource path="res://Characters/Boba/BobaMoveset.tres" type="Resource" id=32]
 
 [sub_resource type="Animation" id=47]
@@ -449,7 +428,7 @@ tracks/10/keys = {
 "times": PoolRealArray( 0, 3, 4, 9, 10 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 500, 0 ), Vector2( 500, 0 ), Vector2( 0, 0 ) ]
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 133.333, 0 ), Vector2( 133.333, 0 ), Vector2( 0, 0 ) ]
 }
 
 [sub_resource type="Animation" id=46]
@@ -1769,7 +1748,7 @@ tracks/10/keys = {
 "times": PoolRealArray( 0, 3, 4, 8 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 500, 0 ), Vector2( 500, 0 ) ]
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 133.333, 0 ), Vector2( 133.333, 0 ) ]
 }
 tracks/11/type = "value"
 tracks/11/path = NodePath("Visual/Character/AnimatedSprite:rotation_degrees")
@@ -1871,7 +1850,7 @@ tracks/5/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0.085, 0.085 ) ]
+"values": [ Vector2( 0.319, 0.319 ) ]
 }
 tracks/6/type = "value"
 tracks/6/path = NodePath("Visual/Character/AnimatedSprite:position")
@@ -2577,14 +2556,6 @@ nodes/fragment/connections = PoolIntArray( 9, 0, 10, 2, 8, 0, 10, 0, 10, 1, 0, 1
 [sub_resource type="ShaderMaterial" id=79]
 shader = SubResource( 78 )
 
-[sub_resource type="SpriteFrames" id=34]
-animations = [ {
-"frames": [ ExtResource( 16 ), ExtResource( 26 ), ExtResource( 19 ), ExtResource( 30 ), ExtResource( 23 ), ExtResource( 22 ), ExtResource( 25 ), ExtResource( 20 ), ExtResource( 24 ), ExtResource( 29 ), ExtResource( 10 ), ExtResource( 12 ), ExtResource( 11 ), ExtResource( 15 ), ExtResource( 31 ), ExtResource( 28 ), ExtResource( 27 ), ExtResource( 18 ), ExtResource( 21 ), ExtResource( 13 ), ExtResource( 17 ), ExtResource( 14 ) ],
-"loop": false,
-"name": "Default",
-"speed": 0.0
-} ]
-
 [sub_resource type="SGRectangleShape2D" id=42]
 extents_x = 3239403
 extents_y = 4128808
@@ -2684,8 +2655,8 @@ texture = ExtResource( 8 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Visual/Character"]
 material = SubResource( 79 )
 position = Vector2( 0, -100 )
-scale = Vector2( 0.085, 0.085 )
-frames = SubResource( 34 )
+scale = Vector2( 0.319, 0.319 )
+frames = ExtResource( 10 )
 animation = "Default"
 
 [node name="Hitboxes" type="SGArea2D" parent="." groups=["hitboxes", "network_sync"]]
@@ -2729,8 +2700,8 @@ disabled = true
 
 [node name="CLight_hurtbox1" type="SGCollisionShape2D" parent="Hurtboxes"]
 modulate = Color( 0.498039, 0.498039, 0.498039, 0.0392157 )
-position = Vector2( 157, -43.4824 )
-fixed_position_x = 10289152
+position = Vector2( 126.482, -43.4824 )
+fixed_position_x = 8289152
 fixed_position_y = -2849664
 shape = SubResource( 43 )
 disabled = true
