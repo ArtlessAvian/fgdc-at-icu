@@ -14,7 +14,7 @@ dest_files=[ "res://.import/dragon_punch_effect-4.png-03cdf276ba9b1bb4175ab0c5fc
 
 [params]
 
-compress/mode=1
+compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0

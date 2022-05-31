@@ -14,7 +14,7 @@ dest_files=[ "res://.import/blockstun_s.png-fd2d88eca3c1c7af6a8582e3e8adae59.ste
 
 [params]
 
-compress/mode=1
+compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0

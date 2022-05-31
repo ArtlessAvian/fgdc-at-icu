@@ -520,10 +520,10 @@ tracks/10/loop_wrap = true
 tracks/10/imported = false
 tracks/10/enabled = true
 tracks/10/keys = {
-"times": PoolRealArray( 0, 3, 4, 8 ),
+"times": PoolRealArray( 0, 1, 2, 8 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 500, 0 ), Vector2( 500, 0 ) ]
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 133.333, 0 ), Vector2( 133.333, 0 ) ]
 }
 
 [sub_resource type="Animation" id=46]
@@ -2483,7 +2483,7 @@ script = ExtResource( 2 )
 
 [node name="hitbox1" type="SGCollisionShape2D" parent="Hitboxes"]
 modulate = Color( 0.75, 0.75, 0.75, 1 )
-position = Vector2( 61, -91 )
+position = Vector2( 157, -43 )
 fixed_position_x = 8650752
 fixed_position_y = -5046272
 shape = SubResource( 42 )
@@ -2517,7 +2517,7 @@ shape = SubResource( 43 )
 disabled = true
 
 [node name="CLight_hurtbox1" type="SGCollisionShape2D" parent="Hurtboxes"]
-modulate = Color( 0.498039, 0.498039, 0.498039, 0.0392157 )
+modulate = Color( 0, 1, 0, 1 )
 position = Vector2( 157, -43.4824 )
 fixed_position_x = 10289152
 fixed_position_y = -2849664

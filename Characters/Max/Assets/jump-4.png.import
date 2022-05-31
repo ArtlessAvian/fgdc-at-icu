@@ -14,7 +14,7 @@ dest_files=[ "res://.import/jump-4.png-14dbe73c3292c3f82eee64f049394b24.stex" ]
 
 [params]
 
-compress/mode=1
+compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0

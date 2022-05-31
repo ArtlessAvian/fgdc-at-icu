@@ -14,7 +14,7 @@ dest_files=[ "res://.import/divekick-4.png-dea2cb6033be26e2bbc88d1a0b8e5732.stex
 
 [params]
 
-compress/mode=1
+compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0

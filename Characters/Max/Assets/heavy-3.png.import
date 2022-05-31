@@ -14,7 +14,7 @@ dest_files=[ "res://.import/heavy-3.png-6d4fbdce9943d22348d1ae695cd2118a.stex" ]
 
 [params]
 
-compress/mode=1
+compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
