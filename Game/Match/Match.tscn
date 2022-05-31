@@ -26,3 +26,5 @@ __meta__ = {
 game_camera_path = NodePath("../../Game/Camera2D")
 
 [node name="Game" parent="." instance=ExtResource( 2 )]
+
+[node name="vgdcdotwav" type="AudioStreamPlayer" parent="."]

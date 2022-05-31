@@ -39,6 +39,9 @@ func _network_postprocess(input: Dictionary) -> void:
 
 	if dead_timer >= 0:
 		# someone is dead
+		# if dead_timer == 0 and p1_score >= 2 or p2_score >= 2:
+		# 	$vgdcdotwav.play(5733188.0 / 44100)
+
 		if dead_timer < 10 or (dead_timer % 3 <= 1 and dead_timer < 60):
 			$Game/Fighter1.hitstop = 1
 			$Game/Fighter2.hitstop = 1
@@ -69,6 +72,9 @@ func round_reset():
 		p1_score = 0
 		p2_score = 0
 		# HACK: I'll allow it.
+		# $vgdcdotwav.stop()
+		# $vgdcdotwav/Tween.interpolate_property($vgdcdotwav, "volume_db", 0, -100, 1)
+		# $vgdcdotwav/Tween.start()
 		self.get_node("..").reset_the_game()
 	else:
 		$Game/UILayer/TestIntro.round_call(p1_score + p2_score + 1)

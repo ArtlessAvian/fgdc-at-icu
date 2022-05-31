@@ -187,6 +187,8 @@ func start_the_game():
 		SyncManager.start()
 		$Match/Game._ready()
 		$Match/Game/UILayer/TestIntro.match_start()
+		# $Match/vgdcdotwav.play(0)
+		# $Match/vgdcdotwav.volume_db = 0
 
 
 func reset_the_game():
