@@ -7,7 +7,7 @@ func transition_into(f: Fighter, moveset: Moveset, input: Dictionary) -> bool:
 	var check_for_dash = false
 	if f.state in [moveset.walk, moveset.crouch]:
 		check_for_dash = true
-	elif f.state_time > 0 and f.state in [moveset.light, moveset.c_light, moveset.heavy]:
+	elif f.state_time > 0 and f.state in [moveset.light, moveset.c_light, moveset.heavy, moveset.c_heavy]:
 		check_for_dash = true
 
 	if check_for_dash:
