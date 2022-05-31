@@ -12,12 +12,12 @@ func enter(f: Fighter) -> void:
 func run(f: Fighter, input: Dictionary) -> void:
 	.run(f, input)
 
-	if f.state_time == 10:
+	if f.state_time == 8:
 		f.grounded = false
-		f.vel.x = (10 << 16) * sign(f.fixed_scale.x)
-		f.vel.y = 15 << 16
+		f.vel.x = (7 << 16) * sign(f.fixed_scale.x)
+		f.vel.y = 17 << 16
 
-	if f.state_time > 10 and f.state_time % 3 == 0:
+	if f.state_time > 8 and f.state_time % 3 == 0:
 		# You know what? unnetworks your visual thing
 		var afterimage = AFTERIMAGE.instance()
 		afterimage.initializeee(
