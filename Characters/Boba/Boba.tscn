@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=2]
+[gd_scene load_steps=51 format=2]
 
 [ext_resource path="res://Fighters/debug.gd" type="Script" id=1]
 [ext_resource path="res://Fighters/Hurtboxes.gd" type="Script" id=2]
@@ -7,7 +7,6 @@
 [ext_resource path="res://Fighters/Throwboxes.gd" type="Script" id=5]
 [ext_resource path="res://Fighters/HitboxHelper.gd" type="Script" id=6]
 [ext_resource path="res://Fighters/FighterSprite.gd" type="Script" id=7]
-[ext_resource path="res://Example/Max_idle_1.png" type="Texture" id=8]
 [ext_resource path="res://Fighters/Fighter.gd" type="Script" id=9]
 [ext_resource path="res://Characters/Boba/BobaSpriteFrames.tres" type="SpriteFrames" id=10]
 [ext_resource path="res://Characters/Boba/SwipeEffect.gd" type="Script" id=11]
@@ -173,7 +172,7 @@ tracks/1/enabled = true
 tracks/1/keys = {
 "times": PoolRealArray( 0, 23, 24 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
+"update": 1,
 "values": [ Vector2( 100, -100 ), Vector2( 100, -100 ), Vector2( 0, -100 ) ]
 }
 tracks/2/type = "value"
@@ -294,7 +293,7 @@ tracks/11/keys = {
 "times": PoolRealArray( 0, 24 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ Vector2( 0.085, 0.085 ), Vector2( 0.319, 0.319 ) ]
+"values": [ Vector2( 0.5, 0.5 ), Vector2( 0.319, 0.319 ) ]
 }
 
 [sub_resource type="Animation" id=55]
@@ -587,31 +586,31 @@ tracks/4/keys = {
 [sub_resource type="Animation" id=65]
 resource_name = "CrouchingHitstun"
 tracks/0/type = "value"
-tracks/0/path = NodePath("Visual/Character/AnimatedSprite:animation")
+tracks/0/path = NodePath("Visual/Character/AnimatedSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray(  ),
-"transitions": PoolRealArray(  ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [  ]
+"values": [ 65 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Visual/Character/AnimatedSprite:rotation_degrees")
+tracks/1/path = NodePath("Hurtboxes/hurtbox1:shape:extents_x")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray(  ),
-"transitions": PoolRealArray(  ),
-"update": 0,
-"values": [  ]
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 2752512 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Visual/Character/AnimatedSprite:frame")
+tracks/2/path = NodePath("Hurtboxes/hurtbox1:shape:extents_y")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -620,10 +619,10 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 9 ]
+"values": [ 4325376 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Hurtboxes/hurtbox1:shape:extents_x")
+tracks/3/path = NodePath("Hurtboxes/hurtbox1:fixed_position_x")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -632,10 +631,10 @@ tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 2752512 ]
+"values": [ 0 ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("Hurtboxes/hurtbox1:shape:extents_y")
+tracks/4/path = NodePath("Hurtboxes/hurtbox1:fixed_position_y")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -644,10 +643,10 @@ tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 4325376 ]
+"values": [ -4063232 ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("Hurtboxes/hurtbox1:fixed_position_x")
+tracks/5/path = NodePath("Visual/Character/AnimatedSprite:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -655,11 +654,11 @@ tracks/5/enabled = true
 tracks/5/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 0 ]
+"update": 0,
+"values": [ Vector2( 0, -62.696 ) ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("Hurtboxes/hurtbox1:fixed_position_y")
+tracks/6/path = NodePath("Visual/Character/AnimatedSprite:scale")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -667,8 +666,8 @@ tracks/6/enabled = true
 tracks/6/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ -4063232 ]
+"update": 0,
+"values": [ Vector2( 0.319, 0.2 ) ]
 }
 
 [sub_resource type="Animation" id=52]
@@ -924,7 +923,7 @@ tracks/0/path = NodePath("Visual/Character/AnimatedSprite:rotation_degrees")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
-tracks/0/enabled = true
+tracks/0/enabled = false
 tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -941,7 +940,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 10 ]
+"values": [ 65 ]
 }
 
 [sub_resource type="Animation" id=37]
@@ -1344,6 +1343,40 @@ tracks/0/keys = {
 "values": [ 8 ]
 }
 
+[sub_resource type="Animation" id=79]
+resource_name = "Knives"
+length = 60.0
+step = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Visual/Character/AnimatedSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36, 39, 42 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 50, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63 ]
+}
+
+[sub_resource type="Animation" id=80]
+resource_name = "KnivesHeavy"
+length = 60.0
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Visual/Character/AnimatedSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3, 6, 29, 32, 35, 38, 41, 44, 47, 50, 53, 56, 59, 62 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 50, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63 ]
+}
+
 [sub_resource type="Animation" id=49]
 resource_name = "Knockdown"
 tracks/0/type = "value"
@@ -1351,7 +1384,7 @@ tracks/0/path = NodePath("Visual/Character/AnimatedSprite:rotation_degrees")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
-tracks/0/enabled = true
+tracks/0/enabled = false
 tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -1363,7 +1396,7 @@ tracks/1/path = NodePath("Visual/Character/AnimatedSprite:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
-tracks/1/enabled = true
+tracks/1/enabled = false
 tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -1377,10 +1410,10 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ 0 ]
+"values": [ 0, 64 ]
 }
 
 [sub_resource type="Animation" id=72]
@@ -2243,8 +2276,8 @@ extents_x = 4875040
 extents_y = 2145728
 
 [sub_resource type="SGRectangleShape2D" id=43]
-extents_x = 4875040
-extents_y = 2145728
+extents_x = 7175040
+extents_y = 3745728
 
 [sub_resource type="SGRectangleShape2D" id=69]
 extents_x = 7200000
@@ -2294,6 +2327,8 @@ anims/JLight = SubResource( 78 )
 "anims/JLight (copyyy)" = SubResource( 57 )
 anims/Jump = SubResource( 40 )
 anims/JumpFall = SubResource( 63 )
+anims/Knives = SubResource( 79 )
+anims/KnivesHeavy = SubResource( 80 )
 anims/Knockdown = SubResource( 49 )
 anims/Light = SubResource( 72 )
 anims/Prejump = SubResource( 62 )
@@ -2333,13 +2368,6 @@ scroll_active = false
 [node name="Character" type="Node2D" parent="Visual"]
 script = ExtResource( 7 )
 
-[node name="Sprite" type="Sprite" parent="Visual/Character"]
-visible = false
-position = Vector2( -4, -101 )
-rotation = -0.872665
-scale = Vector2( 0.085, 0.085 )
-texture = ExtResource( 8 )
-
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Visual/Character"]
 material = ExtResource( 12 )
 position = Vector2( 0, -100 )
@@ -2347,25 +2375,29 @@ scale = Vector2( 0.319, 0.319 )
 frames = ExtResource( 10 )
 animation = "Default"
 
+[node name="ArtPatches" type="Sprite" parent="Visual/Character/AnimatedSprite"]
+position = Vector2( -9.40439, 40.7523 )
+scale = Vector2( 3.1348, 3.1348 )
+z_index = -4096
+texture = ExtResource( 13 )
+
 [node name="SwipeSpawner" type="Node2D" parent="Visual"]
 position = Vector2( 92, 10 )
 script = ExtResource( 11 )
 
 [node name="Hitboxes" type="SGArea2D" parent="." groups=["hitboxes", "network_sync"]]
-visible = false
 collision_mask = 0
 script = ExtResource( 3 )
 
 [node name="hitbox1" type="SGCollisionShape2D" parent="Hitboxes"]
 modulate = Color( 0.75, 0.75, 0.75, 1 )
-position = Vector2( 43, -170 )
+position = Vector2( 138, -134 )
 fixed_position_x = 8650752
 fixed_position_y = -5046272
 shape = SubResource( 42 )
 disabled = true
 
 [node name="Hurtboxes" type="SGArea2D" parent="." groups=["hurtboxes", "network_sync"]]
-visible = false
 collision_layer = 0
 collision_mask = 2
 script = ExtResource( 2 )
@@ -2385,7 +2417,7 @@ shape = SubResource( 77 )
 disabled = true
 
 [node name="Heavy_hurtbox1" type="SGCollisionShape2D" parent="Hurtboxes"]
-modulate = Color( 0.498039, 0.498039, 0.498039, 0.0392157 )
+modulate = Color( 0, 1, 0, 1 )
 position = Vector2( 69.4824, -129.155 )
 fixed_position_x = 4553600
 fixed_position_y = -8464320
@@ -2410,7 +2442,7 @@ disabled = true
 
 [node name="JLight_hurtbox1" type="SGCollisionShape2D" parent="Hurtboxes"]
 modulate = Color( 0.498039, 0.498039, 0.498039, 0.0392157 )
-position = Vector2( 101, -30 )
+position = Vector2( 101, 2 )
 fixed_position_x = 6619136
 fixed_position_y = 131072
 shape = SubResource( 69 )
@@ -2431,7 +2463,6 @@ shape = SubResource( 43 )
 disabled = true
 
 [node name="Throwboxes" type="SGArea2D" parent="." groups=["network_sync", "throwboxes"]]
-visible = false
 collision_mask = 0
 script = ExtResource( 5 )
 __meta__ = {
@@ -2454,8 +2485,8 @@ margin_left = -134.0
 margin_top = 31.0
 margin_right = 184.0
 margin_bottom = 45.0
-text = "res://Characters/Boba/States/BobaRunLaunch.tres::1
-4 (2) 10
+text = "res://Characters/Boba/States/BobaCHeavy.tres::1
+9 (6) 16
 "
 
 [node name="InputHistory" type="Node" parent="." groups=["network_sync"]]

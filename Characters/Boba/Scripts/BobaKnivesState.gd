@@ -66,7 +66,7 @@ func run(f: Fighter, input: Dictionary) -> void:
 
 
 func animation(f: Fighter) -> String:
-	return "Walk"
+	return "KnivesHeavy" if is_heavy else "Knives"
 
 
 func attack_level() -> int:

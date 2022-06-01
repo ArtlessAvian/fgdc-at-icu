@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://Fighters/Hitboxes.gd" type="Script" id=1]
 [ext_resource path="res://Fighters/Hurtboxes.gd" type="Script" id=2]
@@ -22,6 +22,7 @@
 [ext_resource path="res://Characters/Lippo/Assets/ProgrammerArt/spades.png" type="Texture" id=20]
 [ext_resource path="res://spr_realisticexplosion/spr_realisticexplosion_2.png" type="Texture" id=21]
 [ext_resource path="res://addons/FGDC-Datatypes/HitData.gd" type="Script" id=22]
+[ext_resource path="res://Characters/Boba/Assets/effect/raw knife.png" type="Texture" id=23]
 
 [sub_resource type="Resource" id=6]
 script = ExtResource( 22 )
@@ -63,7 +64,17 @@ extents_y = 1638400
 [node name="HiddenMissile" type="SGFixedNode2D" groups=["network_sync"]]
 script = ExtResource( 3 )
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="Sprite" type="Node2D" parent="."]
+
+[node name="Sprite" type="Sprite" parent="Sprite"]
+position = Vector2( 2, 0 )
+rotation = -0.698132
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 23 )
+region_rect = Rect2( 0, 0, 50, 50 )
+
+[node name="SpriteOld" type="Sprite" parent="."]
+visible = false
 scale = Vector2( 1, 2 )
 texture = ExtResource( 20 )
 region_enabled = true
