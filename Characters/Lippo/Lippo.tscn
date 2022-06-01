@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=2]
+[gd_scene load_steps=62 format=2]
 
 [ext_resource path="res://Fighters/Fighter.gd" type="Script" id=1]
 [ext_resource path="res://Fighters/Hitboxes.gd" type="Script" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Fighters/FighterSprite.gd" type="Script" id=8]
 [ext_resource path="res://Characters/Lippo/LippoMoveset.tres" type="Resource" id=9]
 [ext_resource path="res://Example/Lippo.png" type="Texture" id=10]
+[ext_resource path="res://Characters/Lippo/Shield.gd" type="Script" id=11]
 [ext_resource path="res://Characters/Lippo/Assets/ProgrammerArt/card.png" type="Texture" id=12]
 [ext_resource path="res://Characters/Lippo/Assets/ProgrammerArt/Diamonds.png" type="Texture" id=13]
 [ext_resource path="res://Characters/Lippo/HeavyBeam.gd" type="Script" id=14]
@@ -1851,6 +1852,33 @@ texture = ExtResource( 10 )
 position = Vector2( 0, -100 )
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 78 )
+
+[node name="Shield" type="Node2D" parent="Visual"]
+position = Vector2( 80, -90 )
+scale = Vector2( 0.5, 1 )
+script = ExtResource( 11 )
+
+[node name="Card" type="Sprite" parent="Visual/Shield"]
+scale = Vector2( 4, 4 )
+texture = ExtResource( 12 )
+
+[node name="Card2" type="Sprite" parent="Visual/Shield/Card"]
+self_modulate = Color( 1, 1, 1, 0.501961 )
+show_behind_parent = true
+rotation = -0.349066
+texture = ExtResource( 12 )
+
+[node name="Card3" type="Sprite" parent="Visual/Shield/Card"]
+self_modulate = Color( 1, 1, 1, 0.501961 )
+show_behind_parent = true
+rotation = -0.698132
+texture = ExtResource( 12 )
+
+[node name="Card4" type="Sprite" parent="Visual/Shield/Card"]
+self_modulate = Color( 1, 1, 1, 0.501961 )
+show_behind_parent = true
+rotation = -1.0472
+texture = ExtResource( 12 )
 
 [node name="JLightEffect" type="Particles2D" parent="Visual"]
 position = Vector2( 69, -62 )

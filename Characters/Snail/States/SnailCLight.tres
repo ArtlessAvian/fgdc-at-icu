@@ -1,0 +1,48 @@
+[gd_resource type="Resource" load_steps=7 format=2]
+
+[ext_resource path="res://addons/FGDC-Datatypes/AttackData.gd" type="Script" id=1]
+[ext_resource path="res://Characters/Snail/Scripts/SnailIgnoreCollision.gd" type="Script" id=2]
+[ext_resource path="res://addons/FGDC-Datatypes/HitData.gd" type="Script" id=3]
+[ext_resource path="res://Characters/Snail/Assets/didhejustwalkupslowlyand.wav" type="AudioStream" id=4]
+
+[sub_resource type="Resource" id=2]
+script = ExtResource( 3 )
+guard = 0
+startup = 6
+active = 2
+hitstun = 50
+blockstun = 50
+hitstop = 5
+damage = 5
+chipdamage = 1
+knockdown = true
+x_vel = 5
+y_vel = 20
+active_hitboxes = 1
+active_hurtboxes = 0
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 1 )
+guard = 0
+startup = 19
+active = 4
+hitstun = 15
+blockstun = 15
+hitstop = 6
+damage = 3
+chipdamage = 0
+knockdown = false
+x_vel = -30
+y_vel = 7
+active_hitboxes = 1
+active_hurtboxes = 1
+hit_sound = ExtResource( 4 )
+followup = SubResource( 2 )
+animation_name = "CLight"
+recovery = 25
+
+[resource]
+script = ExtResource( 2 )
+attack_data = SubResource( 1 )
+attack_level = 1
+jump_cancellable = false

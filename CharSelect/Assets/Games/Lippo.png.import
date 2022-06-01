@@ -14,7 +14,7 @@ dest_files=[ "res://.import/Lippo.png-fc2dbed7400fd21a688d2439b8d99fee.stex" ]
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0

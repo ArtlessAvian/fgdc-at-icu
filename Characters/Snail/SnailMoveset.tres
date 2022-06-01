@@ -1,0 +1,90 @@
+[gd_resource type="Resource" load_steps=30 format=2]
+
+[ext_resource path="res://addons/FGDC-Datatypes/GenericStates/PrejumpState.gd" type="Script" id=1]
+[ext_resource path="res://addons/FGDC-Datatypes/GenericStates/ThrowAttemptState.gd" type="Script" id=2]
+[ext_resource path="res://addons/FGDC-Datatypes/GenericStates/WalkState.gd" type="Script" id=3]
+[ext_resource path="res://addons/FGDC-Datatypes/GenericStates/JumpState.gd" type="Script" id=4]
+[ext_resource path="res://addons/FGDC-Datatypes/GenericStates/BurstState.gd" type="Script" id=5]
+[ext_resource path="res://addons/FGDC-Datatypes/Moveset.gd" type="Script" id=6]
+[ext_resource path="res://addons/FGDC-Datatypes/GenericStates/CrouchState.gd" type="Script" id=7]
+[ext_resource path="res://Characters/Snail/States/SnailSHeavy.tres" type="Resource" id=8]
+[ext_resource path="res://Characters/Snail/States/SnailCallTaxi.tres" type="Resource" id=9]
+[ext_resource path="res://Characters/Snail/States/SnailCallTaxiHeavy.tres" type="Resource" id=10]
+[ext_resource path="res://Characters/Snail/States/SnailCHeavy2.tres" type="Resource" id=11]
+[ext_resource path="res://Characters/Snail/States/SnailSLight.tres" type="Resource" id=12]
+[ext_resource path="res://Characters/Snail/States/SnailJLight.tres" type="Resource" id=13]
+[ext_resource path="res://Characters/Snail/States/SnailJHeavy.tres" type="Resource" id=14]
+[ext_resource path="res://Characters/Snail/States/SnailRideTaxi.tres" type="Resource" id=15]
+[ext_resource path="res://Characters/Snail/States/SnailCLight.tres" type="Resource" id=16]
+[ext_resource path="res://addons/FGDC-Datatypes/ThrowData.gd" type="Script" id=17]
+[ext_resource path="res://Characters/Snail/States/SnailCallUpTaxi.tres" type="Resource" id=18]
+[ext_resource path="res://Characters/Snail/States/SnailTaunt.tres" type="Resource" id=19]
+[ext_resource path="res://Characters/Snail/States/SnailCallSnedge.tres" type="Resource" id=20]
+[ext_resource path="res://addons/FGDC-Datatypes/StandardBurst.tres" type="Resource" id=21]
+
+[sub_resource type="Resource" id=10]
+script = ExtResource( 5 )
+attack_data = ExtResource( 21 )
+
+[sub_resource type="Resource" id=8]
+script = ExtResource( 7 )
+
+[sub_resource type="Resource" id=3]
+script = ExtResource( 4 )
+impulse = 1310720
+double_jump_impulse = 983040
+horizontal_speed = -262144
+
+[sub_resource type="Resource" id=9]
+script = ExtResource( 1 )
+
+[sub_resource type="Resource" id=5]
+script = ExtResource( 17 )
+is_air = true
+techable = true
+throw_length = 30
+damage = 5
+release_time = 20
+release_position_x = 0
+release_position_y = 0
+release_vel_x = 5
+release_vel_y = 15
+
+[sub_resource type="Resource" id=6]
+script = ExtResource( 17 )
+is_air = false
+techable = true
+throw_length = 30
+damage = 5
+release_time = 20
+release_position_x = 300
+release_position_y = 0
+release_vel_x = 5
+release_vel_y = 15
+
+[sub_resource type="Resource" id=7]
+script = ExtResource( 2 )
+throw_data = SubResource( 6 )
+air_throw_data = SubResource( 5 )
+
+[sub_resource type="Resource" id=4]
+script = ExtResource( 3 )
+speed = -4
+
+[resource]
+script = ExtResource( 6 )
+air_actions = 2
+walk = SubResource( 4 )
+crouch = SubResource( 8 )
+prejump = SubResource( 9 )
+jump = SubResource( 3 )
+light = ExtResource( 12 )
+heavy = ExtResource( 8 )
+c_light = ExtResource( 16 )
+c_heavy = ExtResource( 11 )
+j_light = ExtResource( 13 )
+j_heavy = ExtResource( 14 )
+throw = SubResource( 7 )
+burst = SubResource( 10 )
+attacks = [ ExtResource( 9 ), ExtResource( 10 ), ExtResource( 18 ), ExtResource( 20 ) ]
+movement = [ ExtResource( 15 ), ExtResource( 19 ) ]

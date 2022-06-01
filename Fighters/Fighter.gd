@@ -29,6 +29,7 @@ var ani_start_time = 0
 var air_actions = 0
 var state_dict: Dictionary = {}
 var invincible: bool = false
+var cornered: bool = false
 
 var combo_count = 0
 var combo_gaps = []
@@ -36,6 +37,8 @@ var hitstop = 0
 
 signal countered
 
+const starting_timer = 4 * 60 + 30
+const round_start_timer = 1 * 60 + 30
 const hit_sound = preload("res://rip_in_pieces.wav")
 const hit_sound_2 = preload("res://rip_in_pieces_2.wav")
 
@@ -51,6 +54,13 @@ func _ready():
 	self.ani_start_time = 0
 	self.air_actions = 0
 	self.invincible = false
+
+	self.state_dict = {}
+
+	if self.get_node("../..").is_first_round():
+		self.hitstop = starting_timer
+	else:
+		self.hitstop = round_start_timer
 
 	$Hitboxes.set_player(is_p2)
 	$Hurtboxes.set_player(is_p2)
@@ -110,17 +120,18 @@ func state_process(input: Dictionary):
 
 
 func change_to_state(new_state):
+	state.exit(self)
 	new_state.enter(self)
 	state = new_state
 	state_time = 0
-
-	# HACK
-	invincible = false
 
 
 func move():
 	if not grounded:
 		vel.y -= fighter_gravity
+
+	if cornered and sign(self.vel.x) != sign(self.fixed_position_x):
+		cornered = false
 
 	self.fixed_position.x += vel.x
 	self.fixed_position.y -= vel.y
@@ -207,7 +218,10 @@ func is_blocking(input: Dictionary):
 func hit_response(input: Dictionary):
 	# Look at the hit.
 	if $Hurtboxes.hit_hitboxes.facing == 0:
-		var diff = fixed_position.x - $Hurtboxes.hit_hitboxes.get_global_fixed_position().x
+		var diff = (
+			fixed_position.x
+			- $Hurtboxes.hit_hitboxes.get_global_fixed_position().x
+		)
 		if diff > 0 && fixed_scale.x > 0:
 			fixed_scale.x *= -1
 		if diff < 0 && fixed_scale.x < 0:
@@ -282,7 +296,10 @@ func on_hit():
 		grounded = false
 		# gravity takes care of the rest!
 
-	if state.get("attack_data") != null and state_time <= state.get("attack_data").startup:
+	if (
+		state.get("attack_data") != null
+		and state_time <= state.get("attack_data").startup
+	):
 		emit_signal("countered")
 
 	# print($Hurtboxes.hit_hitdata, SyncManager.current_tick)
@@ -311,11 +328,20 @@ func throw_response(input: Dictionary):
 		return
 	if (
 		not state in moveset.movement
-		and not (state in [moveset.walk, moveset.crouch, moveset.jump, moveset.burst, moveset.dead])
+		and not (
+			state
+			in [moveset.walk, moveset.crouch, moveset.jump, moveset.burst, moveset.dead]
+		)
 		and not (state == moveset.air_hitstun and state_time > state_dict.hitstun)
 	):
 		print("not neutral state")
 		return
+
+	if state in [moveset.hitstun, moveset.air_hitstun]:
+		combo_count += 1
+	else:
+		combo_count = 1
+		combo_gaps.clear()
 
 	state_dict["throwdata"] = throwdata
 	change_to_state(moveset.get_thrown)
@@ -395,7 +421,10 @@ func _get_local_input() -> Dictionary:
 
 	if controlled_by in ["block", "punish"]:
 		var opponent = get_node(opponent_path)
-		var stand = not opponent.grounded and opponent.state in opponent.moveset.all_attacks()
+		var stand = (
+			not opponent.grounded
+			and opponent.state in opponent.moveset.all_attacks()
+		)
 		if stand:
 			var attack_data = opponent.state.get("attack_data")
 			if attack_data != null:
@@ -404,13 +433,20 @@ func _get_local_input() -> Dictionary:
 				stand = opponent.state_time >= attack_data.startup - 3
 
 		return {
-			stick_x = int(sign(self.fixed_position_x - get_node(opponent_path).fixed_position.x)),
+			stick_x = int(
+				sign(self.fixed_position_x - get_node(opponent_path).fixed_position.x)
+			),
 			stick_y = 0 if stand else -1,
 			light = (
 				controlled_by == "punish"
 				and (
 					state
-					in [moveset.hitstun, moveset.air_hitstun, moveset.knockdown, moveset.blockstun]
+					in [
+						moveset.hitstun,
+						moveset.air_hitstun,
+						moveset.knockdown,
+						moveset.blockstun
+					]
 				)
 			),
 			heavy = false,
@@ -514,9 +550,17 @@ func _on_Hitboxes_on_contact(blocked: bool, hitstop: int):
 	if not blocked:
 		state_dict.last_attack_hit = $Hitboxes.attack_number
 
-	if state.attack_data.hit_sound != null:
-		SyncManager.play_sound(
-			str(get_path()) + ":hit_sound",
-			state.attack_data.get_hitdata(state_time).hit_sound,
-			{position = self.position, pitch_scale = 1, volume_db = 10}
-		)
+	var attack_data = state.get("attack_data")
+	if attack_data != null:
+		if attack_data.hit_sound != null:
+			SyncManager.play_sound(
+				str(get_path()) + ":hit_sound",
+				state.attack_data.get_hitdata(state_time).hit_sound,
+				{position = self.position, pitch_scale = 1, volume_db = 10}
+			)
+		else:
+			SyncManager.play_sound(
+				str(get_path()) + ":hit_sound",
+				hit_sound if SyncManager.current_tick % 2 == 0 else hit_sound_2,
+				{position = self.position, pitch_scale = 1, volume_db = -10}
+			)

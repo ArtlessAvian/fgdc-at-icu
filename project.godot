@@ -93,7 +93,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Fighting Game Development Club"
-run/main_scene="res://Networking/Lobby/crude_connection.tscn"
+run/main_scene="res://Networking/Lobby2/Lobby2.tscn"
 config/icon="res://icon.png"
 
 [autoload]

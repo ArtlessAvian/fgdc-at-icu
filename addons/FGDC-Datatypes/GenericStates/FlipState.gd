@@ -2,6 +2,7 @@ extends "../State.gd"
 
 const length = 20
 
+
 func transition_into(f: Fighter, moveset: Moveset, input: Dictionary) -> bool:
 	return false
 
@@ -21,5 +22,13 @@ func run(f: Fighter, input: Dictionary) -> void:
 	)
 
 
+func exit(f: Fighter) -> void:
+	f.invincible = false
+
+
 func animation(f: Fighter) -> String:
 	return "Flip"
+
+
+func attack_level():
+	return 8765309

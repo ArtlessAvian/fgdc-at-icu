@@ -2,7 +2,7 @@ extends "../State.gd"
 
 export(int) var knockdown_timer = 30
 
-const klonk = preload("res://Sounds/landing_on_floor_2.wav")
+const klonk = preload("res://Sounds/keyboard_drop.wav")
 
 
 func transition_into(f: Fighter, moveset: Moveset, input: Dictionary) -> bool:
@@ -15,10 +15,12 @@ func transition_out(f: Fighter, moveset: Moveset, input: Dictionary) -> Resource
 	# Burst activation
 	if input.heavy and input.light and f.can_burst():
 		f.invincible = false
+		f.combo_count = 0
 		return moveset.burst
 
 	if f.state_dict.knockdown_timer <= 0 and f.grounded:
 		f.invincible = false
+		f.combo_count = 0
 		print("for designers, knockdown ended frame ", f.state_time)
 
 		# jump out of knockdown to not get grabbed to death
@@ -37,11 +39,11 @@ func enter(f: Fighter) -> void:
 
 	f.state_dict.knockdown_timer = 30  # same here? unless we make it consistent
 
-	# SyncManager.play_sound(
-	# 	str(f.get_path()) + ":knockdown",
-	# 	klonk,
-	# 	{position = f.position, pitch_scale = 2, volume_db = 10}
-	# )
+	SyncManager.play_sound(
+		str(f.get_path()) + ":knockdown",
+		klonk,
+		{position = f.position, pitch_scale = 1, volume_db = 5}
+	)
 
 
 func run(f: Fighter, input: Dictionary) -> void:
@@ -51,6 +53,10 @@ func run(f: Fighter, input: Dictionary) -> void:
 	# TODO: bandaid fix
 	var character = f.find_node("Character")
 	character.modulate = Color.white
+
+
+func exit(f: Fighter) -> void:
+	f.invincible = false
 
 
 func animation(f: Fighter) -> String:

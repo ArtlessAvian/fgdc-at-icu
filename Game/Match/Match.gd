@@ -39,6 +39,9 @@ func _network_postprocess(input: Dictionary) -> void:
 
 	if dead_timer >= 0:
 		# someone is dead
+		# if dead_timer == 0 and p1_score >= 2 or p2_score >= 2:
+		# 	$vgdcdotwav.play(5733188.0 / 44100)
+
 		if dead_timer < 10 or (dead_timer % 3 <= 1 and dead_timer < 60):
 			$Game/Fighter1.hitstop = 1
 			$Game/Fighter2.hitstop = 1
@@ -61,13 +64,30 @@ func round_reset():
 	dead_timer = -1
 	for child in $Game/Spawned.get_children():
 		SyncManager.despawn(child)
+
+	# TODO: UI thing for best of 3
 	$Game._ready()
-	$Game/Fighter1._ready()
-	$Game/Fighter2._ready()
+	$Game.time_in_frames = $Game.round_start_length
+	if p1_score >= 2 or p2_score >= 2:
+		p1_score = 0
+		p2_score = 0
+		# HACK: I'll allow it.
+		$vgdcdotwav.stop()
+		# $vgdcdotwav/Tween.interpolate_property($vgdcdotwav, "volume_db", 0, -100, 1)
+		# $vgdcdotwav/Tween.start()
+		self.get_node("..").reset_the_game()
+	else:
+		$Game/UILayer/TestIntro.round_call(p1_score + p2_score + 1)
+		$Game/Fighter1._ready()
+		$Game/Fighter2._ready()
 
 
 func is_dead(f: Fighter) -> bool:
 	return f.health <= 0
+
+
+func is_first_round() -> bool:
+	return p1_score == 0 and p2_score == 0
 
 
 func _save_state() -> Dictionary:

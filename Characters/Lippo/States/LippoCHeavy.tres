@@ -10,7 +10,7 @@ script = ExtResource( 2 )
 guard = 0
 startup = 20
 active = 2
-hitstun = 12
+hitstun = 24
 blockstun = 12
 hitstop = 10
 damage = 5
@@ -23,7 +23,7 @@ active_hurtboxes = 0
 startup_sound = ExtResource( 3 )
 hit_sound = ExtResource( 4 )
 animation_name = "CHeavy"
-recovery = 10
+recovery = 16
 
 [resource]
 script = ExtResource( 1 )

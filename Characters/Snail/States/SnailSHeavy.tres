@@ -1,0 +1,32 @@
+[gd_resource type="Resource" load_steps=5 format=2]
+
+[ext_resource path="res://Characters/Boba/Scripts/BobaLoopingNormal.gd" type="Script" id=1]
+[ext_resource path="res://addons/FGDC-Datatypes/AttackData.gd" type="Script" id=2]
+[ext_resource path="res://Characters/Snail/Assets/speen.wav" type="AudioStream" id=4]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 2 )
+guard = 0
+startup = 15
+active = 5
+hitstun = 32
+blockstun = 25
+hitstop = 1
+damage = 3
+chipdamage = 1
+knockdown = true
+x_vel = -1
+y_vel = 0
+active_hitboxes = 1
+active_hurtboxes = 0
+startup_sound = ExtResource( 4 )
+animation_name = "Heavy"
+recovery = 30
+
+[resource]
+script = ExtResource( 1 )
+attack_data = SubResource( 1 )
+attack_level = 2
+jump_cancellable = true
+loop_limit = 6
+loop_frames = 16

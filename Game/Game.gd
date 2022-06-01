@@ -10,13 +10,15 @@ const max_spacing = 1000 << 16
 var last_average: int = 0
 var last_diff: int = 0
 
-const game_length = 90 * 60  # in frames. remember to add a countdown
-var time_in_frames = game_length
+const match_start_length = 94 * 60 + 30  # in frames. remember to add a countdown
+const round_start_length = 91 * 60 + 30  # separate start time for rounds after the first
+var time_in_frames = match_start_length
 
 
 func _ready():
 	add_to_group("network_sync")
-	time_in_frames = game_length
+	time_in_frames = match_start_length
+	$Camera2D/HugeExplosion.play("default")
 
 
 func _network_process(input: Dictionary) -> void:
@@ -56,16 +58,18 @@ func correct_positions():
 	var p1: SGFixedNode2D = get_node("Fighter1")
 	var p2: SGFixedNode2D = get_node("Fighter2")
 
-	in_bounds(p1)
-	in_bounds(p2)
+	in_bounds(p1, p2)
+	in_bounds(p2, p1)
+
+	handle_corners(p1, p2)
 
 	# these two probably don't activate at the same time.
 	min_distance(p1, p2)
 	max_distance(p1, p2)
 
 	# nothing bad happens if the players are put oob again, buttt
-	in_bounds(p1)
-	in_bounds(p2)
+	in_bounds(p1, p2)
+	in_bounds(p2, p1)
 
 	# hey doesn't this cause a very slight p1 advantage lmao
 	last_average = (p1.fixed_position.x + p2.fixed_position.x) >> 1
@@ -85,11 +89,15 @@ func collide_hitboxes():
 		hurtboxes.collide_hitboxes()  # and throwboxes
 
 
-func in_bounds(p: Fighter):
+func in_bounds(p: Fighter, other: Fighter):
 	if p.fixed_position.x > x_bound - 0 / 2:
 		p.fixed_position.x = x_bound - 0 / 2
+		if not other.cornered:
+			p.cornered = true
 	if -p.fixed_position.x > x_bound - 0 / 2:
 		p.fixed_position.x = -(x_bound - 0 / 2)
+		if not other.cornered:
+			p.cornered = true
 
 
 func min_distance(p1: Fighter, p2: Fighter):
@@ -115,6 +123,8 @@ func min_distance(p1: Fighter, p2: Fighter):
 
 		p1.fixed_position.x = average + (fighter_spacing >> 1) * sign(diff)
 		p2.fixed_position.x = average + (fighter_spacing >> 1) * sign(-diff)
+
+	#print(diff, average)
 
 
 func max_distance(p1: Fighter, p2: Fighter):
@@ -152,6 +162,13 @@ func max_distance(p1: Fighter, p2: Fighter):
 		# Then we say f*** it and call it good enough.
 		p1.fixed_position.x = target_average + (max_spacing >> 1) * sign(diff)
 		p2.fixed_position.x = target_average + (max_spacing >> 1) * sign(-diff)
+
+
+func handle_corners(p1: Fighter, p2: Fighter):
+	if p1.cornered and not p2.cornered and p1.fixed_position_x == p2.fixed_position_x:
+		p2.fixed_position_x = p1.fixed_position_x - 1 * sign(p1.fixed_position_x)
+	if p2.cornered and not p1.cornered and p1.fixed_position_x == p2.fixed_position_x:
+		p1.fixed_position_x = p2.fixed_position_x - 1 * sign(p2.fixed_position_x)
 
 
 # think Comparator<Fighter>. We are comparing the "winningness".

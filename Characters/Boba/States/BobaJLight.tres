@@ -28,4 +28,3 @@ attack_level = 0
 jump_cancellable = false
 loop_limit = 5
 loop_frames = 5
-is_heavy = false

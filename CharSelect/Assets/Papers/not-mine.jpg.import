@@ -2,19 +2,21 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/not-mine.jpg-5cfbe7d23a2a60eb871f230110c8f2bc.stex"
+path.s3tc="res://.import/not-mine.jpg-5cfbe7d23a2a60eb871f230110c8f2bc.s3tc.stex"
+path.etc2="res://.import/not-mine.jpg-5cfbe7d23a2a60eb871f230110c8f2bc.etc2.stex"
 metadata={
-"vram_texture": false
+"imported_formats": [ "s3tc", "etc2" ],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://CharSelect/Assets/Papers/not-mine.jpg"
-dest_files=[ "res://.import/not-mine.jpg-5cfbe7d23a2a60eb871f230110c8f2bc.stex" ]
+dest_files=[ "res://.import/not-mine.jpg-5cfbe7d23a2a60eb871f230110c8f2bc.s3tc.stex", "res://.import/not-mine.jpg-5cfbe7d23a2a60eb871f230110c8f2bc.etc2.stex" ]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0

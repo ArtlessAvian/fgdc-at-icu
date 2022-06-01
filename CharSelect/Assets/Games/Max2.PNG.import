@@ -14,7 +14,7 @@ dest_files=[ "res://.import/Max2.PNG-2b6ce620777df74706a3b40719f6e09a.stex" ]
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0

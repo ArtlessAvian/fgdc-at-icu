@@ -43,9 +43,6 @@ length = 10
 
 [sub_resource type="Resource" id=9]
 script = ExtResource( 4 )
-impulse = 1638400
-double_jump_impulse = 1048576
-horizontal_speed = 524288
 
 [sub_resource type="Resource" id=5]
 script = ExtResource( 1 )
