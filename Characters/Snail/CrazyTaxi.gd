@@ -36,7 +36,12 @@ func _network_spawn(data: Dictionary):
 	SyncManager.play_sound(
 		str(get_path()) + ":honk",
 		HONK_SOUND,
-		{position = Vector2(fixed_position.x >> 16, 0), pitch_scale = 1, volume_db = 10}
+		{
+			position = Vector2(fixed_position.x >> 16, 0),
+			pitch_scale = 1,
+			volume_db = 10,
+			bus = "SFX"
+		}
 	)
 
 
@@ -89,7 +94,9 @@ func on_hit():
 	# SyncManager.despawn(self)
 
 	SyncManager.play_sound(
-		str(get_path()) + ":hit", EXPLOSION, {position = position, pitch_scale = 1, volume_db = 10}
+		str(get_path()) + ":hit",
+		EXPLOSION,
+		{position = position, pitch_scale = 1, volume_db = 10, bus = "SFX"}
 	)
 
 

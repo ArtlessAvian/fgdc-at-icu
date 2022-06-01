@@ -42,7 +42,7 @@ func enter(f: Fighter) -> void:
 	SyncManager.play_sound(
 		str(f.get_path()) + ":knockdown",
 		klonk,
-		{position = f.position, pitch_scale = 1, volume_db = 5}
+		{position = f.position, pitch_scale = 1, volume_db = 5, bus = "SFX"}
 	)
 
 

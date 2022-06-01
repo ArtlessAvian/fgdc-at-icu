@@ -51,8 +51,12 @@ func enter(f: Fighter) -> void:
 		f.state_dict.last_attack_contact = -1
 
 	if attack_data.startup_sound != null:
-		SyncManager.play_sound(str(get_path()) + ":startup_sound", attack_data.startup_sound,{position = f.position, pitch_scale = 1, volume_db = 10})
-	
+		SyncManager.play_sound(
+			str(get_path()) + ":startup_sound",
+			attack_data.startup_sound,
+			{position = f.position, pitch_scale = 1, volume_db = 10, bus = "SFX"}
+		)
+
 
 func run(f: Fighter, input: Dictionary) -> void:
 	# Controlled mostly by the animation player, but custom code here is fine too.

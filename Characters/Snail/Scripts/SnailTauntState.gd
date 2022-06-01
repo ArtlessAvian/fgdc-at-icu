@@ -28,14 +28,14 @@ func run(f: Fighter, input: Dictionary) -> void:
 		SyncManager.play_sound(
 			str(get_path()) + ":meme",
 			BOOM,
-			{position = f.position, pitch_scale = 1, volume_db = 10}
+			{position = f.position, pitch_scale = 1, volume_db = 10, bus = "SFX"}
 		)
 	if f.state_time >= 45:
 		if f.get_node("InputHistory").button_pressed("light", 2):
 			SyncManager.play_sound(
 				str(get_path()) + ":meme",
 				BOOM,
-				{position = f.position, pitch_scale = 1, volume_db = 10}
+				{position = f.position, pitch_scale = 1, volume_db = 10, bus = "SFX"}
 			)
 
 
