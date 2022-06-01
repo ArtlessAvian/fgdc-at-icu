@@ -30,8 +30,8 @@ func _network_spawn(data: Dictionary):
 
 	$Hitboxes.facing = -1 if self.flip else 1
 
-	# snedge hits snail too
-	# $Hitboxes.set_player(data.is_p2, true)
+	# jk dont do this ##### snedge hits snail too
+	$Hitboxes.set_player(data.is_p2, true)
 	# snedge breaks enemy projectiles
 	$ProjectileBreaker.collision_layer = 0b0100 ^ (0b1100 if data.is_p2 else 0b0000)
 
@@ -88,6 +88,7 @@ func _network_postprocess(input: Dictionary) -> void:
 		on_hit()
 
 	if lifetime > stall_time + dash_time + exit_time:
+		snail.state_dict["SnedgeIsDedge"] = false
 		SyncManager.despawn(self)
 
 

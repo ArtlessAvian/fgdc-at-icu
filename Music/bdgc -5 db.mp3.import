@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/bdgc -5 db.mp3-aec6991e8fd789921b608e548e7b8c54.mp3str"
+
+[deps]
+
+source_file="res://Music/bdgc -5 db.mp3"
+dest_files=[ "res://.import/bdgc -5 db.mp3-aec6991e8fd789921b608e548e7b8c54.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

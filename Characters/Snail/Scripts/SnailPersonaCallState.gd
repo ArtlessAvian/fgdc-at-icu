@@ -36,8 +36,8 @@ func run(f: Fighter, input: Dictionary) -> void:
 		f.state_time == 0
 		and not (f.state_dict.has("SnedgeIsDedge") and f.state_dict["SnedgeIsDedge"])
 	):
-		var taxi = SyncManager.spawn(
-			"Taxi",
+		var persona = SyncManager.spawn(
+			"Persona",
 			f.get_parent().get_node("Spawned"),
 			TAXI_SCENE,
 			{
@@ -47,8 +47,7 @@ func run(f: Fighter, input: Dictionary) -> void:
 				"snail": f,
 			}
 		)
-
-		f.state_dict["my_taxi"] = taxi.get_path()
+		f.state_dict["SnedgeIsDedge"] = true
 
 	f.vel.x = 0
 

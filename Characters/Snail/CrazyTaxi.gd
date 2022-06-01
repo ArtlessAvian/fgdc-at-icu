@@ -65,8 +65,8 @@ func _network_preprocess(input: Dictionary) -> void:
 
 
 func _network_postprocess(input: Dictionary) -> void:
-	if fixed_position.x * (-1 if flip else 1) > 1000 << 16:
-		on_hit()
+	# if fixed_position.x * (-1 if flip else 1) > 1000 << 16:
+	# 	on_hit()
 
 	if fixed_position.y >= 0:
 		on_hit()

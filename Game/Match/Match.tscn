@@ -3,7 +3,7 @@
 [ext_resource path="res://Game/Match/Match.gd" type="Script" id=1]
 [ext_resource path="res://Game/Game.tscn" type="PackedScene" id=2]
 [ext_resource path="res://100checker.png" type="Texture" id=3]
-[ext_resource path="res://Music/bdgc -5 db.wav" type="AudioStream" id=4]
+[ext_resource path="res://Music/bdgc -5 db.mp3" type="AudioStream" id=4]
 [ext_resource path="res://Stages/Stage.tscn" type="PackedScene" id=5]
 
 [node name="Match" type="SGFixedNode2D"]

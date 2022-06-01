@@ -23,9 +23,14 @@ func transition_into(f: Fighter, moveset: Moveset, input: Dictionary) -> bool:
 
 
 func transition_out(f: Fighter, moveset: Moveset, input: Dictionary) -> Resource:
+	if f.state_time >= 20:
+		var jump = transition_into_jump(f, moveset, input)
+		if jump != null:
+			return jump
+
 	if f.state_time >= 35:
 		var taxi = f.get_node_or_null(f.state_dict["my_taxi"])
-		if input.light or taxi == null or taxi.hit:
+		if taxi == null or taxi.hit:
 			return moveset.walk
 		for state in moveset.movement:
 			if "Ride" in state.resource_path:
