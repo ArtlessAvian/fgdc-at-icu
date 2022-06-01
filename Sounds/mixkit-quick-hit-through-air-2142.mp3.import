@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/mixkit-quick-hit-through-air-2142.mp3-be322d7fb8fc91292797cbf6d8c8b96d.mp3str"
+
+[deps]
+
+source_file="res://Sounds/mixkit-quick-hit-through-air-2142.mp3"
+dest_files=[ "res://.import/mixkit-quick-hit-through-air-2142.mp3-be322d7fb8fc91292797cbf6d8c8b96d.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

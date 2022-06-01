@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/mixkit-cartoon-blow-impact-2654.wav-07e0bc6f9e5de46bf6397467da4c76f0.sample"
+
+[deps]
+
+source_file="res://Sounds/mixkit-cartoon-blow-impact-2654.wav"
+dest_files=[ "res://.import/mixkit-cartoon-blow-impact-2654.wav-07e0bc6f9e5de46bf6397467da4c76f0.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

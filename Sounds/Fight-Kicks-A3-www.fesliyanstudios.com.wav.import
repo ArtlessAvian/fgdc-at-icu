@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Fight-Kicks-A3-www.fesliyanstudios.com.wav-be18ba6aa7a6d475234826748b7f0004.sample"
+
+[deps]
+
+source_file="res://Sounds/Fight-Kicks-A3-www.fesliyanstudios.com.wav"
+dest_files=[ "res://.import/Fight-Kicks-A3-www.fesliyanstudios.com.wav-be18ba6aa7a6d475234826748b7f0004.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -72,7 +72,7 @@ func round_reset():
 		p1_score = 0
 		p2_score = 0
 		# HACK: I'll allow it.
-		# $vgdcdotwav.stop()
+		$vgdcdotwav.stop()
 		# $vgdcdotwav/Tween.interpolate_property($vgdcdotwav, "volume_db", 0, -100, 1)
 		# $vgdcdotwav/Tween.start()
 		self.get_node("..").reset_the_game()

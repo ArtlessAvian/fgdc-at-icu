@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/mixkit-sword-blade-lashes-chainmail-armor-2776.wav-d63b3c251741915d0c1d37e3eed79f53.sample"
+
+[deps]
+
+source_file="res://mixkit-sword-blade-lashes-chainmail-armor-2776.wav"
+dest_files=[ "res://.import/mixkit-sword-blade-lashes-chainmail-armor-2776.wav-d63b3c251741915d0c1d37e3eed79f53.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

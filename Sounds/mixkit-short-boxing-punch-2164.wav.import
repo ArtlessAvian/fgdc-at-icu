@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/mixkit-short-boxing-punch-2164.wav-88c1b195d96d6b11d6ba0b106de4c689.sample"
+
+[deps]
+
+source_file="res://Sounds/mixkit-short-boxing-punch-2164.wav"
+dest_files=[ "res://.import/mixkit-short-boxing-punch-2164.wav-88c1b195d96d6b11d6ba0b106de4c689.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

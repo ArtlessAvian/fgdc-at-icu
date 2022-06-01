@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/mixkit-sword-strikes-armor-2765.wav-770781473739ad1c108f15d8d5268b12.sample"
+
+[deps]
+
+source_file="res://Sounds/mixkit-sword-strikes-armor-2765.wav"
+dest_files=[ "res://.import/mixkit-sword-strikes-armor-2765.wav-770781473739ad1c108f15d8d5268b12.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

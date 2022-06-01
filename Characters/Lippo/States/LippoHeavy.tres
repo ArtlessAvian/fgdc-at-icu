@@ -1,8 +1,10 @@
-[gd_resource type="Resource" load_steps=14 format=2]
+[gd_resource type="Resource" load_steps=16 format=2]
 
 [ext_resource path="res://addons/FGDC-Datatypes/GenericStates/NormalAttackState.gd" type="Script" id=1]
 [ext_resource path="res://addons/FGDC-Datatypes/HitData.gd" type="Script" id=2]
 [ext_resource path="res://addons/FGDC-Datatypes/AttackData.gd" type="Script" id=3]
+[ext_resource path="res://Sounds/fight fx 2/mixkit-cartoon-blow-impact-2654.wav" type="AudioStream" id=4]
+[ext_resource path="res://Sounds/fight fx 2/mixkit-electronic-retro-block-hit-2185.wav" type="AudioStream" id=5]
 
 [sub_resource type="Resource" id=7]
 script = ExtResource( 2 )
@@ -171,6 +173,8 @@ x_vel = 1
 y_vel = 15
 active_hitboxes = 1
 active_hurtboxes = 0
+startup_sound = ExtResource( 4 )
+hit_sound = ExtResource( 5 )
 followup = SubResource( 6 )
 animation_name = "Heavy"
 recovery = 30

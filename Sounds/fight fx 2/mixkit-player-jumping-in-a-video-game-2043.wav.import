@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/mixkit-player-jumping-in-a-video-game-2043.wav-569f1be091abeb4566b28eadf064264c.sample"
+
+[deps]
+
+source_file="res://Sounds/fight fx 2/mixkit-player-jumping-in-a-video-game-2043.wav"
+dest_files=[ "res://.import/mixkit-player-jumping-in-a-video-game-2043.wav-569f1be091abeb4566b28eadf064264c.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
