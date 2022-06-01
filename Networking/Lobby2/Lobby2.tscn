@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Game/Match/Match.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Networking/Lobby2/Lobby2.gd" type="Script" id=2]
 [ext_resource path="res://CharSelect/CharacterSelect.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Networking/ConnectionScreen/ConnectionScreen.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Networking/Lobby2/SecretButton.gd" type="Script" id=5]
+[ext_resource path="res://Music/momentum.wav" type="AudioStream" id=6]
 
 [node name="Lobby" type="Node"]
 script = ExtResource( 2 )
@@ -40,5 +41,10 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color_hover = Color( 0, 1, 1, 1 )
 text = "secret butt"
 script = ExtResource( 5 )
+
+[node name="MenuMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = -7.0
+autoplay = true
 
 [connection signal="button_up" from="CanvasLayer/SecretButton" to="CanvasLayer/SecretButton" method="_on_SecretButton_button_up"]

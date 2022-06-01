@@ -187,8 +187,10 @@ func start_the_game():
 		SyncManager.start()
 		$Match/Game._ready()
 		$Match/Game/UILayer/TestIntro.match_start()
-		# $Match/vgdcdotwav.play(0)
-		# $Match/vgdcdotwav.volume_db = 0
+		# TODO: Play music
+		$MenuMusic.stop()
+		$Match/vgdcdotwav.play(0)
+		$Match/vgdcdotwav.volume_db = 0
 
 
 func reset_the_game():
@@ -197,6 +199,7 @@ func reset_the_game():
 	$CanvasLayer/CharacterSelect.visible = true
 	$CanvasLayer/CharacterSelect.reset_char_select()
 	$CanvasLayer/CharacterSelect.set_process(true)
+	$MenuMusic.play(0)
 
 
 # HELPER
