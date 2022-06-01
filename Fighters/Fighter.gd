@@ -537,7 +537,7 @@ func _on_Hitboxes_on_contact(blocked: bool, hitstop: int):
 			SyncManager.play_sound(
 				str(get_path()) + ":hit_sound",
 				state.attack_data.get_hitdata(state_time).hit_sound,
-				{position = self.position, pitch_scale = 1, volume_db = 10, bus = "SFX"}
+				{position = self.position, pitch_scale = 1, volume_db = 0, bus = "SFX"}
 			)
 		else:
 			SyncManager.play_sound(

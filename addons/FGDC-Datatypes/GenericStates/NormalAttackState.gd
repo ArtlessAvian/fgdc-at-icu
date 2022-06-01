@@ -54,7 +54,7 @@ func enter(f: Fighter) -> void:
 		SyncManager.play_sound(
 			str(get_path()) + ":startup_sound",
 			attack_data.startup_sound,
-			{position = f.position, pitch_scale = 1, volume_db = 10, bus = "SFX"}
+			{position = f.position, pitch_scale = 1, volume_db = 0, bus = "SFX"}
 		)
 
 
