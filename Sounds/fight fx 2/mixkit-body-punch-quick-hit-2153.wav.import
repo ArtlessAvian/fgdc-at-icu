@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/mixkit-body-punch-quick-hit-2153.wav-217e77e667492dc3d100ea829bde37d0.sample"
+
+[deps]
+
+source_file="res://Sounds/fight fx 2/mixkit-body-punch-quick-hit-2153.wav"
+dest_files=[ "res://.import/mixkit-body-punch-quick-hit-2153.wav-217e77e667492dc3d100ea829bde37d0.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

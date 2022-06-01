@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/mixkit-knife-fast-hit-2184 (2).wav-6c7904430ddaeb6be88b35f94bd17206.sample"
+
+[deps]
+
+source_file="res://Sounds/fight fx 2/mixkit-knife-fast-hit-2184 (2).wav"
+dest_files=[ "res://.import/mixkit-knife-fast-hit-2184 (2).wav-6c7904430ddaeb6be88b35f94bd17206.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

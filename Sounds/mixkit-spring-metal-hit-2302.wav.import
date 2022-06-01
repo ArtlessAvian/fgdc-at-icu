@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/mixkit-spring-metal-hit-2302.wav-a9693d62dffc52433b623195ceb280cc.sample"
+
+[deps]
+
+source_file="res://Sounds/mixkit-spring-metal-hit-2302.wav"
+dest_files=[ "res://.import/mixkit-spring-metal-hit-2302.wav-a9693d62dffc52433b623195ceb280cc.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/mixkit-weak-fast-blow-2145.wav-e9c1cb73dadd6f33ae174873c96e6bf1.sample"
+
+[deps]
+
+source_file="res://Sounds/mixkit-weak-fast-blow-2145.wav"
+dest_files=[ "res://.import/mixkit-weak-fast-blow-2145.wav-e9c1cb73dadd6f33ae174873c96e6bf1.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

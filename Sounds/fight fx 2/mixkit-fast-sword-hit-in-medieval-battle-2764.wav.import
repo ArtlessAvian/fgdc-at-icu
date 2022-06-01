@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/mixkit-fast-sword-hit-in-medieval-battle-2764.wav-06016f1e2c18090426eea66865787f7c.sample"
+
+[deps]
+
+source_file="res://Sounds/fight fx 2/mixkit-fast-sword-hit-in-medieval-battle-2764.wav"
+dest_files=[ "res://.import/mixkit-fast-sword-hit-in-medieval-battle-2764.wav-06016f1e2c18090426eea66865787f7c.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

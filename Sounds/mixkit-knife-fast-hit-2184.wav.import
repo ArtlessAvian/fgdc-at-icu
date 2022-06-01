@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/mixkit-knife-fast-hit-2184.wav-466c83ed87d65cc150913e2a9acf3d24.sample"
+
+[deps]
+
+source_file="res://Sounds/mixkit-knife-fast-hit-2184.wav"
+dest_files=[ "res://.import/mixkit-knife-fast-hit-2184.wav-466c83ed87d65cc150913e2a9acf3d24.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

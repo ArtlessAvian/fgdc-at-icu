@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/mixkit-punch-with-short-whistle-2049.wav-1af0fa29c65a2508352717b7bec7ebb8.sample"
+
+[deps]
+
+source_file="res://Sounds/fight fx 2/mixkit-punch-with-short-whistle-2049.wav"
+dest_files=[ "res://.import/mixkit-punch-with-short-whistle-2049.wav-1af0fa29c65a2508352717b7bec7ebb8.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

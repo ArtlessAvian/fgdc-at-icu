@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/mixkit-boxing-punch-2051.wav-7303e64934d7b49bc52098600a2c390c.sample"
+
+[deps]
+
+source_file="res://Sounds/fight fx 2/mixkit-boxing-punch-2051.wav"
+dest_files=[ "res://.import/mixkit-boxing-punch-2051.wav-7303e64934d7b49bc52098600a2c390c.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

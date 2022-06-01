@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/mixkit-air-in-a-hit-2161.wav-fea65a81242ba308104363ead9a96dfd.sample"
+
+[deps]
+
+source_file="res://Sounds/fight fx 2/mixkit-air-in-a-hit-2161.wav"
+dest_files=[ "res://.import/mixkit-air-in-a-hit-2161.wav-fea65a81242ba308104363ead9a96dfd.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
