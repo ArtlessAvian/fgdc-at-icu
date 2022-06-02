@@ -33,12 +33,12 @@ horizontal_speed = 524288
 
 [sub_resource type="Resource" id=10]
 script = ExtResource( 11 )
-speed = 524288
+speed = 786432
 length = 10
 
 [sub_resource type="Resource" id=11]
 script = ExtResource( 15 )
-speed = 524288
+speed = 786432
 length = 10
 
 [sub_resource type="Resource" id=9]
