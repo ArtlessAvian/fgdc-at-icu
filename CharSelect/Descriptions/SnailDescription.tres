@@ -10,7 +10,9 @@ name = "Snail"
 portrait = ExtResource( 2 )
 portrait_selected = ExtResource( 3 )
 blurb = "SNAIL :)"
-description = "Charge Back (30f): HEY. TAXI.
-QCF: Persona! (Warning: fragile)
+description = "What is this character even? We
+think he's got zoning tools? We
+honestly don't know. Figure it out.
 
-What is this character even? We think he's got zoning tools? We honestly don't know. Figure it out."
+Charge Back (30 frames): HEY. TAXI.
+QCB: Persona! (Warning: fragile)"

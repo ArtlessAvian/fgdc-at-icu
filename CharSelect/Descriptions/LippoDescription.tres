@@ -10,7 +10,9 @@ name = "Lippo"
 portrait = ExtResource( 2 )
 portrait_selected = ExtResource( 3 )
 blurb = "ZONING DEMON"
-description = "QCF: Card. Heavy is angled. Air OK.
-Air 656: Airdash. Stalls, cancels moves
-        and momentum
-Keep them out! And if they get in, gamble with a heavy! C.L (Spades) is a \"balanced\" and \"fun\" zoning tool."
+description = "Keep them out! And if they get in,
+gamble with a heavy! C.L (Spades) is a
+\"balanced\" and \"fun\" zoning tool.
+QCF: Card. Heavy is angled. Air OK.
+Air 66: Airdash. Stalls, cancels moves
+        and momentum"

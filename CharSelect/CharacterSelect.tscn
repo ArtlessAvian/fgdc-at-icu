@@ -66,11 +66,12 @@ anchor_bottom = 1.0
 text = "MIDRANGE LIZARD"
 
 [node name="Text" parent="Player1/CenterLine/IndexCard" index="1"]
-text = "QCB: Dash Punch. Light safe on block.
-623: Dragon (lizard?) punch. As usual.
-Air 22: Divekick. Cancel j.H for
-        another high.
-Standard-fare. s.H steps forward. Feeling technical? Light DP loops. :)"
+text = "Standard-fare. s.H steps forward.
+Dash punch beats lotsa things.
+QCB: Dash Punch. Light safe on block.
+623: DP. Light loops, Heavy invincible.
+Air 22: Divekick. Cancel from j.H for
+        another high attack!"
 
 [node name="Portrait" type="TextureRect" parent="Player1/CenterLine"]
 margin_left = -200.0
@@ -180,7 +181,7 @@ rotation = 1.5708
 texture = ExtResource( 15 )
 
 [node name="P2Cursor" type="Sprite" parent="."]
-position = Vector2( 700, 120 )
+position = Vector2( 700.001, 120.001 )
 rotation = 1.5708
 texture = ExtResource( 15 )
 flip_v = true

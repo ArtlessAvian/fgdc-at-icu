@@ -10,8 +10,9 @@ name = "Max"
 portrait = ExtResource( 2 )
 portrait_selected = ExtResource( 3 )
 blurb = "MIDRANGE LIZARD"
-description = "QCB: Dash Punch. Light safe on block.
-623: Dragon (lizard?) punch. As usual.
-Air 22: Divekick. Cancel j.H for
-        another high.
-Standard-fare. s.H steps forward. Feeling technical? Light DP loops. :)"
+description = "Standard-fare. s.H steps forward.
+Dash punch beats lotsa things.
+QCB: Dash Punch. Light safe on block.
+623: DP. Light loops, Heavy invincible.
+Air 22: Divekick. Cancel from j.H for
+        another high attack!"
