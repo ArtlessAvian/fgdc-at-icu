@@ -181,7 +181,7 @@ rotation = 1.5708
 texture = ExtResource( 15 )
 
 [node name="P2Cursor" type="Sprite" parent="."]
-position = Vector2( 700.001, 120.001 )
+position = Vector2( 700, 120 )
 rotation = 1.5708
 texture = ExtResource( 15 )
 flip_v = true

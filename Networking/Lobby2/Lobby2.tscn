@@ -5,7 +5,7 @@
 [ext_resource path="res://CharSelect/CharacterSelect.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Networking/ConnectionScreen/ConnectionScreen.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Networking/Lobby2/SecretButton.gd" type="Script" id=5]
-[ext_resource path="res://Music/momentum.wav" type="AudioStream" id=6]
+[ext_resource path="res://Music/introburgerbob.mp3" type="AudioStream" id=6]
 [ext_resource path="res://Networking/Lobby2/MuteCheckbox.gd" type="Script" id=7]
 [ext_resource path="res://Networking/Lobby2/hackkk.gd" type="Script" id=8]
 
@@ -78,7 +78,6 @@ script = ExtResource( 5 )
 
 [node name="MenuMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
-volume_db = -7.0
 autoplay = true
 bus = "Music"
 
