@@ -1788,7 +1788,7 @@ extents_y = 6553600
 extents_x = 2752512
 extents_y = 6553600
 
-[node name="Fighter" type="SGFixedNode2D" groups=["network_sync"]]
+[node name="Fighter2" type="SGFixedNode2D" groups=["network_sync"]]
 position = Vector2( -2, -2 )
 fixed_position_x = -131072
 fixed_position_y = -131072

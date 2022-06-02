@@ -520,10 +520,10 @@ tracks/10/loop_wrap = true
 tracks/10/imported = false
 tracks/10/enabled = true
 tracks/10/keys = {
-"times": PoolRealArray( 0, 1, 2, 8 ),
+"times": PoolRealArray( 0, 3, 4, 8 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 133.333, 0 ), Vector2( 133.333, 0 ) ]
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 500, 0 ), Vector2( 500, 0 ) ]
 }
 
 [sub_resource type="Animation" id=46]
@@ -945,7 +945,7 @@ tracks/14/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0.375, 0.375 ) ]
+"values": [ Vector2( 0.1, 0.1 ) ]
 }
 tracks/15/type = "value"
 tracks/15/path = NodePath("Visual/Character/DPFX:visible")
@@ -1203,7 +1203,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 2, 6, 9, 35 ),
+"times": PoolRealArray( 0, 2, 6, 9, 24 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 47, 48, 49, 50, 49 ]
@@ -1362,7 +1362,7 @@ tracks/13/keys = {
 "times": PoolRealArray( 0, 6, 24 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ false, true, true ]
+"values": [ false, true, false ]
 }
 
 [sub_resource type="Animation" id=48]
@@ -1510,7 +1510,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 1 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 3200000 ]
+"values": [ 6000000 ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Hitboxes/hitbox1:fixed_position_x")
@@ -1534,7 +1534,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 1 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ -8018048 ]
+"values": [ -4818048 ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("Visual/Character/AnimatedSprite:frame")
@@ -1558,7 +1558,7 @@ tracks/5/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 6400000 ]
+"values": [ 7200000 ]
 }
 tracks/6/type = "value"
 tracks/6/path = NodePath("Hurtboxes/JLight_hurtbox1:shape:extents_y")
@@ -1570,7 +1570,7 @@ tracks/6/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 5600000 ]
+"values": [ 7200000 ]
 }
 tracks/7/type = "value"
 tracks/7/path = NodePath("Hurtboxes/JLight_hurtbox1:fixed_position_x")
@@ -1594,7 +1594,7 @@ tracks/8/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ -5618048 ]
+"values": [ -4018048 ]
 }
 tracks/9/type = "value"
 tracks/9/path = NodePath("Hurtboxes/JLight_hurtbox1:disabled")
@@ -1895,7 +1895,7 @@ tracks/5/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0.319, 0.319 ) ]
+"values": [ Vector2( 0.085, 0.085 ) ]
 }
 tracks/6/type = "value"
 tracks/6/path = NodePath("Visual/Character/AnimatedSprite:position")
@@ -2403,7 +2403,7 @@ extents_y = 6553600
 extents_x = 2752512
 extents_y = 6553600
 
-[node name="Fighter" type="SGFixedNode2D" groups=["network_sync"]]
+[node name="Fighter2" type="SGFixedNode2D" groups=["network_sync"]]
 position = Vector2( -2, -2 )
 fixed_position_x = -131072
 fixed_position_y = -131072
@@ -2466,7 +2466,7 @@ texture = ExtResource( 10 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Visual/Character"]
 position = Vector2( 0, -100 )
-scale = Vector2( 0.319, 0.319 )
+scale = Vector2( 0.085, 0.085 )
 frames = SubResource( 34 )
 animation = "Default"
 

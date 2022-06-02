@@ -4,3 +4,6 @@
 
 [resource]
 script = ExtResource( 1 )
+impulse = 1572864
+double_jump_impulse = 1048576
+horizontal_speed = 655360

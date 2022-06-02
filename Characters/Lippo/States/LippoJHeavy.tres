@@ -2,8 +2,8 @@
 
 [ext_resource path="res://Characters/Lippo/States/LippoPushbackNormal.gd" type="Script" id=1]
 [ext_resource path="res://addons/FGDC-Datatypes/AttackData.gd" type="Script" id=2]
-[ext_resource path="res://Sounds/fight fx 2/mixkit-boxing-punch-2051.wav" type="AudioStream" id=3]
-[ext_resource path="res://Sounds/fight fx 2/mixkit-sword-magic-drag-3009.wav" type="AudioStream" id=4]
+[ext_resource path="res://Sounds/Fight-Kicks-A3-www.fesliyanstudios.com.wav" type="AudioStream" id=3]
+[ext_resource path="res://Sounds/fight fx 3/mixkit-light-spell-873.wav" type="AudioStream" id=4]
 
 [sub_resource type="Resource" id=1]
 script = ExtResource( 2 )

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/mixkit-air-zoom-vacuum-2608.wav-dd413af77c99f93204fd9fdc84e26665.sample"
+
+[deps]
+
+source_file="res://mixkit-air-zoom-vacuum-2608.wav"
+dest_files=[ "res://.import/mixkit-air-zoom-vacuum-2608.wav-dd413af77c99f93204fd9fdc84e26665.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
